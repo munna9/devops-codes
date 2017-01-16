@@ -1,0 +1,7 @@
+name             'ntp'
+maintainer       'YOUR_NAME'
+maintainer_email 'YOUR_EMAIL'
+license          'All rights reserved'
+description      'Installs/Configures ntp'
+long_description 'Installs/Configures ntp'
+version          '0.1.0'
