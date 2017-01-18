@@ -1,18 +1,15 @@
 #!/usr/bin/env bash
-set -e
-set -o pipefail
-knife='/usr/bin/knife'
+echo -e "\x1B[01;32mUploading cookbook(s)"
+${knife} upload /cookbooks --verbose --chef-repo-path=${WORKSPACE} --diff
+echo -e "\x1B[0m"
+echo -e "\x1B[01;32mUploading role(s)"
+${knife} upload /roles --verbose --purge --chef-repo-path=${WORKSPACE}
+echo -e "\x1B[0m"
+echo -e "\x1B[01;32mUploading cookbook(s)"
+${knife} upload /environments --verbose --purge --chef-repo-path=${WORKSPACE}
+echo -e "\x1B[0m"
 WHATPUSHED=$(git whatchanged -1  --format=%f | grep '^:' | cut -f5 -d ' ' | sed 's/^[AMD]\t*//g' | cut -f1 -d'/' | sort -u)
-for EACH_CHANGE in $WHATPUSHED;do
-    echo -e "\x1B[01;32mUploading cookbook(s)"
-    ${knife} upload /cookbooks --verbose --diff --freeze --purge
-    echo -e "\x1B[0m"
-    echo -e "\x1B[01;32mUploading role(s)"
-    ${knife} upload /roles --verbose --purge
-    echo -e "\x1B[0m"
-    echo -e "\x1B[01;32mUploading cookbook(s)"
-    ${knife} upload /environments --verbose --purge
-    echo -e "\x1B[0m"
+for EACH_CHANGE in $WHATPUSHED; do
     if [ "${EACH_CHANGE}" == "data_bags" ]; then
         DATABAG_NAMES=$(git whatchanged -1  --format=%f data_bags | grep '^:' | cut -f5 -d ' ' | sed 's/^[AMD]\t*//g'  | cut -f2 -d '/' | sort -u)
         for EACH_ITEM in $DATABAG_NAMES; do
