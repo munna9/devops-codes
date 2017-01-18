@@ -1,0 +1,19 @@
+{
+  "name": "tools",
+  "description": "Tools Environment",
+  "cookbook_versions": {
+
+  },
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+    "jenkins": {
+      "server":{
+        "name": "tools-jenkins01.aws.phenom.local"
+      }
+    }
+  }
+}

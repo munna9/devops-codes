@@ -1,0 +1,29 @@
+{
+  "name": "jenkins_master",
+  "description": "Jenkins master and chef admin work station",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[_base]",
+    "recipe[basic-essentials::oracle_java_default]",
+    "recipe[basic-essentials::gitclient]",
+    "recipe[basic-essentials::chefdk]",
+    "recipe[docker::install]",
+    "recipe[docker::service]",
+    "recipe[jenkins::install]",
+    "recipe[jenkins::service]",
+    "recipe[nginx::install]",
+    "recipe[nginx::service]",
+    "recipe[jenkins::configure]",
+    "recipe[jenkins::plugins]",
+    "recipe[jenkins::admin_workstation]"
+  ],
+  "env_run_lists": {
+
+  }
+}
