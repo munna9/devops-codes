@@ -1,7 +1,7 @@
+#Oracle Java
+
 default['oracle_java']['app']['base_directory']='/usr/lib/jvm'
 default['oracle_java']['app']['default_path']= '/usr/bin/java'
-
-#Oracle Java
 
 default['oracle_java']['default']['binary_version']='8u111'
 default['oracle_java']['default']['binary_package']="jdk-#{node['oracle_java']['default']['binary_version']}-linux-x64.tar.gz"
@@ -36,6 +36,7 @@ default['gitclient']['binary']['packages'] = {
     }
   }
 }
+
 #ChefDK
 default['chefdk']['binary']['version']='1.1.16'
 default['chefdk']['binary']['package'] = {
@@ -53,6 +54,7 @@ default['chefdk']['download']['uri']= {
         '16.04' => "https://packages.chef.io/files/stable/chefdk/#{node['chefdk']['binary']['version']}/#{node['platform']}/#{node['platform_version']}/#{node['chefdk']['binary']['package'][node['platform_family']]}"
     }
 }
+
 #EPEL repo
 case node['platform_version']
   when '7.2.1511', '7.3.1611', '2016.09'
