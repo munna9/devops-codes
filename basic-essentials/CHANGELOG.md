@@ -4,3 +4,5 @@
 [rajeshj] - Updated attributes for passing build
 # 0.1.2
 [rajeshj] - Fixed documentation
+# 0.1.3
+[rajeshj] - Fixed chefdk recipes and added documentation on README.md

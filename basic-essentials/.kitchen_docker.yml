@@ -42,9 +42,15 @@ platforms:
       image: phenompeople/ubuntu:14.04
       platform: ubuntu
 
+  - name: ubuntu-16.04
+    driver_config:
+      image: phenompeople/ubuntu:16.04
+      platform: ubuntu
+
 suites:
   - name: default
     run_list:
       - recipe[basic-essentials::oracle_java_default]
       - recipe[basic-essentials::gitclient]
+      - recipe[basic-essentials::chefdk_uninstall]
     attributes:

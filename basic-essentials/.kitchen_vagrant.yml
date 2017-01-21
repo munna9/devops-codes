@@ -1,0 +1,34 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: amazon
+    driver_config:
+      box: awslinux_2016.09
+  - name: centos_73
+    driver_config:
+      box: centos_7.3.1611
+  - name: centos_72
+    driver_config:
+      box: centos_7.2.1511
+  - name: ubuntu_1604
+    driver_config:
+      box: ubuntu_16.04
+  - name: ubuntu_1404
+    driver_config:
+      box: ubuntu_14.04
+suites:
+  - name: default
+    run_list:
+      - recipe[basic-essentials::oracle_java_default]
+      - recipe[basic-essentials::gitclient]
+
+    attributes:
+      firewalld:
+        zone: 'public'
+      banner: 'Dont edit by Hand !!! This file is modified by Chef. Please contact admin.squad@phenompeople.com for further assitance'
+
