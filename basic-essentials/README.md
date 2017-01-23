@@ -125,7 +125,7 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 | ['chefdk']['binary']['version']               | String        | Default Chef DK artifaction version                       |
 | ['chefdk']['binary']['package']               | Hash          | Binary package and version for listed platform family     |
 | ['chefdk']['package']['name']                 | Hash          | Binary artifact name                                      |
-| ['chefdk']['download']['uri']                 | Hash          | Binary artifaction download URL                           |
+| ['chefdk']['download']['uri']                 | Hash          | Binary artifact download URL                           |
 
 #### attributes/default.rb
 
@@ -148,5 +148,10 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 | ['oracle_java']['default']['home_directory']  | String        | Extracted Java home directory                             |
 | ['oracle_java']['default']['binary_path']     | String        | Oracle Java default binary path                           |
 
+## Maintainers
+
+* Rajesh Jonnalagadda (<rajesh.jonnalagadda@phenompeople.com>)
+
 ## License and Authors
-Author:: Rajesh Jonnalagadda (rajesh.jonnalagadda@phenompeople.com)
+
+Author:: Phenompeople Pvt Ltd (<admin.squad@phenompeople.com>)
