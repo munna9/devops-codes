@@ -9,7 +9,7 @@ provisioner:
 platforms:
   - name: amazon
     driver_config:
-      image: phenompeople/amazonlinux:2016.09
+      image: phenompeople/amazonlinux:latest
       platform: centos
       privileged: true
       forward: 80
@@ -29,7 +29,7 @@ platforms:
 
   - name: centos-7.2
     driver_config:
-      image: phenompeople/centos-ccb:7.2
+      image: phenompeople/centos-ccb:7.2.1511
       platform: centos
       run_command: /usr/sbin/init
       privileged: true
@@ -47,7 +47,7 @@ platforms:
       forward: 80
       remove_images: true
 
-   - name: ubuntu14.04
+  - name: ubuntu14.04
     driver_config:
       image: phenompeople/ubuntu-ccb:14.04
       platform: ubuntu
@@ -63,5 +63,4 @@ suites:
       - recipe[nginx::default_site]
     attributes:
       phenom:
-        banner: 'This file managed by Admin for test-kitchen'
-
+        banner: 'This file managed by Admin'
