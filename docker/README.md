@@ -1,11 +1,11 @@
 docker cookbook
-=========================
+===============
 
 Installs and configures docker binaries and other application programs. 
 The Docker Cookbook is a library cookbook that provides custom resources for use in recipes.
 
 Requirements
-------------
+============
 * Chef 12.5.x or higher
 * Ruby 2.1 or higher (preferably, the Chef full-stack installer)
 * Internet accessible node/client 
@@ -30,7 +30,7 @@ able to get it working on other platform, with appropriate configuration updates
 
 ```
 Recipe details
-----------------
+==============
 
 A recipe is the most fundamental configuration element within the organization. Receipe is authored using 
 Chef resources (DSL) and Ruby designed to read and behave in a predictable manner.
@@ -45,11 +45,13 @@ Please read attributes section for configuration paramaters for any recipe(s)
 
 ### docker::install
 
-Installs and configures docker-engine binaries based on node's   
+Installs and configures docker-engine binaries based on `['docker']['binary']['packages']`
 
 1. Identifies running node's platform and its version.
 1. Create repository configuration file based on platform distribution.
 1. Install docker binaries and its version based on platform and platform_version key-value pair. 
+1. Installs each of those hash key value pair(s) with specific binary version if `node['docker]['pin_version']` is true,
+   otherwise installs latest available version of package at the time converge.
 
 
 ### docker::service
@@ -75,19 +77,22 @@ Removes docker binaries, images, containers and services from host.
 
 Adds handy scripts and sanitation scripts for docker deamon. These scripts are should prefix with `docker-` and should not have spaces. 
 
-1. creates docker profile script `docker.sh` under `/etc/profile.d`.
-1.1 This script reads user input and shifts the first command line argument and identifies the sub-command.
-1.1 It locates for the script under default `$PATH` variables and executes the same. If not found, it switches back to docker deamon.
+1. Creates docker profile script `docker.sh` under `/etc/profile.d`.
+
+    * This script reads user input and shifts the first command line argument and identifies the sub-command.
+    * It locates for the script under default `$PATH` variables and executes the same. If not found, it switches back to docker deamon.
+
 1. Create/update wrapper script(s) under `node['docker']['wrapper']['base_directory']`
-1.1 `docker-access`     - It is advanced mode of `docker attach`,It accepts container name/ID as an input and invokes /bin/bash into it. If no container name/ID is given it displays running containers on interactive mode.  
-1.1 `docker-clean`      - Identifies dangling images on host and cleans up. This script also run as a sanitation script on every day at 12:00 Hrs.
-1.1 `docker-clean_all`  - Removes all containers including running containers and images.
-1.1 `docker-destroy`    - It performs same job of `docker-access`, but its removes the given container name.
-1.1 `docker-flush`      - It removes unused/stopped containers from the host.
-1.1 `docker-flush_all`  - It remove all cotainers from the host including those which are currently running.
+
+    * `docker-access`     - It is advanced mode of `docker attach`,It accepts container name/ID as an input and invokes /bin/bash into it. If no container name/ID is given it displays running containers on interactive mode.  
+    * `docker-clean`      - Identifies dangling images on host and cleans up. This script also run as a sanitation script on every day at 12:00 Hrs.
+    * `docker-clean_all`  - Removes all containers including running containers and images.
+    * `docker-destroy`    - It performs same job of `docker-access`, but its removes the given container name.
+    * `docker-flush`      - It removes unused/stopped containers from the host.
+    * `docker-flush_all`  - It remove all cotainers from the host including those which are currently running.
 
 Attributes
-====
+==========
 
 Ohai collects attribute data about each node at the start of the chef-client run.
 When a cookbook is loaded during a chef-client run, these attributes are compared to the attributes that are already present on the node.
@@ -109,5 +114,10 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 | ['docker']['wrapper']['base_directory']       | String        | base location of wrapper scripts resides                             |
 | ['docker']['wrapper']['scripts']              | Array         | List of script names which should be maintained                      |
 
+## Maintainers
+
+* Rajesh Jonnalagadda (<rajesh.jonnalagadda@phenompeople.com>)
+
 ## License and Authors
-Author:: Rajesh Jonnalagadda (rajesh.jonnalagadda@phenompeople.com)
+
+Author:: Phenompeople Pvt Ltd (<admin.squad@phenompeople.com>)
