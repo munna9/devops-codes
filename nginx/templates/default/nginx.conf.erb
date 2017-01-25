@@ -1,0 +1,27 @@
+#<%=node['phenom']['banner']%>
+user <%=node['nginx']['service']['owner']%>;
+worker_processes auto;
+error_log <%=node['nginx']['app']['log_directory']%>/error.log;
+
+events {
+  worker_connections 1024;
+}
+
+http {
+  log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+  '$status $body_bytes_sent "$http_referer" '
+  '"$http_user_agent" "$http_x_forwarded_for"';
+
+  access_log  <%=node['nginx']['app']['log_directory']%>/access.log  main;
+
+  sendfile            on;
+  tcp_nopush          on;
+  tcp_nodelay         on;
+  keepalive_timeout   65;
+  types_hash_max_size 2048;
+
+  include             <%=node['nginx']['app']['base_directory']%>/mime.types;
+  default_type        application/octet-stream;
+  include <%=node['nginx']['app']['conf_directory']%>/*.conf;
+
+}
