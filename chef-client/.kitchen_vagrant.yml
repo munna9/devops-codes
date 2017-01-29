@@ -1,0 +1,29 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: amazon
+    driver_config:
+      box: awslinux
+  - name: centos_72
+    driver_config:
+      box: centos_7.2_cc
+  - name: ubuntu
+    driver_config:
+      box: ubuntu_14
+
+suites:
+  - name: default
+    run_list:
+      - recipe[chef-client::configure]
+
+    attributes:
+      firewalld:
+        zone: 'public'
+      phenom:
+        banner: 'Dont edit by Hand !!! This file is modified by Chef. Please contact admin.squad@phenompeople.com for further assitance'
+

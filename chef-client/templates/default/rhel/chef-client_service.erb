@@ -1,0 +1,6 @@
+#<%=node['phenom']['banner']%>
+CONFIG=<%= @node['chef-client']['conf']['client_file'] %>
+LOGFILE=<%= @node['chef-client']['log']['filename'] %>
+LOCKFILE=<%= @node['chef-client']['lock']['filename'] %>
+INTERVAL=<%= @node['chef-client']['pool']['interval'] %>
+SPLAY=<%= @node['chef-client']['pool']['splay'] %>

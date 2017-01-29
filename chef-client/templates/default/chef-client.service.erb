@@ -1,0 +1,13 @@
+#<%node['phenom']['banner']%>
+[Unit]
+Description=Chef Client daemon
+After=network.target auditd.service
+[Service]
+EnvironmentFile=<%=node['chef-client']['service']['conf_file'] %>
+ExecStart=<%=node['chef-client']['binary']['path']%> -c $CONFIG -i $INTERVAL -s $SPLAY $OPTIONS
+ExecReload=/bin/kill -HUP $MAINPID
+SuccessExitStatus=3
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+#<%=node['phenom']['banner']%>
+<%=node['chef-client']['log']['filename']%> {
+  daily
+  missingok
+  rotate 3
+  compress
+  sharedscripts
+  notifempty
+  copytruncate
+  dateext
+}

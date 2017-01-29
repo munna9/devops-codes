@@ -1,0 +1,63 @@
+---
+driver:
+  name: docker
+  use_sudo: false
+
+provisioner:
+  name: chef_zero
+  environments_path: ../environments
+  cookbook_path:
+    - ../cookbooks
+
+
+platforms:
+  - name: amazon
+    driver_config:
+      image: phenompeople/amazonlinux-ccb:2016.09
+      platform: centos
+      privileged: true
+      volume: /sys/fs/cgroup
+      privileged: true
+
+  - name: centos-7.3
+    driver_config:
+      image: phenompeople/centos-ccb:7.3.1611
+      platform: centos
+      run_command: /usr/sbin/init
+      privileged: true
+      volume:
+        - /sys/fs/cgroup:/sys/fs/cgroup
+        - /Users/rajeshj/workspace/repos/CentOS/7.3:/etc/yum.repos.d/
+      remove_images: false
+
+  - name: centos-7.2
+    driver_config:
+      image: phenompeople/centos-ccb:7.2.1511
+      platform: centos
+      run_command: /usr/sbin/init
+      privileged: true
+      volume:
+        - /sys/fs/cgroup:/sys/fs/cgroup
+        - /Users/rajeshj/workspace/repos/CentOS/7.2:/etc/yum.repos.d/
+      remove_images: false
+
+  - name: ubuntu-14.04
+    driver_config:
+      image: phenompeople/ubuntu-ccb:14.04
+      platform: ubuntu
+
+  - name: ubuntu-16.04
+    driver_config:
+      image: phenompeople/ubuntu-ccb:16.04
+      platform: ubuntu
+
+suites:
+  - name: default
+    run_list:
+      - recipe[chef-client::configure]
+    attributes:
+      firewalld:
+        zone: 'public'
+      phenom:
+        banner: 'Dont edit by Hand !!! This file is modified by Chef. Please contact admin.squad@phenompeople.com for further assitance'
+
