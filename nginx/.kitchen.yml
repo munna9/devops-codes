@@ -9,7 +9,7 @@ provisioner:
 platforms:
   - name: amazon
     driver_config:
-      image: phenompeople/amazonlinux:latest
+      image: phenompeople/amazonlinux-ccb:2016.09
       platform: centos
       privileged: true
       forward: 80
