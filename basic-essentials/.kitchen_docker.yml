@@ -9,48 +9,49 @@ provisioner:
 platforms:
   - name: amazon
     driver_config:
-      image: phenompeople/amazonlinux:2016.09
+      image: phenompeople/amazonlinux-ccb:2016.09
       platform: centos
       privileged: true
       volume: /sys/fs/cgroup
       privileged: true
+      remove_images: false
 
   - name: centos-7.3
     driver_config:
-      image: phenompeople/centos:7.3.1611
+      image: phenompeople/centos-ccb:7.3.1611
       platform: centos
       run_command: /usr/sbin/init
       privileged: true
       volume:
         - /sys/fs/cgroup:/sys/fs/cgroup
-        - /Users/rajeshj/workspace/repos/CentOS/7.3:/etc/yum.repos.d/
       remove_images: false
 
   - name: centos-7.2
     driver_config:
-      image: phenompeople/centos:7.2
+      image: phenompeople/centos-ccb:7.2.1511
       platform: centos
       run_command: /usr/sbin/init
       privileged: true
       volume:
         - /sys/fs/cgroup:/sys/fs/cgroup
-        - /Users/rajeshj/workspace/repos/CentOS/7.2:/etc/yum.repos.d/
-      remove_images: false
+      remove_images: true
 
   - name: ubuntu-14.04
     driver_config:
-      image: phenompeople/ubuntu:14.04
+      image: phenompeople/ubuntu-ccb:14.04
       platform: ubuntu
+      remove_images: true
 
   - name: ubuntu-16.04
     driver_config:
-      image: phenompeople/ubuntu:16.04
+      image: phenompeople/ubuntu-ccb:16.04
       platform: ubuntu
+      remove_images: true
 
 suites:
   - name: default
     run_list:
       - recipe[basic-essentials::oracle_java_default]
       - recipe[basic-essentials::gitclient]
-      - recipe[basic-essentials::chefdk_uninstall]
+      - recipe[basic-essentials::elastic_repo_uninstall]
     attributes:

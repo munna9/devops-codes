@@ -1,3 +1,5 @@
+#0.1.5
+[rajeshj] - Added Elastic repo to basic-essentials
 # 0.1.4
 [rajeshj] - Added Apache 2 License information for basic-essentials
 # 0.1.3
