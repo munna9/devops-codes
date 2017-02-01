@@ -12,7 +12,7 @@ RUN yum clean all; yum makecache ; \
     yum install -y sudo openssh-server openssh-clients which curl iproute
 
 #Kitchen CI user and ssh-key passs
-RUN adduser kitchen; \
+RUN if ! getent passwd kitchen; then useradd -d /home/kitchen -m -s /bin/bash -p '*' kitchen; fi; \
     ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''; \
     ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key -N ''; \
     echo "kitchen ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers; \
