@@ -1,4 +1,4 @@
-This directory contains the cookbooks used to configure systems in your infrastructure with Chef - an example basic cookbook called `example` has been automatically created for you.
+This directory contains the cookbooks used to configure systems in your infrastructure with Chef.
 
 Knife needs to be configured to know where the cookbooks are located with the `cookbook_path` setting. If this is not set, then several cookbook operations will fail to work properly.
 
@@ -13,15 +13,15 @@ Which will set `current_dir` to the location of the knife.rb file itself (e.g. `
 
 Configure knife to use your preferred copyright holder, email contact and license. Add the following lines to `.chef/knife.rb`.
 
-    cookbook_copyright "Example, Com."
-    cookbook_email     "cookbooks@example.com"
+    cookbook_copyright "Phenompeople Pvt Ltd"
+    cookbook_email     "admin.squad@phenompeople.com"
     cookbook_license   "apachev2"
-
+    
 Supported values for `cookbook_license` are "apachev2", "mit","gplv2","gplv3",  or "none". These settings are used to prefill comments in the default recipe, and the corresponding values in the metadata.rb. You are free to change the the comments in those files.
 
 Create new cookbooks in this directory with Knife.
 
-    knife cookbook create COOKBOOK
+    berks cookbook COOKBOOK
 
 This will create all the cookbook directory components. You don't need to use them all, and can delete the ones you don't need. It also creates a README file, metadata.rb and default recipe.
 
