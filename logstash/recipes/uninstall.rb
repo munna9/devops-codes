@@ -10,6 +10,6 @@ end
 [node['logstash']['conf']['home_directory'], node['logstash']['ssl']['home_directory']].each do |directory_name|
   directory  directory_name do
     recursive true
-    action :remove
+    action :delete
   end
 end
