@@ -1,0 +1,14 @@
+{
+  "id": "_default-dummy",
+  "app_files_to_watch": {
+    "chef-client": {
+      "input_type" : "log",
+      "document_type" : "chef-client",
+      "path" : ["/var/log/chef/client.log"],
+      "close_inactive": "5m",
+      "close_renamed" : true,
+      "symlink" : "enabled",
+      "tail-files" : true
+    }
+  }
+}

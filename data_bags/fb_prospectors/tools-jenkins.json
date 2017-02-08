@@ -1,0 +1,23 @@
+{
+  "id": "tools-jenkins",
+  "app_files_to_watch": {
+    "jenkins": {
+      "input_type" : "log",
+      "document_type" : "jenkins",
+      "paths" : ["/var/log/jenkins/jenkins.log"],
+      "close_inactive": "30m",
+      "close_renamed" : true,
+      "symlink" : "enabled",
+      "tail-files" : true
+    },
+    "nginx-jenkins": {
+      "input_type" : "log",
+      "document_type" : "jenkins-nginx-error",
+      "paths" : ["/var/log/ngnix/jenkins.error*"],
+      "close_inactive": "5m",
+      "close_renamed" : true,
+      "symlink" : "enabled",
+      "tail-files" : true
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "elk-kibana",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "description": "Recipes which configures host to be kibana server",
+  "chef_client_version":"12.17.44",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "run_list": [
+    "role[_base]",
+    "role[_elk-agent]",
+    "recipe[ntp::install_client]",
+    "recipe[ntp::service]",
+    "recipe[basic-essentials::elastic_repo]",
+    "recipe[basic-essentials::epel_repo]",
+    "recipe[nginx::install]",
+    "recipe[nginx::service]",
+    "recipe[kibana::install]",
+    "recipe[kibana::configure]",
+    "recipe[kibana::nginx]",
+    "recipe[kibana::service]"
+  ],
+  "env_run_lists": {
+
+  }
+}

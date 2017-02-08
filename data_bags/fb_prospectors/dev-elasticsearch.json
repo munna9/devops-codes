@@ -1,0 +1,14 @@
+{
+  "id": "dev-elasticsearch",
+  "app_files_to_watch": {
+    "messages": {
+      "input_type" : "log",
+      "document_type" : "messages",
+      "paths" : ["/var/log/messages"],
+      "close_inactive": "5m",
+      "symlink" : "enabled",
+      "tail-files" : true,
+      "input_type" : "log"
+    }
+  }
+}

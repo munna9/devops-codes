@@ -1,8 +1,9 @@
 {
-  "name": "tools",
-  "chef_type": "environment",
+  "name": "dev",
   "json_class": "Chef::Environment",
-  "description": "Tools Environment Specification file",
+  "chef_type": "environment",
+  "description": "Dev environment specfication file",
+
   "cookbook_versions": {
 
   },
@@ -25,7 +26,7 @@
 
   "override_attributes": {
     "jenkins": {
-      "server": {
+      "server":{
         "name": "tools-jenkins01.aws.phenom.local"
       }
     }

@@ -10,11 +10,13 @@
   "chef_type": "role",
   "run_list": [
     "role[_base]",
+    "role[_elk-agent]",
     "recipe[basic-essentials::oracle_java_default]",
     "recipe[basic-essentials::gitclient]",
     "recipe[basic-essentials::chefdk]",
     "recipe[docker::install]",
     "recipe[docker::service]",
+    "recipe[docker::wrappers]",
     "recipe[jenkins::install]",
     "recipe[jenkins::service]",
     "recipe[nginx::install]",

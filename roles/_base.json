@@ -2,18 +2,24 @@
   "name": "_base",
   "description": "Default recipes for all hosts",
   "json_class": "Chef::Role",
+
   "default_attributes": {
     "phenom": {
-      "banner" : "This File is managed by Chef, do not edit by Hand!!!. Please contact admin.squad@phenompeople.com for details"
+      "banner" : "This File is managed by Chef, do not edit by Hand!!!. Please contact admin.squad@phenompeople.com for details",
+      "admin_email" : "admin.squad@phenompeople.com"
+
     },
-    "chef_client_version":"12.17.44"
+    "chef_client_version": "12.17.44"
   },
   "override_attributes": {
 
   },
   "chef_type": "role",
   "run_list": [
-    "recipe[chef-client::configure]"
+    "recipe[chef-client::configure]",
+    "recipe[chef-client::service]",
+    "recipe[ntp::install_client]",
+    "recipe[ntp::service]"
   ],
   "env_run_lists": {
 
