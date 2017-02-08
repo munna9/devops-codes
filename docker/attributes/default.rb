@@ -1,3 +1,5 @@
+default['docker']['pin_version']=true
+
 case node['platform']
   when 'centos', 'redhat', 'amazon', 'scientific', 'oracle'
     case node['platform_version']
@@ -11,7 +13,6 @@ case node['platform']
     default['docker']['repo']['key_id']='58118E89F3A912897C070ADBF76221572C52609D'
 end
 
-default['docker']['pin_version']=true
 default['docker']['binary']['packages']= {
     'centos' => {
       '7.3.1611' => {
@@ -23,7 +24,7 @@ default['docker']['binary']['packages']= {
     },
     'amazon' => {
       '2016.09' => {
-        'docker' => '1.11.2-1.6.amzn1'
+        'docker' => '1.12.6-1.17.amzn1'
       }
     },
     'ubuntu' => {

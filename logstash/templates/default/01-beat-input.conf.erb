@@ -1,0 +1,10 @@
+#<%=node['phenom']['banner']%>
+input {
+  beats {
+    port => <%=node['logstash']['service']['port']%>
+    type => "logs"
+    ssl => true
+    ssl_certificate => "<%=node['logstash']['ssl']['cert']%>"
+    ssl_key => "<%=node['logstash']['ssl']['key']%>"
+  }
+}

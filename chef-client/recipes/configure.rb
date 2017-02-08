@@ -21,4 +21,3 @@ template node['chef-client']['log']['conf_file'] do
   sensitive true
   action :create
 end
-

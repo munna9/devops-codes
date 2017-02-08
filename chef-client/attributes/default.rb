@@ -23,7 +23,7 @@ default['chef-client']['lock']['filename']="#{node['chef-client']['lock']['direc
 
 case node.chef_environment
   when 'tools'
-    default['chef-client']['pool']['interval']='1800'
+    default['chef-client']['pool']['interval']='300'
     default['chef-client']['pool']['splay']='200'
   else
     default['chef-client']['pool']['interval']='900'

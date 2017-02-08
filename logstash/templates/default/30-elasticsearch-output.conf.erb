@@ -1,0 +1,10 @@
+#<%=node['phenom']['banner']%>
+output {
+  elasticsearch {
+    hosts => ["<%=node['elasticsearch']['server_name']%>:<%=node['elasticsearch']['server_port']%>"]
+    flush_size => 1000
+    idle_flush_time => 100
+    template_name => "<%=node['logstash']['template']['name']%>"
+    template => "<%=node['logstash']['template']['file']%>"
+  }
+}

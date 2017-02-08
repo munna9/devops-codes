@@ -1,3 +1,5 @@
+#0.1.3
+[rajeshj] - Removed .kitchen.yml from nginx
 #0.1.2
 [rajeshj] - updated kitchen.yml along with README documentation
 # 0.1.1

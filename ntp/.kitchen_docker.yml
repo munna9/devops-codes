@@ -5,6 +5,10 @@ driver:
 
 provisioner:
   name: chef_zero
+  environments_path: ../environments
+  cookbook_path: 
+    - ../cookbooks
+
 
 platforms:
   - name: amazon
@@ -12,9 +16,8 @@ platforms:
       image: phenompeople/amazonlinux-ccb:2016.09
       platform: centos
       privileged: true
-      forward: 80
       volume: /sys/fs/cgroup
-      remove_images: true
+      remove_images: false
 
   - name: centos-7.3
     driver_config:
@@ -22,11 +25,10 @@ platforms:
       platform: centos
       run_command: /usr/sbin/init
       privileged: true
-      volume:
-       - /sys/fs/cgroup:/sys/fs/cgroup
-      forward: 80
+      volume: /sys/fs/cgroup
       remove_images: true
 
+  
   - name: centos-7.2
     driver_config:
       image: phenompeople/centos-ccb:7.2.1511
@@ -34,8 +36,13 @@ platforms:
       run_command: /usr/sbin/init
       privileged: true
       volume:
-        - /sys/fs/cgroup:/sys/fs/cgroup
-      forward: 80
+      - /sys/fs/cgroup
+      remove_images: false
+
+  - name: ubuntu14.04
+    driver_config:
+      image: phenompeople/ubuntu-ccb:14.04
+      platform: ubuntu
       remove_images: true
 
   - name: ubuntu16.04
@@ -44,23 +51,11 @@ platforms:
       platform: ubuntu
       run_options: '--security-opt seccomp=unconfined --stop-signal=SIGRTMIN+3 --tmpfs /run --tmpfs /run/lock -v /sys/fs/cgroup:/sys/fs/cgroup:ro'
       run_command: '/sbin/init'
-      forward: 80
       remove_images: true
-
-  - name: ubuntu14.04
-    driver_config:
-      image: phenompeople/ubuntu-ccb:14.04
-      platform: ubuntu
-      forward: 80
-      remove_images: true
-
 suites:
-  - name: default
+  - name: client
     run_list:
-      - recipe[basic-essentials::epel_repo]
-      - recipe[nginx::install]
-      - recipe[nginx::service]
-      - recipe[nginx::default_site]
+      - recipe[ntp::install_client]
+      - recipe[ntp::service]
+#      - recipe[ntp::uninstall_client]
     attributes:
-      phenom:
-        banner: 'This file managed by Admin'

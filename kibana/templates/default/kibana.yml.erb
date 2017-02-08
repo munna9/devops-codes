@@ -1,0 +1,7 @@
+#<%=node['phenom']['banner']%>
+server.port: <%=node['kibana']['service']['port']%>
+server.host: <%=node['kibana']['service']['uri']%>
+server.name: <%=node['kibana']['server_name']%>
+elasticsearch.url: "http://<%=node['elasticsearch']['server_name']%>:<%=node['elasticsearch']['server_port']%>"
+elasticsearch.preserveHost : true
+kibana.index: "<%=node['kibana']['index']['name']%>"

@@ -1,0 +1,86 @@
+---
+driver:
+  name: docker
+  use_sudo: false
+
+provisioner:
+  name: chef_zero
+
+
+platforms:
+  - name: amazon
+    driver_config:
+      image: phenompeople/amazonlinux-ccb:2016.09
+      platform: centos
+      privileged: true
+      forward: 80
+      volume: /sys/fs/cgroup
+      remove_images: true
+
+  - name: centos-7.3
+    driver_config:
+      image: phenompeople/centos-ccb:7.3.1611
+      platform: centos
+      run_command: /usr/sbin/init
+      privileged: true
+      volume:
+       - /sys/fs/cgroup:/sys/fs/cgroup
+#       - /Users/rajeshj/workspace/repos/CentOS/7.3:/etc/yum.repos.d/
+      forward: 5061
+      remove_images: true
+
+  - name: centos-7.2
+    driver_config:
+      image: phenompeople/centos-ccb:7.2.1511
+      platform: centos
+      run_command: /usr/sbin/init
+      privileged: true
+      volume:
+        - /sys/fs/cgroup:/sys/fs/cgroup
+#        - /Users/rajeshj/workspace/repos/CentOS/7.2:/etc/yum.repos.d/
+      forward: 5601
+      remove_images: true
+
+  - name: ubuntu16.04
+    driver_config:
+      image: phenompeople/ubuntu-ccb:16.04
+      platform: ubuntu
+      run_options: '--security-opt seccomp=unconfined --stop-signal=SIGRTMIN+3 --tmpfs /run --tmpfs /run/lock -v /sys/fs/cgroup:/sys/fs/cgroup:ro'
+      run_command: '/sbin/init'
+      forward: 5601
+      remove_images: true
+
+  - name: ubuntu14.04
+    driver_config:
+      image: phenompeople/ubuntu-ccb:14.04
+      platform: ubuntu
+      forward: 5601
+      remove_images: true
+
+suites:
+  - name: default
+    run_list:
+      - recipe[basic-essentials::elastic_repo]
+      - recipe[basic-essentials::epel_repo]
+      - recipe[nginx::install]
+      - recipe[nginx::service]
+      - recipe[kibana::install]
+      - recipe[kibana::configure]
+      - recipe[kibana::nginx]
+      - recipe[kibana::service]
+#      - recipe[elasticsearch::configure]
+#      - recipe[elasticsearch::uninstall]
+#      - recipe[basic-essentials::oracle_java_default_uninstall]
+#      - recipe[basic-essentials::elastic_repo_uninstall]
+
+
+    attributes:
+      phenom:
+        banner: 'This file managed by Admin'
+      elasticsearch:
+        cluster:
+          uri: 'localhost'
+          port: 9200
+      kibana:
+        server:
+          name: jenkins.phenom.com

@@ -1,0 +1,10 @@
+#<%=node['phenom']['banner']%>
+filebeat:
+  config_dir: <%=node['filebeat']['conf']['home_directory']%>
+
+output.logstash:
+  hosts: <%= @logstash_servers_list %>
+  loadbalance: true
+  worker: <%=node['filebeat']['conf']['workers']%>
+  ssl:
+    certificate_authorities: ["<%=node['filebeat']['ssl']['cert']%>"]

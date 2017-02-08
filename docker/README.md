@@ -19,13 +19,13 @@ able to get it working on other platform, with appropriate configuration updates
 | Recipe Name                   | AWSLinux  |  CentOS  |  CentOS  |  Ubuntu  |  Ubuntu  |
 |                               |  2016.09  | 7.3.1611 | 7.2.1511 |  16.04   |  14.04   | 
 |-------------------------------|-----------|----------|----------|----------|----------|
-| install                       |    X      |    X     |    X     |    X     |    X     |    
+| install                       |    √      |    √     |    √     |    √     |    √     |    
 |-------------------------------|-----------|----------|----------|----------|----------|
-| service                       |    X      |    X     |    X     |    X     |    X     |    
+| service                       |    √      |    √     |    √     |    √     |    √     |    
 |-------------------------------|-----------|----------|----------|----------|----------|
-| uninstall                     |    X      |    X     |    X     |    X     |    X     |    
+| uninstall                     |    √      |    √     |    √     |    √     |    √     |    
 |-------------------------------|-----------|----------|----------|----------|----------|
-| wrappers                      |    X      |    X     |    X     |    X     |    X     |    
+| wrappers                      |    √      |    √     |    √     |    √     |    √     |    
 |-------------------------------|-----------|----------|----------|----------|----------|
 
 ```
@@ -102,11 +102,11 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 
 |Attribute Name                                 | Type          | Description                                                          |
 |---------------------------------------------- |---------------|----------------------------------------------------------------------|
+| ['docker']['pin_version']                     | Boolean       | If true, it installs only given version of package                   |
 | ['docker']['repo']['base_uri']                | String        | Docker-engine repo URI as defined in installation manuals            |
 | ['docker']['repo']['gpg_key']                 | String        | Docker-engine repo GPG Key URI as defined in installation manuals    |
 | ['docker']['repo']['key_id']                  | String        | Docker-engine repo GPG Key URI (Applicable only for Debian family)   |
 | ['docker']['download']['uri']                 | Hash          | Binary artifacts download URL                                        |
-| ['docker']['pin_version']                     | Boolean       | If true, it installs only given version of package                   |
 | ['docker']['binary']['packages']              | Hash          | Binary package and version for listed distribution                   |
 | ['docker']['service']['name']                 | String        | docker-engine service name                                           |
 | ['docker']['service']['owner']                | String        | docker-engine service owner                                          |

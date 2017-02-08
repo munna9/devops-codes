@@ -1,4 +1,6 @@
+# 0.1.2
+[rajeshj] - Updated docker binaries for amazonlinux
 # 0.1.1
-Added Apache 2 license information 
+[rajeshj] - Added Apache 2 license information 
 # 0.1.0
-Initial release of docker
+[rajeshj] - Initial release of docker

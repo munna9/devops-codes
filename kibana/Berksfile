@@ -1,0 +1,5 @@
+cookbook 'basic-essentials', :path => '../basic-essentials'
+cookbook 'nginx', :path => '../nginx'
+source "https://supermarket.chef.io"
+
+metadata
