@@ -3,7 +3,6 @@
   "json_class": "Chef::Role",
   "chef_type": "role",
   "description": "Recipes which configures host to be valid ELK stack agent",
-  "chef_client_version":"12.17.44",
   "default_attributes": {
 
   },
