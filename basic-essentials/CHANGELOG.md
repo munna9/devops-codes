@@ -1,3 +1,5 @@
+#0.1.6
+[rajeshj] - Added common functionality and file watcher, updated java to 1.8.121
 #0.1.5
 [rajeshj] - Added Elastic repo to basic-essentials
 # 0.1.4

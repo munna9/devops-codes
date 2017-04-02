@@ -13,26 +13,36 @@ Recipes and supported platforms
 The following platforms have been tested with Test Kitchen. You may be 
 able to get it working on other platform, with appropriate configuration updates
 ```
-|-------------------------------|-----------|----------|----------|----------|----------|
-| Recipe Name                   | AWSLinux  |  CentOS  |  CentOS  |  Ubuntu  |  Ubuntu  |
-|                               |  2016.09  | 7.3.1611 | 7.2.1511 |  16.04   |  14.04   | 
-|-------------------------------|-----------|----------|----------|----------|----------|
-| chefdk                        |    √      |    √     |    √     |    √     |    √     |    
-|-------------------------------|---------- |----------|----------|----------|----------|
-| chefdk_uninstall              |    √      |    √     |    √     |    √     |    √     |    
-|-------------------------------|-----------|----------|----------|----------|----------|
-| elastic_repo                  |    √      |    √     |    √     |    √     |    √     |    
-|-------------------------------|-----------|----------|----------|----------|----------|
-| elastic_repo_uninstall        |    √      |    √     |    √     |    √     |    √     |    
-|-------------------------------|-----------|----------|----------|----------|----------|
-| epel                          |    √      |    √     |    √     |    X     |    X     |    
-|-------------------------------|-----------|----------|----------|----------|----------|
-| epel_uninstall                |    √      |    √     |    √     |    X     |    X     |    
-|-------------------------------|-----------|----------|----------|----------|----------|
-| oracle_java_default           |    √      |    √     |    √     |    √     |    √     |    
-|-------------------------------|-----------|----------|----------|----------|----------|
-| oracle_java_default_uninstall |    √      |    √     |    √     |    √     |    √     |    
-|-------------------------------|-----------|----------|----------|----------|----------|
+|---------------------------------|-----------|----------|----------|----------|----------|
+| Recipe Name                     | AWSLinux  |  CentOS  |  CentOS  |  Ubuntu  |  Ubuntu  |
+|                                 |  2016.09  | 7.3.1611 | 7.2.1511 |  16.04   |  14.04   | 
+|---------------------------------|-----------|----------|----------|----------|----------|
+| chefdk                          |    √      |    √     |    √     |    √     |    √     |    
+|---------------------------------|---------- |----------|----------|----------|----------|
+| chefdk_uninstall                |    √      |    √     |    √     |    √     |    √     |    
+|---------------------------------|-----------|----------|----------|----------|----------|
+| elastic_repo                    |    √      |    √     |    √     |    √     |    √     |    
+|---------------------------------|-----------|----------|----------|----------|----------|
+| elastic_repo_uninstall          |    √      |    √     |    √     |    √     |    √     |    
+|---------------------------------|-----------|----------|----------|----------|----------|
+| epel_repo                       |    √      |    √     |    √     |    X     |    X     |    
+|---------------------------------|-----------|----------|----------|----------|----------|
+| epel_repo_uninstall             |    √      |    √     |    √     |    X     |    X     |    
+|---------------------------------|-----------|----------|----------|----------|----------|
+| gitclient                       |    √      |    √     |    √     |    √     |    √     |    
+|---------------------------------|-----------|----------|----------|----------|----------|
+| gitclient_uninstall             |    √      |    √     |    √     |    √     |    √     |    
+|---------------------------------|-----------|----------|----------|----------|----------|
+| oracle_java_default             |    √      |    √     |    √     |    √     |    √     |    
+|---------------------------------|-----------|----------|----------|----------|----------|
+| oracle_java_default_uninstall   |    √      |    √     |    √     |    √     |    √     |    
+|---------------------------------|-----------|----------|----------|----------|----------|
+| oracle_java_services            |    √      |    √     |    √     |    √     |    √     |    
+|---------------------------------|-----------|----------|----------|----------|----------|
+| oracle_java_services_uninstall  |    √      |    √     |    √     |    √     |    √     |    
+|---------------------------------|-----------|----------|----------|----------|----------|
+| uninstall_pip                   |    √      |    √     |    √     |    √     |    √     |    
+|---------------------------------|-----------|----------|----------|----------|----------|
 
 ```
 Recipe details
@@ -64,23 +74,6 @@ Remove Chef development kit by referring distribution specific String variable `
 1. Identifies running node's platform and its version.
 1. Removes binaries by referring `node['chefdk']['binary']['package']`
 1. Removes rpm/deb is downloaded under `file_cache_path.`
-
-## basic-essentials::oracle_java_default
-
-Installs and configures Linux X64 oracle JDK - 1.8.0_111.
-
-1. Downloads Oracle Java binaries from official download page by accepting license agreement to `file_cache_path` location if not exists.
-1. Extracts downloaded binaries from `file_cache_path` to defined location under `node['oracle_java']['app']['base_directory']`.
-1. Create/update symbolic link from `node['oracle_java']['default']['binary_path']` to `/etc/alternatives/java`
-1. Create/update symbolic link from `/etc/alternaives/java` to `/usr/bin/java`
-
-### basic-essentials::oracle_java_default_uninstall
-
-Removes and de-configures Linux X64 oracle JDK - 1.8.0_111.
-
-1. Removes/unlinks symbolic link of `/etc/alternatives/java` and `/usr/bin/java`.
-1. Removes directory recursively under `node['oracle_java']['default']['home_directory']` and `node['oracle_java']['app']['base_directory']`
-1. Removes downloaded artifact from `file_cache_path`.
 
 ### basic-essentials::elastic_repo
 
@@ -122,6 +115,21 @@ Installs git client binaries by referring distribution specific ruby hash `node[
 1. Installs each of those hash key value pair(s) with specific binary version if `node['gitclient]['pin_version']` is true,
    otherwise installs latest available version of package at the time converge.
 
+### basic-essentials::install_pip
+
+Install pip installation package, this recipe helps to have pip packages to be further installed.
+
+1. Downloads get-pip.py from `['pip']['repo']['uri']`.
+1. Installs pip from default python interpretor identified
+1. Create symlink to pip binary if not exists 
+
+### basic-essentials::uninstall_pip
+
+Install pip installation package, this recipe helps to have pip packages to be further installed.
+
+1. unlink /usr/local/bin/pip 
+1. removes /usr/sbin/get-pip binary 
+
 ### basic-essentials::gitclient_uninstall
 
 Remove git client binaries by referring distribution specific hash `node['gitclient']['binary']['packages']`
@@ -130,6 +138,39 @@ Remove git client binaries by referring distribution specific hash `node['gitcli
 1. Compiles `node['gitclient']['binary']['packages']` with above values
 1. Removes each of those hash key value pair(s)
 
+### basic-essentials::oracle_java_default
+
+Installs and configures Linux X64 oracle JDK - 1.8.0_121.
+
+1. Downloads Oracle Java binaries from official download page by accepting license agreement to `file_cache_path` location if not exists.
+1. Extracts downloaded binaries from `file_cache_path` to defined location under `node['oracle_java']['app']['base_directory']`.
+1. Create/update symbolic link from `node['oracle_java']['default']['binary_path']` to `/etc/alternatives/java`
+1. Create/update symbolic link from `/etc/alternaives/java` to `/usr/bin/java`
+
+### basic-essentials::oracle_java_default_uninstall
+
+Removes and de-configures Linux X64 oracle JDK - 1.8.0_121.
+
+1. Removes/unlinks symbolic link of `/etc/alternatives/java` and `/usr/bin/java`.
+1. Removes directory recursively under `node['oracle_java']['default']['home_directory']` and `node['oracle_java']['app']['base_directory']`
+1. Removes downloaded artifact from `file_cache_path`.
+
+### basic-essentials::oracle_java_services
+
+Installs and configures Linux X64 oracle JDK - 1.8.0_45
+
+1. Downloads Oracle Java binaries from official download page by accepting license agreement to `file_cache_path` location if not exists.
+1. Extracts downloaded binaries from `file_cache_path` to defined location under `node['oracle_java']['app']['base_directory']`.
+1. Create/update symbolic link from `node['oracle_java']['services']['binary_path']` to `/etc/alternatives/java`
+1. Create/update symbolic link from `/etc/alternaives/java` to `/usr/bin/java`
+
+### basic-essentials::oracle_java_default_uninstall
+
+Removes and de-configures Linux X64 oracle JDK - 1.8.0_45
+
+1. Removes/unlinks symbolic link of `/etc/alternatives/java` and `/usr/bin/java`.
+1. Removes directory recursively under `node['oracle_java']['services']['home_directory']` and `node['oracle_java']['app']['base_directory']`
+1. Removes downloaded artifact from `file_cache_path`.
 
 Attributes
 ====
@@ -144,7 +185,7 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 | ['chefdk']['binary']['version']               | String        | Default Chef DK artifaction version                       |
 | ['chefdk']['binary']['package']               | Hash          | Binary package and version for listed platform family     |
 | ['chefdk']['package']['name']                 | Hash          | Binary artifact name                                      |
-| ['chefdk']['download']['uri']                 | Hash          | Binary artifact download URL                           |
+| ['chefdk']['download']['uri']                 | Hash          | Binary artifact download URL                              |
 
 #### attributes/default.rb
 
@@ -153,6 +194,7 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 | ['gitclient']['pin_version']                  | Boolean       | If true, it installs only given version of package        |
 | ['gitclient']['binary']['packages']           | Hash          | Binary package and version for listed distribution        |
 | ['epel']['repo']['uri']                       | String        | EPEL repo configuration rpm URL                           |
+| ['pip']['repo']['uri']                        | String        | get-pip.py downloaded URL                                 |
 
 #### attributes/elastic.rb
 
@@ -175,6 +217,12 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 | ['oracle_java']['default']['app_version']     | String        | Default Java application version                          |
 | ['oracle_java']['default']['home_directory']  | String        | Extracted Java home directory                             |
 | ['oracle_java']['default']['binary_path']     | String        | Oracle Java default binary path                           |
+| ['oracle_java']['services']['binary_version'] | String        | Default Java artifaction version                          |
+| ['oracle_java']['services']['binary_package'] | String        | Java binaries file name                                   |
+| ['oracle_java']['services']['uri']            | String        | Java download artifact location                           |
+| ['oracle_java']['services']['app_version']    | String        | Default Java application version                          |
+| ['oracle_java']['services']['home_directory'] | String        | Extracted Java home directory                             |
+| ['oracle_java']['services']['binary_path']    | String        | Oracle Java default binary path                           |
 
 ## Maintainers
 

@@ -85,7 +85,8 @@ Adds handy scripts and sanitation scripts for docker deamon. These scripts are s
 1. Create/update wrapper script(s) under `node['docker']['wrapper']['base_directory']`
 
     * `docker-access`     - It is advanced mode of `docker attach`,It accepts container name/ID as an input and invokes /bin/bash into it. If no container name/ID is given it displays running containers on interactive mode.  
-    * `docker-clean`      - Identifies dangling images on host and cleans up. This script also run as a sanitation script on every day at 12:00 Hrs.
+    * `docker-clean_all`  - Identifies dangling images on host and cleans up.
+    * `docker-clean`      - Identifies untagged images on host and cleans up. This script also run as a sanitation script on every  12:00 Hrs.
     * `docker-clean_all`  - Removes all containers including running containers and images.
     * `docker-destroy`    - It performs same job of `docker-access`, but its removes the given container name.
     * `docker-flush`      - It removes unused/stopped containers from the host.

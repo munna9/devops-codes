@@ -1,4 +1,5 @@
 cookbook 'basic-essentials', :path => '../basic-essentials'
+cookbook 'docker', :path => '../docker'
+
 source "https://supermarket.chef.io"
-cookbook 'firewalld'
 metadata

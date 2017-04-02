@@ -30,3 +30,4 @@ case node['platform_version']
     default['epel']['repo']['uri']='https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm'
 end
 
+default['pip']['repo']['uri']='https://bootstrap.pypa.io/get-pip.py'

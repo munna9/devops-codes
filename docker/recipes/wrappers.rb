@@ -12,8 +12,9 @@ node['docker']['wrapper']['scripts'].each do |script_name|
   end
 end
 cron 'docker-clean' do
-  hour '00'
-  minute '00'
+  hour "*/12"
+  minute '30'
   mailto node['phenom']['admin_email']
   command "#{node['docker']['wrapper']['base_directory']}/docker-clean 1> /dev/null"
 end
+

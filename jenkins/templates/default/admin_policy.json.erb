@@ -1,0 +1,30 @@
+{
+  "Version": "2017-03-20",
+  "Statement": [{
+    "Sid": "PolicyStatement",
+    "Effect": "Allow",
+    "Principal": {
+      "AWS": [
+        "arn:aws:iam::#{node['aws']['account_id']}:role/Chefnode",
+        "arn:aws:iam::#{node['aws']['account_id']}:role/JenkinsMaster",
+        "arn:aws:iam::#{node['aws']['account_id']}:user/rajesh.jonnalagadda@phenompeople.com"
+      ]
+    },
+    "Action": [
+      "ecr:GetDownloadUrlForLayer",
+      "ecr:BatchGetImage",
+      "ecr:BatchCheckLayerAvailability",
+      "ecr:PutImage",
+      "ecr:InitiateLayerUpload",
+      "ecr:UploadLayerPart",
+      "ecr:CompleteLayerUpload",
+      "ecr:DescribeRepositories",
+      "ecr:GetRepositoryPolicy",
+      "ecr:ListImages",
+      "ecr:DeleteRepository",
+      "ecr:BatchDeleteImage",
+      "ecr:SetRepositoryPolicy",
+      "ecr:DeleteRepositoryPolicy"
+    ]
+  }]
+}

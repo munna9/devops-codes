@@ -1,4 +1,4 @@
-%w(.ssh .chef .chef/keys .chef/trusted_certs).each do |sub_directory_name|
+%w(.ssh .aws .chef .chef/keys .chef/trusted_certs).each do |sub_directory_name|
   directory "#{node['jenkins']['app']['home_directory']}/#{sub_directory_name}" do
     recursive true
     action :create
@@ -7,7 +7,7 @@
   end
 end
 cookbook_file "#{node['jenkins']['app']['home_directory']}/.ssh/config" do
-  source 'ssh/config'
+  source 'ssh_config'
   mode '0600'
   sensitive true
   owner node['jenkins']['service']['owner']
@@ -25,6 +25,12 @@ jenkins_credentials=data_bag_item('credentials','jenkins')
     sensitive true
     action :create
     end
+end
+template "#{node['jenkins']['app']['home_directory']}/admin_policy.json" do
+  source 'admin_policy.json.erb'
+  sensitive true
+  owner node['jenkins']['service']['owner']
+  group node['jenkins']['service']['group']
 end
 %w(phenompeople-validator.pem jenkins.pem).each do |file_name|
   file "#{node['jenkins']['app']['home_directory']}/.chef/keys/#{file_name}" do
@@ -45,7 +51,13 @@ file "#{node['jenkins']['app']['home_directory']}/.chef/trusted_certs/#{chef_ser
   sensitive true
   action :create
 end
-
+file "#{node['jenkins']['app']['home_directory']}/.aws/config" do
+  content "[default]\nregion = #{node['aws']['region']}"
+  mode "0600"
+  owner node['jenkins']['service']['owner']
+  group node['jenkins']['service']['group']
+  sensitive true
+end
 template "#{node['jenkins']['app']['home_directory']}/.chef/knife.rb" do
   source 'knife.erb'
   owner node['jenkins']['service']['owner']

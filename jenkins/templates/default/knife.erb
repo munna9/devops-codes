@@ -9,3 +9,5 @@ validation_client_name   "phenompeople-validator"
 validation_key           "#{current_dir}/phenompeople-validator.pem"
 chef_server_url          "<%=Chef::Config[:chef_server_url]%>"
 knife[:bootstrap_version] = "<%=node['chef_client_version']%>"
+config_log_level	       :warn
+config_log_location 	   "/var/log/chef/client.log"

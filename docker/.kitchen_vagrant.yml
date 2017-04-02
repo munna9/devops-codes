@@ -28,6 +28,7 @@ suites:
       - recipe[docker::install]
       - recipe[docker::service]
       - recipe[docker::wrappers]
+      - recipe[docker::ecr_login]
 #      - recipe[docker::uninstall]
 
     attributes:
@@ -36,4 +37,8 @@ suites:
       phenom:
         banner: 'Dont edit by Hand !!! This file is modified by Chef. Please contact admin.squad@phenompeople.com for further assitance'
         admin_email: 'admin.squad@phenompeople.com'
+      aws:
+        sdk:
+          gem_package: 'aws-sdk'
+          gem_version: '2.7.15'
 

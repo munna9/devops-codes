@@ -1,4 +1,4 @@
-template 'Jenkins-config' do
+template 'Jenkins-ssh_config' do
   source 'jenkins.conf.erb'
   path "#{node['nginx']['app']['conf_directory']}/jenkins.conf"
   sensitive true

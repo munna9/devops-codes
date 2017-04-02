@@ -1,3 +1,5 @@
+# 0.1.3 
+[rajeshj] - Included ECR and AWS SDK functionalities 
 # 0.1.2
 [rajeshj] - Updated docker binaries for amazonlinux
 # 0.1.1

@@ -1,3 +1,5 @@
+#0.1.4
+[rajeshj] - Docker based deployment of nginx-lua
 #0.1.3
 [rajeshj] - Removed .kitchen.yml from nginx
 #0.1.2

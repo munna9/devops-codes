@@ -23,4 +23,5 @@ node['docker']['binary']['packages'][node['platform']][node['platform_version']]
     version package_version if node['docker']['pin_version']
     action :install
   end
+
 end

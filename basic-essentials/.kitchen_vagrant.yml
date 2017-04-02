@@ -26,7 +26,15 @@ suites:
     run_list:
       - recipe[basic-essentials::oracle_java_default]
       - recipe[basic-essentials::gitclient]
-
+      - recipe[basic-essentials::install_pip]
+      - recipe[build-essentials::deploy_user]
+      - recipe[build-essentials::build_properties]
+      - recipe[docker::install]
+      - recipe[docker::service]
+      - recipe[docker::wrappers]
+      - recipe[aws::cli_install]
+      - recipe[aws::ecr_login]
+      - recipe[seo-service::docker_deploy]
     attributes:
       firewalld:
         zone: 'public'
