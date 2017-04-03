@@ -1,0 +1,6 @@
+{
+  "id": "icinga",
+  "icinga_admins" : "[phenom_rajesh_jonnalagadda , icingaadmin ]",
+  "sysops_l1" : "[icingaadmin]",
+  "sysops_l2" : "['phenom_rajesh_jonnalagadda']"
+}

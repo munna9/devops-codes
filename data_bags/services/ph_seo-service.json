@@ -1,0 +1,22 @@
+{
+  "id": "ph_seo-service",
+  "dev": {
+    "ecr": {
+      "cms_seo-service": {
+        "image_name": "ph_seo-service",
+        "tag_name": "DEV",
+        "ports": {
+          "9001": "9000"
+        },
+        "environment_variables": [
+          "CONF_FILE_NAME=configuration.conf"
+        ],
+        "volumes": {
+          "/etc/localtime": "/etc/localtime",
+          "/opt/phenom/logs/seo-service": "/opt/deployment/logs/seo-service",
+          "/opt/phenom/buildproperties/hub-site/seo-service/DEV": "/opt/deployment/buildproperties"
+        }
+      }
+    }
+  }
+}
