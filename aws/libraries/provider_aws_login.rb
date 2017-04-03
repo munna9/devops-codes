@@ -40,7 +40,7 @@ class Chef
 
       def get_arn_credentials
         role_arn="arn:aws:iam::#{new_resource.account_id}:role/#{new_resource.arn_role}"
-        _role_credentials=Aws::AssumeRoleCredentials.new(role_arn: "#{role_arn}",
+        _role_credentials=Aws::AssumeRoleCredentials.new(role_arn: role_arn,
                                                         role_session_name: 'aws-login',
                                                         region: new_resource.region_name)
         return _role_credentials

@@ -1,3 +1,5 @@
+# 0.1.4 
+[rajeshj] - Fixing kitchen linting errors
 # 0.1.3 
 [rajeshj] - Included ECR and AWS SDK functionalities 
 # 0.1.2
