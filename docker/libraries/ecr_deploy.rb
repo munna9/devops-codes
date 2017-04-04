@@ -12,6 +12,7 @@ module DockerCookbook
     ########
     # Actions
     ########
+    default_action :deploy
     action :deploy do
       docker_registry 'ECR Login' do
         serveraddress node['aws']['serveraddress']

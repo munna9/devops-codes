@@ -1,3 +1,5 @@
+# 0.1.5
+[venkatb] - Defined default actions for ecr_deploy and ecr_undeploy
 # 0.1.4 
 [rajeshj] - Fixing kitchen linting errors
 # 0.1.3 

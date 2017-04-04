@@ -17,9 +17,9 @@ able to get it working on other platform, with appropriate configuration updates
 | Recipe Name                   | AWSLinux  |  CentOS  |  CentOS  |  Ubuntu  |  Ubuntu  |
 |                               |  2016.09  | 7.3.1611 | 7.2.1511 |  16.04   |  14.04   | 
 |-------------------------------|-----------|----------|----------|----------|----------|
-| docker_deploy                 |    √      |    √     |    √     |    √     |    √     |    
+| ecr_deploy                    |    √      |    √     |    √     |    √     |    √     |    
 |-------------------------------|---------- |----------|----------|----------|----------|
-| docker_undeploy               |    √      |    √     |    √     |    √     |    √     |    
+| ecr_undeploy                  |    √      |    √     |    √     |    √     |    √     |    
 |-------------------------------|-----------|----------|----------|----------|----------|
 
 ```
@@ -37,17 +37,17 @@ Chef resources (DSL) and Ruby designed to read and behave in a predictable manne
 
 Please read attributes section for configuration paramaters for any recipe(s)
 
-### seo-service::docker_deploy
+### seo-service::ecr_deploy
 
-Deploys cms_seo-service container by referring data bag item cms_seo-service of services data bag.
+Deploys ph_seo-service container by referring data bag item ph_seo-service of services data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Pulls docker image from Elastic container registry to the running node.
-1. It runs container with specifications mentioned under data bag item cms_seo-service of services data bag.
+1. It runs container with specifications mentioned under data bag item ph_seo-service of services data bag.
 
-### seo-service::docker_undeploy
+### seo-service::ecr_undeploy
 
-Remove Deployed cms_seo-service container by referring data bag item cms_seo-service of services data bag.
+Remove Deployed ph_seo-service container by referring data bag item ph_seo-service of services data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Container stopped and removed after deregistering from ELB if defined.
@@ -56,6 +56,7 @@ Remove Deployed cms_seo-service container by referring data bag item cms_seo-ser
 ## Maintainers
 
 * Rajesh Jonnalagadda (<rajesh.jonnalagadda@phenompeople.com>)
+* Venkat Bumireddy    (<venkat.bumireddy@phenompeople.com)
 
 ## License and Authors
 
