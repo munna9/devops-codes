@@ -1,5 +1,5 @@
 FROM ubuntu:trusty
-MAINTAINER Rajesh Jonnalagadda "rajesh.jonnalagadda@phenompeople.com"
+MAINTAINER Rajesh Jonnalagadda "admin.squad@phenompeople.com"
 #Environment variables
 ENV DEBIAN_FRONTEND noninteractive
 ENV contianer docker

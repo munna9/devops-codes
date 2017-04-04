@@ -1,7 +1,7 @@
 #Base image
 FROM centos:7.2.1511
 
-MAINTAINER Rajesh Jonnalagadda "rajesh.jonnalagaddphenompeople.com"
+MAINTAINER Rajesh Jonnalagadda "admin.squad@phenompeople.com"
 ENV container docker
 
 ARG chef_client_version=12.17.44

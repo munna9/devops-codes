@@ -1,5 +1,5 @@
 FROM ubuntu:xenial
-MAINTAINER Rajesh Jonnalagadda "rajesh.jonnalagadda@phenompeople.com"
+MAINTAINER Rajesh Jonnalagadda "admin.squad@phenompeople.com"
 #Environment variables
 ENV contianer docker
 #Package section
