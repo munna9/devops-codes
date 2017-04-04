@@ -1,5 +1,5 @@
 module DockerCookbook
-  class DockerExec < DockerBase
+  class EcrUndeploy < DockerBase
     resource_name :ecr_undeploy
     provides :ecr_undeploy
 

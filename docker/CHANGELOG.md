@@ -1,3 +1,5 @@
+# 0.1.6
+[rajeshj] - Fixing ecr_deploy and ecr_undeploy class names
 # 0.1.5
 [venkatb] - Defined default actions for ecr_deploy and ecr_undeploy
 # 0.1.4 
