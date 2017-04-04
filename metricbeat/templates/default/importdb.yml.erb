@@ -1,0 +1,4 @@
+template "#{node['elasticsearch']['']}"
+execute 'metricbeat_importdashboard' do
+  command '/usr/share/metricbeat/scripts/import_dashboards -es http://["<%=node['elasticsearch']['server_name']%>:<%=node['elasticsearch']['server_port']%>"]'
+end

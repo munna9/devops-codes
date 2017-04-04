@@ -1,0 +1,30 @@
+#<%=node['phenom']['banner']%>
+output.elasticsearch:
+  hosts: ["<%=node['elasticsearch']['server_name']%>:<%=node['elasticsearch']['server_port']%>"]
+  template.name: "metricbeat"
+  template.path: "metricbeat.template.json"
+  template.overwrite: false
+  workers: <%=node['metricbeat']['conf']['workers']%>
+metricbeat.modules:
+<% @procs_to_watch.each_pair do |proc_id,proc_hash| -%>
+- module: <%=proc_hash['module']%>
+  metricsets: <%=proc_hash['metricsets']%>
+  enabled: true
+<% if proc_hash['period']%>
+  period: "<%=proc_hash['period']%>"
+<% else %>
+  period: "10s"
+<% end %>
+<% if proc_hash['metricsets'].include?('cpu')%>
+  cpu_ticks: true
+<% end %>
+<% unless proc_hash['hosts'].nil? %>
+  hosts: <%=proc_hash['hosts']%>
+<% end %>
+<% unless proc_hash['username'].nil? %>
+  username: <%=proc_hash['username']%>
+<% end %>
+<% unless proc_hash['password'].nil? %>
+  password: <%=proc_hash['password']%>
+<% end %>
+<% end %>
