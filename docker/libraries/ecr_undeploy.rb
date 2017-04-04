@@ -12,6 +12,9 @@ module DockerCookbook
     ########
     # Actions
     ########
+
+    default_action :un_deploy
+    
     action :un_deploy do
       docker_registry 'ECR Login' do
         serveraddress node['aws']['serveraddress']
