@@ -23,7 +23,7 @@
     "recipe[nginx::service]",
     "recipe[jenkins::configure]",
     "recipe[jenkins::plugins]",
-    "recipe[jenkins::admin_workstation]"
+    "recipe[jenkins::master_workstation]"
   ],
   "env_run_lists": {
 

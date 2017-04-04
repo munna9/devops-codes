@@ -16,7 +16,10 @@
     "recipe[filebeat::install]",
     "recipe[filebeat::configure]",
     "recipe[filebeat::prospectors]",
-    "recipe[filebeat::service]"
+    "recipe[filebeat::service]",
+    "recipe[metricbeat::install]",
+    "recipe[metricbeat::configure]",
+    "recipe[metricbeat::service]"
 
   ],
   "env_run_lists": {

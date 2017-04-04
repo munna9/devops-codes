@@ -2,5 +2,11 @@
   "id": "dev-logstash",
   "app_files_to_watch": {
 
+  },
+  "app_procs_to_watch": {
+
+  },
+  "grok_patterns": {
+
   }
 }

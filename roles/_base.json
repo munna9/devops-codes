@@ -6,8 +6,13 @@
   "default_attributes": {
     "phenom": {
       "banner" : "This File is managed by Chef, do not edit by Hand!!!. Please contact admin.squad@phenompeople.com for details",
-      "admin_email" : "admin.squad@phenompeople.com"
-
+      "admin_email" : "admin.squad@phenompeople.com",
+      "timezone" :"UTC"
+    },
+    "aws": {
+      "region": "us-east-1",
+      "sdk_gem_version": "2.7.15",
+      "account_id": 716533421362
     },
     "chef_client_version": "12.17.44"
   },

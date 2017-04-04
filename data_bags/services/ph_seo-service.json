@@ -1,8 +1,8 @@
 {
   "id": "ph_seo-service",
-  "dev": {
+  "tools": {
     "ecr": {
-      "cms_seo-service": {
+      "ph_seo-service": {
         "image_name": "ph_seo-service",
         "tag_name": "DEV",
         "ports": {

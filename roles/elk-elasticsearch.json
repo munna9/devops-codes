@@ -12,12 +12,15 @@
   "run_list": [
     "role[_base]",
     "role[_elk-agent]",
-    "recipe[ntp::install_client]",
-    "recipe[ntp::service]",
     "recipe[basic-essentials::elastic_repo]",
     "recipe[basic-essentials::oracle_java_default]",
+    "recipe[basic-essentials::install_pip]",
+    "recipe[basic-essentials::gitclient]",
     "recipe[elasticsearch::install]",
     "recipe[elasticsearch::configure]",
+    "recipe[elasticsearch::curator]",
+    "recipe[nginx::install]",
+    "recipe[nginx::service]",
     "recipe[elasticsearch::service]"
   ],
   "env_run_lists": {
