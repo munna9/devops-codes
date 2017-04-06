@@ -1,0 +1,19 @@
+{
+  "name": "coe-stg",
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "description": "STG environment specfication file for coe",
+
+  "cookbook_versions": {
+
+  },
+
+  "default_attributes": {
+      
+  },
+
+  "override_attributes": {
+    
+  
+  }
+}

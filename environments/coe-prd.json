@@ -1,0 +1,19 @@
+{
+  "name": "coe-prd",
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "description": "PRD environment specfication file for coe",
+
+  "cookbook_versions": {
+
+  },
+
+  "default_attributes": {
+      
+  },
+
+  "override_attributes": {
+    
+  
+  }
+}

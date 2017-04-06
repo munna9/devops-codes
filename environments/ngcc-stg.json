@@ -1,0 +1,19 @@
+{
+  "name": "candidates-stg",
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "description": "STG environment specfication file for candidates",
+
+  "cookbook_versions": {
+
+  },
+
+  "default_attributes": {
+      
+  },
+
+  "override_attributes": {
+    
+  
+  }
+}

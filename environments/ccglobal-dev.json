@@ -1,0 +1,19 @@
+{
+  "name": "ccglobal-dev",
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "description": "Dev environment specfication file for ccglobal",
+
+  "cookbook_versions": {
+
+  },
+
+  "default_attributes": {
+      
+  },
+
+  "override_attributes": {
+    
+  
+  }
+}
