@@ -1,0 +1,26 @@
+{
+  "name": "jenkins_slave",
+  "description": "Jenkins slave and build box role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[_base]",
+    "recipe[basic-essentials::oracle_java_services]",
+    "recipe[basic-essentials::install_pip]",
+    "recipe[basic-essentials::gitclient]",
+    "recipe[docker::install]",
+    "recipe[docker::service]",
+    "recipe[docker::wrappers]",
+    "recipe[aws::cli_install]",
+    "recipe[aws::ecr_login]",
+    "recipe[jenkins::slave_workstation]"
+  ],
+  "env_run_lists": {
+
+  }
+}

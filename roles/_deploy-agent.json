@@ -1,0 +1,27 @@
+{
+  "name": "_deploy-agent",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "description": "Recipes which configures host to be valid ELK stack agent",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "run_list": [
+    "role[_base]",
+    "role[_elk-agent]",
+    "recipe[basic-essentials::install_pip]",
+    "recipe[build-essentials::deploy_user_assemble]",
+    "recipe[build-essentials::buildproperties_repo]",
+    "recipe[docker::install]",
+    "recipe[docker::service]",
+    "recipe[docker::wrappers]",
+    "recipe[aws::cli_install]",
+    "recipe[aws::ecr_login]"
+  ],
+  "env_run_lists": {
+
+  }
+}

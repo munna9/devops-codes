@@ -1,0 +1,21 @@
+{
+  "name": "icinga-master",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "description": "Recipes which configures host to be Icinga master server",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "run_list": [
+    "role[_base]",
+    "role[_elk-agent]",
+    "role[_deploy-agent]",
+    "recipe[seo-service::ecr_deploy]"
+  ],
+  "env_run_lists": {
+
+  }
+}

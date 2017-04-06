@@ -1,0 +1,22 @@
+{
+  "id":"nginx",
+  "tools":{
+    "docker":{
+      "nginx-lua":{
+        "image_name":"phenompeople/nginx-lua",
+        "tag_name":"latest",
+        "ports":{
+          "8080":"80",
+          "443":"443"
+        },
+        "environment_variables":[
+
+        ],
+        "volumes":{
+          "/etc/localtime":"/etc/localtime",
+          "/opt/nginx/conf.d":"/etc/nginx/conf.d"
+        }
+      }
+    }
+  }
+}

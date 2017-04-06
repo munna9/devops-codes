@@ -1,6 +1,6 @@
 {
   "id": "ph_seo-service",
-  "dev": {
+  "tools": {
     "ecr": {
       "ph_seo-service": {
         "image_name": "ph_seo-service",

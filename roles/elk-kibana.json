@@ -21,7 +21,8 @@
     "recipe[kibana::install]",
     "recipe[kibana::configure]",
     "recipe[kibana::nginx]",
-    "recipe[kibana::service]"
+    "recipe[kibana::service]",
+    "recipe[metricbeat::import_dash_board]"
   ],
   "env_run_lists": {
 
