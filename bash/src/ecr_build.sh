@@ -30,15 +30,3 @@ for EACH_REGION in $AWS_REGIONS;do
     docker push  $PROJECT_NAME &
 done
 wait
-
-
-#
-#RECENT_IMAGE=$(docker images --filter "label=project=$JOB_NAME" --format="{{.Tag}}" | grep -v latest| grep $BRANCH | sort -r | head -1)
-#RECENT_RELEASE=${RECENT_IMAGE#$BRANCH.}
-#if [ -z "$RECENT_RELEASE" ]; then
-#    BUILDNUMBER=1
-#else
-#    RECENT_RELEASE=$((10#$RECENT_RELEASE))
-#    BUILDNUMBER=$(($RECENT_RELEASE+1))
-#fi
-#BUILD_NUMBER=$(printf "%.3d" $BUILD_NUMBER)

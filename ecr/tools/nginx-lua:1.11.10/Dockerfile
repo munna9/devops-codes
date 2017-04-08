@@ -7,7 +7,6 @@ RUN yum install -q -e 0 -y wget make perl gcc-c++ pcre-devel zlib-devel file && 
     mkdir -p /opt/phenom/scripts
 
 LABEL project="nginx-lua"
-
 ARG NGINX_VERSION=1.11.10
 ARG OPENSSL_VERSION=1.0.2f
 ARG PCRE_VERSION=8.40
@@ -35,4 +34,4 @@ VOLUME /usr/share/nginx/html \
        /etc/nginx/conf.d
 RUN yum remove -q -e 0 -y wget make perl gcc-c++ pcre-devel zlib-devel file && \
     yum clean all
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["nginx", "-g", "daemon off;"]

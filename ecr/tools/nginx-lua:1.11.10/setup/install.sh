@@ -100,4 +100,4 @@ cd $NGINX_SETUP_DIR/nginx-$NGINX_VERSION
 
 make  && make install
 chown -R root:root $NGINX_SETUP_DIR
-rm -rf $NGINX_SETUP_DIR/sources
+rm -rf $NGINX_SETUP_DIR/sources /tmp/log_file
