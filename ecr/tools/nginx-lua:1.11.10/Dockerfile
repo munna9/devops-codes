@@ -6,6 +6,8 @@ RUN yum install -q -e 0 -y wget make perl gcc-c++ pcre-devel zlib-devel file && 
     useradd -d  /opt/phenom phenom && \
     mkdir -p /opt/phenom/scripts
 
+LABEL project="nginx-lua"
+
 ARG NGINX_VERSION=1.11.10
 ARG OPENSSL_VERSION=1.0.2f
 ARG PCRE_VERSION=8.40
