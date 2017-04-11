@@ -4,8 +4,11 @@ MAINTAINER Rajesh Jonnalagadda "admin.squad@phenompeople.com"
 ENV container docker
 
 ARG KIBANA_VERSION=5.3.0-1
-
-LABEL project="kibana"
+LABEL Description="Kibana Docker image based on Centos 7" \
+	  License="Apache License 2.0" \
+	  Usage="docker run -td -p [HOST PORT NUMBER]:5601 -e ELASTICSEARCH_URL=[ELASTICSEARCH_URL:ELASTICSEARCH_PORT] -e KIBANA_INDEX=$USER -e SERVER_HOST=0.0.0.0"  \
+	  Version="1.0" \
+	  project="kibana"
 
 EXPOSE 5601
 
@@ -20,5 +23,3 @@ RUN yum install -y -q kibana-${KIBANA_VERSION} && \
 ADD setup /opt/kibana
 
 ENTRYPOINT ["/opt/kibana/scripts/kibana.sh"]
-
-#docker run --name kibana -p 5601:5601 -e ELASTICSEARCH_URL="http://dev-elasticsearch01.aws.phenom.local:9200" -e KIBANA_INDEX="$USER" -td phenompeople/kibana:5.3.0

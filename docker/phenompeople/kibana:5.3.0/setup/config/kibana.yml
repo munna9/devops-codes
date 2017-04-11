@@ -2,4 +2,3 @@ server.host: 0.0.0.0
 server.port: 5601
 elasticsearch.url: http://localhost:9200
 kibana.index: .kibana
-logging.verbose: true
