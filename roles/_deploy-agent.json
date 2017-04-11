@@ -11,8 +11,8 @@
   },
   "run_list": [
     "role[_base]",
-    "role[_elk-agent]",
     "recipe[basic-essentials::install_pip]",
+    "recipe[basic-essentials::gitclient]",
     "recipe[build-essentials::deploy_user_assemble]",
     "recipe[build-essentials::buildproperties_repo]",
     "recipe[docker::install]",
