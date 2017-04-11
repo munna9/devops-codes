@@ -1,3 +1,6 @@
+#0.1.2
+[kiran] - Updated ntp for amazon 2017.03
+
 #0.1.1
 [rajeshj] - Updated Ntp with amazon 2015.09 and 2016.03 versions
 

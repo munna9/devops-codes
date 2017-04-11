@@ -1,3 +1,5 @@
+#0.1.7
+[kiran] - Updating docker engine version to support amazon ec2 2017.03
 # 0.1.6
 [rajeshj] - Fixing ecr_deploy and ecr_undeploy class names
 # 0.1.5

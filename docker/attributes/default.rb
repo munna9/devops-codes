@@ -26,6 +26,9 @@ default['docker']['binary']['packages']= {
       }
     },
     'amazon' => {
+       '2017.03' => {
+        'docker' => '1.12.6-2.19.amzn1'
+      },
       '2016.09' => {
         'docker' => '1.11.2-1.6.amzn1'
       }

@@ -2,6 +2,9 @@
 default['gitclient']['pin_version']=true
 default['gitclient']['binary']['packages'] = {
   'amazon' => {
+    '2017.03' => { 
+      'git' => '2.7.4-1.47.amzn1' 
+    },
     '2016.09' => {
       'git' => '2.7.4-1.47.amzn1'
     }

@@ -1,3 +1,5 @@
+#0.1.7
+[kiran] - updated git client binaray to amazon 2017.03
 #0.1.6
 [rajeshj] - Added common functionality and file watcher, updated java to 1.8.121
 #0.1.5
