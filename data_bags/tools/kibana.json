@@ -1,0 +1,23 @@
+{
+  "id":"kibana",
+  "tools":{
+    "docker":{
+      "kibana":{
+        "image_name":"phenompeople/kibana",
+        "tag_name":"latest",
+        "ports":{
+          "5601":"5601"
+        },
+        "environment_variables":[
+          "ELASTICSEARCH_URL=http://dev-elasticsearch01.aws.phenom.local",
+          "KIBANA_INDEX=.kibana",
+          "SERVER_HOST=0.0.0.0"
+        ],
+        "volumes":{
+          "/etc/localtime":"/etc/localtime",
+          "/opt/phenom/logs/kibana": "/opt/kibana/logs"
+        }
+      }
+    }
+  }
+}

@@ -1,10 +1,10 @@
 {
   "id": "ph_seo-service",
-  "cms-dev": {
+  "dev-cms": {
     "ecr": {
       "ph_seo-service": {
         "image_name": "ph_seo-service",
-        "tag_name": "CMS-DEV",
+        "tag_name": "DEV-CMS",
         "ports": {
           "9001": "9000"
         },
@@ -19,12 +19,11 @@
       }
     }
   },
-
-  "cms-qa": {
+  "qa-cms": {
     "ecr": {
       "ph_seo-service": {
         "image_name": "ph_seo-service",
-        "tag_name": "CMS-QA",
+        "tag_name": "QA-CMS",
         "ports": {
           "9001": "9000"
         },
@@ -39,12 +38,11 @@
       }
     }
   },
-
-  "cms-stg": {
+  "stg-cms": {
     "ecr": {
       "ph_seo-service": {
         "image_name": "ph_seo-service",
-        "tag_name": "CMS-STG",
+        "tag_name": "STG-CMS",
         "ports": {
           "9001": "9000"
         },
@@ -59,12 +57,11 @@
       }
     }
   },
-
-  "cms-prd": {
+  "prod-cms": {
     "ecr": {
       "ph_seo-service": {
         "image_name": "ph_seo-service",
-        "tag_name": "CMS-PRD",
+        "tag_name": "PROD-CMS",
         "ports": {
           "9001": "9000"
         },

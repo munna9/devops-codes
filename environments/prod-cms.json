@@ -1,0 +1,19 @@
+{
+  "name": "prod-cms",
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "description": "PRD environment specfication file for cms",
+
+  "cookbook_versions": {
+
+  },
+
+  "default_attributes": {
+      
+  },
+
+  "override_attributes": {
+    
+  
+  }
+}

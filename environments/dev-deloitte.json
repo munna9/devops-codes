@@ -1,0 +1,19 @@
+{
+  "name": "dev-deloitte",
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "description": "Dev environment specfication file for deloitte",
+
+  "cookbook_versions": {
+
+  },
+
+  "default_attributes": {
+      
+  },
+
+  "override_attributes": {
+    
+  
+  }
+}

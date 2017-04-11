@@ -1,0 +1,20 @@
+{
+  "name": "jd_cleaning",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "description": "Recipes which configures host to be JD_CLEANING server",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "run_list": [
+    "role[_base]",
+    "role[_deploy-agent]",
+    "recipe[jd_cleaning::ecr_deploy]"
+  ],
+  "env_run_lists": {
+
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "qa-dec",
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "description": "QA environment specfication file for dec",
+
+  "cookbook_versions": {
+
+  },
+
+  "default_attributes": {
+      
+  },
+
+  "override_attributes": {
+    
+  
+  }
+}
