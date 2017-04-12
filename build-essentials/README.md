@@ -121,6 +121,7 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 ## Maintainers
 
 * Rajesh Jonnalagadda (<rajesh.jonnalagadda@phenompeople.com>)
+* Kiran Kota (<kiran.kota@phenompeople.com>)
 
 ## License and Authors
 

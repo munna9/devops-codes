@@ -14,6 +14,11 @@ directory "#{phenom_user['home_directory']}/.ssh" do
   owner phenom_user['username']
   group phenom_user['primary_group']
 end
+directory "#{phenom_user['home_directory']}/logs" do
+  mode "0777"
+  owner phenom_user['username']
+  group phenom_user['primary_group']
+end
 file "#{phenom_user['home_directory']}/.ssh/id_rsa" do
   content phenom_user['id_rsa']
   sensitive true
