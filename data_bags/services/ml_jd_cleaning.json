@@ -4,7 +4,7 @@
     "ecr": {
       "ml_jd_cleaning": {
         "image_name": "ml_jd_cleaning",
-        "tag_name": "DEV-",
+        "tag_name": "latest",
         "ports": {
           "5000": "5000"
         },
