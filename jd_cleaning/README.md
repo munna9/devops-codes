@@ -39,7 +39,7 @@ Please read attributes section for configuration paramaters for any recipe(s)
 
 ### jd_cleaning::ecr_deploy
 
-Deploys jd_cleaning container by referring data bag item jd_cleaning of services data bag.
+Deploys jd_cleaning container by referring data bag item ml_jd_cleaning of services data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Pulls docker image from Elastic container registry to the running node.
