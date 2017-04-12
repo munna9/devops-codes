@@ -14,7 +14,7 @@
         ],
         "volumes":{
           "/etc/localtime":"/etc/localtime",
-          "/opt/nginx/conf.d":"/etc/nginx/conf.d"
+          "/etc/nginx/conf.d":"/etc/nginx/conf.d"
         }
       }
     }
