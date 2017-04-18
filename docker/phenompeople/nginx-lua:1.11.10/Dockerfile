@@ -1,4 +1,5 @@
 #Base image
+
 FROM centos:7.3.1611
 
 MAINTAINER Rajesh Jonnalagadda "admin.squad@phenompeople.com"
