@@ -1,3 +1,5 @@
+#0.1.8
+[rajeshj] - Createing logs and container based directory 
 #0.1.7
 [kiran] - Updating docker engine version to support amazon ec2 2017.03
 # 0.1.6

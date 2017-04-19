@@ -25,11 +25,21 @@ module DockerCookbook
         data_record = data_bag_item(vault_name, app_name)
         docker_containers = data_record[node.chef_environment]['ecr']
       end
+
+      phenom_user=data_bag_item('credentials','phenom')
+
       docker_containers.each_pair do |container,container_metadata|
+
         container_metadata['registry_name']=node['aws']['serveraddress']
         container_metadata['container_name']=container
         container_metadata['tag_name']=(container_metadata['tag_name'].nil?) ? 'latest' : container_metadata['tag_name']
         ports_array = Array.new
+        directory "#{phenom_user['home_directory']}/logs/#{container}" do
+          mode "0757"
+          recursive true
+          owner phenom_user['username']
+          group phenom_user['primary_group']
+        end
         unless container_metadata['ports'].nil?
           container_metadata['ports'].each do |source,destination|
             ports_array.push("#{source}:#{destination}")

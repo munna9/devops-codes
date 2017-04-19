@@ -4,6 +4,7 @@ group phenom_user['primary_group']
 
 user phenom_user['username'] do
   gid phenom_user['primary_group']
+  uid phenom_user['uid']
   manage_home true
   comment phenom_user['display_name']
   shell phenom_user['shell']
@@ -15,7 +16,7 @@ directory "#{phenom_user['home_directory']}/.ssh" do
   group phenom_user['primary_group']
 end
 directory "#{phenom_user['home_directory']}/logs" do
-  mode "0777"
+  recursive true
   owner phenom_user['username']
   group phenom_user['primary_group']
 end
