@@ -2,7 +2,7 @@
   "id": "ml_jd_cleaning",
   "dev-ngcc": {
     "ecr": {
-      "ml_jd_cleaning": {
+      "jd_cleaning": {
         "image_name": "ml_jd_cleaning",
         "tag_name": "DEV-NGCC",
         "ports": {
