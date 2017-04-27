@@ -1,0 +1,23 @@
+{
+  "id": "cp_email-microservice",
+  "dev-cms": {
+    "ecr": {
+      "cp_email-microservice": {
+        "image_name": "cp_email-microservice",
+        "tag_name": "DEV-CP",
+        "ports": {
+          "9012": "9000"
+        },
+        "environment_variables": [
+          "CONF_FILE_NAME=application.conf"
+        ],
+        "volumes": {
+          "/etc/localtime": "/etc/localtime",
+          "/opt/phenom/logs/cp_email-microservice": "/opt/deployment/logs/cp_email-microservice",
+          "/opt/phenom/buildproperties/cp-email-microservices/DEV": "/opt/deployment/buildproperties"
+        }
+      }
+    }
+  }
+
+}

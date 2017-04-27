@@ -1,0 +1,23 @@
+{
+  "id": "cp-microservice",
+  "dev-cms": {
+    "ecr": {
+      "cp-microservice": {
+        "image_name": "cp-microservice",
+        "tag_name": "DEV-CP",
+        "ports": {
+          "9014": "9000"
+        },
+        "environment_variables": [
+          "CONF_FILE_NAME=application.conf"
+        ],
+        "volumes": {
+          "/etc/localtime": "/etc/localtime",
+          "/opt/phenom/logs/cp-microservice": "/opt/deployment/logs/cp-microservice",
+          "/opt/phenom/buildproperties/cp-microservice/DEV": "/opt/deployment/buildproperties"
+        }
+      }
+    }
+  }
+
+}

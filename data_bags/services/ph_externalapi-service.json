@@ -1,0 +1,23 @@
+{
+  "id": "ph_externalapi-service",
+  "dev-cms": {
+    "ecr": {
+      "ph_externalapi-service": {
+        "image_name": "ph_externalapi-service",
+        "tag_name": "DEV-CMS",
+        "ports": {
+          "9003": "9000"
+        },
+        "environment_variables": [
+          "CONF_FILE_NAME=configuration.conf"
+        ],
+        "volumes": {
+          "/etc/localtime": "/etc/localtime",
+          "/opt/phenom/logs/ph_externalapi-service": "/opt/deployment/logs/ph_externalapi-service",
+          "/opt/phenom/buildproperties/hub-site/ph-external-api-service/DEV": "/opt/deployment/buildproperties"
+        }
+      }
+    }
+  }
+
+}

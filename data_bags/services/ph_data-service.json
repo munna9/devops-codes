@@ -1,0 +1,23 @@
+{
+  "id": "ph_data-service",
+  "dev-cms": {
+    "ecr": {
+      "ph_data-service": {
+        "image_name": "ph_data-service",
+        "tag_name": "DEV-CMS",
+        "ports": {
+          "9002": "9000"
+        },
+        "environment_variables": [
+          "CONF_FILE_NAME=configuration.conf"
+        ],
+        "volumes": {
+          "/etc/localtime": "/etc/localtime",
+          "/opt/phenom/logs/ph_data-service": "/opt/deployment/logs/ph_data-service",
+          "/opt/phenom/buildproperties/hub-site/ph-data-service/DEV": "/opt/deployment/buildproperties"
+        }
+      }
+    }
+  }
+
+}

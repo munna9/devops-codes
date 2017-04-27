@@ -1,0 +1,23 @@
+{
+  "id": "ph_hub-site",
+  "dev-cms": {
+    "ecr": {
+      "ph_hub-site": {
+        "image_name": "ph_hub-site",
+        "tag_name": "DEV-CMS",
+        "ports": {
+          "9007": "9000"
+        },
+        "environment_variables": [
+          "CONF_FILE_NAME=configuration.conf"
+        ],
+        "volumes": {
+          "/etc/localtime": "/etc/localtime",
+          "/opt/phenom/logs/ph_hub-site": "/opt/deployment/logs/ph_hub-site",
+          "/opt/phenom/buildproperties/hub-site/phenom-hub-site/DEV": "/opt/deployment/buildproperties"
+        }
+      }
+    }
+  }
+
+}

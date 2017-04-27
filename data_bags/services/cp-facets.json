@@ -1,0 +1,22 @@
+{
+  "id": "cp-facets",
+  "dev-cms": {
+    "ecr": {
+      "cp-facets": {
+        "image_name": "cp-facets",
+        "tag_name": "DEV-CP",
+        "ports": {
+          "9011": "9000"
+        },
+        "environment_variables": [
+          "CONF_FILE_NAME=application.conf"
+        ],
+        "volumes": {
+          "/opt/phenom/logs/cp-facets": "/opt/deployment/logs/cp-facets",
+          "/opt/phenom/buildproperties/cp-facets/DEV": "/opt/deployment/buildproperties"
+        }
+      }
+    }
+  }
+
+}
