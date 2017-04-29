@@ -11,7 +11,7 @@ git node['elastalert']['app']['app_directory'] do
   notifies :run, "execute[install-elastalert]", :immediately
 end
 %w(base_directory conf_directory rules_directory).each do |directory_name|
-  directory "#{node['elastalert']['app'][directory_name]}" do
+  directory node['elastalert']['app'][directory_name] do
     recursive true
   end
 end
@@ -27,8 +27,8 @@ node['elastalert']['pip']['packages'].each do |pip_package,pip_version|
   end
 end
 
-template "#{node['elastalert']['app']['conf_directory']}/ssh_config.yml" do
-  source 'ssh_config.yml.erb'
+template "#{node['elastalert']['app']['conf_directory']}/config.yml" do
+  source 'config.yml.erb'
   notifies :restart, "service[#{node['elastalert']['service']['name']}]"
 end
 
