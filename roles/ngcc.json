@@ -1,8 +1,8 @@
 {
-  "name": "jd_cleaning",
+  "name": "ngcc",
   "json_class": "Chef::Role",
   "chef_type": "role",
-  "description": "Recipes which configures host to be JD_CLEANING server",
+  "description": "Recipes which configures host to be NGCC server",
   "default_attributes": {
 
   },
@@ -12,6 +12,7 @@
   "run_list": [
     "role[_base]",
     "role[_deploy-agent]",
+    "role[_elk-agent]",
     "recipe[jd_cleaning::ecr_deploy]"
   ],
   "env_run_lists": {

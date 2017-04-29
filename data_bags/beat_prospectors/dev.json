@@ -1,5 +1,5 @@
 {
-  "id": "_default",
+  "id": "dev",
   "app_files_to_watch": {
     "messages": {
       "document_type"   : "messages",

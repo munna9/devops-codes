@@ -7,6 +7,8 @@
     "phenom": {
       "banner" : "This File is managed by Chef, do not edit by Hand!!!. Please contact admin.squad@phenompeople.com for details",
       "admin_email" : "admin.squad@phenompeople.com",
+      "admin_user": "jenkins",
+      "validation_client": "phenom-validator",
       "timezone" :"UTC"
     },
     "aws": {
