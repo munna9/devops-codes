@@ -1,3 +1,5 @@
+# 0.1.3
+[rajeshj] - Updated typo error in README.md
 #0.1.2
 [kiran] - Updated ntp for amazon 2017.03
 

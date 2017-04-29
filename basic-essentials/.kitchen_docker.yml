@@ -7,7 +7,7 @@ provisioner:
   name: chef_zero
 
 platforms:
-  - name: amazon
+  - name: amazon-201609
     driver_config:
       image: phenompeople/amazonlinux-ccb:2016.09
       platform: centos
@@ -52,6 +52,6 @@ suites:
   - name: default
     run_list:
       - recipe[basic-essentials::oracle_java_default]
-      - recipe[basic-essentials::gitclient]
-      - recipe[basic-essentials::elastic_repo_uninstall]
+#      - recipe[basic-essentials::gitclient]
+#      - recipe[basic-essentials::elastic_repo_uninstall]
     attributes:

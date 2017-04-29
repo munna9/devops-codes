@@ -11,6 +11,7 @@ Requirements
 * Internet accessible node/client
 * elastic_repo recipe of basic-essentials cookbook
 * oracle_java_default recipe of basic-essentials cookbook
+* install_pip recipe of basic-essentials cookbook for curator recipe
 
 Recipes and supported platforms
 -------------------------------
@@ -18,18 +19,20 @@ Recipes and supported platforms
 The following platforms have been tested with Test Kitchen. You may be 
 able to get it working on other platform, with appropriate configuration updates
 ```
-|-------------------------------|-----------|----------|----------|----------|----------|
-| Recipe Name                   | AWSLinux  |  CentOS  |  CentOS  |  Ubuntu  |  Ubuntu  |
-|                               |  2016.09  | 7.3.1611 | 7.2.1511 |  16.04   |  14.04   | 
-|-------------------------------|-----------|----------|----------|----------|----------|
-| configure                     |    √      |    √     |    √     |    √     |    √     |    
-|-------------------------------|-----------|----------|----------|----------|----------|
-| install                       |    √      |    √     |    √     |    √     |    √     |    
-|-------------------------------|-----------|----------|----------|----------|----------|
-| service                       |    √      |    √     |    √     |    √     |    √     |    
-|-------------------------------|-----------|----------|----------|----------|----------|
-| uninstall                     |    √      |    √     |    √     |    √     |    √     |    
-|-------------------------------|-----------|----------|----------|----------|----------|
+|-------------------------------|-----------|----------|----------|----------|----------|----------|
+| Recipe Name                   | AWSLinux  | AWSLinux |  CentOS  | CentOS   |  Ubuntu  |  Ubuntu  |
+|                               |  2017.03  |  2016.09 | 7.2.1511 | 7.2.1511 |  16.04   |  14.04   | 
+|-------------------------------|-----------|----------|----------|----------|----------|----------|
+| configure                     |    √      |    √     |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|----------|----------|----------|----------|----------|
+| curator                       |    √      |    √     |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|----------|----------|----------|----------|----------|
+| install                       |    √      |    √     |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|----------|----------|----------|----------|----------|
+| service                       |    √      |    √     |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|----------|----------|----------|----------|----------|
+| uninstall                     |    √      |    √     |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|----------|----------|----------|----------|----------|
 
 ```
 Recipe details
@@ -46,12 +49,25 @@ Chef resources (DSL) and Ruby designed to read and behave in a predictable manne
 
 Please read attributes section for configuration paramaters for any recipe(s)
 
+### elasticsearch::curator
+
+Curator performs sanitation activities of elasticsearch metricbeat and logstash indices. Curator requires to access elasticsearch without nginx protection layer
+
+1. Reads `['curator']['pip']['packages']`and identifies package name along with version and installs them along with its dependencies
+1. Once the package is successfully installed, create a timestamp file at `Chef::Config['var_cache_path']` to maintain idempotent
+1. Create symbolic link from `/usr/local/bin/curator` to `/usr/bin/curator` if not exists 
+1. Create directory for holding curator configuration file(s)
+1. Create and manage main configuration file at `node['curator']['conf']['home_directory']/curator.yml`
+1. Create curator action configuration file by referring attributes `['curator']['logstash']['close']` and `['curator]['logstash]['delete']` values.
+1. Cron Job will be scheduled based on length of characters of each action to avoid concurrent activities and uniqueness.
+
 ### elasticsearch::configure
 
 Configures default configuration file and master-slave setup of ES cluster.
 
 1. Creates directory `['elasticsearch']['conf']['home_directory']`if not exists 
 1. Create/update configurations file and notifies service `['elasticsearch']['service]['name']` to be restarted
+1. Creates elasticsearch nginx configuration file for protecting for any accidental or incidental removal of indexes
 
 ### elasticsearch::install
 
@@ -84,6 +100,14 @@ Attributes
 Ohai collects attribute data about each node at the start of the chef-client run.
 When a cookbook is loaded during a chef-client run, these attributes are compared to the attributes that are already present on the node.
 For each cookbook, attributes in the `default.rb` file are loaded first, and then additional attribute files(if present are loaded) in lexical sorted order.
+
+#### attributes/curator.rb
+
+|Attribute Name                                 | Type          | Description                                                          |
+|---------------------------------------------- |---------------|----------------------------------------------------------------------|
+| ['curator']['pip']['packages']                | Hash          | Python pip packages along with version                               |
+| ['curator']['conf']['home_directory']         | String        | Directory for curator configuration files                            | 
+| ['curator']['indices']                        | Hash          | Indices and actions dictionary will remain open for accessing        |
 
 #### attributes/default.rb
 

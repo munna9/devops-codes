@@ -24,6 +24,8 @@ able to get it working on other platform, with appropriate configuration updates
 |-------------------------------|-----------|----------|----------|----------|----------|
 | configure                     |    √      |    √     |    √     |    √     |    √     |    
 |-------------------------------|-----------|----------|----------|----------|----------|
+| http_configure                |    √      |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|----------|----------|----------|----------|
 | install                       |    √      |    √     |    √     |    √     |    √     |    
 |-------------------------------|-----------|----------|----------|----------|----------|
 | service                       |    X      |    √     |    √     |    √     |    X     |    
@@ -46,12 +48,20 @@ Chef resources (DSL) and Ruby designed to read and behave in a predictable manne
 
 Please read attributes section for configuration paramaters for any recipe(s)
 
+### logstash::http_configure
+
+Configures default configuration file and ssl certificate files and other essential directories
+
+1. Creates directories `['logstash']['conf']['home_directory']` recursively
+1. Create/update http input and output configuration files and notifies service `['logstash']['service]['name']` to be delayed restart
+
 ### logstash::configure
 
 Configures default configuration file and ssl certificate files and other essential directories.
 
 1. Creates directories `['logstash']['conf']['home_directory'], ['logstash']['ssl']['home_directory']` recursively
-1. Create/update ssl certificate key pair for logstash server based on host's chef environment, defaults to preprod environment
+1. Create/update ssl certificate key pair based on `['logstash']['certificate_name']` variable defined
+1. Fetch grok patterns applied for each of the data bag item from un-encrypted data bag  `beat_propespectors`  and re-structure
 1. Create/update main logstash input and output configuration files and notifies service `['logstash']['service]['name']` to be delayed restart
 1. Create/update custom filters configurations file and notifies service `['logstash']['service]['name']` to be delayed restart
 
@@ -97,6 +107,7 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 | ['logstash']['service']['owner']              | String        | Logstash service owner                                               |
 | ['logstash']['service']['group']              | String        | Logstash service group                                               |
 | ['logstash']['service']['port']               | String        | Logstash service port updated based on host and environment          |
+| ['logstash']['http']['port']                  | String        | Logstash http input service port                                     |
 | ['logstash']['app']['home_directory']         | String        | Base directory of logstash binaries and other essentials tools       |
 | ['logstash']['ssl']['home_directory']         | String        | Base directory of SSL  key pair certificate files exits              |
 | ['logstash']['conf']['home_directory']        | String        | Base directory of logstash configurations                            |

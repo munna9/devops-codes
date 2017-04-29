@@ -18,8 +18,6 @@ platforms:
       memory: 2048MB
       volume: /sys/fs/cgroup
       remove_images: true
-
-  
   - name: centos-7.2
     driver_config:
       image: phenompeople/centos-ccb:7.2.1511
@@ -59,6 +57,8 @@ suites:
       phenom:
         banner: 'Dont edit by Hand !!! This file is managed by Chef. Please contact admin.squad@phenompeople.com for further assitance'
       logstash:
-        elasticsearch:
-          cluster: "127.0.0.1"
-          port: "9200"
+        certificate_name: "_default"
+      elasticsearch:
+        server_name: "127.0.0.1"
+        server_port: "9200"
+

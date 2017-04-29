@@ -11,12 +11,20 @@ provisioner:
 
 
 platforms:
-  - name: amazon
+  - name: amazon-2017.03
+    driver_config:
+      image: phenompeople/amazonlinux-ccb:2017.03
+      platform: centos
+      privileged: true
+      forward: 9200
+      volume: /sys/fs/cgroup
+      remove_images: true
+  - name: amazon-2016.09
     driver_config:
       image: phenompeople/amazonlinux-ccb:2016.09
       platform: centos
       privileged: true
-      forward: 9200:9200
+      forward: 9200
       volume: /sys/fs/cgroup
       remove_images: true
 
@@ -28,8 +36,8 @@ platforms:
       privileged: true
       volume:
        - /sys/fs/cgroup:/sys/fs/cgroup
-       - /Users/rajeshj/workspace/repos/CentOS/7.3:/etc/yum.repos.d/
-      forward: 9002
+#       - /Users/rajeshj/workspace/repos/CentOS/7.3:/etc/yum.repos.d/
+      forward: 9200
       remove_images: true
 
   - name: centos-7.2
@@ -40,9 +48,9 @@ platforms:
       privileged: true
       volume:
         - /sys/fs/cgroup:/sys/fs/cgroup
-        - /Users/rajeshj/workspace/repos/CentOS/7.2:/etc/yum.repos.d/
+ #       - /Users/rajeshj/workspace/repos/CentOS/7.2:/etc/yum.repos.d/
       forward:
-        - 9002:9002
+        - 9200
       remove_images: true
 
   - name: ubuntu16.04
@@ -51,14 +59,14 @@ platforms:
       platform: ubuntu
       run_options: '--security-opt seccomp=unconfined --stop-signal=SIGRTMIN+3 --tmpfs /run --tmpfs /run/lock -v /sys/fs/cgroup:/sys/fs/cgroup:ro'
       run_command: '/sbin/init'
-      forward: 9002
+      forward: 9200
       remove_images: true
 
   - name: ubuntu14.04
     driver_config:
       image: phenompeople/ubuntu-ccb:14.04
       platform: ubuntu
-      forward: 9002
+      forward: 9200
       remove_images: true
 
 suites:
@@ -67,8 +75,11 @@ suites:
       - recipe[basic-essentials::elastic_repo]
       - recipe[basic-essentials::oracle_java_default]
       - recipe[elasticsearch::install]
-      - recipe[elasticsearch::service]
       - recipe[elasticsearch::configure]
+      - recipe[nginx::install]
+      - recipe[nginx::service]
+      - recipe[elasticsearch::curator]
+      - recipe[elasticsearch::service]
 #      - recipe[elasticsearch::uninstall]
 #      - recipe[basic-essentials::oracle_java_default_uninstall]
 #      - recipe[basic-essentials::elastic_repo_uninstall]

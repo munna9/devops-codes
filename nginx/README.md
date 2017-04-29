@@ -15,18 +15,22 @@ Recipes and supported platforms
 The following platforms have been tested with Test Kitchen. You may be 
 able to get it working on other platform, with appropriate configuration updates
 ```
-|-------------------------------|-----------|----------|----------|----------|----------|
-| Recipe Name                   | AWSLinux  |  CentOS  |  CentOS  |  Ubuntu  |  Ubuntu  |
-|                               |  2016.09  | 7.3.1611 | 7.2.1511 |  16.04   |  14.04   | 
-|-------------------------------|-----------|----------|----------|----------|----------|
-| install                       |    √      |    √     |    √     |    √     |    √     |    
-|-------------------------------|-----------|----------|----------|----------|----------|
-| service                       |    √      |    √     |    √     |    √     |    √     |    
-|-------------------------------|-----------|----------|----------|----------|----------|
-| uninstall                     |    √      |    √     |    √     |    √     |    √     |    
-|-------------------------------|-----------|----------|----------|----------|----------|
-| default_site                  |    √      |    √     |    √     |    √     |    √     |    
-|-------------------------------|-----------|----------|----------|----------|----------|
+|-------------------------------|-----------|----------|----------|----------|----------|----------|
+| Recipe Name                   | AWSLinux  | AWSLinux |  CentOS  |  CentOS  |  Ubuntu  | Ubuntu   |
+|                               |  2017.03  |  2016.09 | 7.3.1611 | 7.2.1511 |  16.04   |  14.04   | 
+|-------------------------------|-----------|----------|----------|----------|----------|----------|
+| default_site                  |    √      |    √     |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|----------|----------|----------|----------|----------|
+| docker_deploy                 |    X      |    √     |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|----------|----------|----------|----------|----------|
+| install                       |    √      |    √     |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|----------|----------|----------|----------|----------|
+| service                       |    √      |    √     |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|----------|----------|----------|----------|----------|
+| uninstall                     |    √      |    √     |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|----------|----------|----------|----------|----------|
+| default_site                  |    √      |    √     |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|----------|----------|----------|----------|----------|
 
 ```
 Recipe details
@@ -42,6 +46,22 @@ Chef resources (DSL) and Ruby designed to read and behave in a predictable manne
 * Must be added to a run-list before it can be used by the chef-client
 
 Please read attributes section for configuration paramaters for any recipe(s)
+
+### nginx::default_site
+
+Configures default_site page and its respective configuration file. Default_site is removed from     
+
+1. Creates directories recursively values mentioned against variables `['nginx']['app']['conf_directory']`, `['nginx']['site]['default_directory]`
+1. Recursively copies `files/defaults/html` directory to converging node.
+1. Creates/updates default_site configuration file of Nginx and instructs to reloads at the end of converge.
+
+### nginx::docker_deploy
+
+Pulls and configures phenompeople/nginx-lua docker image.    
+
+1. Loads data bag referred by vault_name and app_name.
+1. Pulls docker image from Elastic container registry to the running node.
+1. It runs container with specifications mentioned under data bag item ph_seo-service of services data bag.
 
 ### nginx::install
 
@@ -86,7 +106,7 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 | ['nginx']['binary']['packages']               | Hash          | Binary package and version for listed distribution                   | 
 | ['nginx']['service']['name']                  | String        | Nginx service name updated based on distribution                     |
 | ['nginx']['service']['owner']                 | String        | Nginx service owner updated based on distribution                    |
-| ['nginx']['service']['group']                 | String        | Nginx service group updated based on distribution                    |                                          |
+| ['nginx']['service']['group']                 | String        | Nginx service group updated based on distribution                    |
 | ['nginx']['app']['base_directory']            | String        | Base directory where all nginx configuration and binaries resides    |
 | ['nginx']['app']['conf_directory']            | String        | Base directory of all configuration file resides                     |
 | ['nginx']['app']['log_directory']             | String        | Base directory of all log files for nginx                            |

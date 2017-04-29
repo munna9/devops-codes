@@ -1,0 +1,20 @@
+#<%=node['phenom']['banner']%>
+actions:
+  1:
+    action: <%=@operation_in_action%>
+    description: >-
+      <%=@operation_in_action.upcase%> indices older than <%=@duration-%> days (based on index name), for <%=@beat_configuration-%>-prefixed indices.
+    options:
+      continue_if_exception: False
+      disable_action: False
+    filters:
+    - filtertype: pattern
+      kind: prefix
+      value: <%=@beat_configuration-%>-
+    - filtertype: age
+      source: name
+      direction: older
+      timestring: '%Y.%m.%d'
+      unit: days
+      unit_count: <%=@duration -%>
+

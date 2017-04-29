@@ -14,9 +14,9 @@ case node['platform_family']
     default['chef-client']['service']['conf_file']="/etc/default/#{node['chef-client']['service']['name']}"
 end
 
-default['chef-client']['log']['directory']='/var/log/chef'
+default['chef-client']['log']['directory']='/var/log'
 default['chef-client']['log']['conf_file']="/etc/logrotate.d/#{node['chef-client']['service']['name']}"
-default['chef-client']['log']['filename']="#{node['chef-client']['log']['directory']}/client.log"
+default['chef-client']['log']['filename']="#{node['chef-client']['log']['directory']}/chef-client.log"
 
 default['chef-client']['lock']['directory']='/var/lock/subsys'
 default['chef-client']['lock']['filename']="#{node['chef-client']['lock']['directory']}/#{node['chef-client']['service']['name']}"

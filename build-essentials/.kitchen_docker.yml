@@ -7,7 +7,16 @@ provisioner:
   name: chef_zero
 
 platforms:
-  - name: amazon
+  - name: amazon-2017.03
+    driver_config:
+      image: phenompeople/amazonlinux-ccb:2017.03
+      platform: centos
+      privileged: true
+      volume: /sys/fs/cgroup
+      privileged: true
+      remove_images: false
+
+  - name: amazon-2016.09
     driver_config:
       image: phenompeople/amazonlinux-ccb:2016.09
       platform: centos
@@ -51,9 +60,11 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[basic-essentials::gitclient]
+      - recipe[basic-essentials::oracle_java_default]
       - recipe[build-essentials::deploy_user_assemble]
+      - recipe[basic-essentials::gitclient]
       - recipe[build-essentials::buildproperties_repo]
+      - recipe[build-essentials::maven_install]
 #      - recipe[build-essentials::deploy_user_dismantle]
 
     attributes:

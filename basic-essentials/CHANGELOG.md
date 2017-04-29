@@ -1,3 +1,5 @@
+#0.1.8
+[rajeshj] - Renamed chefk to chefdk attribues, updated JDK to 1.8.0_131
 #0.1.7
 [kiran] - updated git client binaray to amazon 2017.03
 #0.1.6

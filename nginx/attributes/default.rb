@@ -37,4 +37,7 @@ end
 default['nginx']['app']['base_directory']='/etc/nginx'
 default['nginx']['app']['conf_directory']="#{node['nginx']['app']['base_directory']}/conf.d"
 default['nginx']['app']['log_directory']='/var/log/nginx'
+default['nginx']['site']['base_directory']='/usr/share/nginx'
+default['nginx']['site']['default_directory']="#{node['nginx']['site']['base_directory']}/html"
 
+default['nginx']['ssl']['base_directory']="#{node['nginx']['app']['base_directory']}/ssl"

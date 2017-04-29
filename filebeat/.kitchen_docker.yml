@@ -7,7 +7,15 @@ provisioner:
   name: chef_zero
 
 platforms:
-  - name: amazon
+  - name: amazon-2017.03
+    driver_config:
+      image: phenompeople/amazonlinux-ccb:2017.03
+      platform: centos
+      privileged: true
+      volume: /sys/fs/cgroup
+      remove_images: false
+
+  - name: amazon-2016.09
     driver_config:
       image: phenompeople/amazonlinux-ccb:2016.09
       platform: centos
@@ -64,4 +72,4 @@ suites:
       logstash:
         server_name: "jenkins.phenom.com"
         server_port: "5004"
-        certificate_name: "preprod"
+        certificate_name: "_default"

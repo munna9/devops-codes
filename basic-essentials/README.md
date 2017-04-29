@@ -63,28 +63,28 @@ Please read attributes section for configuration paramaters for any recipe(s)
 
 Installs Chef development kit by referring distribution specific String variable `['chefdk']['download']['uri']`
 
-1. Identifies running node's platform and its version.
-1. If match found, load variable `['chefdk']['download']['uri']` and downloads rpm/deb to `file_cache_path`.
-1. As soon the rpm/deb is downloaded, it notifies package resource for its installation.
+1. Identifies running node's platform and its version
+1. If match found, load variable `['chefdk']['download']['uri']` and downloads rpm/deb to `file_cache_path`
+1. As soon the rpm/deb is downloaded, it notifies package resource for its installation
 
 ### basic-essentials::chefdk_uninstall
 
 Remove Chef development kit by referring distribution specific String variable `['chefdk']['download']['uri']`
 
-1. Identifies running node's platform and its version.
-1. Removes binaries by referring `node['chefdk']['binary']['package']`
-1. Removes rpm/deb is downloaded under `file_cache_path.`
+1. Identifies running node's platform and its version
+1. Removes binaries by referring `['chefdk']['binary']['package']`
+1. Removes rpm/deb is downloaded under `file_cache_path`
 
 ### basic-essentials::elastic_repo
 
-Creates elastic repo and its essential packages.
+Creates elastic repo and its essential packages
 
-1. Creates elastic-repo repository based on running node's platform family.
-1. On ubuntu distribution, it additionally installs `['elastic']['repo']['packages']`. This package(s) required to support https based apt-repo.
+1. Creates elastic-repo repository based on running node's platform family
+1. On ubuntu distribution, it additionally installs `['elastic']['repo']['packages']`. This package(s) required to support https based apt-repo
 
 ### basic-essentials::elastic_repo_uninstall
 
-Remove elastic repo and its essential packages.
+Remove elastic repo and its essential packages
 
 1. Identifies running node's platform_family
 1. Removes elastic-repo based on platform_family
@@ -92,43 +92,28 @@ Remove elastic repo and its essential packages.
 
 ### basic-essentials::epel_repo
 
-Installs epel_repo binaries by referring distribution specific String variable `node['epel']['repo']['uri']`
+Installs epel_repo binaries by referring distribution specific String variable `['epel']['repo']['uri']`
 
 1. Identifies running node's platform and its version. for example, CentOS-7.3's platform centos and its version 7.3.1611.
-1. If match found, load variable `node['epel']['repo']['uri']` and downloads rpm to `file_cache_path`.
+1. If match found, load variable `['epel']['repo']['uri']` and downloads rpm to `file_cache_path`.
 1. As soon the rpm is downloaded, it notifies package resource for its installation
 
 ### basic-essentials::epel_repo_uninstall
 
-Remove epel_repo binaries by referring distribution specific String variable `node['epel']['repo']['uri']`
+Remove epel_repo binaries by referring distribution specific String variable `['epel']['repo']['uri']`
 
-1. Identifies running node's platform_family.
+1. Identifies running node's platform_family
 1. Removes epel.repo, epel-testing.repo files under `/etc/yum.repos.d/`
-1. Removes rpm downloaded under `file_cache_path.`
+1. Removes rpm downloaded under `file_cache_path`
 
 ### basic-essentials::gitclient
 
-Installs git client binaries by referring distribution specific ruby hash `node['gitclient']['binary']['packages']`
+Installs git client binaries by referring distribution specific ruby hash `['gitclient']['binary']['packages']`
 
-1. Identifies running node's platform and its version. for example, CentOS-7.3's platform centos and its version 7.3.1611.
-1. Compiles `node['gitclient']['binary']['packages']` with above values
-1. Installs each of those hash key value pair(s) with specific binary version if `node['gitclient]['pin_version']` is true,
-   otherwise installs latest available version of package at the time converge.
-
-### basic-essentials::install_pip
-
-Install pip installation package, this recipe helps to have pip packages to be further installed.
-
-1. Downloads get-pip.py from `['pip']['repo']['uri']`.
-1. Installs pip from default python interpretor identified
-1. Create symlink to pip binary if not exists 
-
-### basic-essentials::uninstall_pip
-
-Install pip installation package, this recipe helps to have pip packages to be further installed.
-
-1. unlink /usr/local/bin/pip 
-1. removes /usr/sbin/get-pip binary 
+1. Identifies running node's platform and its version. for example, CentOS-7.3's platform centos and its version 7.3.1611
+1. Compiles `['gitclient']['binary']['packages']` with above values
+1. Installs each of those hash key value pair(s) with specific binary version if `['gitclient]['pin_version']` is true, 
+   otherwise installs latest available version of package at the time converge
 
 ### basic-essentials::gitclient_uninstall
 
@@ -138,18 +123,26 @@ Remove git client binaries by referring distribution specific hash `node['gitcli
 1. Compiles `node['gitclient']['binary']['packages']` with above values
 1. Removes each of those hash key value pair(s)
 
+### basic-essentials::install_pip
+
+Install pip installation package, this recipe helps to have pip packages to be further installed
+
+1. Downloads get-pip.py from `['pip']['repo']['uri']`
+1. Installs pip from default python interpretor identified
+1. Create symlink to pip binary if not exists 
+
 ### basic-essentials::oracle_java_default
 
-Installs and configures Linux X64 oracle JDK - 1.8.0_121.
+Installs and configures Linux X64 oracle JDK - 1.8.0_131.
 
-1. Downloads Oracle Java binaries from official download page by accepting license agreement to `file_cache_path` location if not exists.
+1. Download Oracle Java binaries from official download page by accepting license agreement to `file_cache_path` location if not exists.
 1. Extracts downloaded binaries from `file_cache_path` to defined location under `node['oracle_java']['app']['base_directory']`.
 1. Create/update symbolic link from `node['oracle_java']['default']['binary_path']` to `/etc/alternatives/java`
 1. Create/update symbolic link from `/etc/alternaives/java` to `/usr/bin/java`
 
 ### basic-essentials::oracle_java_default_uninstall
 
-Removes and de-configures Linux X64 oracle JDK - 1.8.0_121.
+Removes and de-configures Linux X64 oracle JDK - 1.8.0_131.
 
 1. Removes/unlinks symbolic link of `/etc/alternatives/java` and `/usr/bin/java`.
 1. Removes directory recursively under `node['oracle_java']['default']['home_directory']` and `node['oracle_java']['app']['base_directory']`
@@ -171,6 +164,13 @@ Removes and de-configures Linux X64 oracle JDK - 1.8.0_45
 1. Removes/unlinks symbolic link of `/etc/alternatives/java` and `/usr/bin/java`.
 1. Removes directory recursively under `node['oracle_java']['services']['home_directory']` and `node['oracle_java']['app']['base_directory']`
 1. Removes downloaded artifact from `file_cache_path`.
+
+### basic-essentials::uninstall_pip
+
+Install pip installation package, this recipe helps to have pip packages to be further installed.
+
+1. unlink /usr/local/bin/pip 
+1. removes /usr/sbin/get-pip binary 
 
 Attributes
 ====

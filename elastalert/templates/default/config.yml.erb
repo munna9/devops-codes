@@ -1,0 +1,14 @@
+#<%=node['phenom']['banner']%>
+rules_folder: <%=node['elastalert']['app']['rules_directory']%>
+run_every:
+  minutes: <%=node['elastalert']['app']['pooling']%>
+buffer_time:
+  minutes: 60
+
+es_host: <%=node['elasticsearch']['server_name']%>
+es_port: <%=node['elasticsearch']['server_port']%>
+
+writeback_index: elastalert_status
+
+alert_time_limit:
+  days: 2

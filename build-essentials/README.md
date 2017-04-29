@@ -14,14 +14,22 @@ The following platforms have been tested with Test Kitchen. You may be
 able to get it working on other platform, with appropriate configuration updates
 
 ```
-|---------------------------------|-----------|----------|----------|----------|----------|
-| Recipe Name                     | AWSLinux  |  CentOS  |  CentOS  |  Ubuntu  |  Ubuntu  |
-|                                 |  2016.09  | 7.3.1611 | 7.2.1511 |  16.04   |  14.04   | 
-|---------------------------------|-----------|----------|----------|----------|----------|
-| build_properties                |    √      |    √     |    √     |    √     |    √     |    
-|---------------------------------|---------- |----------|----------|----------|----------|
-| deploy_user                     |    √      |    √     |    √     |    √     |    √     |    
-|---------------------------------|-----------|----------|----------|----------|----------|
+|---------------------------------|-----------|-----------|----------|----------|----------|----------|
+| Recipe Name                     | AWSLinux  | AWSLinux  |  CentOS  |  CentOS  |  Ubuntu  |  Ubuntu  |
+|                                 |  2017.03  |  2016.09  | 7.3.1611 | 7.2.1511 |  16.04   |  14.04   | 
+|---------------------------------|-----------|-----------|----------|----------|----------|----------|
+| build_properties_repo           |    √      |    √      |    √     |    √     |    √     |    √     |    
+|---------------------------------|-----------|-----------|----------|----------|----------|----------|
+| build_properties_repo_remove    |    √      |    √      |    √     |    √     |    √     |    √     |    
+|---------------------------------|-----------|-----------|----------|----------|----------|----------|
+| deploy_user_assemble            |    √      |    √      |    √     |    √     |    √     |    √     |    
+|---------------------------------|-----------|-----------|----------|----------|----------|----------|
+| deploy_user_dismantle           |    √      |    √      |    √     |    √     |    √     |    √     |    
+|---------------------------------|-----------|-----------|----------|----------|----------|----------|
+| maven_install                   |    √      |    √      |    √     |    √     |    √     |    √     |    
+|---------------------------------|-----------|-----------|----------|----------|----------|----------|
+| maven_uninstall                 |    √      |    √      |    √     |    √     |    √     |    √     |    
+|---------------------------------|-----------|-----------|----------|----------|----------|----------|
 
 ```
 Recipe details
@@ -67,12 +75,28 @@ Creates and configure deployment user
 
 ### build-essentials::deploy_user_assemble
 
-remove deploy_user files and remove user from node
+Remove deploy_user files and remove user from node
 
 1. Load phenom data bag item from data bag credentials
 1. Remove user with details provided from `phenom` data bag item
 1. Remove group as defined `phenom` data bag item
 1. Remove directory .ssh under home_directory of `phenom` data bag item
+
+### build-essentials::maven_install
+
+Installs and configures Linux X64 apache-maven-3.5.0
+
+1. Downloads Apache maven binary from official mirrors to `file_cache_path` location if not exists
+1. Extracts downloaded binaries from `file_cache_path` to defined location under `node['build-essentials']['maven']['base_directory']`
+1. Create/update symbolic link from `node['build-essentials']['maven']['app_directory']` to `node['build-essentials']['maven']['home_directory']`
+
+### basic-essentials::oracle_java_default_uninstall
+
+Removes and de-configures Linux X64 apache-maven-3.5.0
+
+1. Removes/unlinks symbolic link of `node['build-essentials']['maven']['app_directory']`
+1. Removes directory recursively under `node['build-essentials']['maven']['home_directory']`
+1. Removes downloaded artifact from `file_cache_path`.
 
 
 Attributes
@@ -89,7 +113,12 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 |['buildproperties']['buildproperties_repo']['uri']                  | String        | URI for fetching buildproperties of git repo              |
 |['buildproperties']['buildproperties_repo']['checkout_directory']   | String        | Diectory name where buildproperties repo checked out      |
 |['buildproperties']['buildproperties_repo']['branch']               | String        | git repo branch to checkout                               |
-
+|['buildproperties']['maven']['version']                             | String        | Apache maven binary version                               |
+|['buildproperties']['maven']['binary_package']                      | String        | Maven binary file name                                    |
+|['buildproperties']['maven']['uri']                                 | String        | Maven download artifact location                          |
+|['buildproperties']['maven']['base_directory']                      | String        | Base directory for hosting apache maven binaries          |
+|['buildproperties']['maven']['home_directory']                      | String        | Directory of maven binaries after extraction              |
+|['buildproperties']['maven']['app_directory']                       | String        | Symbolic link of latest maven installation binaries       |
 
 ## Maintainers
 

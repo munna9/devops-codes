@@ -13,16 +13,22 @@ Recipes and supported platforms
 The following platforms have been tested with Test Kitchen. You may be 
 able to get it working on other platform, with appropriate configuration updates
 ```
-|-------------------------------|-----------|----------|----------|----------|----------|
-| Recipe Name                   | AWSLinux  |  CentOS  |  CentOS  |  Ubuntu  |  Ubuntu  |
-|                               |  2016.09  | 7.3.1611 | 7.2.1511 |  16.04   |  14.04   | 
-|-------------------------------|-----------|----------|----------|----------|----------|
-| inspector_agent_install       |    √      |    √     |    √     |    √     |    √     |    
-|-------------------------------|---------- |----------|----------|----------|----------|
-| inspector_agent_uninstall     |    √      |    √     |    √     |    √     |    √     |    
-|-------------------------------|---------- |----------|----------|----------|----------|
-| docker_undeploy               |    √      |    √     |    √     |    √     |    √     |    
-|-------------------------------|-----------|----------|----------|----------|----------|
+|-------------------------------|-----------|-----------|----------|----------|----------|----------|
+| Recipe Name                   | AWSLinux  | AWSLinux  |  CentOS  |  CentOS  |  Ubuntu  |  Ubuntu  |
+|                               |  2017.03  |  2016.09  | 7.3.1611 | 7.2.1511 |  16.04   |  14.04   | 
+|-------------------------------|-----------|-----------|----------|----------|----------|----------|
+| cli_install                   |    √      |    √      |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|-----------|----------|----------|----------|----------|
+| cli_uninstall                 |    √      |    √      |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|-----------|----------|----------|----------|----------|
+| ecr_login                     |    √      |    √      |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|-----------|----------|----------|----------|----------|
+| inspector_agent_install       |    √      |    √      |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|-----------|----------|----------|----------|----------|
+| inspector_agent_uninstall     |    √      |    √      |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|-----------|----------|----------|----------|----------|
+| inspector_service             |    √      |    √      |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|-----------|----------|----------|----------|----------|
 
 ```
 Recipe details
@@ -40,27 +46,45 @@ Chef resources (DSL) and Ruby designed to read and behave in a predictable manne
 Please read attributes section for configuration paramaters for any recipe(s)
 
 ### aws::cli_install
+
 Depends on basic-essentials::install_pip recipe and requires pip to be installed.
 
 1. Refers `['aws']['cli']['packages']` hash and identifies pip packages to be installed.
 1. Create/update symbolic link to /usr/loca/bin/aws from /usr/local/bin/aws if not exists.
 
 ### aws::cli_uninstall
+
 Depends on basic-essentials::install_pip recipe and requires pip to be installed.
 
 1. Refers `['aws']['cli']['packages']` hash and identifies pip packages to be uninstalled.
 1. deletes symbolic link  /usr/loca/bin/aws.
 
 ### aws::ecr_login
-In order to manage AWS components, authentication credentials need to be available to the node. There are 3 ways to handle this:
 
-Enables login to AWS container registry service
+Install AWS cli and Ruby SDK for connecting to Elastic container registry and creates client connections  
 
-    explicitly pass credentials parameter to the resource
-    use the credentials in the ~/.aws/credentials file
-    let the resource pick up credentials from the IAM role assigned to the instance
+1. In order to manage AWS components, authentication credentials need to be available to the node. There are 3 ways to handle this
+    1. explicitly pass credentials parameter to the resource
+    1. use the credentials in the ~/.aws/credentials file
+    1. let the resource pick up credentials from the IAM role assigned to the instance
+    1. Also new resources can now assume an STS role, with support for MFA as well
 
-Also new resources can now assume an STS role, with support for MFA as well. Instructions are below in the relevant section.
+1. Checks if access_key_id and secret_access_key is provided, create ~/.aws/config file 
+1. Establishes ad-hoc ECR client connection to obtain authorization token, serveraddress, proxy_endpoint
+
+### aws::inspector_agent_install
+
+Install inspector agent on all converging nodes, this agent harvests host for common vulenarabilities and exposures.
+
+1. Downloads `['aws']['inspector_agent']['uri']` to `['aws']['inspector_agent']['binary_path']` and ensures file is universally accessible 
+1. Executes `node['aws']['inspector_agent']['binary_path']` for installing inspector agent
+
+### aws::inspector_agent_uninstall
+
+Depends on basic-essentials::install_pip recipe and requires pip to be installed.
+
+1. Removes `['aws']['inspector_agent']['binary_path']` for uninstalling inspector agent
+1. Uninstall `['aws']['inspector_agent']['binary_name']` package from installed node
 
 Attributes
 ==========

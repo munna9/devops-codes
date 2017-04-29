@@ -55,7 +55,7 @@ Installs platform and version specific binaries from respective providers.
 
 Enables ntp service across multiple distributions listed from above table.
 
-1. Identifies service name of ntp from `node['nginx']['service']['name']`. This variable is updated according to the distribution.
+1. Identifies service name of ntp from `node['ntp']['service']['name']`. This variable is updated according to the distribution.
 1. Controls how the chef-client is to attempt to manage a service `:enable`, `:start`,`:restart`, `:status`, `:reload` 
 1. Performs action of `:enable` to keep the service up and running on successive restarts whereas `:start` to make service available for immediate accessibility.
 

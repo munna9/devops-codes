@@ -1,12 +1,10 @@
-template 'Jenkins-ssh_config' do
-  source 'jenkins.conf.erb'
-  path "#{node['nginx']['app']['conf_directory']}/jenkins.conf"
-  sensitive true
-  notifies :reload, "service[#{node['nginx']['service']['name']}]"
-end
+group node['jenkins']['service']['group']
+
 user node['jenkins']['service']['owner'] do
+  comment 'Jenkins User'
+  gid node['jenkins']['service']['group']
+  home node['jenkins']['app']['home_directory']
   shell '/bin/bash'
-  action :modify
 end
 
 group node['docker']['service']['group'] do
@@ -15,12 +13,66 @@ group node['docker']['service']['group'] do
   action :modify
 end
 
-cookbook_file "#{Chef::Config['file_cache_path']}/kitchen-docker-2.6.1.phenom.gem" do
-  source 'chef/kitchen-docker-2.6.1.phenom.gem'
+%w(.ssh .aws).each do |sub_directory_name|
+  directory "#{node['jenkins']['app']['home_directory']}/#{sub_directory_name}" do
+    recursive true
+    action :create
+    owner node['jenkins']['service']['owner']
+    group node['jenkins']['service']['group']
+  end
 end
-gem_package 'kitchen-docker' do
-  gem_binary '/opt/chefdk/embedded/bin/gem'
-  source "#{Chef::Config['file_cache_path']}/kitchen-docker-2.6.1.phenom.gem"
-  options "--no-user-install"
-  action :install
+
+cookbook_file "#{node['jenkins']['app']['home_directory']}/.ssh/config" do
+  source 'ssh_config'
+  mode '0600'
+  sensitive true
+  owner node['jenkins']['service']['owner']
+  group node['jenkins']['service']['group']
+  action :create
 end
+
+jenkins_credentials=data_bag_item('credentials','jenkins')
+
+%w(id_rsa id_rsa.pub).each do |file_name|
+  file "#{node['jenkins']['app']['home_directory']}/.ssh/#{file_name}" do
+    content jenkins_credentials[file_name]
+    mode '0400'
+    owner node['jenkins']['service']['owner']
+    group node['jenkins']['service']['group']
+    sensitive true
+    action :create
+  end
+end
+
+file "#{node['jenkins']['app']['home_directory']}/.ssh/authorized_keys" do
+  content jenkins_credentials['id_rsa.pub']
+  mode '0600'
+  owner node['jenkins']['service']['owner']
+  group node['jenkins']['service']['group']
+  sensitive true
+  action :create
+end
+
+file "#{node['jenkins']['app']['home_directory']}/.aws/config" do
+  content "[default]\nregion = #{node['aws']['region']}"
+  owner node['jenkins']['service']['owner']
+  group node['jenkins']['service']['group']
+  mode "0600"
+  sensitive true
+end
+
+template "#{node['jenkins']['app']['home_directory']}/admin_policy.json" do
+  source 'admin_policy.json.erb'
+  sensitive true
+  owner node['jenkins']['service']['owner']
+  group node['jenkins']['service']['group']
+end
+
+directory node['jenkins']['app']['home_directory'] do
+  recursive true
+  owner node['jenkins']['service']['owner']
+  group node['jenkins']['service']['group']
+end
+
+
+

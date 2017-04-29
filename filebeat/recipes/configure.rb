@@ -4,12 +4,7 @@
   end
 end
 
-case node.chef_environment
-  when 'prod'
-    certificate=data_bag_item('certificates','prod')
-  else
-    certificate=data_bag_item('certificates','preprod')
-end
+certificate=data_bag_item('certificates',node['logstash']['certificate_name'])
 
 file node['filebeat']['ssl']['cert'] do
   content certificate['crt']
@@ -28,7 +23,7 @@ else
     logstash_servers << "#{logstash_host['fqdn'].to_s}:#{node['logstash']['server_port']}"
   end
 end
-logstash_servers<< "#{node['logstash']['server_name']}:#{node['logstash']['server_port']}" if logstash_servers.empty?
+logstash_servers << "#{node['logstash']['server_name']}:#{node['logstash']['server_port']}" if logstash_servers.empty?
 
 template node['filebeat']['conf']['file'] do
   source 'filebeat.yml.erb'

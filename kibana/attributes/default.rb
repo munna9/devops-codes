@@ -8,7 +8,7 @@ end
 default['kibana']['service']['name']='kibana'
 default['kibana']['service']['port']=5601
 
-default['kibana']['service']['uri']='localhost'
+default['kibana']['service']['uri']='0.0.0.0'
 
 default['kibana']['conf']['home_directory']='/etc/kibana'
 default['kibana']['conf']['file']="#{node['kibana']['conf']['home_directory']}/kibana.yml"
