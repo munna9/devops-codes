@@ -7,6 +7,16 @@ provisioner:
   name: chef_zero
 
 platforms:
+
+  - name: amazon-201703
+    driver_config:
+      image: phenompeople/amazonlinux-ccb:2017.03
+      platform: centos
+      privileged: true
+      volume: /sys/fs/cgroup
+      privileged: true
+      remove_images: false
+
   - name: amazon-201609
     driver_config:
       image: phenompeople/amazonlinux-ccb:2016.09
@@ -51,7 +61,13 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[basic-essentials::oracle_java_default]
-#      - recipe[basic-essentials::gitclient]
+      - recipe[basic-essentials::chefdk]
+      - recipe[basic-essentials::default]
+#       - recipe[basic-essentials::oracle_java_default]
+#      - recipe[basic-essentials::oracle_java_default_uninstall]
+      - recipe[basic-essentials::oracle_java_services]
+#      - recipe[basic-essentials::oracle_java_services_uninstall]
+      - recipe[basic-essentials::gitclient]
 #      - recipe[basic-essentials::elastic_repo_uninstall]
+      - recipe[basic-essentials::install_pip]
     attributes:

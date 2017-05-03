@@ -1,4 +1,4 @@
-default['oracle_java']['app']['base_directory']='/usr/lib/jvm'
+default['oracle_java']['app']['base_directory']='/usr/local'
 default['oracle_java']['app']['default_path']= '/usr/bin/java'
 
 # JDK - 1.8.0_131

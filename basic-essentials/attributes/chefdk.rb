@@ -16,7 +16,8 @@ default['chefdk']['download']['uri']= {
     '7.3.1611' => "https://packages.chef.io/files/stable/chefdk/#{node['chefdk']['binary']['version']}/el/7/#{node['chefdk']['package']['name'][node['platform_family']]}"
   },
   'amazon' => {
-    '2016.09' => "https://packages.chef.io/files/stable/chefdk/#{node['chefdk']['binary']['version']}/el/7/#{node['chefdk']['package']['name'][node['platform_family']]}"
+    '2016.09' => "https://packages.chef.io/files/stable/chefdk/#{node['chefdk']['binary']['version']}/el/7/#{node['chefdk']['package']['name'][node['platform_family']]}",
+    '2017.03' => "https://packages.chef.io/files/stable/chefdk/#{node['chefdk']['binary']['version']}/el/7/#{node['chefdk']['package']['name'][node['platform_family']]}"
   },
   'ubuntu' => {
     '14.04' => "https://packages.chef.io/files/stable/chefdk/#{node['chefdk']['binary']['version']}/#{node['platform']}/#{node['platform_version']}/#{node['chefdk']['package']['name'][node['platform_family']]}",
