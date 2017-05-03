@@ -26,7 +26,7 @@
   "override_attributes": {
     "jenkins": {
       "server": {
-        "name": "tools-jenkins01.aws.phenom.local"
+        "name": "jenkins2.phenompeople.com"
       }
     }
   }
