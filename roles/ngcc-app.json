@@ -23,8 +23,7 @@
       "recipe[jd_cleaning::ecr_deploy]"
     ],
     "prod-ngcc":[
-      "role[_base]",
-      "role[_deploy-agent]"
+      "role[_base]"
     ]
 
   }
