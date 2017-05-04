@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: seo-service
+# Cookbook Name:: mysql
 # Recipe:: default
 #
 # Copyright (C) 2017 Phenompeople Pvt Ltd
