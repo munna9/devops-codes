@@ -1,6 +1,6 @@
 FROM centos:7.3.1611
 
-MAINTAINER Sandeep Alluri (<admin.squad@phenompeople.com>)
+MAINTAINER Sandeep Alluri(<admin.squad@phenompeople.com>)
 
 LABEL "project=sunjre-8u131"
 
