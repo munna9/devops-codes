@@ -5,7 +5,6 @@ MAINTAINER Sandeep Alluri (<admin.squad@phenompeople.com>)
 LABEL "project=sunjre-8u131"
 
 ARG APP_HOME=/opt/deployment
-
 RUN useradd phenom -d ${APP_HOME} -u 1000 && \
     yum install wget -y -q
 
