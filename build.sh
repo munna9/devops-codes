@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-
-
 ecr_hub_push(){
     BUILD_NAME=$1
     IMAGE_NAME=$(echo $BUILD_NAME | cut -f1 -d :)
@@ -30,14 +28,13 @@ ecr_hub_push(){
             aws ecr batch-delete-image --repository-name $IMAGE_NAME --image-ids imageDigest=$EACH_UNTAGGED
         done
         echo -e "\x1B[01;32mPushing $PROJECT_NAME\x1b[0m"
-        echo docker push  $PROJECT_NAME &
+        docker push  $PROJECT_NAME &
     done
     wait
 }
 docker_hub_push () {
     BUILD_NAME=$1
     IMAGE_NAME=$(echo $BUILD_NAME | cut -f1 -d :)
-    echo "39",$IMAGE_NAME
     LATEST_IMAGE=$(ls -rd "docker/$IMAGE_NAME"* | head -1)
     PROJECT_PATH="docker/$BUILD_NAME"
     if [ "$LATEST_IMAGE" == "$PROJECT_PATH" ]; then
@@ -45,28 +42,24 @@ docker_hub_push () {
         docker tag $BUILD_NAME $IMAGE_NAME:latest
         docker push $IMAGE_NAME:latest
     fi
-    echo docker push $BUILD_NAME
+    docker push $BUILD_NAME
 }
 
 local_docker_build() {
     REPO_BASE_DIRECTORY=$1
     WHAT_PUSHED=$(git whatchanged -1 --format=%f $REPO_BASE_DIRECTORY | grep '^:' | cut -f5 -d ' ' | awk {'print $2'})
-    echo "53",$WHAT_PUSHED
     for EACH_CHANGE in $WHAT_PUSHED;do
         BASE_NAME=$(basename $EACH_CHANGE)
         BASE_PATH=$(dirname  $EACH_CHANGE)
         PROJECT_PATH=${BASE_PATH#$REPO_BASE_DIRECTORY/}
-        echo "Each change is" , $EACH_CHANGE
         read ORGANISATION IMAGE_NAME IMAGE_TAG <<< $(echo $PROJECT_PATH | awk -F'[/:]' '{print $1,$2,$3}')
         PROJECT_PATH="$REPO_BASE_DIRECTORY/$ORGANISATION/$IMAGE_NAME:$IMAGE_TAG"
         DOCKER_FILE="$PROJECT_PATH/Dockerfile"
-        echo "\Docker file is $DOCKER_FILE \x1B[0m"
         if [ -e $DOCKER_FILE ];then
             echo -e "\x1B[01;32mFound Docker configuration file at $PROJECT_PATH \x1B[0m"
             REPO_NAME="$ORGANISATION/$IMAGE_NAME"
             BUILD_NAME=$REPO_NAME:$IMAGE_TAG
             echo -e "\x1B[01;32mBuilding container from configuration file $EACH_CHANGE with tag $ORGANISATION/$IMAGE_NAME:$IMAGE_TAG \x1B[0m"
-            echo $(docker build -t $BUILD_NAME $PROJECT_PATH)
             docker build -t $BUILD_NAME $PROJECT_PATH
             if [ $REPO_BASE_DIRECTORY == 'docker' ]; then
                 docker_hub_push $BUILD_NAME
@@ -81,13 +74,9 @@ local_docker_build() {
 ################
 # Main program
 ################
-AWS_REGIONS=('us-east-1')
 ROOT_DIRECTORIES=$(git whatchanged -1 | grep '^:'| cut -f5 -d ' ' | awk '{print $2}' | cut -f1 -d '/' | sort -u)
-echo $ROOT_DIRECTORIES
 for EACH_ROOT_DIR in $ROOT_DIRECTORIES;do
     if  [ "$EACH_ROOT_DIR" == 'docker' ] || [ "$EACH_ROOT_DIR" == 'ecr' ]; then
         local_docker_build $EACH_ROOT_DIR
-    elif [ "$EACH_ROOT_DIR" == 'bash' ];then
-        echo "In bash loop"
     fi
 done

@@ -1,5 +1,7 @@
-FROM phenompeople/centos-sunjre
+FROM phenompeople/centos-sunjre:8u131
+
 MAINTAINER Rajesh Jonnalagadda (<admin.squad@phenompeople.com>)
+
 # Connector Port    : 8080
 # Shutdown port     : 8005
 # AJP Port          : 8009
