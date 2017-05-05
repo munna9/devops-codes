@@ -80,6 +80,7 @@ local_docker_build() {
 ################
 # Main program
 ################
+AWS_REGIONS=('us-east-1')
 ROOT_DIRECTORIES=$(git whatchanged -1 | grep '^:'| cut -f5 -d ' ' | awk '{print $2}' | cut -f1 -d '/' | sort -u)
 echo $ROOT_DIRECTORIES
 for EACH_ROOT_DIR in $ROOT_DIRECTORIES;do
