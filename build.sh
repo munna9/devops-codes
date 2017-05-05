@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+
 ecr_hub_push(){
     BUILD_NAME=$1
     IMAGE_NAME=$(echo $BUILD_NAME | cut -f1 -d :)
