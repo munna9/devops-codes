@@ -1,0 +1,7 @@
+#<%=node['phenom']['banner']%>
+client:
+  hosts: <%=node['elasticsearch']['service']['host']%>
+  port: <%=node['elasticsearch']['service']['port']%>
+  use_ssl: False
+  ssl_no_validate: False
+

@@ -9,10 +9,6 @@ if node['os'] == 'linux'
     recursive true
     action :delete
   end
-  directory node['oracle_java']['app']['base_directory'] do
-    ignore_failure true
-    action :delete
-  end
   file "#{Chef::Config[:file_cache_path]}/#{node['oracle_java']['default']['binary_package']}" do
     action :delete
   end

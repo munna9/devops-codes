@@ -7,12 +7,19 @@ provisioner:
   name: chef_zero
 
 platforms:
-  - name: amazon
+  - name: amazon-2017.03
+    driver_config:
+      image: phenompeople/amazonlinux-ccb:2017.03
+      platform: centos
+      privileged: true
+      volume: /sys/fs/cgroup
+      remove_images: true
+
+  - name: amazon-2016.09
     driver_config:
       image: phenompeople/amazonlinux-ccb:2016.09
       platform: centos
       privileged: true
-      # forward: 9200:9200
       volume: /sys/fs/cgroup
       remove_images: true
 
@@ -64,7 +71,7 @@ suites:
       - recipe[metricbeat::install]
       - recipe[metricbeat::service]
       - recipe[metricbeat::configure]
-      - recipe[metricbeat::import_dash_board]
+#      - recipe[metricbeat::import_dash_board]
 
 
     attributes:

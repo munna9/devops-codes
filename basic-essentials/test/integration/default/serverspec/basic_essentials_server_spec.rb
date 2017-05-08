@@ -15,8 +15,8 @@ describe 'java' do
   end
 end
 
-describe 'gitclient' do
-  describe package('git') do
-    it { should be_installed }
-  end
-end
+# describe 'gitclient' do
+#   describe package('git') do
+#     it { should be_installed }
+#   end
+# end

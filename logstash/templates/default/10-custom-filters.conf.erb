@@ -1,0 +1,21 @@
+#<%=node['phenom']['banner']%>
+filter{
+<% @grok_hash.each_pair do |pattern_name,pattern_hash| -%>
+ if [type] == "<%=pattern_name%>" {
+    grok {
+<% if pattern_hash['custom_patterns'] == true %>
+        patterns_dir => ["<%=node['logstash']['conf']['patterns_directory']%>"]
+<% end %>
+        match => { "message" => <%=pattern_hash['grok_pattern']%> }
+<%if pattern_hash['overwrite'] == true %>
+        overwrite => [ "message" ]
+<% end %>
+    }
+  }
+<% end %>
+
+  date {
+    match => [ "timestamp", "MMM dd HH:mm:ss", "MMM  d HH:mm:ss" ]
+  }
+
+}

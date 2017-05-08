@@ -6,4 +6,6 @@ description      'configure basic-essentials for other cookbooks'
 long_description 'Installs/Configures basic-essentials'
 source_url		   'https://bitbucket.org/maheimom/chef-cookbooks'
 issues_url		   'https://bitbucket.org/maheimom/chef-cookbooks/issues'
-version          '0.1.7'
+version          '0.1.9'
+chef_version     '>= 12.5' if respond_to?(:chef_version)
+supports         'redhat','debain'

@@ -25,6 +25,8 @@ able to get it working on other platform, with appropriate configuration updates
 |-------------------------------|-----------|----------|----------|----------|----------|
 | configure                     |    √      |    √     |    √     |    √     |    √     |    
 |-------------------------------|-----------|----------|----------|----------|----------|
+| docker_deploy                 |    √      |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|----------|----------|----------|----------|
 | install                       |    √      |    √     |    √     |    √     |    √     |    
 |-------------------------------|-----------|----------|----------|----------|----------|
 | service                       |    √      |    √     |    √     |    √     |    √     |    
@@ -54,8 +56,13 @@ Configures default configuration file and nginx configuration files and other es
 1. Creates directory `['kibana']['conf']['home_directory']`if not exists 
 1. Create/update configuration file of kibana and notifies service `['kibana']['service]['name']` to be restarted
 
-### kibana::nginx
-1. Create/update configuration file of nginx-kibana integration file and notifies service `['nginx]['service]['name]` to be reloaded 
+### kibana::docker_deploy
+
+Deploys phenompeople/kibana container by referring data bag item `kibana` of `tools` data bag.
+
+1. Loads data bag referred by vault_name and app_name.
+1. Pulls docker image from Docker container registry to the running node.
+1. It runs container with specifications mentioned under data bag item kibana of tools data bag.
 
 ### kibana::install
 
@@ -63,6 +70,13 @@ Installs platform and version specific kibana binaries from elastic repositories
 
 1. Reads `['kibana']['package']['name']` and `['kibana']['package']['version']` based on platform.   
 1. Installs package with specific binary version available at the time of converge based on platform.
+
+### kibana::nginx
+
+Configures Reverse proxy configuration setup for Kibana web UI. This recipe can be integrated with nginx cookbook and its recipes 
+ 
+1. Query chef server for all hosts which are converged with elk-kibana role under this environment
+1. Create/update kibana.conf under `['nginx']['app']['conf_directory']` which is an reverse proxy setup for Kibana web UI and notify nginx service for a delayed reload for any changes identified.
 
 ### kibana::service
 

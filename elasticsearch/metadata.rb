@@ -7,5 +7,6 @@ long_description 'Installs/Configures elasticsearch'
 source_url		   'https://bitbucket.org/maheimom/chef-cookbooks'
 issues_url		   'https://bitbucket.org/maheimom/chef-cookbooks/issues'
 depends          'basic-essentials'
-version          '0.1.0'
+depends          'nginx'
+version          '0.1.1'
 

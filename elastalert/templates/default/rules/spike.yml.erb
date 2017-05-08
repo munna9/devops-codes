@@ -1,0 +1,25 @@
+# Alert when the rate of events exceeds a threshold
+es_host: <%= node['elasticsearch']['server_name'] %>
+es_port: <%= node['elasticsearch']['server_port'] %>
+index: logstash-*
+
+#######################
+#Configuration Section
+#######################
+
+name: Host cardinality on ELK
+
+type: cardinality
+
+cardinality_field: "host.raw"
+
+min_cardinality: 10
+
+timeframe:
+  hours: 4
+
+alert:
+- "email"
+
+email:
+- "rajesh.jonnalagadda@phenompeoplecom"

@@ -1,7 +1,0 @@
-cookbook 'basic-essentials', :path => '../basic-essentials'
-cookbook 'build-essentials', :path => '../build-essentials'
-cookbook 'docker',  :path => '../docker'
-cookbook 'aws',     :path => '../aws'
-cookbook 'ntp',     :path => '../ntp'
-source "https://supermarket.chef.io"
-metadata

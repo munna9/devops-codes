@@ -1,10 +1,11 @@
-parse_host_name
 begin
-  app_files_to_watch=data_bag_item('fb_prospectors',"#{node['host_env']}-#{node['host_role']}")
+  app_files=data_bag_item('beat_prospectors',node.chef_environment)
 rescue Net::HTTPServerException, Chef::Exceptions::InvalidDataBagPath
-  app_file_to_watch=data_bag_item('fb_prospectors',"_default-dummy")
+  app_files=data_bag_item('beat_prospectors',"_default")
 end
-node.default['filebeat']['files_to_watch'].merge!(app_files_to_watch['app_files_to_watch'])
+node.default['filebeat']['files_to_watch'].merge!(app_files['app_files_to_watch'])
+
+fileWatcher(node['filebeat']['conf']['home_directory'],node['filebeat']['files_to_watch'].keys)
 
 node['filebeat']['files_to_watch'].each do |prospectors,conf_content|
   yml_string=conf_content.to_hash.to_yaml

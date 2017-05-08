@@ -1,8 +1,7 @@
-parseHostName
 begin
-  procs_to_watch=data_bag_item('beat_prospectors',"#{node['host_env']}-#{node['host_role']}")
+  procs_to_watch=data_bag_item('beat_prospectors',node.chef_environment)
 rescue Net::HTTPServerException, Chef::Exceptions::InvalidDataBagPath
-  procs_to_watch=data_bag_item('beat_prospectors',"_default-dummy")
+  procs_to_watch=data_bag_item('beat_prospectors',"_default")
 end
 
 file "#{node['metricbeat']['conf']['base_directory']}/metricbeat.full.yml" do

@@ -26,9 +26,15 @@ default['jenkins']['service']['name']='jenkins'
 default['jenkins']['service']['owner']='jenkins'
 default['jenkins']['service']['group']='jenkins'
 
+default['jenkins']['service']['port']=8080
+
 default['jenkins']['app']['home_directory']='/var/lib/jenkins'
-default['jenkins']['app']['plugin_directory']="#{node['jenkins']['app']['home_directory']}/plugins"
+
+default['jenkins']['plugin']['home_directory']="#{node['jenkins']['app']['home_directory']}/plugins"
 default['jenkins']['plugin']['uri']='https://updates.jenkins-ci.org/download/plugins'
+default['jenkins']['plugin']['permalink']='https://updates.jenkins-ci.org/latest/'
+default['jenkins']['plugin']['fetch_latest']=false
+
 default['jenkins']['plugin']['packages'] = {
     'ansicolor' => '0.4.3',
     'authentication-tokens' => '1.1',
@@ -67,7 +73,7 @@ default['jenkins']['plugin']['packages'] = {
     'run-condition' => '1.0',
     'role-strategy' => '2.3.2',
     'script-security' => '1.25',
-    'scriptler' => '2.7',
+    'scriptler' => '2.9',
     'scm-api' => '2.0.1',
     'scm-sync-configuration' => '0.0.10',
     'subversion' => '2.7.1',
@@ -78,9 +84,6 @@ default['jenkins']['plugin']['packages'] = {
     'uno-choice' => '1.5.1',
     'workflow-scm-step' => '2.3',
     'workflow-step-api' => '2.6',
-
 }
-default['jenkins']['plugin']['latest_permalink']='https://updates.jenkins-ci.org/latest/'
-default['jenkins']['plugin']['fetch_latest']=false
 
 default['jenkins']['conf']['uri']='git@bitbucket.org:maheimom/jenkins-aws.git'

@@ -1,0 +1,3 @@
+MONGO3_CONNECTION_COUNT %{TIMESTAMP_ISO8601:timestamp}%{SPACE}%{WORD:severity}%{SPACE}%{WORD:component}%{SPACE}\[%{WORD:context}\]%{GREEDYDATA:raw_message}\(%{NUMBER:number_of_connections:int}%{GREEDYDATA:raw_message}\)
+
+MONGO_SLOWQUERY %{TIMESTAMP_ISO8601:timestamp}%{SPACE}%{WORD:severity}%{SPACE}%{WORD:component}%{SPACE}\[%{WORD:context}\]%{GREEDYDATA:slow_query}%{SPACE}planSummary:%{SPACE} COLLSCAN %{GREEDYDATA:raw_message}%{SPACE}%{NUMBER:query_duration:int}ms

@@ -1,0 +1,10 @@
+SECURETIMESTAMP %{MONTH}%{SPACE}%{MONTHDAY} %{TIME}
+SECUREPROG %{PROG:program}(?:\[%{POSINT:pid}\])?
+SECUREHOST %{IPORHOST:host}
+SECUREBASE %{SECURETIMESTAMP:secure_timestamp}%{SPACE}%{SECUREHOST}%{SPACE}%{SECUREPROG}:
+SECURESU %{SECUREBASE} (runuser: |)%{PROG:pam_program}(?:\[%{POSINT:pid}\])? session %{WORD} for user %{USER:user}( by \(uid=%{NUMBER:su_caller_uid}\)|)
+SECURESUDORUN %{SECUREBASE}%{SPACE}(%{USER:user} : TTY=%{DATA} ; PWD=%{DATA} ; USER=%{USER:sudo_runas_user} ; COMMAND=%{GREEDYDATA:sudo_command}|\S+:%{SPACE}(TGT verified|error reading keytab %{GREEDYDATA}|authentication %{WORD} for '%{USER:user}'%{GREEDYDATA}|%{GREEDYDATA}user=%{USER:user}))
+SECURESSHDPUBKEY %{SECUREBASE} (Found matching RSA key: %{GREEDYDATA:rsa_key}|%{WORD} publickey for %{USER:user} from %{IPORHOST:src_ip}( port %{NUMBER:port} %{WORD}( \[preauth\]|: RSA %{GREEDYDATA:rsa_key}|)|))
+SECURESSHDREST %{SECUREBASE} (Did not receive identification string from %{IPORHOST:src_ip}|pam_unix\(sshd:session\): session %{WORD} for user %{USER:user}|Starting session: command for %{USER:user} from %{IPORHOST:src_ip}|Connection from %{IPORHOST:src_ip}|Accepted (password|publickey) for %{USER:user} from %{IPORHOST:src_ip}|Received disconnect from %{IPORHOST:src_ip}|Connection closed by %{IPORHOST:src_ip}|User child is on pid %{NUMBER}|Set %{UNIXPATH} to %{NUMBER})
+SECURENETREG %{SECUREBASE} connect from %{IPORHOST:src_ip}%{GREEDYDATA}
+SECURENETBADGE %{SECUREBASE} (%{WORD:whois_action}|Authentication %{WORD:auth_result}): (reply from %{URI:whois_uri}: Result: %{GREEDYDATA:whois_result}|User: %{USER:user}, %{GREEDYDATA:auth_result_detail}, From: %{IPORHOST:src_ip}, %{GREEDYDATA}, URL: %{URI:netbadge_source_uri})

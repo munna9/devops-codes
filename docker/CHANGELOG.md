@@ -1,6 +1,8 @@
-#0.1.8
-[rajeshj] - Createing logs and container based directory 
-#0.1.7
+# 0.1.9
+[rajeshj] - Adding localtime default to all ecr containers and fixing typo in ELB resource names
+# 0.1.8
+[rajeshj] - Creating logs and container based directory 
+# 0.1.7
 [kiran] - Updating docker engine version to support amazon ec2 2017.03
 # 0.1.6
 [rajeshj] - Fixing ecr_deploy and ecr_undeploy class names

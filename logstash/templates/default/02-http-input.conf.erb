@@ -1,0 +1,30 @@
+#<%=node['phenom']['banner']%>
+
+input {
+  http {
+    port => <%=node['logstash']['http']['port']%>
+  }
+}
+filter {
+  mutate {
+    remove_field => ["headers"]
+  }
+}
+output {
+    if [properties][trait203] == "PROD" or "pipeline.phenompeople.com" in [properties][pt_page] {
+      elasticsearch {
+        hosts => ["<%=node['elasticsearch']['server_name']%>:<%=node['elasticsearch']['server_port']%>"]
+        index => "cp-prod-%{+YYYY.MM.dd}"
+      }
+    } else if [properties][trait203] == "QA" or "qa-candidates.phenompeople.com" in [properties][pt_page] {
+      elasticsearch {
+        hosts => ["<%=node['elasticsearch']['server_name']%>:<%=node['elasticsearch']['server_port']%>"]
+        index => "cp-qa-%{+YYYY.MM.dd}"
+      }
+    } else if [properties][trait203] == "DEV" or "candidates-dev.phenompeople.com" in [properties][pt_page] {
+      elasticsearch {
+        hosts => ["<%=node['elasticsearch']['server_name']%>:<%=node['elasticsearch']['server_port']%>"]
+        index => "cp-dev-%{+YYYY.MM.dd}"
+      }
+    }
+}
