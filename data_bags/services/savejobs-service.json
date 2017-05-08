@@ -1,8 +1,8 @@
 {
-  "id": "ph_save-jobs-service",
+  "id": "savejobs-service",
   "dev-cms": {
     "ecr": {
-      "ph_save-jobs-service": {
+      "savejobs-service": {
         "image_name": "ph_save-jobs-service",
         "tag_name": "DEV-CMS",
         "ports": {
@@ -12,8 +12,7 @@
           "CONF_FILE_NAME=configuration.conf"
         ],
         "volumes": {
-          "/etc/localtime": "/etc/localtime",
-          "/opt/phenom/logs/ph_save-jobs-service": "/opt/deployment/logs/ph_save-jobs-service",
+          "/var/log/containers/savejobs-service": "/opt/deployment/logs/ph_save-jobs-service",
           "/opt/phenom/buildproperties/hub-site/ph-save-jobs-service/DEV": "/opt/deployment/buildproperties"
         }
       }

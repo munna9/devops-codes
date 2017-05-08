@@ -12,8 +12,7 @@
           "CONF_FILE_NAME=application.conf"
         ],
         "volumes": {
-          "/etc/localtime": "/etc/localtime",
-          "/opt/phenom/logs/cp-microservice": "/opt/deployment/logs/cp-microservice",
+          "/var/log/containers/cp-microservice": "/opt/deployment/logs/cp-microservice",
           "/opt/phenom/buildproperties/cp-microservice/DEV": "/opt/deployment/buildproperties"
         }
       }

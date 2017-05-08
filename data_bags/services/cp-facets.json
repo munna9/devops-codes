@@ -12,7 +12,7 @@
           "CONF_FILE_NAME=application.conf"
         ],
         "volumes": {
-          "/opt/phenom/logs/cp-facets": "/opt/deployment/logs/cp-facets",
+          "/var/log/containers/cp-facets": "/opt/deployment/logs/cp-facets",
           "/opt/phenom/buildproperties/cp-facets/DEV": "/opt/deployment/buildproperties"
         }
       }

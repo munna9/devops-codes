@@ -12,8 +12,7 @@
           "CONF_FILE_NAME=application.conf"
         ],
         "volumes": {
-          "/etc/localtime": "/etc/localtime",
-          "/opt/phenom/logs/cp-usermanagement": "/opt/deployment/logs/cp-usermanagement",
+          "/var/log/containers/cp-usermanagement": "/opt/deployment/logs/cp-usermanagement",
           "/opt/phenom/buildproperties/cp-usermanagement/DEV": "/opt/deployment/buildproperties"
         }
       }

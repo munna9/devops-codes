@@ -1,8 +1,8 @@
 {
-  "id": "ph_job-subscription",
+  "id": "jobsubscription-service",
   "dev-cms": {
     "ecr": {
-      "ph_job-subscription": {
+      "jobsubscription-service": {
         "image_name": "ph_job-subscription",
         "tag_name": "DEV-CMS",
         "ports": {
@@ -12,8 +12,7 @@
           "CONF_FILE_NAME=configuration.conf"
         ],
         "volumes": {
-          "/etc/localtime": "/etc/localtime",
-          "/opt/phenom/logs/ph_job-subscription": "/opt/deployment/logs/ph_job-subscription",
+          "/var/log/containers/jobsubscription-service": "/opt/deployment/logs/ph_job-subscription",
           "/opt/phenom/buildproperties/hub-site/ph-job-subscription-service/DEV": "/opt/deployment/buildproperties"
         }
       }

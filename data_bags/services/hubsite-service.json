@@ -1,8 +1,8 @@
 {
-  "id": "ph_hub-site",
+  "id": "hubsite-service",
   "dev-cms": {
     "ecr": {
-      "ph_hub-site": {
+      "hubsite-service": {
         "image_name": "ph_hub-site",
         "tag_name": "DEV-CMS",
         "ports": {
@@ -12,8 +12,7 @@
           "CONF_FILE_NAME=configuration.conf"
         ],
         "volumes": {
-          "/etc/localtime": "/etc/localtime",
-          "/opt/phenom/logs/ph_hub-site": "/opt/deployment/logs/ph_hub-site",
+          "/var/log/containers/hubsite-service": "/opt/deployment/logs/ph_hub-site",
           "/opt/phenom/buildproperties/hub-site/phenom-hub-site/DEV": "/opt/deployment/buildproperties"
         }
       }

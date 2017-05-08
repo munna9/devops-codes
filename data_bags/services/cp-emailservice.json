@@ -1,8 +1,8 @@
 {
-  "id": "cp-email-microservice",
+  "id": "cp-emailservice",
   "dev-cms": {
     "ecr": {
-      "cp-email-microservice": {
+      "cp-emailservice": {
         "image_name": "cp-email-microservice",
         "tag_name": "DEV-CP",
         "ports": {
@@ -12,8 +12,7 @@
           "CONF_FILE_NAME=application.conf"
         ],
         "volumes": {
-          "/etc/localtime": "/etc/localtime",
-          "/opt/phenom/logs/cp-email-microservice": "/opt/deployment/logs/cp-email-microservice",
+          "/var/log/containers/cp-emailservice": "/opt/deployment/logs/cp-email-microservice",
           "/opt/phenom/buildproperties/cp-email-microservices/DEV": "/opt/deployment/buildproperties"
         }
       }
