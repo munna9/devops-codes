@@ -1,4 +1,4 @@
-ecr_undeploy "ph_save-jobs-service undeploy" do
+ecr_undeploy "savejobs-service undeploy" do
   vault_name 'services'
-  app_name 'ph_save-jobs-service'
+  app_name 'savejobs-service'
 end
