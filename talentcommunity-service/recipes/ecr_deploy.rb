@@ -1,4 +1,4 @@
-ecr_deploy "ph_talent-community Deploy" do
+ecr_deploy "talentcommunity-service Deploy" do
   vault_name 'services'
-  app_name 'ph_talent-community'
+  app_name 'talentcommunity-service'
 end

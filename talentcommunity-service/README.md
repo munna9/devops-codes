@@ -39,7 +39,7 @@ Please read attributes section for configuration paramaters for any recipe(s)
 
 ### talentcommunity-service::ecr_deploy
 
-Deploys ph_talent-community container by referring data bag item ph_talent-community of services data bag.
+Deploys talentcommunity-service container by referring data bag item talentcommunity-service of services data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Pulls docker image from Elastic container registry to the running node.
@@ -47,7 +47,7 @@ Deploys ph_talent-community container by referring data bag item ph_talent-commu
 
 ### talentcommunity-service::ecr_undeploy
 
-Remove Deployed ph_talent-community container by referring data bag item ph_talent-community of services data bag.
+Remove Deployed talentcommunity-service container by referring data bag item talentcommunity-service of services data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Container stopped and removed after deregistering from ELB if defined.
