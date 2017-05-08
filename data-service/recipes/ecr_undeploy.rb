@@ -1,4 +1,4 @@
-ecr_undeploy "ph_data-service undeploy" do
+ecr_undeploy "data-service undeploy" do
   vault_name 'services'
-  app_name 'ph_data-service'
+  app_name 'data-service'
 end

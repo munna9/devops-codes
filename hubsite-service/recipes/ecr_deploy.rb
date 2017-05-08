@@ -1,4 +1,4 @@
-ecr_deploy "ph_hub-site Deploy" do
+ecr_deploy "hubsite-service Deploy" do
   vault_name 'services'
-  app_name 'ph_hub-site'
+  app_name 'hubsite-service'
 end

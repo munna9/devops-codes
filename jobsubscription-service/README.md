@@ -39,15 +39,15 @@ Please read attributes section for configuration paramaters for any recipe(s)
 
 ### jobsubscription-service::ecr_deploy
 
-Deploys ph_job-subscription container by referring data bag item ph_job-subscription of services data bag.
+Deploys jobsubscription-service container by referring data bag item jobsubscription-service of services data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Pulls docker image from Elastic container registry to the running node.
-1. It runs container with specifications mentioned under data bag item ph_job-subscription of services data bag.
+1. It runs container with specifications mentioned under data bag item jobsubscription-service of services data bag.
 
 ### jobsubscription-service::ecr_undeploy
 
-Remove Deployed ph_job-subscription container by referring data bag item ph_job-subscription of services data bag.
+Remove Deployed jobsubscription-service container by referring data bag item jobsubscription-service of services data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Container stopped and removed after deregistering from ELB if defined.

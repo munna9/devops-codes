@@ -1,4 +1,4 @@
-ecr_undeploy "cms_tenant-service undeploy" do
+ecr_undeploy "cms-tenant-service undeploy" do
   vault_name 'services'
-  app_name 'cms_tenant-service'
+  app_name 'cms-tenant-service'
 end
