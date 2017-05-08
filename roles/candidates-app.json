@@ -1,5 +1,5 @@
 {
-  "name": "mongodb",
+  "name": "candidates-app",
   "json_class": "Chef::Role",
   "chef_type": "role",
   "description": "Recipes which configures host to be mongodb server",
@@ -13,7 +13,6 @@
     "role[_base]"
   ],
   "env_run_lists": {
-
 
   }
 }

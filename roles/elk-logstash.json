@@ -18,6 +18,7 @@
     "recipe[basic-essentials::oracle_java_default]",
     "recipe[logstash::install]",
     "recipe[logstash::configure]",
+    "recipe[logstash::http_configure]",
     "recipe[logstash::service]"
   ],
   "env_run_lists": {

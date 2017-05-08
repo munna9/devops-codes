@@ -1,8 +1,8 @@
 {
-  "name": "mongodb",
+  "name": "ccglobal-app",
   "json_class": "Chef::Role",
   "chef_type": "role",
-  "description": "Recipes which configures host to be mongodb server",
+  "description": "Recipes which configures host to be NGCC server",
   "default_attributes": {
 
   },
@@ -10,10 +10,11 @@
 
   },
   "run_list": [
-    "role[_base]"
   ],
   "env_run_lists": {
-
+    "prod-ccglobal":[
+      "role[_base]"
+    ]
 
   }
 }

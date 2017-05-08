@@ -18,7 +18,7 @@
     "recipe[docker::wrappers]",
     "recipe[aws::cli_install]",
     "recipe[aws::ecr_login]",
-    "recipe[jenkins::slave_workstation]"
+    "recipe[jenkins::configure]"
   ],
   "env_run_lists": {
 
