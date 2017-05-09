@@ -1,0 +1,20 @@
+{
+  "name": "ccglobal-app",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "description": "Recipes which configures host to be DEC server",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "run_list": [
+  ],
+  "env_run_lists": {
+    "prod-dec":[
+      "role[_base]"
+    ]
+
+  }
+}
