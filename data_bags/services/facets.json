@@ -1,8 +1,8 @@
 {
-  "id": "cp-facets",
+  "id": "facets",
   "dev-cms": {
     "ecr": {
-      "cp-facets": {
+      "facets": {
         "image_name": "cp_facets",
         "tag_name": "DEV-CP",
         "ports": {
@@ -12,7 +12,7 @@
           "CONF_FILE_NAME=application.conf"
         ],
         "volumes": {
-          "/var/log/containers/cp-facets": "/opt/deployment/logs/cp_facets",
+          "/var/log/containers/facets": "/opt/deployment/logs/cp_facets",
           "/opt/phenom/buildproperties/cp-facets/DEV": "/opt/deployment/buildproperties"
         }
       }
