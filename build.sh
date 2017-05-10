@@ -28,21 +28,21 @@ ecr_hub_push(){
             aws ecr batch-delete-image --repository-name $IMAGE_NAME --image-ids imageDigest=$EACH_UNTAGGED
         done
         echo -e "\x1B[01;32mPushing $PROJECT_NAME\x1b[0m"
-        docker push  $PROJECT_NAME &
+        #docker push  $PROJECT_NAME &
     done
     wait
 }
 docker_hub_push () {
     BUILD_NAME=$1
     IMAGE_NAME=$(echo $BUILD_NAME | cut -f1 -d :)
-    LATEST_IMAGE=$(ls -rd "docker/$IMAGE_NAME"* | head -1)
+    LATEST_IMAGE=$(ls -rd "docker/$IMAGE_NAME:"* | head -1)
     PROJECT_PATH="docker/$BUILD_NAME"
     if [ "$LATEST_IMAGE" == "$PROJECT_PATH" ]; then
         echo -e "\x1B[01;32m Updating latest tag for $BUILD_NAME \x1B[0m"
         docker tag $BUILD_NAME $IMAGE_NAME:latest
-        docker push $IMAGE_NAME:latest
+        #docker push $IMAGE_NAME:latest
     fi
-    docker push $BUILD_NAME
+    #docker push $BUILD_NAME
 }
 
 local_docker_build() {
