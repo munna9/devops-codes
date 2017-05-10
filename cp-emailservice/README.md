@@ -39,15 +39,15 @@ Please read attributes section for configuration paramaters for any recipe(s)
 
 ### cp-emailservice::ecr_deploy
 
-Deploys cp-emailservice container by referring data bag item cp-emailservice of services data bag.
+Deploys cp_emailservice container by referring data bag item cp_emailservice of services data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Pulls docker image from Elastic container registry to the running node.
-1. It runs container with specifications mentioned under data bag item cp-emailservice of services data bag.
+1. It runs container with specifications mentioned under data bag item cp_emailservice of services data bag.
 
 ### cp-emailservice::ecr_undeploy
 
-Remove Deployed cp-emailservice container by referring data bag item cp-emailservice of services data bag.
+Remove Deployed cp_emailservice container by referring data bag item cp_emailservice of services data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Container stopped and removed after deregistering from ELB if defined.

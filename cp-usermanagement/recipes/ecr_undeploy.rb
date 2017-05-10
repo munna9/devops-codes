@@ -1,4 +1,4 @@
-ecr_undeploy "cp-usermanagement undeploy" do
+ecr_undeploy "cp_usermanagement undeploy" do
   vault_name 'services'
-  app_name 'cp-usermanagement'
+  app_name 'cp_usermanagement'
 end
