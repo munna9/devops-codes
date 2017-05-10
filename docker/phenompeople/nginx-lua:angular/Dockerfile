@@ -3,10 +3,10 @@
 FROM centos:7.3.1611
 
 MAINTAINER Rajesh Jonnalagadda "admin.squad@phenompeople.com"
-
+ONBUILD ARG APP_HOME=/opt/deployment
 ONBUILD RUN yum install -q -e 0 -y wget make perl gcc-c++ pcre-devel zlib-devel file && \
-    useradd -d  /opt/phenom phenom && \
-    mkdir -p /opt/phenom/scripts
+    useradd -d  ${APP_HOME} phenom && \
+    mkdir -p ${APP_HOME}/scripts
 
 LABEL project="nginx-lua"
 ONBUILD ARG NGINX_VERSION=1.11.10
@@ -28,8 +28,8 @@ ONBUILD ENV PCRE_VERSION=${PCRE_VERSION} \
     NGINX_LUA_MOD_VERSION=${NGINX_LUA_MOD_VERSION} \
     NGINX_SETUP_DIR='/opt/cache/nginx'
 
-ONBUILD ADD setup /opt/phenom/scripts
-ONBUILD RUN /opt/phenom/scripts/install.sh
+ONBUILD ADD setup ${APP_HOME}/scripts
+ONBUILD RUN ${APP_HOME}/scripts/install.sh
 ONBUILD COPY config/nginx.conf /etc/nginx/nginx.conf
 
 ONBUILD VOLUME /usr/share/nginx/html \
