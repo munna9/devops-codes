@@ -1,6 +1,6 @@
-cp-microservice-cookbook
+microservice-cookbook
 =========================
-Deploy and configure  operations on cp-microservice cookbook.
+Deploy and configure  operations on microservice cookbook.
 
 Requirements
 ------------
@@ -37,7 +37,7 @@ Chef resources (DSL) and Ruby designed to read and behave in a predictable manne
 
 Please read attributes section for configuration paramaters for any recipe(s)
 
-### cp-microservice::ecr_deploy
+### microservice::ecr_deploy
 
 Deploys cp_microservice container by referring data bag item cp_microservice of services data bag.
 
@@ -45,7 +45,7 @@ Deploys cp_microservice container by referring data bag item cp_microservice of 
 1. Pulls docker image from Elastic container registry to the running node.
 1. It runs container with specifications mentioned under data bag item cp_microservice of services data bag.
 
-### cp-microservice::ecr_undeploy
+### microservice::ecr_undeploy
 
 Remove Deployed cp_microservice container by referring data bag item cp_microservice of services data bag.
 

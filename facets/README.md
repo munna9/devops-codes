@@ -1,6 +1,6 @@
-cp-emailservice-cookbook
+facets-cookbook
 =========================
-Deploy and configure  operations on cp-emailservice cookbook.
+Deploy and configure  operations on facets cookbook.
 
 Requirements
 ------------
@@ -37,17 +37,17 @@ Chef resources (DSL) and Ruby designed to read and behave in a predictable manne
 
 Please read attributes section for configuration paramaters for any recipe(s)
 
-### cp-emailservice::ecr_deploy
+### facets::ecr_deploy
 
-Deploys cp_emailservice container by referring data bag item cp_emailservice of services data bag.
+Deploys cp_facets container by referring data bag item cp_facets of services data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Pulls docker image from Elastic container registry to the running node.
-1. It runs container with specifications mentioned under data bag item cp_emailservice of services data bag.
+1. It runs container with specifications mentioned under data bag item cp_facets of services data bag.
 
-### cp-emailservice::ecr_undeploy
+### facets::ecr_undeploy
 
-Remove Deployed cp_emailservice container by referring data bag item cp_emailservice of services data bag.
+Remove Deployed cp_facets container by referring data bag item cp_facets of services data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Container stopped and removed after deregistering from ELB if defined.

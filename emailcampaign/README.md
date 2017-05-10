@@ -1,6 +1,6 @@
-cp-usermanagement-cookbook
+emailcampaign-cookbook
 =========================
-Deploy and configure  operations on cp-usermanagement cookbook.
+Deploy and configure  operations on emailcampaign cookbook.
 
 Requirements
 ------------
@@ -37,17 +37,17 @@ Chef resources (DSL) and Ruby designed to read and behave in a predictable manne
 
 Please read attributes section for configuration paramaters for any recipe(s)
 
-### cp-usermanagement::ecr_deploy
+### emailcampaign::ecr_deploy
 
-Deploys cp_usermanagement container by referring data bag item cp_usermanagement of services data bag.
+Deploys cp_emailcampaign container by referring data bag item cp_emailcampaign of services data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Pulls docker image from Elastic container registry to the running node.
-1. It runs container with specifications mentioned under data bag item cp_usermanagement of services data bag.
+1. It runs container with specifications mentioned under data bag item cp_emailcampaign of services data bag.
 
-### cp-usermanagement::ecr_undeploy
+### emailcampaign::ecr_undeploy
 
-Remove Deployed cp_usermanagement container by referring data bag item cp_usermanagement of services data bag.
+Remove Deployed cp_emailcampaign container by referring data bag item cp_emailcampaign of services data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Container stopped and removed after deregistering from ELB if defined.
