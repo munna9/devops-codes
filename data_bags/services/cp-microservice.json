@@ -3,7 +3,7 @@
   "dev-cms": {
     "ecr": {
       "cp-microservice": {
-        "image_name": "cp-microservice",
+        "image_name": "cp_microservice",
         "tag_name": "DEV-CP",
         "ports": {
           "9014": "9000"
@@ -12,7 +12,7 @@
           "CONF_FILE_NAME=application.conf"
         ],
         "volumes": {
-          "/var/log/containers/cp-microservice": "/opt/deployment/logs/cp-microservice",
+          "/var/log/containers/cp-microservice": "/opt/deployment/logs/cp_microservice",
           "/opt/phenom/buildproperties/cp-microservice/DEV": "/opt/deployment/buildproperties"
         }
       }

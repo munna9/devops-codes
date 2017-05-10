@@ -3,7 +3,7 @@
   "dev-cms": {
     "ecr": {
       "cp-emailservice": {
-        "image_name": "cp-email-microservice",
+        "image_name": "cp_email-microservice",
         "tag_name": "DEV-CP",
         "ports": {
           "9012": "9000"
@@ -12,7 +12,7 @@
           "CONF_FILE_NAME=application.conf"
         ],
         "volumes": {
-          "/var/log/containers/cp-emailservice": "/opt/deployment/logs/cp-email-microservice",
+          "/var/log/containers/cp-emailservice": "/opt/deployment/logs/cp_email-microservice",
           "/opt/phenom/buildproperties/cp-email-microservices/DEV": "/opt/deployment/buildproperties"
         }
       }

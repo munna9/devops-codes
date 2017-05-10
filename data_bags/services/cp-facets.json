@@ -3,7 +3,7 @@
   "dev-cms": {
     "ecr": {
       "cp-facets": {
-        "image_name": "cp-facets",
+        "image_name": "cp_facets",
         "tag_name": "DEV-CP",
         "ports": {
           "9011": "9000"
@@ -12,7 +12,7 @@
           "CONF_FILE_NAME=application.conf"
         ],
         "volumes": {
-          "/var/log/containers/cp-facets": "/opt/deployment/logs/cp-facets",
+          "/var/log/containers/cp-facets": "/opt/deployment/logs/cp_facets",
           "/opt/phenom/buildproperties/cp-facets/DEV": "/opt/deployment/buildproperties"
         }
       }
