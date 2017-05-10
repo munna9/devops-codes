@@ -39,15 +39,15 @@ Please read attributes section for configuration paramaters for any recipe(s)
 
 ### data-service::ecr_deploy
 
-Deploys ph_data-service container by referring data bag item ph_data-service of services data bag.
+Deploys data-service container by referring data bag item data-service of services data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Pulls docker image from Elastic container registry to the running node.
-1. It runs container with specifications mentioned under data bag item ph_data-service of services data bag.
+1. It runs container with specifications mentioned under data bag item data-service of services data bag.
 
 ### data-service::ecr_undeploy
 
-Remove Deployed ph_data-service container by referring data bag item ph_data-service of services data bag.
+Remove Deployed data-service container by referring data bag item data-service of services data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Container stopped and removed after deregistering from ELB if defined.
@@ -56,7 +56,7 @@ Remove Deployed ph_data-service container by referring data bag item ph_data-ser
 ## Maintainers
 
 * Rajesh Jonnalagadda (<rajesh.jonnalagadda@phenompeople.com>)
-* Venkat Bumireddy    (<venkat.bumireddy@phenompeople.com)
+* Venkat Bumireddy    (<venkat.bumireddy@phenompeople.com>)
 
 ## License and Authors
 

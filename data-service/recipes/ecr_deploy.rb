@@ -1,4 +1,4 @@
-ecr_deploy "ph_data-service Deploy" do
+ecr_deploy "data-service Deploy" do
   vault_name 'services'
-  app_name 'ph_data-service'
+  app_name 'data-service'
 end

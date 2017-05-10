@@ -1,4 +1,4 @@
-ecr_deploy "ph_externalapi-service Deploy" do
+ecr_deploy "externalapi-service Deploy" do
   vault_name 'services'
-  app_name 'ph_externalapi-service'
+  app_name 'externalapi-service'
 end
