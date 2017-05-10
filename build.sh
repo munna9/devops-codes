@@ -17,7 +17,7 @@ ecr_hub_push(){
         fi
         PROJECT_NAME=$AWS_ACCOUNT_ID.dkr.ecr.$EACH_REGION.amazonaws.com/$IMAGE_NAME
         docker tag $BUILD_NAME $AWS_ACCOUNT_ID.dkr.ecr.$EACH_REGION.amazonaws.com/$BUILD_NAME
-        LATEST_IMAGE=$(ls -rd "ecr/$IMAGE_NAME"* | head -1)
+        LATEST_IMAGE=$(ls -rd "ecr/$IMAGE_NAME:"* | head -1)
         PROJECT_PATH="ecr/$BUILD_NAME"
         if [ "$LATEST_IMAGE" == "$PROJECT_PATH" ]; then
             echo -e "\x1B[01;32m Updating latest tag for $BUILD_NAME \x1B[0m"
