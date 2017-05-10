@@ -30,6 +30,10 @@ able to get it working on other platform, with appropriate configuration updates
 |---------------------------------|-----------|-----------|----------|----------|----------|----------|
 | maven_uninstall                 |    √      |    √      |    √     |    √     |    √     |    √     |    
 |---------------------------------|-----------|-----------|----------|----------|----------|----------|
+| nodejs_install                  |    √      |    √      |    √     |    √     |    √     |    √     |    
+|---------------------------------|-----------|-----------|----------|----------|----------|----------|
+| nodejs_uninstall                |    √      |    √      |    √     |    √     |    √     |    √     |    
+|---------------------------------|-----------|-----------|----------|----------|----------|----------|
 
 ```
 Recipe details
@@ -90,7 +94,7 @@ Installs and configures Linux X64 apache-maven-3.5.0
 1. Extracts downloaded binaries from `file_cache_path` to defined location under `node['build-essentials']['maven']['base_directory']`
 1. Create/update symbolic link from `node['build-essentials']['maven']['app_directory']` to `node['build-essentials']['maven']['home_directory']`
 
-### basic-essentials::oracle_java_default_uninstall
+### basic-essentials::maven_uninstall
 
 Removes and de-configures Linux X64 apache-maven-3.5.0
 
@@ -98,6 +102,21 @@ Removes and de-configures Linux X64 apache-maven-3.5.0
 1. Removes directory recursively under `node['build-essentials']['maven']['home_directory']`
 1. Removes downloaded artifact from `file_cache_path`.
 
+### build-essentials::nodejs_install
+
+Installs and configures Node JS, NPM and Gulp and NG
+
+1. Downloads NodeJS repository setup script as defined in `['nodejs']['repo']['uri']` to `file_cache_path` location if not exists
+1. Execute NodeJS repository setup script for setting repository based on converging node's platform
+1. Installs `['nodejs']['binary']['package']` with specific binary version if `['nodejs']['pin_version']` is true, otherwise installs latest available version of package at the time converge.
+
+### basic-essentials::maven_uninstall
+
+Removes and de-configures Node JS, NPM and Gulp and NG
+
+1. Removes Gulp, NG binaries from converging node
+1. Removes `['nodejs']['binary']['package']` with specific binary version if `['nodejs']['pin_version']` is true, otherwise removes  available version of package at the time converge.
+1. Removes NodeJS repository setup script `file_cache_path`.
 
 Attributes
 ====
@@ -119,6 +138,15 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 |['buildproperties']['maven']['base_directory']                      | String        | Base directory for hosting apache maven binaries          |
 |['buildproperties']['maven']['home_directory']                      | String        | Directory of maven binaries after extraction              |
 |['buildproperties']['maven']['app_directory']                       | String        | Symbolic link of latest maven installation binaries       |
+#### attributes/nodejs.rb
+|Attribute Name                                                      | Type          | Description                                               |
+|--------------------------------------------------------------------|---------------|-----------------------------------------------------------|
+|['nodejs']['repo']['uri']                                           | String        | URI for fetching nodejs repo directory                    |
+|['nodejs']['binary']['packages']                                    | String        | Binary package name for node JS                           |
+|['nodejs']['binary']['version']                                     | String        | Version of Node JS binary                                 |
+|['nodejs']['gulp']['binary_path']                                   | String        | Gulp binary package path                                  |
+|['nodejs']['ng']['binary_path']                                     | String        | Gulp binary package path                                  |
+
 
 ## Maintainers
 

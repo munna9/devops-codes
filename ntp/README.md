@@ -48,14 +48,14 @@ Please read attributes section for configuration paramaters for any recipe(s)
 Installs platform and version specific binaries from respective providers.    
 
 1. Reads `['ntp']['client']['packages']` based on running platform and platform_version.
-1. Installs each of those hash key value pair(s) with specific binary version if `node['ntp]['pin_version']` is true,
+1. Installs each of those hash key value pair(s) with specific binary version if `['ntp']['pin_version']` is true,
    otherwise installs latest available version of package at the time converge.
 
 ### ntp::service
 
 Enables ntp service across multiple distributions listed from above table.
 
-1. Identifies service name of ntp from `node['ntp']['service']['name']`. This variable is updated according to the distribution.
+1. Identifies service name of ntp from `['ntp']['service']['name']`. This variable is updated according to the distribution.
 1. Controls how the chef-client is to attempt to manage a service `:enable`, `:start`,`:restart`, `:status`, `:reload` 
 1. Performs action of `:enable` to keep the service up and running on successive restarts whereas `:start` to make service available for immediate accessibility.
 
@@ -64,7 +64,7 @@ Enables ntp service across multiple distributions listed from above table.
 Removes ntp binaries and other configuration file(s). 
 
 1. Stops and disables `['ntp']['service']['name']`.
-1. Removes all binaries defined under `node['ntp']['client']['packages']` hash based on running node's platform and platform_version.
+1. Removes all binaries defined under `['ntp']['client']['packages']` hash based on running node's platform and platform_version.
 1. Removes configuration files and/or directories if any.
 
 Attributes
@@ -76,13 +76,13 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 
 #### attributes/default.rb
 
-|Attribute Name                                 | Type          | Description                                                          |
-|---------------------------------------------- |---------------|----------------------------------------------------------------------|
-| ['ntp']['pin_version']                        | Boolean       | If true, it installs only given version of package                   |
-| ['ntp']['client']['packages']                 | Hash          | Binary package and version for listed distribution                   | 
-| ['ntp']['service']['name']                    | String        | Ntp service name updated based on distribution                       |
-| ['ntp']['service']['owner']                   | String        | Ntp service owner updated based on distribution                      |
-| ['ntp']['service']['group']                   | String        | Ntp service group updated based on distribution                      |                                          |
+|Attribute Name                                 | Type          | Description                                           |
+|---------------------------------------------- |---------------|-------------------------------------------------------|
+| ['ntp']['pin_version']                        | Boolean       | If true, it installs only given version of package    |
+| ['ntp']['client']['packages']                 | Hash          | Binary package and version for listed distribution    | 
+| ['ntp']['service']['name']                    | String        | Ntp service name updated based on distribution        |
+| ['ntp']['service']['owner']                   | String        | Ntp service owner updated based on distribution       |
+| ['ntp']['service']['group']                   | String        | Ntp service group updated based on distribution       |
 
 ## Maintainers
 

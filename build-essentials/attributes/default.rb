@@ -8,3 +8,5 @@ default['build-essentials']['maven']['uri'] = "http://mirror.fibergrid.in/apache
 default['build-essentials']['maven']['base_directory']='/usr/local'
 default['build-essentials']['maven']['home_directory']="#{node['build-essentials']['maven']['base_directory']}/apache-maven-#{node['build-essentials']['maven']['version']}"
 default['build-essentials']['maven']['app_directory']="#{node['build-essentials']['maven']['base_directory']}/apache-maven"
+
+

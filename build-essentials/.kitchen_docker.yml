@@ -13,7 +13,6 @@ platforms:
       platform: centos
       privileged: true
       volume: /sys/fs/cgroup
-      privileged: true
       remove_images: false
 
   - name: amazon-2016.09
@@ -22,7 +21,6 @@ platforms:
       platform: centos
       privileged: true
       volume: /sys/fs/cgroup
-      privileged: true
       remove_images: false
 
   - name: centos-7.3
@@ -33,7 +31,7 @@ platforms:
       privileged: true
       volume:
         - /sys/fs/cgroup:/sys/fs/cgroup
-      remove_images: false
+      remove_images: true
 
   - name: centos-7.2
     driver_config:
@@ -58,7 +56,7 @@ platforms:
       remove_images: true
 
 suites:
-  - name: default
+  - name: deploy_user
     run_list:
       - recipe[basic-essentials::oracle_java_default]
       - recipe[build-essentials::deploy_user_assemble]
@@ -66,5 +64,17 @@ suites:
       - recipe[build-essentials::buildproperties_repo]
       - recipe[build-essentials::maven_install]
 #      - recipe[build-essentials::deploy_user_dismantle]
-
     attributes:
+
+  - name: maven
+    run_list:
+      - recipe[basic-essentials::oracle_java_default]
+      - recipe[build-essentials::maven_install]
+    attributes:
+
+  - name: nodejs
+    run_list:
+      - recipe[build-essentials::nodejs_install]
+#      - recipe[build-essentials::nodejs_uninstall]
+    attributes:
+
