@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: cp-microservice
+# Cookbook Name:: microservice
 # Recipe:: default
 #
 # Copyright (C) 2017 Phenompeople Pvt Ltd

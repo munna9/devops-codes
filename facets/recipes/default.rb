@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: cp-facets
+# Cookbook Name:: facets
 # Recipe:: default
 #
 # Copyright (C) 2017 Phenompeople Pvt Ltd

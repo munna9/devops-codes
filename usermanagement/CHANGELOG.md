@@ -1,2 +1,2 @@
 # 0.1.0
-[venkatb] - Initial release of usermanagement
+[hadassahn] - Initial release of usermanagement

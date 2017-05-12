@@ -26,7 +26,7 @@ able to get it working on other platform, with appropriate configuration updates
 Recipe details
 ----------------
 
-A recipe is the most fundamental configuration element within the organization. Receipe is authored using 
+A recipe is the most fundamental configuration element within the organization. Recipe is authored using 
 Chef resources (DSL) and Ruby designed to read and behave in a predictable manner.
 
 * Recipe is a collection of resource(a statement of configuration),
@@ -50,7 +50,7 @@ Deploys seo-service container by referring data bag item seo-service of services
 Remove Deployed seo-service container by referring data bag item seo-service of services data bag.
 
 1. Loads data bag referred by vault_name and app_name.
-1. Container stopped and removed after deregistering from ELB if defined.
+1. Container is stopped and removed after deregistering from ELB if defined.
 1. It removes images from the host.
 
 ## Maintainers

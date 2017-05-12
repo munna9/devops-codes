@@ -1,4 +1,4 @@
-ecr_deploy "cp_usermanagement Deploy" do
+ecr_deploy "usermanagement Deploy" do
   vault_name 'services'
-  app_name 'cp_usermanagement'
+  app_name 'usermanagement'
 end

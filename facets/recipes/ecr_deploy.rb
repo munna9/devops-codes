@@ -1,4 +1,4 @@
-ecr_deploy "cp_facets Deploy" do
+ecr_deploy "facets Deploy" do
   vault_name 'services'
-  app_name 'cp_facets'
+  app_name 'facets'
 end

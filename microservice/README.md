@@ -26,7 +26,7 @@ able to get it working on other platform, with appropriate configuration updates
 Recipe details
 ----------------
 
-A recipe is the most fundamental configuration element within the organization. Receipe is authored using 
+A recipe is the most fundamental configuration element within the organization. Recipe is authored using 
 Chef resources (DSL) and Ruby designed to read and behave in a predictable manner.
 
 * Recipe is a collection of resource(a statement of configuration),
@@ -35,28 +35,28 @@ Chef resources (DSL) and Ruby designed to read and behave in a predictable manne
 * Must be stored in a cookbook under recipes directories.
 * Must be added to a run-list before it can be used by the chef-client
 
-Please read attributes section for configuration paramaters for any recipe(s)
+Please read attributes section for configuration parameters for any recipe(s)
 
 ### microservice::ecr_deploy
 
-Deploys cp_microservice container by referring data bag item cp_microservice of services data bag.
+Deploys microservice container by referring data bag item microservice of services data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Pulls docker image from Elastic container registry to the running node.
-1. It runs container with specifications mentioned under data bag item cp_microservice of services data bag.
+1. It runs container with specifications mentioned under data bag item microservice of services data bag.
 
 ### microservice::ecr_undeploy
 
-Remove Deployed cp_microservice container by referring data bag item cp_microservice of services data bag.
+Remove Deployed microservice container by referring data bag item microservice of services data bag.
 
 1. Loads data bag referred by vault_name and app_name.
-1. Container stopped and removed after deregistering from ELB if defined.
-1. It removes images from the host.
+1. Container is stopped and removed after deregistering from ELB if defined.
+1. It removes image(s) from the host.
 
 ## Maintainers
 
 * Rajesh Jonnalagadda (<rajesh.jonnalagadda@phenompeople.com>)
-* Venkat Bumireddy    (<venkat.bumireddy@phenompeople.com>)
+* Hadassah Pearlyn (<hadassah.nagathota@phenompeople.com>)
 
 ## License and Authors
 

@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: cp-usermanagement
+# Cookbook Name:: usermanagement
 # Recipe:: default
 #
 # Copyright (C) 2017 Phenompeople Pvt Ltd

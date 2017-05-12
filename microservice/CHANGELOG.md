@@ -1,3 +1,2 @@
 # 0.1.0
-
-Initial release of microservice
+[hadassahn] - Initial release of microservice

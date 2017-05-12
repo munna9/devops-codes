@@ -1,4 +1,4 @@
-ecr_undeploy "cp_emailservice undeploy" do
+ecr_undeploy "emailservice undeploy" do
   vault_name 'services'
-  app_name 'cp_emailservice'
+  app_name 'emailservice'
 end

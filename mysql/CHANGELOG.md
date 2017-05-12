@@ -1,3 +1,5 @@
-# 0.1.0
+#0.0.2
+[hadassahn] - Updated metadata.rb
 
-Initial release of mysql
+# 0.0.1
+[rajeshj] - Initial release of mysql

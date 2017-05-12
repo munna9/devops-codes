@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: cp-emailservice
+# Cookbook Name:: emailservice
 # Recipe:: default
 #
 # Copyright (C) 2017 Phenompeople Pvt Ltd

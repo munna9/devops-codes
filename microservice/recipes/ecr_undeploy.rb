@@ -1,4 +1,4 @@
-ecr_undeploy "cp_microservice undeploy" do
+ecr_undeploy "microservice undeploy" do
   vault_name 'services'
-  app_name 'cp_microservice'
+  app_name 'microservice'
 end

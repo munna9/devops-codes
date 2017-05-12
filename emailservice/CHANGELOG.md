@@ -1,3 +1,2 @@
 # 0.1.0
-
-Initial release of emailservice
+[hadassahn] - Initial release of emailservice
