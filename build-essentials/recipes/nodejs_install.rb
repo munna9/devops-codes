@@ -25,7 +25,9 @@ remote_file "#{Chef::Config['file_cache_path']}/nvm_install.sh" do
   sensitive true
   mode '0777'
 end
+
 directory node['nodejs']['nvm']['home_directory']
+
 execute 'install-nvm' do
   command "export NVM_DIR=#{node['nodejs']['nvm']['home_directory']};bash #{Chef::Config['file_cache_path']}/nvm_install.sh"
   creates node['nodejs']['nvm']['binary_path']
@@ -46,7 +48,7 @@ node['nodejs']['node']['versions'].each do |node_version|
 end
 bash 'install-angular-cli' do
   code <<-EOH
-    nvm use 6.0.0
+    nvm use #{node['nodes']['binary']['version']}
     npm install --global #{node['nodejs']['angular']['cli']}@#{node['nodejs']['angular']['version']}
   EOH
   creates node['nodejs']['angular']['binary_path']

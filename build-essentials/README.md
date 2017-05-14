@@ -104,19 +104,25 @@ Removes and de-configures Linux X64 apache-maven-3.5.0
 
 ### build-essentials::nodejs_install
 
-Installs and configures Node JS, NPM and Gulp and NG
+Installs and configures Node JJS, NPM, Gulp, Angular JS and NG
 
 1. Downloads NodeJS repository setup script as defined in `['nodejs']['repo']['uri']` to `file_cache_path` location if not exists
 1. Execute NodeJS repository setup script for setting repository based on converging node's platform
 1. Installs `['nodejs']['binary']['package']` with specific binary version if `['nodejs']['pin_version']` is true, otherwise installs latest available version of package at the time converge.
+1. Download `[nodejs]['nvm']['uri']` to `file_cache_path` if not exits
+1. Execute NodeJS Version manager script for the use of nodejs virtual environment 
+1. Create NodeJS version manager base directory `['nodejs']['nvm']['home_directory']` if not exists and update/assign nvm profile for all users
+1. Install if missing, `['nodejs']['node']['versions]` versions under `['nodejs']['nvm']['home_directory']`
+1. Install if missing, `['nodejs']['angular']['cli']` of `['nodejs']['angular']['version']` for `['nodejs']['binary']['version']`
 
-### basic-essentials::maven_uninstall
+### basic-essentials::nodejs_uninstall
 
-Removes and de-configures Node JS, NPM and Gulp and NG
+Removes and de-configures Node JS, NPM, Gulp, Angular JS and NG
 
 1. Removes Gulp, NG binaries from converging node
 1. Removes `['nodejs']['binary']['package']` with specific binary version if `['nodejs']['pin_version']` is true, otherwise removes  available version of package at the time converge.
 1. Removes NodeJS repository setup script `file_cache_path`.
+1. Removes `['nodejs']['nvm']['home_directory']`, `/etc/profile.d/nvm.sh` and `#{Chef::Config['file_cache_path']}/nvm_install.sh`
 
 Attributes
 ====
@@ -144,9 +150,14 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 |['nodejs']['repo']['uri']                                           | String        | URI for fetching nodejs repo directory                    |
 |['nodejs']['binary']['packages']                                    | String        | Binary package name for node JS                           |
 |['nodejs']['binary']['version']                                     | String        | Version of Node JS binary                                 |
-|['nodejs']['gulp']['binary_path']                                   | String        | Gulp binary package path                                  |
-|['nodejs']['ng']['binary_path']                                     | String        | Gulp binary package path                                  |
-
+|['nodejs']['gulp']['binary_path']                                   | String        | Gulp package binary  path                                 |
+|['nodejs']['ng']['binary_path']                                     | String        | NG package binary path                                    |
+|['nodejs']['nvm']['home_directory']                                 | String        | Node Version manager container directory                  |
+|['nodejs']['nvm']['uri']                                            | String        | NVM installation URI                                      |
+[['nodejs']['nvm']['binary_path']                                    | String        | NVM source script, which requires during nvm commands     |
+|['nodejs']['node']['versions']                                      | Array         | Multiple Node versions to be installed on machine         |
+|['nodejs']['angular']['binary_path']                                | String        | Absolute binary path of default Angular JS                |
+|['nodejs']['angular']['version']                                    | String        | Recommended global version of Angular CLI                 | 
 
 ## Maintainers
 

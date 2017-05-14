@@ -1,5 +1,5 @@
 # 0.1.5
-[rajeshj] - Adding Node Version Manager 
+[rajeshj] - Adding Node Version Manager and angular CLI setup 
 # 0.1.4
 [rajeshj] - Adding Node JS packages
 # 0.1.3
