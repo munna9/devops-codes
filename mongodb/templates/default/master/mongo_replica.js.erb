@@ -1,0 +1,7 @@
+;<%=node['phenom']['banner']%>
+use admin;
+rs.initiate()
+<%@slave_hosts.each do |host_name|%>
+rs.add("<%=host_name%>:<%=node['mongodb']['service']['port']%>")
+<%end%>
+exit

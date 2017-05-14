@@ -1,0 +1,4 @@
+#<%=node['phenom']['banner']%>
+<%@node['mongodb']['sysctl']['options'].each_pair do |sysctl_name,sysctl_value|%>
+<%=sysctl_name%>=<%=sysctl_value%>
+<%end%>

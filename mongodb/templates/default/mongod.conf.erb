@@ -1,0 +1,24 @@
+#<%=node['phenom']['banner']%>
+systemLog:
+  destination: file
+  logRotate: rename
+  path: <%=node['mongodb']['log']['file']%>
+storage:
+  dbPath: <%=node['mongodb']['storage']['path']%>
+  journal:
+    enabled: false
+processManagement:
+  fork: true
+  pidFilePath: /var/run/mongodb/mongod.pid
+net:
+  port: 27017
+security:
+  authorization: enabled
+  keyFile: <%=node['mongodb']['app']['key_file']%>
+operationProfiling:
+  slowOpThresholdMs: 100
+  mode: slowOp
+replication:
+    replSetName: <%=node['mongodb']['replication_name']%>
+setParameter:
+    diagnosticDataCollectionEnabled: false

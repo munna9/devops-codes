@@ -1,0 +1,54 @@
+---
+driver:
+  name: vagrant
+  network:
+    - ["forwarded_port", { guest: 80, host: 8080, auto_correct: true }]
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: awslinux
+    driver_config:
+      box: awslinux_2017.03
+
+#  - name: awslinux
+#    driver_config:
+#      box: awslinux_2016.09
+  - name: centos-7.3
+    driver_config:
+      box: centos_7.3.1611
+#  - name: centos-7.2
+#    driver_config:
+#      box: centos_7.2.1511
+#  - name: ubuntu-16.04
+#    driver_config:
+#      box: ubuntu_16.04
+#  - name: ubuntu-14.04
+#    drive_config:
+#      box: ubuntu_14.04
+
+suites:
+  - name: default
+    run_list:
+      - recipe[mongodb::install]
+      - recipe[mongodb::configure]
+      - recipe[mongodb::service]
+    attributes:
+      phenom:
+        banner: 'Dont edit by Hand !!! This file is modified by Chef. Please contact admin.squad@phenompeople.com for further assitance'
+      mongodb:
+        replication_name: 'rs0'
+
+  - name: master
+    run_list:
+      - recipe[mongodb::install]
+      - recipe[mongodb::master]
+#      - recipe[mongodb::configure]
+      - recipe[mongodb::service]
+      - recipe[mongodb::fine_tunning]
+    attributes:
+      phenom:
+        banner: 'Dont edit by Hand !!! This file is modified by Chef. Please contact admin.squad@phenompeople.com for further assitance'
+      mongodb:
+        replication_name: 'rs0'

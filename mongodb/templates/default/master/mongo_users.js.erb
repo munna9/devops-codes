@@ -1,0 +1,6 @@
+;<%=node['phenom']['banner']%>
+use admin;
+<%@user_hash.each_pair do |user_name,user_hash|%>
+db.createUser( { user: "<%=user_hash['username']%>", pwd: "<%=user_hash['password']%>", roles: [ { role: "<%=user_hash['role']%>", db: "admin" } ] });
+<%end%>
+exit
