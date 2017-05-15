@@ -1,8 +1,8 @@
 {
-  "name": "candidates-app",
+  "name": "cms-app",
   "json_class": "Chef::Role",
   "chef_type": "role",
-  "description": "Recipes which configures host to be mongodb server",
+  "description": "Recipes which configures host to be CMS server",
   "default_attributes": {
 
   },
@@ -10,11 +10,12 @@
 
   },
   "run_list": [
-    "role[_base]"
+      "role[_base]"
   ],
   "env_run_lists": {
-    "qa-candidates":[
+    "prod-dec":[
       "role[_base]"
     ]
+
   }
 }

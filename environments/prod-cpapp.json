@@ -1,0 +1,24 @@
+{
+  "name": "prod-cpapp",
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "description": "PRD environment specfication file for candidates cp elk",
+
+  "cookbook_versions": {
+
+  },
+
+  "default_attributes": {
+      "elasticsearch": {
+          "cluster_name": "cpcluster",
+          "server_name": "172.25.5.72",
+          "server_port": "9200"
+      }
+
+  },
+
+  "override_attributes": {
+    
+  
+  }
+}
