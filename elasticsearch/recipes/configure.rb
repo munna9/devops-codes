@@ -7,8 +7,12 @@ template node['elasticsearch']['conf']['file'] do
   sensitive true
   notifies :restart, "service[#{node['elasticsearch']['service']['name']}]"
 end
+directory node['nginx']['app']['conf_directory'] do
+	recursive true
+	action :create
+end
 template "#{node['nginx']['app']['conf_directory']}/elasticsearch.conf" do
   source 'elasticsearch.conf.erb'
   sensitive true
-  notifies :reload, "service[#{node['nginx']['service']['name']}]"
+  notifies :restart, "service[#{node['nginx']['service']['name']}]"
 end
