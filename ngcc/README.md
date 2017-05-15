@@ -39,15 +39,15 @@ Please read attributes section for configuration paramaters for any recipe(s)
 
 ### ngcc::ecr_deploy
 
-Deploys ngcc container by referring data bag item ngcc of services data bag.
+Deploys ngcc container by referring data bag item ngcc of communities data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Pulls docker image from Elastic container registry to the running node.
-1. It runs container with specifications mentioned under data bag item ngcc of services data bag.
+1. It runs container with specifications mentioned under data bag item ngcc of communities data bag.
 
 ### ngcc::ecr_undeploy
 
-Remove Deployed ngcc container by referring data bag item ngcc of services data bag.
+Remove Deployed ngcc container by referring data bag item ngcc of communities data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Container stopped and removed after deregistering from ELB if defined.

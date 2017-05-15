@@ -39,15 +39,15 @@ Please read attributes section for configuration parameters for any recipe(s)
 
 ### phenombot::ecr_deploy
 
-Deploys phenombot container by referring data bag item phenombot of services data bag.
+Deploys phenombot container by referring data bag item phenombot of communities data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Pulls docker image from Elastic container registry to the running node.
-1. It runs container with specifications mentioned under data bag item phenombot of services data bag.
+1. It runs container with specifications mentioned under data bag item phenombot of communities data bag.
 
 ### phenombot::ecr_undeploy
 
-Remove Deployed phenombot container by referring data bag item phenombot of services data bag.
+Remove Deployed phenombot container by referring data bag item phenombot of communities data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Container is stopped and removed after deregistering from ELB if defined.

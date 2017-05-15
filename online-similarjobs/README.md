@@ -39,15 +39,15 @@ Please read attributes section for configuration parameters for any recipe(s)
 
 ### online-similarjobs::ecr_deploy
 
-Deploys online-similarjobs container by referring data bag item online-similarjobs of services data bag.
+Deploys online-similarjobs container by referring data bag item online-similarjobs of communities data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Pulls docker image from Elastic container registry to the running node.
-1. It runs container with specifications mentioned under data bag item online-similarjobs of services data bag.
+1. It runs container with specifications mentioned under data bag item online-similarjobs of communities data bag.
 
 ### online-similarjobs::ecr_undeploy
 
-Remove Deployed online-similarjobs container by referring data bag item online-similarjobs of services data bag.
+Remove Deployed online-similarjobs container by referring data bag item online-similarjobs of communities data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Container is stopped and removed after deregistering from ELB if defined.

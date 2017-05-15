@@ -39,15 +39,15 @@ Please read attributes section for configuration parameters for any recipe(s)
 
 ### offline-content::ecr_deploy
 
-Deploys offline-content container by referring data bag item offline-content of services data bag.
+Deploys offline-content container by referring data bag item offline-content of communities data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Pulls docker image from Elastic container registry to the running node.
-1. It runs container with specifications mentioned under data bag item offline-content of services data bag.
+1. It runs container with specifications mentioned under data bag item offline-content of communities data bag.
 
 ### offline-content::ecr_undeploy
 
-Remove Deployed offline-content container by referring data bag item offline-content of services data bag.
+Remove Deployed offline-content container by referring data bag item offline-content of communities data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Container is stopped and removed after deregistering from ELB if defined.

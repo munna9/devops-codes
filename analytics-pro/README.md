@@ -39,15 +39,15 @@ Please read attributes section for configuration parameters for any recipe(s)
 
 ### analytics-pro::ecr_deploy
 
-Deploys analytics-pro container by referring data bag item analytics-pro of services data bag.
+Deploys analytics-pro container by referring data bag item analytics-pro of communities data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Pulls docker image from Elastic container registry to the running node.
-1. It runs container with specifications mentioned under data bag item analytics-pro of services data bag.
+1. It runs container with specifications mentioned under data bag item analytics-pro of communities data bag.
 
 ### analytics-pro::ecr_undeploy
 
-Remove Deployed analytics-pro container by referring data bag item analytics-pro of services data bag.
+Remove Deployed analytics-pro container by referring data bag item analytics-pro of communities data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Container is stopped and removed after deregistering from ELB if defined.

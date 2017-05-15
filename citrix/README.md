@@ -39,15 +39,15 @@ Please read attributes section for configuration parameters for any recipe(s)
 
 ### citrix::ecr_deploy
 
-Deploys citrix container by referring data bag item citrix of services data bag.
+Deploys citrix container by referring data bag item citrix of communities data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Pulls docker image from Elastic container registry to the running node.
-1. It runs container with specifications mentioned under data bag item citrix of services data bag.
+1. It runs container with specifications mentioned under data bag item citrix of communities data bag.
 
 ### citrix::ecr_undeploy
 
-Remove Deployed citrix container by referring data bag item citrix of services data bag.
+Remove Deployed citrix container by referring data bag item citrix of communities data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Container is stopped and removed after deregistering from ELB if defined.
