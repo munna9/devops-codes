@@ -1,3 +1,5 @@
+#0.1.10
+[hadassah] - Updated supports in metadata.rb
 #0.1.9
 [hadassah] - Changed the base directory for installing java to /usr/local, updated with amazon linux 2017.03
 #0.1.8
