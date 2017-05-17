@@ -1,4 +1,4 @@
 ecr_undeploy "jobdistribtn undeploy" do
-  vault_name 'services'
+  vault_name 'communities'
   app_name 'jobdistribtn'
 end

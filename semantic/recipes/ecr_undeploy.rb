@@ -1,4 +1,4 @@
 ecr_undeploy "semantic undeploy" do
-  vault_name 'services'
+  vault_name 'communities'
   app_name 'semantic'
 end

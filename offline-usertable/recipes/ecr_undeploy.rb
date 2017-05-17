@@ -1,4 +1,4 @@
 ecr_undeploy "offline-usertable undeploy" do
-  vault_name 'services'
+  vault_name 'communities'
   app_name 'offline-usertable'
 end

@@ -1,4 +1,4 @@
 ecr_deploy "service Deploy" do
-  vault_name 'services'
+  vault_name 'communities'
   app_name 'service'
 end

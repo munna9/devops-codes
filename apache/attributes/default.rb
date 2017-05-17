@@ -1,3 +1,4 @@
+default['apache']['pin_version']=true
 default['apache']['binary']['packages'] ={
   'amazon' => {
     '2016.09' => {
