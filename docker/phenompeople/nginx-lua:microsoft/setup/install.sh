@@ -92,8 +92,8 @@ cd $NGINX_SETUP_DIR/nginx-$NGINX_VERSION
   --with-mail_ssl_module \
   --with-threads \
   --with-ld-opt="-Wl,-rpath,/usr/local/lib" \
-  --add-dynamic-module=$NGINX_SETUP_DIR/ngx_devel_kit-0.3.0 \
-  --add-dynamic-module=$NGINX_SETUP_DIR/lua-nginx-module-0.10.7 \
+  --add-dynamic-module=$NGINX_SETUP_DIR/ngx_devel_kit-${NGINX_DEV_KIT_VERSION#v} \
+  --add-dynamic-module=$NGINX_SETUP_DIR/lua-nginx-module-${NGINX_DEV_KIT_VERSION#v} \
   --with-pcre=../pcre-$PCRE_VERSION \
   --with-zlib=../zlib-$ZLIB_VERSION \
   --with-openssl=../openssl-$OPENSSL_VERSION
