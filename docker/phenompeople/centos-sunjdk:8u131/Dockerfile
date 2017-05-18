@@ -2,7 +2,7 @@ FROM centos:7.3.1611
 
 MAINTAINER Sandeep Alluri(<admin.squad@phenompeople.com>)
 
-LABEL "project=sunjre-8u131"
+LABEL "project=sunjdk-8u131"
 
 ARG APP_HOME=/opt/deployment
 RUN useradd phenom -d ${APP_HOME} -u 1000 && \
