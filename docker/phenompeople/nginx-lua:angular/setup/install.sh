@@ -54,7 +54,7 @@ make > /tmp/log_file 2>&1 && make install > /tmp/log_file 2>&1
 
 cd $NGINX_SETUP_DIR
 download_and_extract $NGINX_SRC_URI
-sed -i 's/Server: nginx/Server: Server/' $NGINX_SETUP_DIR/nginx-$NGINX_VERSION/src/http/ngx_http_header_filter_module.c
+sed -i 's/Server: nginx/Server: Phenom/' $NGINX_SETUP_DIR/nginx-$NGINX_VERSION/src/http/ngx_http_header_filter_module.c
 
 export LUAJIT_LIB=/usr/local/lib
 export LUAJIT_INC=/usr/local/include/luajit-2.0
@@ -75,7 +75,6 @@ cd $NGINX_SETUP_DIR/nginx-$NGINX_VERSION
   --http-uwsgi-temp-path=${NGINX_TEMP_DIR}/uwsgi \
   --with-pcre-jit \
   --with-http_ssl_module \
-  --with-ipv6 \
   --with-http_ssl_module \
   --with-http_stub_status_module \
   --with-http_realip_module \
@@ -92,8 +91,8 @@ cd $NGINX_SETUP_DIR/nginx-$NGINX_VERSION
   --with-mail_ssl_module \
   --with-threads \
   --with-ld-opt="-Wl,-rpath,/usr/local/lib" \
-  --add-dynamic-module=$NGINX_SETUP_DIR/ngx_devel_kit-${NGINX_DEV_KIT_VERSION#v} \
-  --add-dynamic-module=$NGINX_SETUP_DIR/lua-nginx-module-${NGINX_DEV_KIT_VERSION#v} \
+  --add-module=$NGINX_SETUP_DIR/ngx_devel_kit-${NGINX_DEV_KIT_VERSION#v} \
+  --add-module=$NGINX_SETUP_DIR/lua-nginx-module-${NGINX_DEV_KIT_VERSION#v} \
   --with-pcre=../pcre-$PCRE_VERSION \
   --with-zlib=../zlib-$ZLIB_VERSION \
   --with-openssl=../openssl-$OPENSSL_VERSION

@@ -10,7 +10,7 @@ RUN yum install -q -e 0 -y wget make perl gcc-c++ pcre-devel zlib-devel file && 
 
 LABEL project="nginx-lua"
 ARG NGINX_VERSION=1.11.10
-ARG OPENSSL_VERSION=1.0.2f
+ARG OPENSSL_VERSION=1.0.2k
 ARG PCRE_VERSION=8.40
 ARG ZLIB_VERSION=1.2.11
 ARG LUAJIT_VERSION=2.0.4
