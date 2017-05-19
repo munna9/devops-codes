@@ -7,7 +7,15 @@ provisioner:
   name: chef_zero
 
 platforms:
-  - name: amazon
+  - name: amazon-2017
+    driver_config:
+      image: phenompeople/amazonlinux-ccb:2017.03
+      platform: centos
+      privileged: true
+      volume: /sys/fs/cgroup
+      remove_images: false
+
+  - name: amazon-2016
     driver_config:
       image: phenompeople/amazonlinux-ccb:2016.09
       platform: centos
@@ -54,7 +62,8 @@ suites:
     run_list:
       - recipe[mysql::install]
       - recipe[mysql::service]
-      - recipe[mysql::reset_root_passwd]
+      #- recipe[mysql::reset_root_passwd]
+      #- recipe[mysql::uninstall]
 
 
     attributes:

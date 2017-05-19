@@ -8,6 +8,9 @@ describe 'mysql' do
     when 'redhat'
       package_names =%w(mariadb-server mariadb)
       service_name='mariadb'
+    when 'amazon'
+      package_names =%w(mysql-server mysql)
+      service_name='mysqld'
   end
   package_names.each do |package_name|
     describe package(package_name) do

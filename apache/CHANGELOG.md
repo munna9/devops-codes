@@ -1,3 +1,7 @@
+#0.0.3
+[hadassahn] - Updated Recipes, README.md, serverspec
+
+
 #0.0.2
 [hadassahn] - Updated metadata.rb
 

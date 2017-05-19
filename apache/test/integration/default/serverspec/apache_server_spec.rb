@@ -6,7 +6,7 @@ describe 'apache' do
     when 'ubuntu'
       package_names =%w(apache2)
       service_name='apache2'
-    when 'redhat'
+    when 'redhat', 'amazon'
       package_names =%w(httpd)
       service_name='httpd'
   end

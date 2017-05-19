@@ -1,9 +1,12 @@
 default['apache']['pin_version']=true
 default['apache']['binary']['packages'] ={
-  'amazon' => {
-    '2016.09' => {
-      'httpd'         => '2.2.31-1.8.amzn1'
-    }
+    'amazon' => {
+      '2017.03' => {
+        'httpd'         => '2.2.31-1.8.amzn1'
+    },
+      '2016.09' => {
+          'httpd'         => '2.2.31-1.8.amzn1'
+      }
   },
   'centos' => {
     '7.3.1611' => {
@@ -15,10 +18,10 @@ default['apache']['binary']['packages'] ={
   },
   'ubuntu' => {
     '16.04' => {
-      'apache2'       => '2.4.18-2ubuntu3.1'
+      'apache2'       => '2.4.18-2ubuntu3.2'
     },
     '14.04' => {
-      'apache2'       => '2.4.7-1ubuntu4.13'
+      'apache2'       => '2.4.7-1ubuntu4'
     }
   }
 }

@@ -6,9 +6,16 @@ driver:
 provisioner:
   name: chef_zero
 
-
 platforms:
-  - name: amazon
+  - name: amazon-2017
+    driver_config:
+      image: phenompeople/amazonlinux-ccb:2017.03
+      platform: centos
+      privileged: true
+      volume: /sys/fs/cgroup
+      remove_images: false
+
+  - name: amazon-2016
     driver_config:
       image: phenompeople/amazonlinux-ccb:2016.09
       platform: centos
@@ -22,11 +29,9 @@ platforms:
       platform: centos
       run_command: /usr/sbin/init
       privileged: true
-      volume:
-       - /sys/fs/cgroup:/sys/fs/cgroup
-     #  - /Users/rajeshj/workspace/repos/CentOS/7.3:/etc/yum.repos.d/
-      forward: 80
+      volume: /sys/fs/cgroup
       remove_images: true
+
 
   - name: centos-7.2
     driver_config:
@@ -37,8 +42,7 @@ platforms:
       volume:
         - /sys/fs/cgroup:/sys/fs/cgroup
 #        - /Users/rajeshj/workspace/repos/CentOS/7.2:/etc/yum.repos.d/
-      forward: 80
-      remove_images: true
+      remove_images: false
 
   - name: ubuntu14.04
     driver_config:
@@ -49,10 +53,9 @@ platforms:
   - name: ubuntu16.04
     driver_config:
       image: phenompeople/ubuntu-ccb:16.04
-      platform: ubuntu
       run_options: '--security-opt seccomp=unconfined --stop-signal=SIGRTMIN+3 --tmpfs /run --tmpfs /run/lock -v /sys/fs/cgroup:/sys/fs/cgroup:ro'
       run_command: '/sbin/init'
-      forward: 80
+      platform: ubuntu
       remove_images: true
 
 suites:
@@ -60,6 +63,7 @@ suites:
     run_list:
       - recipe[apache::install]
       - recipe[apache::service]
+      #- recipe[apache::uninstall]
     attributes:
       phenom:
         banner: 'This file managed by Admin'
