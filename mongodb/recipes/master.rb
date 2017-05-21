@@ -29,13 +29,20 @@ mongo_slaves =Array.new
 mongo_masters=Array.new
 
 recipe_name="mongodb\\:\\:configure"
-search(:node,"recipes:#{recipe_name} AND chef_environment: #{node.chef_environment}").each do |node_name|
-  mongo_slaves << node_name['ipaddress']
+if Chef::Config[:solo] and not chef_solo_search_installed?
+  Chef::Log.warn("This recipe uses search. Chef Solo does not support search unless you install the chef-solo-search cookbook.")
+else
+  search(:node,"recipes:#{recipe_name} AND chef_environment:#{node.chef_environment}").each do |node_name|
+    mongo_slaves << node_name['ipaddress']
+  end
 end
-
-recipe_name="mongodb\\:\\:configure"
-search(:node,"recipes:#{recipe_name} AND chef_environment: #{node.chef_environment}").each do |node_name|
-  mongo_masters << node_name['ipaddress']
+recipe_name="mongodb\\:\\:master"
+if Chef::Config[:solo] and not chef_solo_search_installed?
+  Chef::Log.warn("This recipe uses search. Chef Solo does not support search unless you install the chef-solo-search cookbook.")
+else
+  search(:node,"recipes:#{recipe_name} AND chef_environment:#{node.chef_environment}").each do |node_name|
+    mongo_masters << node_name['ipaddress']
+  end
 end
 mongo_masters << node['ipaddress']
 mongo_slaves = mongo_slaves - mongo_masters
@@ -47,10 +54,11 @@ template "#{node['mongodb']['app']['base_directory']}/mongo_replica.js" do
   variables(
     :slave_hosts => mongo_slaves
   )
-#  notifies :run, "execute[initiate-replicas]", :immediately
+    notifies :run, "execute[initiate-replicas]", :immediately
 end
-# execute "update-user-accounts" do
-#   command "#{node['mongodb']['binary']['path']} < #{node['mongodb']['app']['base_directory']}/mongo_users.js;touch #{node['mongodb']['app']['base_directory']}/.users_created"
-#   creates "#{node['mongodb']['app']['base_directory']}/.users_created"
-#   action :nothing
-# end
+execute "initiate-replicas" do
+  command "#{node['mongodb']['binary']['path']} < #{node['mongodb']['app']['base_directory']}/mongo_replica.js;touch #{node['mongodb']['app']['base_directory']}/.users_created"
+  creates "#{node['mongodb']['app']['base_directory']}/.mongo_replica.created"
+  action :nothing
+end
+

@@ -8,3 +8,6 @@ node['mysql']['binary']['packages'][node['platform']][node['platform_version']].
     action :remove
   end
 end
+file "#{Chef::Config['file_cache_path']}/mysql-init" do
+  action :delete
+end

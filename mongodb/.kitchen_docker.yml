@@ -57,8 +57,8 @@ suites:
 
   - name: master
     run_list:
-#      - recipe[mongodb::install]
-      - recipe[mongodb::fine_tunning]
+      - recipe[mongodb::install]
+#      - recipe[mongodb::fine_tunning]
 #      - recipe[mongodb::master]
 #      - recipe[mongodb::configure]
 #      - recipe[mongodb::service]

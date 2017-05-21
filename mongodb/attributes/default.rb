@@ -1,4 +1,4 @@
-default['mongodb']['major']['version']='3.4'
+default['mongodb']['major']['version']='3.2'
 
 default['mongodb']['pin_version']=true
 
@@ -28,18 +28,18 @@ default['mongodb']['binary']['packages'] = {
   },
   '3.2' => {
     'centos' => {
-      'mongodb-org'           => '3.2.13-1.el7',
-      'mongodb-org-tools'     => '3.2.13-1.el7',
-      'mongodb-org-shell'     => '3.2.13-1.el7',
-      'mongodb-org-server'    => '3.2.13-1.el7',
-      'mongodb-org-mongos'    => '3.2.13-1.el7'
+      'mongodb-org'           => '3.2.10-1.el7',
+      'mongodb-org-tools'     => '3.2.10-1.el7',
+      'mongodb-org-shell'     => '3.2.10-1.el7',
+      'mongodb-org-server'    => '3.2.10-1.el7',
+      'mongodb-org-mongos'    => '3.2.10-1.el7'
     },
     'amazon' => {
-      'mongodb-org'           => '3.2.13-1.amzn1',
-      'mongodb-org-tools'     => '3.2.13-1.amzn1',
-      'mongodb-org-shell'     => '3.2.13-1.amzn1',
-      'mongodb-org-server'    => '3.2.13-1.amzn1',
-      'mongodb-org-mongos'    => '3.2.13-1.amzn1'
+      'mongodb-org'           => '3.2.10-1.amzn1',
+      'mongodb-org-tools'     => '3.2.10-1.amzn1',
+      'mongodb-org-shell'     => '3.2.10-1.amzn1',
+      'mongodb-org-server'    => '3.2.10-1.amzn1',
+      'mongodb-org-mongos'    => '3.2.10-1.amzn1'
     }
   }
 }

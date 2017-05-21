@@ -10,7 +10,7 @@ describe service('mongod') do
   it { should be_enabled.with_level(3) }
   it { should be_enabled.with_level(5) }
 end
-# #Port checks
-# describe port(27017) do
-#   it { should be_listening }
-# end
+#Port checks
+describe port(27017) do
+  it { should be_listening }
+end

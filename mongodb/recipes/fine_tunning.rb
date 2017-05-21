@@ -48,9 +48,9 @@ end
 ######################
 #Blockdev support
 #####################
-ruby_block 'Block Dev' do
+ruby_block 'BlockDev-Read Ahead' do
   block do
-    drive_line=File.read('/proc/mounts').lines.grep("#{node['mongodb']['storage']['file']}")[0].split(' ')
+    drive_line=File.read('/proc/mounts').lines.grep(/#{node['mongodb']['storage']['path']}/)[0].split(' ')
     if drive_line.any?
       drive_to_check=drive_line[0]
       lsblk_command="lsblk #{drive_to_check} -no PKNAME,KNAME"
@@ -58,12 +58,20 @@ ruby_block 'Block Dev' do
       cmd.run_command
       result=cmd.stdout.split(' ')
       result=result.uniq
-      result.reject(&:blank?)
+      result.reject(&:empty?)
       result.each do |each_partition|
-        _command="blockdev --setra 32 #{each_partition}"
-        cmd=Mixlib::ShellOut.new(_comamnd)
+        _read_command="blockdev --getra /dev/#{each_partition}"
+        cmd=Mixlib::ShellOut.new(_read_command)
         cmd.run_command
+        result=cmd.stdout.split(' ')
+        if result[0]!='32'
+          _command="blockdev --setra 32 /dev/#{each_partition}"
+          cmd=Mixlib::ShellOut.new(_command)
+          cmd.run_command
+          Chef::Log.info("Setting Blockdev of /dev/#{each_partition} to 32")
+        end
       end
     end
   end
 end
+
