@@ -1,5 +1,8 @@
 cookbook 'basic-essentials', :path => '../basic-essentials'
 cookbook 'docker', :path => '../docker'
-
+cookbook 'seo-service', :path => '../seo-service'
+cookbook 'data-service', :path => '../data-service'
+cookbook 'ntp', :path => '../ntp'
+cookbook 'aws', :path => '../aws'
 source "https://supermarket.chef.io"
 metadata

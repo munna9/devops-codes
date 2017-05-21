@@ -1,3 +1,5 @@
+#0.1.5
+[rajeshj] - Adding POD functionality to Nginx
 #0.1.4
 [rajeshj] - Docker based deployment of nginx-lua
 #0.1.3

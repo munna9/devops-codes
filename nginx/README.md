@@ -73,6 +73,18 @@ Installs platform and version specific binaries from respective providers.
    otherwise installs latest available version of package at the time converge.
 1. Removes distribution specific configuration directories of debian family.
 
+### nginx::pod
+
+Deploy and configure Point of delivery for Nginx to emulate load balancer
+
+1. Loads data bag referred by vault_name and app_name
+1. Pulls docker image from Docker hub to the running node
+1. It runs container with specifications mentioned under data bag item **nginx-pod** of **tools** data bag
+1. Create directories `['nginx']['app']['log_directory']` , `['nginx']['app']['conf_directory']` if missing
+1. Reads all data bag items referred by **services** data bag
+1. Converges each data bag item with nginx-pod LWRP
+1. nginx-pod LWRP reads data bag section 'nginx-pod' and prepares service_dict for each of the service iff nginx-pod section present
+1. notifies delayed reload of nginx-pod container to reflect changes if found
 
 ### nginx::service
 

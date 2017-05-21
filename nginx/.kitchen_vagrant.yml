@@ -2,13 +2,16 @@
 driver:
   name: vagrant
   network:
-    - ["forwarded_port", { guest: 8080, host: 8080, auto_correct: true }]
+    - ["forwarded_port", { guest: 80, host: 8080, auto_correct: true }]
 
 provisioner:
   name: chef_zero
 
 platforms:
-  - name: awslinux
+  - name: awslinux-2017.03
+    driver_config:
+      box: awslinux_2017.03
+  - name: awslinux-2016.09
     driver_config:
       box: awslinux_2016.09
   - name: centos-7.3
@@ -30,11 +33,13 @@ suites:
       - recipe[docker::install]
       - recipe[docker::service]
       - recipe[docker::wrappers]
-      - recipe[nginx::docker-deploy]
+      - recipe[nginx::nginx-pod]
 
     attributes:
       firewalld:
         zone: 'public'
       phenom:
         banner: 'Dont edit by Hand !!! This file is modified by Chef. Please contact admin.squad@phenompeople.com for further assitance'
+      cloud:
+        platform: 'aws'
 
