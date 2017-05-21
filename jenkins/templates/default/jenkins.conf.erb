@@ -14,7 +14,7 @@ server {
     proxy_set_header    X-Forwarded-Proto $scheme;
 
     proxy_pass http://<%=@jenkins_server_host%>:<%=@jenkins_server_port%>;
-    proxy_read_timeout 90;
+    proxy_read_timeout 3600;
     proxy_redirect http://<%=@jenkins_server_host%>:<%=@jenkins_server_port%> http://<%=node['jenkins']['server']['name']%>;
   }
 }
