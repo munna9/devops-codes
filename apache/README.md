@@ -13,11 +13,11 @@ able to get it working on other platform, with appropriate configuration updates
 | Recipe Name                   | AWSLinux  | AWSLinux |  CentOS  |  CentOS  |  Ubuntu  | Ubuntu   |
 |                               |  2017.03  |  2016.09 | 7.3.1611 | 7.2.1511 |  16.04   |  14.04   | 
 |-------------------------------|-----------|----------|----------|----------|----------|----------|
-| install                       |     √     |    √     |    √     |    √     |          |          |    
+| install                       |     √     |    √     |    √     |    √     |    √     |    √     |    
 |-------------------------------|-----------|----------|----------|----------|----------|----------|
-| service                       |     √     |    √     |    √     |    √     |          |          |    
+| service                       |     √     |    √     |    √     |    √     |    √     |    √     |    
 |-------------------------------|-----------|----------|----------|----------|----------|----------|
-| uninstall                     |     √     |    √     |    √     |    √     |          |          |    
+| uninstall                     |     √     |    √     |    √     |    √     |    √     |    √     |    
 |-------------------------------|-----------|----------|----------|----------|----------|----------|
 
 ```
@@ -40,7 +40,6 @@ Please read attributes section for configuration parameters for any recipe(s)
 Installs platform and version specific binaries from respective providers.    
 
 1. Reads `['apache']['binary']['packages']` based on respective platform and platform_version.   
-1. Creates/updates main configuration file of apache.
 1. Installs each of those hash key value pair(s) with specific binary version if `['apache']['pin_version']` is true,
    otherwise installs latest available version of package at the time converge.
 
@@ -71,16 +70,17 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 
 |Attribute Name                                 | Type          | Description                                                          |
 |---------------------------------------------- |---------------|----------------------------------------------------------------------|
-| ['apache']['pin_version']                      | Boolean       | If true, it installs only given version of package                   |
-| ['apache']['binary']['packages']               | Hash          | Binary package and version for listed distribution                   | 
-| ['apache']['service']['name']                  | String        | Apache service name updated based on distribution                     |
-| ['apache']['service']['owner']                  | String        | Apache service owner updated based on distribution                     |
-| ['apache']['service']['group']                  | String        | Apache service group updated based on distribution                     |
+| ['apache']['pin_version']                     | Boolean       | If true, it installs only given version of package                   |
+| ['apache']['binary']['packages']              | Hash          | Binary package and version for listed distribution                   | 
+| ['apache']['service']['name']                 | String        | Apache service name updated based on distribution                    |
+| ['apache']['service']['owner']                | String        | Apache service owner updated based on distribution                   |
+| ['apache']['service']['group']                | String        | Apache service group updated based on distribution                   |
 
 ## Maintainers
 
 * Rajesh Jonnalagadda (<rajesh.jonnalagadda@phenompeople.com>)
 * Hadassah Pearlyn (<hadassah.nagathota@phenompeople.com>)
+
 ## License and Authors
 
 Author:: Phenompeople Pvt Ltd (<admin.squad@phenompeople.com>)

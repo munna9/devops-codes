@@ -61,9 +61,9 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[apache::install]
-      - recipe[apache::service]
-      #- recipe[apache::uninstall]
+#      - recipe[apache::install]
+#      - recipe[apache::service]
+      - recipe[apache::uninstall]
     attributes:
       phenom:
         banner: 'This file managed by Admin'

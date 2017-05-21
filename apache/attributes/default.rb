@@ -21,7 +21,11 @@ default['apache']['binary']['packages'] ={
       'apache2'       => '2.4.18-2ubuntu3.2'
     },
     '14.04' => {
-      'apache2'       => '2.4.7-1ubuntu4'
+      'ssl-cert'      => '1.0.33',
+      'apache2-bin'   => '2.4.7-1ubuntu4',
+      'apache2-data'  => '2.4.7-1ubuntu4',
+      'apache2'       => '2.4.7-1ubuntu4',
+
     }
   }
 }
