@@ -7,7 +7,7 @@ NGINX_SRC_URI="http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz"
 LUAJIT_SRC_URI="http://luajit.org/download/LuaJIT-$LUAJIT_VERSION.tar.gz"
 NGINX_DEV_KIT_SRC_URI="https://github.com/simpl/ngx_devel_kit/archive/$NGINX_DEV_KIT_VERSION.tar.gz"
 NGINX_LUA_MOD_SRC_URI="https://github.com/openresty/lua-nginx-module/archive/$NGINX_LUA_MOD_VERSION.tar.gz"
-
+NGINX_AJP_MOD_SRC_URI="https://github.com/yaoweibin/nginx_ajp_module/archive/$NGINX_AJP_VERSION.tar.gz"
 SOURCE_DIR="$NGINX_SETUP_DIR/sources"
 
 func_create_directory() {
@@ -42,7 +42,7 @@ compile_from_source zlib-$ZLIB_VERSION
 download_and_extract $OPENSSL_SRC_URI
 download_and_extract $NGINX_DEV_KIT_SRC_URI
 download_and_extract $NGINX_LUA_MOD_SRC_URI
-
+download_and_extract $NGINX_AJP_MOD_SRC_URI
 
 cd $NGINX_SETUP_DIR/openssl-$OPENSSL_VERSION
 ./Configure darwin64-x86_64-cc --prefix=/usr > /tmp/log_file 2>&1
@@ -54,7 +54,7 @@ make > /tmp/log_file 2>&1 && make install > /tmp/log_file 2>&1
 
 cd $NGINX_SETUP_DIR
 download_and_extract $NGINX_SRC_URI
-sed -i 's/Server: nginx/Server: Server/' $NGINX_SETUP_DIR/nginx-$NGINX_VERSION/src/http/ngx_http_header_filter_module.c
+sed -i 's/Server: nginx/Server: Nginx-Lua/' $NGINX_SETUP_DIR/nginx-$NGINX_VERSION/src/http/ngx_http_header_filter_module.c
 
 export LUAJIT_LIB=/usr/local/lib
 export LUAJIT_INC=/usr/local/include/luajit-2.0
@@ -94,6 +94,7 @@ cd $NGINX_SETUP_DIR/nginx-$NGINX_VERSION
   --with-ld-opt="-Wl,-rpath,/usr/local/lib" \
   --add-dynamic-module=$NGINX_SETUP_DIR/ngx_devel_kit-${NGINX_DEV_KIT_VERSION#v} \
   --add-dynamic-module=$NGINX_SETUP_DIR/lua-nginx-module-${NGINX_LUA_MOD_VERSION#v} \
+  --add-module=$NGINX_SETUP_DIR/nginx_ajp_module-${NGINX_AJP_VERSION} \
   --with-pcre=../pcre-$PCRE_VERSION \
   --with-zlib=../zlib-$ZLIB_VERSION \
   --with-openssl=../openssl-$OPENSSL_VERSION

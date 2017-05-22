@@ -9,9 +9,10 @@ RUN yum install -q -e 0 -y wget make perl gcc-c++ pcre-devel zlib-devel file && 
     chmod -R 755 ${APP_HOME} && \
     mkdir -p ${APP_HOME}/scripts
 
-LABEL project="nginx-lua"
+LABEL project="nginx-lua-angular"
+
 ARG NGINX_VERSION=1.11.10
-ARG OPENSSL_VERSION=1.0.2f
+ARG OPENSSL_VERSION=1.0.2k
 ARG PCRE_VERSION=8.40
 ARG ZLIB_VERSION=1.2.11
 ARG LUAJIT_VERSION=2.0.4
@@ -35,5 +36,6 @@ ADD setup ${APP_HOME}/scripts
 RUN ${APP_HOME}/scripts/install.sh
 COPY config/nginx.conf /etc/nginx/nginx.conf
 ADD conf.d/default.conf /etc/nginx/conf.d/default.conf
+ADD error /opt/deployment/error
 RUN yum remove -q -e 0 -y wget make perl gcc-c++ pcre-devel zlib-devel file && \
     yum clean all
