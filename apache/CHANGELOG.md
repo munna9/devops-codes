@@ -1,3 +1,5 @@
+#0.1.1
+[rajeshj]   - Fixing gitignore issues
 #0.1.0
 [rajeshj]   - Fixed issues with cookbook and finalized base version 
 #0.0.3

@@ -1,3 +1,5 @@
+# 0.1.1
+[rajeshj]   - Removed ignored files 
 # 0.1.0
 [rajeshj]   - Fixing build issues with mysql service
 # 0.0.3
