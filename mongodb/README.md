@@ -13,6 +13,7 @@ Recipes and supported platforms
 -------------------------------
 The following platforms have been tested with Test Kitchen. You may be able to get it working on other platform, with appropriate configuration updates
 Ubuntu is not considered as a database hosting operating systems due to business and package distribution stratergy
+
 ```
 |-------------------------------|-----------|----------|----------|----------|----------|----------|
 | Recipe Name                   | AWSLinux  | AWSLinux |  CentOS  |  CentOS  |  Ubuntu  | Ubuntu   |
@@ -52,7 +53,7 @@ Configures main configuration file and essential elements of mongodb
 
 1. Creates directory recursively `[mongodb']['storage']['path']`
 1. Creates/updates symmetric key file `['mongodb']['app']['key_file']` if not exists
-1. Creates/updates `['nongodb']['conf']['file']` and instructs mongodb service reloads at the end of converge
+1. Creates/updates `['mongodb']['conf']['file']` and instructs mongodb service restarts at the end of converge
 
 ### mongodb::fine_tunning
 
@@ -60,6 +61,7 @@ Mutate host for better performance and best practices depicted for mongodb
 
 1. Create/update `/etc/security/limits.d/['mongodb']['service']['owner'].conf` for setting update syslimits
 1. Disable transparent huge pages for defrag and enabled
+1. Disable NUMA(Non Uniform Memory allocation) for machine
 1. Disable SELinux if enabled on every converge
 1. Create/update `['mongodb']['sysctl']['conf']` for updating sysctl updation options
 1. Set Read ahead for block drives mounted for `['mongodb']['storage']['path']`
@@ -126,6 +128,14 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 | ['mongodb']['sysctl']['home_directory']       | String        | Base directory of Kernel sysctl additional configuration files       |
 | ['mongodb']['sysctl']['conf']                 | String        | Absolute path of sysctl configurations for Mongodb                   |
 | ['mongodb']['sysctl']['options']              | Hash          | Key-value pair of sysctl options for mongodb service                 |
+
+## Environment Variables
+
+|Attribute Name                                 | Type          | Description                                                          |
+|---------------------------------------------- |---------------|----------------------------------------------------------------------|
+| ['mongodb']['key_authentication']             | Boolean       | If true, it enables symmetric key based communication between nodes  |
+| ['mongodb']['replication_name']               | String        | Replication set name shared by all nodes for forming cluster         | 
+
 
 ## Maintainers
 

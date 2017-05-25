@@ -1,15 +1,4 @@
 mongodb_credentials=data_bag_item('credentials','mongodb')
-directory "Master - #{node['mongodb']['storage']['path']}" do
-  path node['mongodb']['storage']['path']
-  recursive true
-  owner node['mongodb']['service']['owner']
-  group node['mongodb']['service']['group']
-end
-template "Master - #{node['mongodb']['conf']['file']}" do
-  path node['mongodb']['conf']['file']
-  source 'master/mongod.conf.erb'
-  notifies :restart, "service[#{node['mongodb']['service']['name']}]", :immediately
-end
 template "#{node['mongodb']['app']['base_directory']}/mongo_users.js" do
   source 'master/mongo_users.js.erb'
   sensitive true
@@ -33,7 +22,7 @@ if Chef::Config[:solo] and not chef_solo_search_installed?
   Chef::Log.warn("This recipe uses search. Chef Solo does not support search unless you install the chef-solo-search cookbook.")
 else
   search(:node,"recipes:#{recipe_name} AND chef_environment:#{node.chef_environment}").each do |node_name|
-    mongo_slaves << node_name['ipaddress']
+    mongo_slaves << node_name['hostname']
   end
 end
 recipe_name="mongodb\\:\\:master"
@@ -41,10 +30,10 @@ if Chef::Config[:solo] and not chef_solo_search_installed?
   Chef::Log.warn("This recipe uses search. Chef Solo does not support search unless you install the chef-solo-search cookbook.")
 else
   search(:node,"recipes:#{recipe_name} AND chef_environment:#{node.chef_environment}").each do |node_name|
-    mongo_masters << node_name['ipaddress']
+    mongo_masters << node_name['hostname']
   end
 end
-mongo_masters << node['ipaddress']
+mongo_masters << node['hostname']
 mongo_slaves = mongo_slaves - mongo_masters
 
 template "#{node['mongodb']['app']['base_directory']}/mongo_replica.js" do
@@ -57,7 +46,7 @@ template "#{node['mongodb']['app']['base_directory']}/mongo_replica.js" do
     notifies :run, "execute[initiate-replicas]", :immediately
 end
 execute "initiate-replicas" do
-  command "#{node['mongodb']['binary']['path']} < #{node['mongodb']['app']['base_directory']}/mongo_replica.js;touch #{node['mongodb']['app']['base_directory']}/.users_created"
+  command "#{node['mongodb']['binary']['path']} < #{node['mongodb']['app']['base_directory']}/mongo_replica.js;touch #{node['mongodb']['app']['base_directory']}/.mongo_replica.created"
   creates "#{node['mongodb']['app']['base_directory']}/.mongo_replica.created"
   action :nothing
 end

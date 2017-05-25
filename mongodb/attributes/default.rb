@@ -60,5 +60,5 @@ default['mongodb']['sysctl']['home_directory']='/etc/sysctl.d'
 default['mongodb']['sysctl']['conf']="#{node['mongodb']['sysctl']['home_directory']}/01-mongod.conf"
 default['mongodb']['sysctl']['options'] ={
   'vm.swappiness' => '10',
-  'net.ipv4.tcp_keepalive_time' => '500'
+  'net.ipv4.tcp_keepalive_time' => '300'
 }

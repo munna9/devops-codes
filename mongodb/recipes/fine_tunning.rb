@@ -64,11 +64,11 @@ ruby_block 'BlockDev-Read Ahead' do
         cmd=Mixlib::ShellOut.new(_read_command)
         cmd.run_command
         result=cmd.stdout.split(' ')
-        if result[0]!='32'
-          _command="blockdev --setra 32 /dev/#{each_partition}"
+        if result[0]!='0'
+          _command="blockdev --setra 0 /dev/#{each_partition}"
           cmd=Mixlib::ShellOut.new(_command)
           cmd.run_command
-          Chef::Log.info("Setting Blockdev of /dev/#{each_partition} to 32")
+          Chef::Log.info("Setting Blockdev of /dev/#{each_partition} to 0")
         end
       end
     end
