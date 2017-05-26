@@ -1,0 +1,119 @@
+{
+"AWSTemplateFormatVersion" : "2010-09-09",
+  "Description" : "AWS CFT for launching core chef-server",
+
+  "Metadata" : {
+    "AWS::CloudFormation::Interface" : {
+      "ParameterGroups" : [
+        {
+          "Label" : { "default":"Amazon EC2 Configuration" },
+          "Parameters" : [ "InstanceType", "KeyName", "InstanceAMI", "HostName", "DomainName", "IAMRole"]
+        },
+        {
+          "Label" : { "default" : "Network Configuration" },
+          "Parameters" : [ "VPCID", "SubnetID", "SecurityGroupID" ]
+        }
+      ]
+    }
+  },
+
+  "Parameters" : {
+    "KeyName": { 
+      "Description" : "Name of an existing EC2 KeyPair to enable SSH access to the instance",
+      "Type": "AWS::EC2::KeyPair::KeyName",
+      "ConstraintDescription" : "Must be the name of an existing EC2 KeyPair."
+    },
+
+    "InstanceType" : {
+      "Description" : "Chef-Server EC2 instance type",
+      "Type" : "String",
+      "Default" : "t2.medium",
+      "AllowedValues" : [ "t2.medium","t2.micro", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "g2.2xlarge", "g2.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "hi1.4xlarge", "hs1.8xlarge", "cr1.8xlarge", "cc2.8xlarge", "cg1.4xlarge"]
+,
+      "ConstraintDescription" : "must be a valid EC2 instance type."
+    },
+
+    "InstanceAMI" : {
+      "Description" : "Chef-Client EC2 instance AMI id",
+      "Type" : "String",
+      "Default" : "ami-26295330",
+      "AllowedValues" : [ "ami-26295330","ami-b4178ba2"],
+    },
+
+    "HostName" : {
+     "Description" : "Host name of chef-server",
+     "Type" : "String",
+     "AllowedPattern" : "^[a-z0-9_-]*$"
+
+   },
+    "DomainName" : {
+      "Description" : "Host name of chef-server",
+      "Type" : "String",
+      "Default": "aws.phenom.local"
+    },
+
+   "IAMRole" : {
+     "Description" : "IAM Role for Chef-server",
+     "Type" : "String",
+     "Default": "Chefnode",
+     "ConstraintDescription" : "Must be valid IAMRole"
+    },
+
+    "VPCID": {
+      "Description" : "Subnet in which chef-server is to be launched",
+      "Type": "AWS::EC2::VPC::Id",
+      "ConstraintDescription" : "Must be the ID of an existing Account"
+    },
+
+    "SubnetID": {
+      "Description" : "Subnet in which chef-server is to be launched",
+      "Type": "AWS::EC2::Subnet::Id",
+      "ConstraintDescription" : "Must be the ID of an existing Subnet"
+    },
+
+    "SecurityGroupID": {
+      "Description" : "Security Groups to be assigned",
+      "Type": "AWS::EC2::SecurityGroup::Id",
+      "ConstraintDescription" : "Must be the ID's of existing SecurityGroups"
+    }
+  },
+
+  "Resources" : {
+    "InstanceProfile" : {
+      "Type": "AWS::IAM::InstanceProfile",
+      "Properties": {
+        "Path": "/",
+        "Roles": [{ "Ref": "IAMRole" }]
+      }
+    },
+
+    "Chefnode" : {
+      "Type" : "AWS::EC2::Instance",
+      "DependsOn" : "InstanceProfile",
+      "Properties" : {
+        "InstanceType" : { "Ref" : "InstanceType" },
+        "SecurityGroupIds" : [ { "Ref" : "SecurityGroupID" } ],
+        "KeyName" : { "Ref" : "KeyName" },
+        "IamInstanceProfile" : {"Ref" : "InstanceProfile"},
+        "ImageId" : { "Ref": "InstanceAMI"},
+        "SubnetId" : {"Ref" : "SubnetID"},
+        "Tags" : [{"Key": "Name", "Value": {"Ref" : "HostName"}}],
+        "UserData" : { "Fn::Base64" :{"Fn::Join" :["",[
+          "#cloud-config \n",
+          "hostname: ", {"Ref" : "HostName"}, "\n",
+          "fqdn: ", {"Ref": "HostName"}, ".", {"Ref": "DomainName"}, "\n",
+          "manage_etc_hosts: true \n",
+          "preserve_hostname: false"
+        ]]}}
+      }
+    }
+  },
+
+
+  "Outputs" : {
+    "InstanceId" : {
+      "Description" : "InstanceId of the newly created EC2 instance",
+      "Value" : { "Ref" : "Chefnode" }
+    }
+  }
+}
