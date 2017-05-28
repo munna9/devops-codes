@@ -50,9 +50,10 @@ Please read attributes section for configuration paramaters for any recipe(s)
 Configures default configuration file and update metricbeat configurations
 
 1. Refers an un-encrypted data bag item beat_prospectors/`node.chef_environment` and loads hash to `app_procs_to_watch`
-1. Remove metricbeat full parsing configuration file to avoid fludding with processes read
-1. Merges above result with key-value pair of`['metricbeat']['procs_to_watch']`  
-1. Notifies service `['Metricbeat]['service]['name']` to be restarted
+1. Each converging node is verified against applications installed by referring install recipe of specific application, remove if not exists 
+1. Merges above result with key-value pair of`['metricbeat']['procs_to_watch']`
+1. Remove metricbeat full parsing configuration file to avoid fludding with processes read and notify `[]`
+1. Notifies service `['metricbeat]['service]['name']` to be restarted
 
 ### metricbeat::import_dash_board
 
