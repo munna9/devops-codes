@@ -48,7 +48,7 @@ node['nodejs']['node']['versions'].each do |node_version|
 end
 bash 'install-angular-cli' do
   code <<-EOH
-    nvm use #{node['nodes']['binary']['version']}
+    nvm use #{node['nodejs']['binary']['version']}
     npm install --global #{node['nodejs']['angular']['cli']}@#{node['nodejs']['angular']['version']}
   EOH
   creates node['nodejs']['angular']['binary_path']

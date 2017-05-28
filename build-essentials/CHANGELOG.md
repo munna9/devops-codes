@@ -1,3 +1,5 @@
+# 0.1.6
+[rajeshj] - Fixing Typo on Node JS NVM
 # 0.1.5
 [rajeshj] - Adding Node Version Manager and angular CLI setup 
 # 0.1.4
