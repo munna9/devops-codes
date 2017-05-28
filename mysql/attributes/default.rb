@@ -35,8 +35,10 @@ default['mysql']['binary']['packages'] = {
 case node['platform']
   when 'centos', 'redhat', 'scientific', 'oracle'
     default['mysql']['service']['name']='mariadb'
+    default['mysql']['binary']['path']='/usr/bin/mysql'
   when 'ubuntu'
     default['mysql']['service']['name']='mysql'
   when 'amazon'
     default['mysql']['service']['name']='mysqld'
+    default['mysql']['binary']['path']='/usr/bin/mysql'
 end

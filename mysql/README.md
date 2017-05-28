@@ -83,6 +83,7 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 | ['mysql']['pin_version']                      | Boolean       | If true, it installs only given version of package                   |
 | ['mysql']['binary']['packages']               | Hash          | Binary package and version for listed distribution                   | 
 | ['mysql']['service']['name']                  | String        | Mysql service name updated based on distribution                     |
+| ['mysql']['binary']['path']                   | String        | Absolute path Mysql binaries                                         |
 
 ## Maintainers
 

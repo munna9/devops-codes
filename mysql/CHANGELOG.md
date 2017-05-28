@@ -1,3 +1,5 @@
+# 0.1.2
+[rajeshj]   - Adding Mysql binary path 
 # 0.1.1
 [rajeshj]   - Removed ignored files 
 # 0.1.0
