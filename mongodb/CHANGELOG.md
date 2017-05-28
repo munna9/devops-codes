@@ -1,3 +1,5 @@
+# 0.1.2
+[rajeshj] - Fixingin FC038 foodcritic error
 # 0.1.1 
 [rajeshj] - Updating Fine tunning options
 # 0.1.0 

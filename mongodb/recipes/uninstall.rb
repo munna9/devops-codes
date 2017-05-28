@@ -4,14 +4,14 @@ end
 [node['mongodb']['app']['key_file'],node['mongodb']['conf']['file'],"/etc/security/limits.d/#{node['mongodb']['service']['owner']}.conf", \
  node['mongodb']['sysctl']['conf'], '/etc/yum.repos.d/mongdb-org.conf'].each do |file_name|
   file file_name do
-    action :remove
+    action :delete
     ignore_failure :true
   end
 end
 
 [node['mongodb']['storage']['path']].each do |directory_name|
   directory directory_name do
-    action :remove
+    action :delete
     ignore_failure :true
   end
 end
