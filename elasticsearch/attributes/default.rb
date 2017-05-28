@@ -12,7 +12,7 @@ default['elasticsearch']['service']['group']='elasticsearch'
 
 default['elasticsearch']['service']['host']='127.0.0.1'
 default['elasticsearch']['service']['port']=8200
-
+default['elasticsearch']['app']['home_directory']='/var/lib/elasticsearch'
 default['elasticsearch']['conf']['home_directory']='/etc/elasticsearch'
 default['elasticsearch']['conf']['file']="#{node['elasticsearch']['conf']['home_directory']}/elasticsearch.yml"
 
@@ -25,5 +25,5 @@ default['elasticsearch']['conf']['options']= {
   'http.host'                             => node['elasticsearch']['service']['host'],
   'http.port'                             => node['elasticsearch']['service']['port'],
   'action.destructive_requires_name'      => true,
-  'discovery.zen.ping.unicast.hosts'      => ["#{node['elasticsearch']['server_name']}"]
+  'discovery.zen.ping.unicast.hosts'      => [node['elasticsearch']['server_name']]
 }

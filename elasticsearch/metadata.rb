@@ -8,5 +8,5 @@ source_url		   'https://bitbucket.org/maheimom/chef-cookbooks'
 issues_url		   'https://bitbucket.org/maheimom/chef-cookbooks/issues'
 depends          'basic-essentials'
 depends          'nginx'
-version          '0.1.2'
+version          '0.1.3'
 

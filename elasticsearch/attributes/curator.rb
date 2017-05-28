@@ -17,19 +17,5 @@ default['curator']['indices']={
   'metricbeat' => {
     'close'           => 15,
     'delete_indices'  => 30
-
-  },
-  'cp-dev' => {
-    'close'           => 70,
-    'delete_indices'  => 90
-  },
-  'cp-qa' => {
-    'close'           => 70,
-    'delete_indices'  => 90
-  },
-  'cp-prod' => {
-    'close'           => 70,
-    'delete_indices'  => 90
-  },
-
+  }
 }

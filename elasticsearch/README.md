@@ -66,6 +66,7 @@ Curator performs sanitation activities of elasticsearch metricbeat and logstash 
 Configures default configuration file and master-slave setup of ES cluster.
 
 1. Creates directory `['elasticsearch']['conf']['home_directory']`if not exists 
+1. Creates directory `['elasticsearch']['app']['home_directory']`if not exists and update ownership for `['elasticsearch']['service']['owner']` and `['elasticsearch']['service']['group']`
 1. Create/update configurations file and notifies service `['elasticsearch']['service]['name']` to be restarted
 1. Creates elasticsearch nginx configuration file for protecting for any accidental or incidental removal of indexes
 
@@ -119,9 +120,17 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 | ['elasticsearch']['service']['owner']         | String        | Name of elasticserach service owner name                             |
 | ['elasticsearch']['service']['group']         | String        | Name of elasticsearch service group name                             |
 | ['elasticsearch']['conf']['home_directory']   | String        | Base directory of elasticearch configurations                        |
+| ['elasticsearch']['app']['home_directory']    | String        | Home directory of elasticearch data and indices                      |
 | ['elasticsearch']['conf']['file']             | String        | Main configuration file of  elasticsearch                            |
 | ['elasticsearch']['conf']['options']          | Hash          | Configuration options for mutating elasticsearch service             |
 
+## Environment Variables
+
+|Attribute Name                        | Type          | Description                                                          |
+|------------------------------------- |---------------|----------------------------------------------------------------------|
+| ['elasticsearch']['cluster_name']    | String        | Cluster Name appears for Elasticsearch                               |
+| ['elasticsearch']['server_name']     | String        | FQDN referred by Elasticsearch nginx wrapper configuration           |
+| ['elasticsearch']['server_port']     | String        | Elasticsearch node exposed port for HTTP REST API calls              | 
 ## Maintainers
 
 * Rajesh Jonnalagadda (<rajesh.jonnalagadda@phenompeople.com>)
