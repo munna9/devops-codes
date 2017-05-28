@@ -1,3 +1,9 @@
+[node['logstash']['conf']['home_directory'], node['logstash']['ssl']['home_directory']].each do |directory_name|
+  directory  directory_name do
+    recursive true
+    action :create
+  end
+end
 
 certificate=data_bag_item('certificates',node['logstash']['certificate_name'])
 
@@ -28,12 +34,7 @@ node['logstash']['grok']['patterns'].each_pair do |key,value|
   node.default['logstash']['grok']['patterns'][key]['grok_pattern']=_formatted_array
 end
 
-[node['logstash']['conf']['home_directory'], node['logstash']['ssl']['home_directory']].each do |directory_name|
-  directory  directory_name do
-    recursive true
-    action :create
-  end
-end
+
 
 remote_directory node['logstash']['conf']['patterns_directory'] do
   source "patterns"
