@@ -47,5 +47,23 @@
         }
       }
     }
+  },
+"qa-ccglobal": {
+    "ecr": {
+      "jd_cleaning": {
+        "image_name": "ml_jd_cleaning",
+        "tag_name": "QA-CCG",
+        "ports": {
+          "5000": "5000"
+        },
+        "environment_variables": [
+        ],
+        "volumes": {
+          "/etc/localtime": "/etc/localtime",
+          "/opt/phenom/logs/jd_cleaning": "/opt/deployment/jd_cleaning/logs",
+          "/opt/phenom/buildproperties/jd_cleaning/Global_QA": "/opt/deployment/jd_cleaning/resources"
+        }
+      }
+    }
   }
 }

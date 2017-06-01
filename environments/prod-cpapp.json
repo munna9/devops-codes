@@ -11,7 +11,7 @@
   "default_attributes": {
       "elasticsearch": {
           "cluster_name": "cpcluster",
-          "server_name": "172.25.5.72",
+          "server_name": "172.25.1.129",
           "server_port": "9200"
       }
 

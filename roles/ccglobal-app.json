@@ -2,7 +2,7 @@
   "name": "ccglobal-app",
   "json_class": "Chef::Role",
   "chef_type": "role",
-  "description": "Recipes which configures host to be NGCC server",
+  "description": "Recipes which configures host to be CCG server",
   "default_attributes": {
 
   },
@@ -10,10 +10,15 @@
 
   },
   "run_list": [
+
   ],
   "env_run_lists": {
     "prod-ccglobal":[
       "role[_base]"
+    ],
+    "qa-ccglobal":[
+      "role[_base]",
+      "role[_deploy-agent]"
     ]
 
   }
