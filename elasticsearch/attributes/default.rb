@@ -3,7 +3,7 @@ case node['platform']
   when 'debian', 'ubuntu'
     default['elasticsearch']['package']['version']='5.3.0'
   when 'centos', 'redhat', 'amazon', 'scientific', 'oracle'
-    default['elasticsearch']['package']['version']='5.3.0-1'
+    default['elasticsearch']['package']['version']='5.4.1-1'
 end
 
 default['elasticsearch']['service']['name']='elasticsearch'
@@ -26,4 +26,12 @@ default['elasticsearch']['conf']['options']= {
   'http.port'                             => node['elasticsearch']['service']['port'],
   'action.destructive_requires_name'      => true,
   'discovery.zen.ping.unicast.hosts'      => [node['elasticsearch']['server_name']]
+}
+default['elasticsearch']['cluster']['options']={
+  'node.max_local_storage_nodes'              =>  1,
+  'action.destructive_requires_name'          =>  true,
+  'http.compression'                          =>  true,
+  'action.auto_create_index'                  =>  true,
+  'node.master'                               =>  true,
+  'node.data'                                 =>  true
 }

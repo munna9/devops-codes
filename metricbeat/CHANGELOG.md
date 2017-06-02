@@ -1,3 +1,5 @@
+# 0.1.3
+[rajeshj] - metricbeat upgraded from 5.3.0 to 5.4.1
 # 0.1.2
 [rajeshj] - metricbeat configure update recipe filtering issue
 # 0.1.1

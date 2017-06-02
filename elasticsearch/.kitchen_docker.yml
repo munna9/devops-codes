@@ -75,19 +75,18 @@ suites:
       - recipe[basic-essentials::elastic_repo]
       - recipe[basic-essentials::oracle_java_default]
       - recipe[elasticsearch::install]
-      - recipe[elasticsearch::configure]
+      - recipe[elasticsearch::cluster_configure]
       - recipe[nginx::install]
       - recipe[nginx::service]
       - recipe[elasticsearch::curator]
       - recipe[elasticsearch::service]
-#      - recipe[elasticsearch::uninstall]
-#      - recipe[basic-essentials::oracle_java_default_uninstall]
-#      - recipe[basic-essentials::elastic_repo_uninstall]
+      # - recipe[elasticsearch::uninstall]
+      # - recipe[basic-essentials::oracle_java_default_uninstall]
+      # - recipe[basic-essentials::elastic_repo_uninstall]
 
 
     attributes:
       phenom:
         banner: 'This file managed by Admin'
-      elasticsearch:
-        cluster:
-          name: 'mycluster'
+      es_cluster_name: "QA_CP_ES_NEW"
+

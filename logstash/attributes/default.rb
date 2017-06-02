@@ -1,9 +1,9 @@
 default['logstash']['package']['name']='logstash'
 case node['platform']
   when 'debian', 'ubuntu'
-    default['logstash']['package']['version']='1:5.3.0-1'
+    default['logstash']['package']['version']='1:5.4.0-1'
   when 'centos', 'redhat', 'amazon', 'scientific', 'oracle'
-    default['logstash']['package']['version']='5.3.0-1'
+    default['logstash']['package']['version']='5.4.0-1'
 end
 
 default['logstash']['service']['name']='logstash'

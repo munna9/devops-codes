@@ -61,6 +61,16 @@ Curator performs sanitation activities of elasticsearch metricbeat and logstash 
 1. Create curator action configuration file by referring attributes `['curator']['logstash']['close']` and `['curator]['logstash]['delete']` values.
 1. Cron Job will be scheduled based on length of characters of each action to avoid concurrent activities and uniqueness.
 
+### elasticsearch::cluster_configure
+
+Configures application elasticsearch configuration file and master-slave setup of ES cluster.
+
+1. Creates directory `['elasticsearch']['conf']['home_directory']`if not exists 
+1. Creates directory `['elasticsearch']['app']['home_directory']`if not exists and update ownership for `['elasticsearch']['service']['owner']` and `['elasticsearch']['service']['group']`
+1. Identify unicast hosts from environment who share same role and `es_cluster_name` and filter ipadress of each host
+1. Remove current node from above identified hosts and finalize unicast hosts
+1. Create/update configurations file and notifies service `['elasticsearch']['service]['name']` to be restarted
+
 ### elasticsearch::configure
 
 Configures default configuration file and master-slave setup of ES cluster.
@@ -122,7 +132,8 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 | ['elasticsearch']['conf']['home_directory']   | String        | Base directory of elasticearch configurations                        |
 | ['elasticsearch']['app']['home_directory']    | String        | Home directory of elasticearch data and indices                      |
 | ['elasticsearch']['conf']['file']             | String        | Main configuration file of  elasticsearch                            |
-| ['elasticsearch']['conf']['options']          | Hash          | Configuration options for mutating elasticsearch service             |
+| ['elasticsearch']['conf']['options']          | Hash          | Configuration options for mutating elasticsearch elk service         |
+| ['elasticsearch']['cluster']['options']       | Hash          | Configuration options for mutating elasticsearch application service |
 
 ## Environment Variables
 
