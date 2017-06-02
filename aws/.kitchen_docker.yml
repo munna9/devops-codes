@@ -62,10 +62,9 @@ suites:
     run_list:
       - recipe[basic-essentials::install_pip]
       - recipe[aws::cli_install]
+      - recipe[aws::remove_profile]
     attributes:
-      aws:
-        region: us-east-1
-        sdk_gem_version: 2.7.15
-        account_id: 716533421362
-        access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
-        access_secret_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+      aws_account_id: "413928405733"
+      aws_region: "us-east-1"
+#        access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+#        access_secret_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>

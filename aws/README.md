@@ -57,7 +57,14 @@ Depends on basic-essentials::install_pip recipe and requires pip to be installed
 Depends on basic-essentials::install_pip recipe and requires pip to be installed.
 
 1. Refers `['aws']['cli']['packages']` hash and identifies pip packages to be uninstalled.
-1. deletes symbolic link  /usr/loca/bin/aws.
+1. Deletes symbolic link  /usr/loca/bin/aws.
+
+### aws::create_profile
+
+Creates aws config and other essential files on the node for root user. 
+
+1. Creates .aws directory root user's home directory recursively if not exists
+1. Creates/Updates file `config` under root user's home directory/.aws with default region specified
 
 ### aws::ecr_login
 
@@ -86,6 +93,15 @@ Depends on basic-essentials::install_pip recipe and requires pip to be installed
 1. Removes `['aws']['inspector_agent']['binary_path']` for uninstalling inspector agent
 1. Uninstall `['aws']['inspector_agent']['binary_name']` package from installed node
 
+### aws::remove_profie
+
+Creates aws config and other essential files on the node for root user. 
+
+1. Remove file `config` under root user's home directory/.aws if exists
+1. Remove .aws directory root user's home directory recursively if not exists
+
+
+
 Attributes
 ==========
 
@@ -103,6 +119,12 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 | ['aws']['inspector_agent']['binary_name']     | String        | Binary package of inspector agent, based on node's platform family   |
 | ['aws']['inspector_agent']['service_name']    | String        | Location of installation binaries for aws inspector agent            |
  
+## Environment Variables
+
+|Attribute Name                                 | Type          | Description                                                          |
+|---------------------------------------------- |---------------|----------------------------------------------------------------------|
+| ['aws_account_id']                            | String        | Aws account id this environment is provisioned                       |
+| ['aws_region']                                | String        | AWS environment region it is provisioned to                          | 
 
 ## Maintainers
 
