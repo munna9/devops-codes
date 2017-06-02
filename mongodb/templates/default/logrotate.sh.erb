@@ -1,0 +1,8 @@
+#!/usr/bin/env bash 
+LOG_PATH=<%=node['mongodb']['log']['base_directory']%> 
+LOCK_FILE=<%=node['mongodb']['service']['lock_file']%>
+test -f  <%=node['mongodb']['log']['file']%> || exit 1 
+/bin/kill -SIGUSR1 `cat $LOCK_FILE` || true 
+find $LOG_PATH/ -name "mongod.log.$(date +%Y)*" ! -name "*.gz" -exec gzip {} + 
+find $LOG_PATH/ -name "mongod.log.*gz" -mtime +<%=node['mongodb']['logfile']['retension']%> -exec rm {} +
+
