@@ -1,3 +1,5 @@
+# 0.1.10 
+[rajeshj] - Removing ELB built-in methods
 # 0.1.9
 [rajeshj] - Adding localtime default to all ecr containers and fixing typo in ELB resource names
 # 0.1.8

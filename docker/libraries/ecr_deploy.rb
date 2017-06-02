@@ -2,7 +2,6 @@ module DockerCookbook
   class EcrDeploy < DockerBase
     resource_name :ecr_deploy
     provides :ecr_deploy
-
     property :app_name, String, name_property: true
     property :vault_name, String
     property :deploy_kill_after, Numeric, default: 30
@@ -75,15 +74,17 @@ module DockerCookbook
           end
           action :nothing
         end
-        aws_elastic_lb "ELB-Attach-#{container}" do
-          name container_metadata['elb_name']
-          action :nothing
-          not_if { container_metadata['elb_name'].nil? }
-        end
-        aws_elastic_lb "ELB-Detach-#{container}" do
-          name container_metadata['elb_name']
-          action :nothing
-          not_if { container_metadata['elb_name'].nil? }
+        if container_metadata['elb_name']
+          aws_elastic_lb "ELB-Attach-#{container}" do
+            name container_metadata['elb_name']
+            action :nothing
+            not_if { container_metadata['elb_name'].nil? }
+          end
+          aws_elastic_lb "ELB-Detach-#{container}" do
+            name container_metadata['elb_name']
+            action :nothing
+            not_if { container_metadata['elb_name'].nil? }
+          end
         end
       end
     end
