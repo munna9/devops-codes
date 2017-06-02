@@ -1,3 +1,5 @@
+# 0.1.3
+[murali]  - add the mongodb log rotate script 
 # 0.1.2
 [rajeshj] - Fixingin FC038 foodcritic error
 # 0.1.1 
@@ -6,3 +8,4 @@
 [rajeshj] - Added Documentation and 
 # 0.0.9
 [rajeshj] - Initial release of mongodb
+
