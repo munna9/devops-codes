@@ -1,0 +1,8 @@
+/**
+* <%=node['phenom']['banner']%>
+*/
+bind_port=<%=@listener_port%>
+object ApiUser "<%=@username%>" {
+  password = "<%=@password%>"
+  permissions = [ "actions/generate-ticket" ]
+}

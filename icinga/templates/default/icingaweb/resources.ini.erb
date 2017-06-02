@@ -1,0 +1,18 @@
+;<%=node['phenom']['banner']%>
+[icingaweb2]
+type = "db"
+db = "mysql"
+host = "localhost"
+port = "3306"
+dbname = "<%=@web_schema_name%>"
+username = "<%=@web_db_username%>"
+password = "<%=@web_db_password%>"
+
+[icinga2]
+type = "db"
+db = "mysql"
+host = "localhost"
+port = "3306"
+dbname = "<%=@app_schema_name%>"
+username = "<%=@app_db_username%>"
+password = "<%=@app_db_password%>"

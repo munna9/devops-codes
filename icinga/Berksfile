@@ -1,0 +1,5 @@
+cookbook 'basic-essentials', :path => '../basic-essentials'
+cookbook 'mysql',            :path => '../mysql'
+cookbook 'apache',           :path => '../apache'
+source "https://supermarket.chef.io"
+metadata

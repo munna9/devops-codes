@@ -1,0 +1,43 @@
+---
+driver:
+  name: vagrant
+  network:
+    - ["forwarded_port", { guest: 5665, host: 5665, auto_correct: true }]
+    - ["forwarded_port", { guest: 80, host: 8080, auto_correct: true }]
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: centos-7.3
+    driver_config:
+      box: centos_7.3.1611
+  - name: centos-7.2
+    driver_config:
+      box: centos_7.2.1511
+  - name: ubuntu-16.04
+    driver_config:
+      box: ubuntu_16.04
+
+suites:
+  - name: master
+    run_list:
+      - recipe[basic-essentials::epel_repo]
+      - recipe[apache::install]
+      - recipe[apache::service]
+      - recipe[mysql::install]
+      - recipe[mysql::service]
+      - recipe[icinga::repo]
+      - recipe[icinga::install]
+      - recipe[icinga::master]
+      - recipe[icinga::mysql_schema]
+      - recipe[icinga::plugins]
+      - recipe[icinga::icingaweb2]
+      - recipe[icinga::service]
+
+    attributes:
+      phenom:
+        banner: 'This file managed by Admin'
+        timezone: 'UTC'
+      icinga:
+        database_name: 'icinga'

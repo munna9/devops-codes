@@ -1,0 +1,33 @@
+#<%=node['phenom']['banner']%>
+ScriptAlias /nagios/cgi-bin/ "<%=node['icinga']['nagios']['cgi_directory']%>"
+<Directory "<%=node['icinga']['nagios']['cgi_directory']%>">
+  Options ExecCGI
+  AllowOverride All
+  <IfVersion >= 2.3>
+    <RequireAll>
+      Require all granted
+      Require ip 127.0.0.1
+    </RequireAll>
+  </IfVersion>
+  <IfVersion < 2.3>
+    Order allow,deny
+    Allow from all
+    Allow from 127.0.0.1
+  </IfVersion>
+</Directory>
+Alias /nagios "<%=node['icinga']['nagios']['html_directory']%>"
+<Directory "<%=node['icinga']['nagios']['html_directory']%>">
+  Options None
+  AllowOverride All
+  <IfVersion >= 2.3>
+  <RequireAll>
+  Require all granted
+  Require ip 127.0.0.1
+  </RequireAll>
+  </IfVersion>
+  <IfVersion < 2.3>
+  Order allow,deny
+  Allow from all
+  Allow from 127.0.0.1
+  </IfVersion>
+</Directory>

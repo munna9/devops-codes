@@ -1,0 +1,5 @@
+/**
+* <%=node['phenom']['banner']%>
+*/
+CREATE DATABASE IF NOT EXISTS <%=@schema_name%>;
+GRANT SELECT, INSERT, UPDATE, DELETE, DROP, CREATE VIEW, INDEX, EXECUTE ON <%=@schema_name-%>.* TO '<%=@db_username%>'@'localhost' IDENTIFIED BY '<%=@db_password%>';
