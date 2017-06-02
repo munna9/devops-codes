@@ -13,14 +13,13 @@ group node['docker']['service']['group'] do
   action :modify
 end
 
-%w(.ssh .aws).each do |sub_directory_name|
-  directory "#{node['jenkins']['app']['home_directory']}/#{sub_directory_name}" do
-    recursive true
-    action :create
-    owner node['jenkins']['service']['owner']
-    group node['jenkins']['service']['group']
-  end
+directory "#{node['jenkins']['app']['home_directory']}/.ssh" do
+  recursive true
+  action :create
+  owner node['jenkins']['service']['owner']
+  group node['jenkins']['service']['group']
 end
+
 
 cookbook_file "#{node['jenkins']['app']['home_directory']}/.ssh/config" do
   source 'ssh_config'
@@ -53,14 +52,6 @@ file "#{node['jenkins']['app']['home_directory']}/.ssh/authorized_keys" do
   action :create
 end
 
-file "#{node['jenkins']['app']['home_directory']}/.aws/config" do
-  content "[default]\nregion = #{node['aws']['region']}"
-  owner node['jenkins']['service']['owner']
-  group node['jenkins']['service']['group']
-  mode "0600"
-  sensitive true
-end
-
 template "#{node['jenkins']['app']['home_directory']}/admin_policy.json" do
   source 'admin_policy.json.erb'
   sensitive true
@@ -68,11 +59,35 @@ template "#{node['jenkins']['app']['home_directory']}/admin_policy.json" do
   group node['jenkins']['service']['group']
 end
 
-directory node['jenkins']['app']['home_directory'] do
-  recursive true
-  owner node['jenkins']['service']['owner']
-  group node['jenkins']['service']['group']
+if node['aws_account_id']
+  data_json=data_bag_item('credentials','aws')
+  aws_hash=data_json[node['aws_account_id']]
+  phemom_data=data_bag_item('credentials','phemom')
+  directory "#{node['jenkins']['app']['home_directory']}/.aws" do
+    recursive true
+    action :create
+    owner node['jenkins']['service']['owner']
+    group node['jenkins']['service']['group']
+  end
+  template "#{node['jenkins']['app']['home_directory']}/.aws/config" do
+    source 'aws/config.erb'
+    sensitive true
+    variables(
+      :default_region   => node['aws_region'],
+      :phemom_region    => phemom_data['default_region']
+    )
+    mode 0600
+    owner node['jenkins']['service']['owner']
+    group node['jenkins']['service']['group']
+  end
+  template "#{node['jenkins']['app']['home_directory']}/.aws/credentials" do
+    source 'aws/credentials.erb'
+    sensitive true
+    variables(
+      :default_aws_access_key_id        =>  aws_hash['access_key_id'],
+      :default_aws_secret_access_key    =>  aws_hash['secret_access_key'],
+      :phemom_aws_access_key_id       =>  phemom_data['access_key_id'],
+      :phemom_aws_secret_access_key   =>  phemom_data['secret_access_key']
+    )
+  end
 end
-
-
-
