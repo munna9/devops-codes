@@ -1,3 +1,5 @@
+# 0.1.7
+[rajeshj] - Adding AWS credentials for phenom user
 # 0.1.6
 [rajeshj] - Fixing Typo on Node JS NVM
 # 0.1.5

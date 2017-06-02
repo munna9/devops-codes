@@ -75,9 +75,11 @@ Creates and configure deployment user
 1. Create user with details provided from `phenom` data bag item
 1. Create id_rsa key pair provided from `phenom` data data item
 1. Create/update ssh_config file for phenom deploy user
+1. Create/update aws directory created and owned and accessible only by phenom user
+1. Create/update aws config and credentials file with owned 
 1. Ensures phenom user directory is owned and accessible only by phenom user
 
-### build-essentials::deploy_user_assemble
+### build-essentials::deploy_user_dismantle
 
 Remove deploy_user files and remove user from node
 

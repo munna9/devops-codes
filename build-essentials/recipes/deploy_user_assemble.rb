@@ -41,3 +41,21 @@ directory phenom_user['home_directory'] do
   owner phenom_user['username']
   group phenom_user['primary_group']
 end
+
+data_json = data_bag_item('credentials','aws')
+aws_hash=data_json[node['aws_account_id']]
+directory "#{phenom_user['home_directory']}/.aws" do
+  mode '0700'
+  owner phenom_user['username']
+  group phenom_user['primary_group']
+end
+file "#{phenom_user['home_directory']}/.aws/config" do
+  content "[default]\nregion = #{node['aws_region']}"
+  mode "0600"
+  sensitive true
+end
+file "#{phenom_user['home_directory']}/.aws/credentials" do
+  content "[default]\naws_access_key_id = #{aws_hash['access_key_id']}\naws_secret_access_key = #{aws_hash['secret_access_key']}}"
+  mode "0600"
+  sensitive true
+end
