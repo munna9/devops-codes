@@ -10,19 +10,21 @@
 
   },
   "run_list": [
-    "recipe[ntp::install_client]",
-    "recipe[ntp::service]",
-    "recipe[basic-essentials::elastic_repo]",
-    "recipe[filebeat::install]",
-    "recipe[filebeat::configure]",
-    "recipe[filebeat::prospectors]",
-    "recipe[filebeat::service]",
-    "recipe[metricbeat::install]",
-    "recipe[metricbeat::configure]",
-    "recipe[metricbeat::service]"
-
+    "role[_base]"
   ],
   "env_run_lists": {
+    "qa-candidates": [
+      "role[_base]",
+      "recipe[basic-essentials::elastic_repo]",
+      "recipe[filebeat::install]",
+      "recipe[filebeat::configure]",
+      "recipe[filebeat::prospectors]",
+      "recipe[filebeat::service]",
+      "recipe[metricbeat::install]",
+      "recipe[metricbeat::configure]",
+      "recipe[metricbeat::import_dash_board]",
+       "recipe[metricbeat::service]"
+    ]
 
   }
 }

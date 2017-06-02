@@ -22,6 +22,14 @@
     "recipe[logstash::service]"
   ],
   "env_run_lists": {
+    "qa-candidates": [
+      "role[_base]",
+      "recipe[basic-essentials::elastic_repo]",
+      "recipe[basic-essentials::oracle_java_default]",
+      "recipe[logstash::install]",
+      "recipe[logstash::configure]",
+      "recipe[logstash::service]"
+    ],
     "prod-cpapp":[
       "role[_base]",
       "recipe[docker::install]",

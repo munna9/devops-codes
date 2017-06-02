@@ -1,19 +1,37 @@
 {
   "id": "microservice",
-  "dev-cms": {
+  "dev-candidates": {
     "ecr": {
       "microservice": {
         "image_name": "cp_microservice",
         "tag_name": "DEV-CP",
         "ports": {
-          "9014": "9000"
+          "9057": "9000"
         },
         "environment_variables": [
           "CONF_FILE_NAME=application.conf"
         ],
         "volumes": {
-          "/var/log/containers/microservice": "/opt/deployment/logs/cp_microservice",
+          "/var/log/containers/microservice": "/opt/deployment/logs/cp-microservice",
           "/opt/phenom/buildproperties/cp-microservice/DEV": "/opt/deployment/buildproperties"
+        }
+      }
+    }
+  },
+  "qa-candidates": {
+    "ecr": {
+      "microservice": {
+        "image_name": "cp_microservice",
+        "tag_name": "QA-CP",
+        "ports": {
+          "9057": "9000"
+        },
+        "environment_variables": [
+          "CONF_FILE_NAME=application.conf"
+        ],
+        "volumes": {
+          "/var/log/containers/microservice": "/opt/deployment/logs/cp-microservice",
+          "/opt/phenom/buildproperties/cp-microservice/QA": "/opt/deployment/buildproperties"
         }
       }
     }

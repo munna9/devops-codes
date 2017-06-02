@@ -13,7 +13,28 @@
   },
 
   "override_attributes": {
-    
+    "curator":{
+      "indices":{
+        "cp-dev" : {
+            "close"           : 70,
+            "delete_indices"  : 90
+        },
+        "cp-qa" : {
+          "close"             : 70,
+          "delete_indices"    : 90
+        },
+        "cp-prod" : {
+          "close"             : 70,
+          "delete_indices"    : 90
+        }
+      }
+    }
   
+  }
+  "env_run_list" : {
+    "prod-candiadates":[
+      "role[_base]",
+      "role[_elk-agent]"
+    ]
   }
 }

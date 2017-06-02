@@ -13,6 +13,14 @@
     "role[_base]"
   ],
   "env_run_lists": {
+    "qa-candidates":[
+      "role[_base]",
+      "role[_elk-agent]",
+      "recipe[docker::install]",
+      "recipe[docker::service]",
+      "recipe[docker::wrappers]",
+      "recipe[nginx::pod]"
+    ]
 
 
   }

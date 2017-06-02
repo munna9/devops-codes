@@ -11,11 +11,24 @@
   },
   "run_list": [
     "role[_base]",
-    "role[_elk-agent]",
-    "role[_deploy-agent]",
-    "recipe[seo-service::ecr_deploy]"
+    "role[_elk-agent]"
   ],
   "env_run_lists": {
+    "tools":[
+      "role[_base]",
+      "recipe[basic-essentials::epel_repo]",
+      "recipe[apache::install]",
+      "recipe[apache::service]",
+      "recipe[mysql::install]",
+      "recipe[mysql::service]",
+      "recipe[icinga::repo]",
+      "recipe[icinga::install]",
+      "recipe[icinga::master]",
+      "recipe[icinga::mysql_schema]",
+      "recipe[icinga::plugins]",
+      "recipe[icinga::icingaweb2]",
+      "recipe[icinga::service]"
+    ]
 
   }
 }

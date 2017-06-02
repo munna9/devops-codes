@@ -1,0 +1,42 @@
+{
+  "id": "cp-ui",
+  "dev-candidates": {
+    "ecr": {
+      "cp-ui": {
+        "image_name": "cu_appui_2",
+        "tag_name": "DEV-CP",
+        "ports": {
+          "9050": "80"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/cp-ui": "/var/log/nginx"
+        }
+      }
+    }
+  },
+  "qa-candidates": {
+    "ecr": {
+      "cp-ui": {
+        "image_name": "cu_appui_2",
+        "tag_name": "QA-CP",
+        "ports": {
+          "9050": "80"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/cp-ui": "/var/log/nginx"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "qa-cpui2.phenompeople.com",
+      "nginx_template":"http_template",
+      "application_port":9050
+    }
+  }
+}

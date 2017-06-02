@@ -33,6 +33,16 @@
       "recipe[nginx::install]",
       "recipe[nginx::service]",
       "recipe[elasticsearch::service]"
+    ],
+    "qa-candidates":[
+      "role[_base]",
+      "recipe[basic-essentials::elastic_repo]",
+      "recipe[basic-essentials::oracle_java_default]",
+      "recipe[elasticsearch::install]",
+      "recipe[elasticsearch::configure]",
+      "recipe[nginx::install]",
+      "recipe[nginx::service]",
+      "recipe[elasticsearch::service]"
     ]
   }
 }

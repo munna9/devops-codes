@@ -10,9 +10,11 @@
   "chef_type": "role",
   "run_list": [
     "role[_base]",
-    "recipe[basic-essentials::oracle_java_services]",
+    "recipe[basic-essentials::oracle_java_default]",
     "recipe[basic-essentials::install_pip]",
     "recipe[basic-essentials::gitclient]",
+    "recipe[build-essentials::maven_install]",
+    "recipe[build-essentials::nodejs_install]",
     "recipe[docker::install]",
     "recipe[docker::service]",
     "recipe[docker::wrappers]",

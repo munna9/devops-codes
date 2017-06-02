@@ -1,8 +1,8 @@
 {
-  "id": "ph_seo-service",
+  "id": "seo-service",
   "dev-cms": {
     "ecr": {
-      "ph_seo-service": {
+      "seo-service": {
         "image_name": "ph_seo-service",
         "tag_name": "DEV-CMS",
         "ports": {
@@ -12,8 +12,7 @@
           "CONF_FILE_NAME=configuration.conf"
         ],
         "volumes": {
-          "/etc/localtime": "/etc/localtime",
-          "/opt/phenom/logs/seo-service": "/opt/deployment/logs/seo-service",
+          "/var/log/containers/seo-service": "/opt/deployment/logs/seo-service",
           "/opt/phenom/buildproperties/hub-site/seo-service/DEV": "/opt/deployment/buildproperties"
         }
       }
@@ -21,7 +20,7 @@
   },
   "qa-cms": {
     "ecr": {
-      "ph_seo-service": {
+      "seo-service": {
         "image_name": "ph_seo-service",
         "tag_name": "QA-CMS",
         "ports": {
@@ -31,8 +30,7 @@
           "CONF_FILE_NAME=configuration.conf"
         ],
         "volumes": {
-          "/etc/localtime": "/etc/localtime",
-          "/opt/phenom/logs/seo-service": "/opt/deployment/logs/seo-service",
+          "/var/log/containers/seo-service": "/opt/deployment/logs/seo-service",
           "/opt/phenom/buildproperties/hub-site/seo-service/QA": "/opt/deployment/buildproperties"
         }
       }
@@ -40,7 +38,7 @@
   },
   "stg-cms": {
     "ecr": {
-      "ph_seo-service": {
+      "seo-service": {
         "image_name": "ph_seo-service",
         "tag_name": "STG-CMS",
         "ports": {
@@ -50,16 +48,15 @@
           "CONF_FILE_NAME=configuration.conf"
         ],
         "volumes": {
-          "/etc/localtime": "/etc/localtime",
-          "/opt/phenom/logs/seo-service": "/opt/deployment/logs/seo-service",
-          "/opt/phenom/buildproperties/hub-site/seo-service/STG": "/opt/deployment/buildproperties"
+          "/var/log/containers/seo-service": "/opt/deployment/logs/seo-service",
+          "/opt/phenom/buildproperties/hub-site/seo-service/DEV": "/opt/deployment/buildproperties"
         }
       }
     }
   },
   "prod-cms": {
     "ecr": {
-      "ph_seo-service": {
+      "seo-service": {
         "image_name": "ph_seo-service",
         "tag_name": "PROD-CMS",
         "ports": {
@@ -69,9 +66,8 @@
           "CONF_FILE_NAME=configuration.conf"
         ],
         "volumes": {
-          "/etc/localtime": "/etc/localtime",
-          "/opt/phenom/logs/seo-service": "/opt/deployment/logs/seo-service",
-          "/opt/phenom/buildproperties/hub-site/seo-service/PROD": "/opt/deployment/buildproperties"
+          "/var/log/containers/seo-service": "/opt/deployment/logs/seo-service",
+          "/opt/phenom/buildproperties/hub-site/seo-service/DEV": "/opt/deployment/buildproperties"
         }
       }
     }

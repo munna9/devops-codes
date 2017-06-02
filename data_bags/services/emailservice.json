@@ -1,22 +1,41 @@
 {
   "id": "emailservice",
-  "dev-cms": {
+  "dev-candidates": {
     "ecr": {
       "emailservice": {
         "image_name": "cp_email-microservice",
         "tag_name": "DEV-CP",
         "ports": {
-          "9012": "9000"
+          "9056": "9000"
         },
         "environment_variables": [
           "CONF_FILE_NAME=application.conf"
         ],
         "volumes": {
-          "/var/log/containers/emailservice": "/opt/deployment/logs/cp_email-microservice",
+          "/var/log/containers/emailservice": "/opt/deployment/logs/cp-email-microservice",
           "/opt/phenom/buildproperties/cp-email-microservices/DEV": "/opt/deployment/buildproperties"
         }
       }
     }
+  },
+  "qa-candidates": {
+    "ecr": {
+      "emailservice": {
+        "image_name": "cp_email-microservice",
+        "tag_name": "QA-CP",
+        "ports": {
+          "9056": "9000"
+        },
+        "environment_variables": [
+          "CONF_FILE_NAME=application.conf"
+        ],
+        "volumes": {
+          "/var/log/containers/emailservice": "/opt/deployment/logs/cp-email-microservice",
+          "/opt/phenom/buildproperties/cp-email-microservices/QA": "/opt/deployment/buildproperties"
+        }
+      }
+    }
   }
+
 
 }
