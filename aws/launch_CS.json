@@ -1,0 +1,191 @@
+{
+"AWSTemplateFormatVersion" : "2010-09-09",
+  "Description" : "AWS CFT for launching core chef-server",
+
+  "Metadata" : {
+    "AWS::CloudFormation::Interface" : {
+      "ParameterGroups" : [
+        {
+          "Label" : { "default":"Amazon EC2 Configuration" },
+          "Parameters" : [ "InstanceType", "KeyName", "HostName", "IAMRole"]
+        },
+        {
+          "Label" : { "default" : "Network Configuration" },
+          "Parameters" : [ "SubnetID", "SecurityGroupID" ]
+        }
+      ]
+    }
+  },
+
+  "Parameters" : {
+    "KeyName": { 
+      "Description" : "Name of an existing EC2 KeyPair to enable SSH access to the instance",
+      "Type": "AWS::EC2::KeyPair::KeyName",
+      "ConstraintDescription" : "Must be the name of an existing EC2 KeyPair."
+    },
+
+    "InstanceType" : {
+      "Description" : "Chef-Server EC2 instance type",
+      "Type" : "String",
+      "Default" : "m4.xlarge",
+      "AllowedValues" : [ "t2.micro", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "g2.2xlarge", "g2.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "hi1.4xlarge", "hs1.8xlarge", "cr1.8xlarge", "cc2.8xlarge", "cg1.4xlarge"]
+,
+      "ConstraintDescription" : "must be a valid EC2 instance type."
+    },
+
+   "HostName" : {
+     "Description" : "Host name of chef-server",
+     "Type" : "String"
+    },
+
+   "IAMRole" : {
+     "Description" : "IAM Role for Chef-server",
+     "Type" : "String"
+    },
+
+   "InstanceOS" : {
+     "Description" : "Chef-Server Distribution ",
+     "Type" : "String",
+     "AllowedValues" : ["AmazonLinux","Red Hat Enterprise Linux 7.3"],
+     "ConstraintDescription" : "must be a valid EC2 distribution"
+  },
+    "SubnetID": {
+      "Description" : "Subnet in which chef-server is to be launched",
+      "Type": "AWS::EC2::Subnet::Id",
+      "ConstraintDescription" : "Must be the ID of an existing Subnet"
+    },
+
+    "SecurityGroupID": {
+      "Description" : "Security Groups to be assigned",
+      "Type": "AWS::EC2::SecurityGroup::Id",
+      "ConstraintDescription" : "Must be the ID's of existing SecurityGroups"
+    }
+  },
+
+  "Mappings": {
+    "RegionMap" : {
+      "us-east-1"       :      {"RHEL" : "ami-b63769a1","AmazonLinux" :"ami-c58c1dd3" },
+      "us-east-2"       :      {"RHEL" : "ami-0932686c","AmazonLinux" :"ami-4191b524" },
+      "us-west-1"       :      {"RHEL" : "ami-2cade64c","AmazonLinux" :"ami-7a85a01a"},
+      "us-west-2"       :      {"RHEL" : "ami-6f68cf0f","AmazonLinux" :"ami-4836a428"},
+      "ap-south-1"      :      {"RHEL" : "ami-cdbdd7a2","AmazonLinux" :"ami-52c7b43d"},
+      "ap-northeast-1"  :      {"RHEL" : "ami-5de0433c","AmazonLinux" :"ami-923d12f5"},
+      "ap-northeast-2"  :      {"RHEL" : "ami-44db152a","AmazonLinux" :"ami-9d15c7f3"},
+      "ap-southeast-1"  :      {"RHEL" : "ami-2c95344f","AmazonLinux" :"ami-fc5ae39f"},
+      "ap-southeast-2"  :      {"RHEL" : "ami-39ac915a","AmazonLinux" :"ami-162c2575"},
+      "eu-central-1"    :      {"RHEL" : "ami-e4c63e8b","AmazonLinux" :"ami-b968bad6"},
+      "eu-west-1"       :      {"RHEL" : "ami-02ace471","AmazonLinux" :"ami-01ccc867"},
+      "eu-west-2"       :      {"RHEL" : "ami-9c363cf8","AmazonLinux" :"ami-b6daced2"},
+      "ca-central-1"    :      {"RHEL" : "ami-9062d0f4","AmazonLinux" :"ami-0bd66a6f"},
+      "sa-east-1"       :      {"RHEL" : "ami-7de77b11","AmazonLinux" :"ami-37cfad5b"}
+    }
+  },
+
+  "Conditions" : {
+      "RHEL" : {"Fn::Equals" :[{"Ref" : "InstanceOS"},"RHEL"]},
+      "AmazonLinux" : {"Fn::Equals" :[{"Ref" : "InstanceOS"},"AmazonLinux"]}
+
+      },
+
+  "Resources" : {
+    "InstanceProfile" : {
+      "Type": "AWS::IAM::InstanceProfile",
+      "Properties": {
+        "Path": "/",
+        "Roles": [{ "Ref": "IAMRole" }]
+      }
+    },
+
+    "RHELChefServer" : {
+      "Type" : "AWS::EC2::Instance",
+      "Condition" : "RHEL",
+      "Properties" : {
+        "InstanceType" : { "Ref" : "InstanceType" },
+        "SecurityGroupIds" : [ { "Ref" : "SecurityGroupID" } ],
+        "KeyName" : { "Ref" : "KeyName" },
+        "IamInstanceProfile" : {"Ref" : "InstanceProfile"},
+        "ImageId" : { "Fn::FindInMap" : [ "RegionMap", { "Ref" : "AWS::Region" }, "RHEL"]},
+        "SubnetId" : {"Ref" : "SubnetID"},
+        "Tags" : [{"Key": "Name", "Value": {"Ref" : "HostName"}}],
+        "UserData" : { "Fn::Base64" : { "Fn::Join" : ["", [
+          "#!/bin/bash \n",
+          "yum install -y wget \n",
+          "wget https://packages.chef.io/files/stable/chef-server/12.11.1/el/7/chef-server-core-12.11.1-1.el7.x86_64.rpm\n",
+          "rpm -Uvh /chef-server-core-12.11.1-1.el7.x86_64.rpm\n",
+          "chef-server-ctl reconfigure\n",
+          "chef-server-ctl user-create jenkins Jenkins User admin.squad@phenompeople.com 'Welcome@123' --filename jenkins.pem \n",
+          "chef-server-ctl org-create phenompeople 'Phenom People Pvt Ltd' --association_user jenkins --filename phenompeople-validator.pem"
+        ]]}}
+
+      }
+    },
+    "ALChefServer" : {
+      "Type" : "AWS::EC2::Instance",
+      "Condition" : "AmazonLinux",
+      "Properties" : {
+        "InstanceType" : { "Ref" : "InstanceType" },
+        "SecurityGroupIds" : [ { "Ref" : "SecurityGroupID" } ],
+        "IamInstanceProfile" : {"Ref" : "InstanceProfile"},
+        "KeyName" : { "Ref" : "KeyName" },
+        "ImageId" : { "Fn::FindInMap" : [ "RegionMap", { "Ref" : "AWS::Region" }, "AmazonLinux"]},
+        "SubnetId" : {"Ref" : "SubnetID"},
+        "Tags" : [{"Key": "Name", "Value": {"Ref" : "HostName"}}],
+        "UserData" : { "Fn::Base64" : { "Fn::Join" : ["", [
+          "#!/bin/bash \n",
+          "yum install -y wget \n",
+          "wget https://packages.chef.io/files/stable/chef-server/12.11.1/el/7/chef-server-core-12.11.1-1.el7.x86_64.rpm\n",
+          "rpm -Uvh /chef-server-core-12.11.1-1.el7.x86_64.rpm\n",
+          "chef-server-ctl reconfigure\n",
+          "chef-server-ctl user-create jenkins Jenkins User admin.squad@phenompeople.com 'Welcome@123' --filename jenkins.pem \n",
+          "chef-server-ctl org-create phenompeople 'Phenom People Pvt Ltd' --association_user jenkins --filename phenompeople-validator.pem"
+        ]]}}
+
+      }
+    }
+  },
+
+
+  "Outputs" : {
+    "InstanceId" : {
+      "Description" : "InstanceId of the newly created EC2 instance",
+      "Condition" : "RHEL",
+      "Value" : { "Ref" : "RHELChefServer" }
+    },
+    "AZ" : {
+      "Description" : "Availability Zone of the newly created EC2 instance",
+      "Condition" : "RHEL",
+      "Value" : { "Fn::GetAtt" : [ "RHELChefServer", "AvailabilityZone" ] }
+    },
+    "PublicDNS" : {
+      "Description" : "Public DNSName of the newly created EC2 instance",
+      "Condition" : "RHEL",
+      "Value" : { "Fn::GetAtt" : [ "RHELChefServer", "PublicDnsName" ] }
+    },
+    "PublicIP" : {
+      "Description" : "Public IP address of the newly created EC2 instance",
+      "Condition" : "RHEL",
+      "Value" : { "Fn::GetAtt" : [ "RHELChefServer", "PublicIp" ] }
+    },
+
+    "InstanceId" : {
+      "Description" : "InstanceId of the newly created EC2 instance",
+      "Condition" : "AmazonLinux",
+      "Value" : { "Ref" : "ALChefServer" }
+    },
+    "AZ" : {
+      "Description" : "Availability Zone of the newly created EC2 instance",
+      "Condition" : "AmazonLinux",
+      "Value" : { "Fn::GetAtt" : [ "ALChefServer", "AvailabilityZone" ] }
+    },
+    "PublicDNS" : {
+      "Description" : "Public DNSName of the newly created EC2 instance",
+      "Condition" : "AmazonLinux",
+      "Value" : { "Fn::GetAtt" : [ "ALChefServer", "PublicDnsName" ] }
+    },
+    "PublicIP" : {
+      "Description" : "Public IP address of the newly created EC2 instance",
+      "Condition" : "AmazonLinux",
+      "Value" : { "Fn::GetAtt" : [ "ALChefServer", "PublicIp" ] }
+    }
+  }
+}      
