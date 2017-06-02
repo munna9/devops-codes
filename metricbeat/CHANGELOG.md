@@ -1,3 +1,5 @@
+# 0.1.2
+[rajeshj] - metricbeat configure update recipe filtering issue
 # 0.1.1
 [rajeshj] - metricbeat specific to application monitoring
 # 0.1.0

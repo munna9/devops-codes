@@ -4,7 +4,7 @@ rescue Net::HTTPServerException, Chef::Exceptions::InvalidDataBagPath
   procs_to_watch=data_bag_item('beat_prospectors',"_default")
 end
 procs_to_watch['app_procs_to_watch'].each_pair do |app_name,app_hash|
-  recipe_name="#{app_name}\\:\\:install"
+  recipe_name="#{app_name}::install"
   unless node['recipes'].include?(recipe_name)
     procs_to_watch['app_procs_to_watch'].delete(app_name)
   end
