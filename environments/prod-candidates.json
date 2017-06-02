@@ -30,7 +30,7 @@
       }
     }
   
-  }
+  },
   "env_run_list" : {
     "prod-candiadates":[
       "role[_base]",
