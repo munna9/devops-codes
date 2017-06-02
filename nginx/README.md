@@ -122,6 +122,16 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 | ['nginx']['app']['base_directory']            | String        | Base directory where all nginx configuration and binaries resides    |
 | ['nginx']['app']['conf_directory']            | String        | Base directory of all configuration file resides                     |
 | ['nginx']['app']['log_directory']             | String        | Base directory of all log files for nginx                            |
+| ['nginx']['site']['base_directory']           | String        | Base directory of main nginx site                                    |
+| ['nginx']['site']['default_directory']        | String        | Default directory of main nginx site                                 |
+| ['nginx']['ssl']['base_directory']            | String        | Base directory of SSL certificates                                   |
+| ['nginx']['conf']['ajp_connect_timeout']      | String        | Connection Time out value defined for AJP protocol                   |
+| ['nginx']['conf']['ajp_read_timeout']         | String        | Read Time out value defined for AJP protocol                         |
+| ['nginx']['conf']['ajp_send_timeout']         | String        | Request sent time out value defined for AJP protocol                 |
+| ['nginx']['conf']['proxy_connect_timeout']    | String        | Connection Time out value defined for AJP protocol                   |
+| ['nginx']['conf']['proxy_read_timeout']       | String        | Read Time out value defined for AJP protocol                         |
+| ['nginx']['conf']['proxy_send_timeout']       | String        | Request sent time out value defined for AJP protocol                 |
+| ['nginx']['conf']['send_timeout']             | String        | Value set for if client stop responding, free up memory              |
 
 ## Maintainers
 

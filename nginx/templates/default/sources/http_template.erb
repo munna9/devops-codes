@@ -2,11 +2,10 @@
 
 upstream <%=@service_name%> {
 <% @hosts.each do |host_name| %>
-  server <%= host_name %>:<%=@application_port%>;
+    server <%= host_name %>:<%=@application_port%>;
 <% end %>
-  keepalive 10;
+    keepalive 10;
 }
-
 server {
   listen 80;
   server_name <%=@uri%>;
@@ -25,13 +24,10 @@ server {
   access_log <%=@node['nginx']['app']['log_directory']%>/<%=@service_name%>-access.log;
   error_log <%=@node['nginx']['app']['log_directory']%>/<%=@service_name%>-error.log;
   location / {
-    root   html;
-    index  index.html index.htm;
-    ajp_keep_conn on;
-    ajp_connect_timeout      <%=@node['nginx']['conf']['ajp_connect_timeout']%>;
-    ajp_send_timeout         <%=@node['nginx']['conf']['ajp_send_timeout']%>;
-    ajp_read_timeout         <%=@node['nginx']['conf']['ajp_read_timeout']%>;
-    send_timeout             <%=@node['nginx']['conf']['send_timeout']%>;
-    ajp_pass                 <%=@service_name%>;
+    proxy_pass http://<%=@service_name%>;
+    proxy_connect_timeout      <%=@node['nginx']['conf']['proxy_connect_timeout']%>;
+    proxy_send_timeout         <%=@node['nginx']['conf']['proxy_send_timeout']%>;
+    proxy_read_timeout         <%=@node['nginx']['conf']['proxy_read_timeout']%>;
+    send_timeout               <%=@node['nginx']['conf']['send_timeout']%>;
   }
 }

@@ -22,18 +22,9 @@ module NginxCookbook
             :ssl_certificate  => service_dict['ssl_certificate']
           )
           sensitive true
-          notifies :run, 'ruby_block[nginx-pod]'
+          notifies :reload, "docker_container[#{node['pod_container_name']}]"
         end
-        ruby_block 'nginx-pod' do
-          block do
-            data_record = data_bag_item('tools', 'nginx-pod')
-            _containers = data_record[node.chef_environment]['docker']
-            _containers.keys do |container_name|
-              docker_container container_name do
-                action :reload
-              end
-            end
-          end
+        docker_container node['pod_container_name'] do
           action :nothing
         end
       end
