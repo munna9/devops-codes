@@ -1,0 +1,26 @@
+{
+  "id":"data_service",
+  "_default":{
+    "ecr":{
+      "data_service": {
+        "image_name":"data_service",
+        "tag":"latest",
+        "ports":{
+          "80":"9000"
+        },
+        "environment_variables":[
+          "CONF_FILE_NAME=/opt/phenom/data-service/conf/configuration.conf"
+        ],
+        "volumes":{
+          "/etc/localtime":"/etc/localtime"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "test-data_service.phenompeople.com",
+      "nginx_template":"ajp_template",
+      "service_port":5040,
+      "application_port":5030
+    }
+  }
+}

@@ -1,0 +1,69 @@
+---
+driver:
+  name: docker
+  network:
+    - ["forwarded_port", { guest: 5665, host: 5665, auto_correct: true }]
+  use_sudo: false
+
+provisioner:
+  name: chef_zero
+
+
+platforms:
+  - name: centos-7.3
+    driver_config:
+      image: phenompeople/centos-ccb:7.3.1611
+      platform: centos
+      run_command: /usr/sbin/init
+      privileged: true
+      volume:
+       - /sys/fs/cgroup:/sys/fs/cgroup
+      forward:
+        - 80
+        - 5665
+      remove_images: true
+#
+#  - name: centos-7.2
+#    driver_config:
+#      image: phenompeople/centos-ccb:7.2.1511
+#      platform: centos
+#      run_command: /usr/sbin/init
+#      privileged: true
+#      volume:
+#        - /sys/fs/cgroup:/sys/fs/cgroup
+#      forward: 80
+#      remove_images: true
+#
+#  - name: ubuntu16.04
+#    driver_config:
+#      image: phenompeople/ubuntu-ccb:16.04
+#      platform: ubuntu
+#      run_options: '--security-opt seccomp=unconfined --stop-signal=SIGRTMIN+3 --tmpfs /run --tmpfs /run/lock -v /sys/fs/cgroup:/sys/fs/cgroup:ro'
+#      run_command: '/sbin/init'
+#      forward: 80
+#      remove_images: true
+
+suites:
+  - name: client
+    run_list:
+      - recipe[basic-essentials::epel_repo]
+      - recipe[icinga::repo]
+      - recipe[icinga::install]
+      - recipe[icinga::plugins]
+      - recipe[icinga::client]
+      - recipe[icinga::service]
+    attributes:
+      phenom:
+        banner: 'This file managed by Admin'
+        timezone: 'UTC'
+      icinga:
+        database_name: 'icinga'
+
+    attributes:
+      phenom:
+        banner: 'This file managed by Admin'
+        timezone: 'UTC'
+      icinga:
+        database_name: 'icinga'
+        master: 'localhost'
+        listner_port: 32771

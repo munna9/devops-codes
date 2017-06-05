@@ -1,0 +1,6 @@
+/* <%=node['phenom']['banner']%> */
+<%@user_groups.each do |user_group| -%>
+object UserGroup "<%=user_group%>" {
+  display_name = "<%=user_group.gsub(/_/,' ').split.map(&:capitalize).join(' ')%> Group"
+}
+<% end %>

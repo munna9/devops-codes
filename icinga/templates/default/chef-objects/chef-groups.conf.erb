@@ -1,0 +1,12 @@
+/* <%=node['phenom']['banner']%> */
+
+/**
+* Host groups defined based on platforms.
+*/
+
+<%@host_groups.each do |host_group| -%>
+object HostGroup "<%=host_group%>" {
+  display_name = "<%=host_group.capitalize%> Servers"
+  assign where host.vars.platform == "<%=host_group%>"
+}
+<% end %>

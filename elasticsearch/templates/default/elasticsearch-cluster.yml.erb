@@ -1,0 +1,7 @@
+#<%= node['phenom']['banner']%>
+cluster.name: <%=node['es_cluster_name']%>
+node.name: <%=node['hostname']%>
+network.host: <%=node['ipaddress']%>
+<% @node['elasticsearch']['cluster']['options'].each do |conf_name,conf_value|%>
+<%="#{conf_name} : #{conf_value}"%>
+<%end%>

@@ -2,11 +2,11 @@ default['filebeat']['package']['name']='filebeat'
 default['filebeat']['pin_version']=true
 case node['platform']
   when 'debian', 'ubuntu'
-    default['filebeat']['package']['version']='5.3.0'
+    default['filebeat']['package']['version']='5.4.0'
     default['filebeat']['host_package']['log_file']='/var/log/dpkg.log'
     default['filebeat']['host_auth']['log_file']='/var/log/auth.log'
   when 'centos', 'redhat', 'amazon', 'scientific', 'oracle'
-    default['filebeat']['package']['version']='5.3.0-1'
+    default['filebeat']['package']['version']='5.4.1-1'
     default['filebeat']['host_package']['log_file']='/var/log/yum.log'
     default['filebeat']['host_auth']['log_file']='/var/log/secure'
 end

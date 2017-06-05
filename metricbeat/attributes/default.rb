@@ -2,9 +2,9 @@ default['metricbeat']['package']['name']='metricbeat'
 default['metricbeat']['pin_version']=true
 case node['platform']
   when 'debian', 'ubuntu'
-    default['metricbeat']['package']['version']='5.3.0'
+    default['metricbeat']['package']['version']='5.4.0'
   when 'centos', 'redhat', 'amazon', 'scientific', 'oracle'
-    default['metricbeat']['package']['version']='5.3.0-1'
+    default['metricbeat']['package']['version']='5.4.1-1'
 end
 
 default['metricbeat']['service']['name']='metricbeat'

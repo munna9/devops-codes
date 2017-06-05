@@ -1,3 +1,5 @@
+# 0.1.4
+[rajeshj] - Adding application cluster configurations
 # 0.1.3
 [rajeshj] - Added elasticsearch node indices directory
 # 0.1.2

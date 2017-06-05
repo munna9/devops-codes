@@ -1,0 +1,22 @@
+/* <%=node['phenom']['banner']%> */
+
+/**
+* Host inventory defined based on chef-nodes.
+*/
+
+<% @chef_nodes.each_pair do |each_node,hash_node| -%>
+object Host "<%=hash_node['short_name']%>" {
+ # import "generic-host"
+  import "chef-host"
+  display_name = "<%=hash_node['short_name']%>"
+  address = "<%=hash_node['ipaddress']%>"
+<% unless hash_node['platform'].to_s.empty? -%>
+  vars.platform = "<%=hash_node['platform']%>"
+  vars.os = "Linux"
+  vars.partitions = ["/", "/var"]
+<% end %>
+<% if hash_node['roles'].any? -%>
+  vars.roles=<%=hash_node['roles']%>
+<% end %>
+}
+<% end %>

@@ -17,7 +17,7 @@ default['ntp']['client']['packages'] = {
   },
   'centos' => {
     '7.3.1611' => {
-      'ntp' => '4.2.6p5-25.el7.centos'
+      'ntp' => '4.2.6p5-25.el7.centos.2'
     },
     '7.2.1511' => {
       'ntp' => '4.2.6p5-25.el7.centos'
