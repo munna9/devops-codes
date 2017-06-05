@@ -50,9 +50,9 @@ default['mongodb']['service']['port']='27017'
 
 default['mongodb']['log']['base_directory']='/var/log/mongodb'
 default['mongodb']['log']['file']="#{node['mongodb']['log']['base_directory']}/mongod.log"
-default['mongodb']['storage']['path']='/MongoVolume/mongodb'
+default['mongodb']['storage']['path']='/MongoVolume'
 default['mongodb']['conf']['file']='/etc/mongod.conf'
-default['mongodb']['service']['lock_file']="#{node['mongodb']['storage']['path']}/mongod.lock"
+default['mongodb']['service']['lock_file']="#{node['mongodb']['storage']['path']}/mongodb/mongod.lock"
 default['mongodb']['logfile']['retension']='90'
 
 default['mongodb']['app']['base_directory']='/var/lib/mongo'

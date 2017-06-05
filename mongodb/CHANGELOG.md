@@ -1,3 +1,5 @@
+# 0.1.4
+[murali]  - Update the mongodb storage path
 # 0.1.3
 [murali]  - add the mongodb log rotate script 
 # 0.1.2

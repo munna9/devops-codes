@@ -74,6 +74,23 @@ Installs platform and version specific binaries from respective providers
 1. Reads `['mongodb']['binary']['packages']` based on respective platform and platform_version.   
 1. Installs each of those hash key value pair(s) with specific binary version based on  `['mongodb']['major']['version']` 
 
+### mongodb::logrotate_install
+
+MongoDB’s standard log rotation approach archives the current log file and starts a new one. To do this, the mongod or mongos instance renames the current log file by appending a UTC timestamp to the filename, in ISODate format. It then opens a new log file, closes the old log file,compress it  and remove the older than 90 days files, and sends all new log entries to the new log file.
+
+1. Get the mongodb logpath and lock file location.
+1. Check the mongodb log file `['mongodb']['log']['file']` exists or not, if file not exists terminate the session.
+1. Rotate the mongodb log by sending a SIGUSR1 signal to the mongod process
+1. Compressing new logfile and remove the old mongodb logs files as defined `[mongodb']['logfile']['retension'] `
+
+### mongodb::logrotate_uninstall 
+
+Remove the cron job and delete  shell srcipt  from the converging node. 
+
+1. Remove cron entry for root user from the cron seheduler 
+1. Delete shell script from converging node
+
+
 ### mongodb::master
 
 Configure master/primary node of mongodb cluster
@@ -100,21 +117,6 @@ Removes mongodb service packages and its associated files and directories
 1. Remove directories creates during configure such as `['mongodb']['storage']['path']`
 1. Removes all binaries defined under `['mysql']['binary']['packages']` hash based on running node's platform and platform_version.
 
-### mongodb::logrotate_install
-
-MongoDB’s standard log rotation approach archives the current log file and starts a new one. To do this, the mongod or mongos instance renames the current log file by appending a UTC timestamp to the filename, in ISODate format. It then opens a new log file, closes the old log file,compress it  and remove the older than 90 days files, and sends all new log entries to the new log file.
-
-1. Get the mongodb logpath and lock file location.
-1. Check the mongodb log file `['mongodb']['log']['file']` exists or not, if file not exists terminate the session.
-1. Rotate the mongodb log by sending a SIGUSR1 signal to the mongod process
-1. Compressing new logfile and remove the old mongodb logs files as defined `[mongodb']['logfile']['retension'] `
-
-### mongodb::logrotate_uninstall 
-
-Remove the cron job and delete  shell srcipt  from the converging node. 
-
-1. Remove cron entry for root user from the cron seheduler 
-1. Delete shell script from converging node
 
 Attributes
 ==========
@@ -144,8 +146,8 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 | ['mongodb']['sysctl']['home_directory']       | String        | Base directory of Kernel sysctl additional configuration files       |
 | ['mongodb']['sysctl']['conf']                 | String        | Absolute path of sysctl configurations for Mongodb                   |
 | ['mongodb']['sysctl']['options']              | Hash          | Key-value pair of sysctl options for mongodb service                 |
-['mongodb']['service']['lock_file']             |               | Key-value pair of lock file , which contains mongodb process id      |
-['mongodb']['logfile']['retension']             |  S            | Retention period of the mongdb archive of logs files.  Based on the environment  we can adjust the retension values for example for dev/QA setup configure the retension period as 30 days , where as it comes to prod set the retension period  to 90 days.
+| ['mongodb']['service']['lock_file']           | String        | Absolute path of Mongodb service lock file 					       |
+| ['mongodb']['logfile']['retension']           | String        | Retention period set for mongdb log file archive 					   |
 
 ## Environment Variables
 
