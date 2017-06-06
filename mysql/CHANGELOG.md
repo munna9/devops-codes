@@ -1,3 +1,5 @@
+# 0.1.3
+[rajeshj]   -  Restricted Root access to mysql only from localhost
 # 0.1.2
 [rajeshj]   - Adding Mysql binary path 
 # 0.1.1

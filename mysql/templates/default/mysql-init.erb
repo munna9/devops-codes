@@ -1,3 +1,3 @@
 mysqld_safe --skip-grant-tables > /dev/null 2>&1 &
 mysql -u root -e "UPDATE mysql.user SET Password=PASSWORD('<%=@root_password%>') WHERE User='<%= @root_username%>'; FLUSH PRIVILEGES"
-
+mysql -u root -e "GRANT ALL ON *.* TO 'root'@localhost IDENTIFIED BY PASSWORD('<%=@root_password%>'); FLUSH PRIVILEGES"
