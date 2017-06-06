@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -e
 PYTHON_SRC_URI=https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz
-PYTHON_PIP_VERSION=9.0.1
 SOURCE_DIR="$SETUP_DIRECTORY/sources"
 func_create_directory() {
   if [ ! -e $1 ]; then
