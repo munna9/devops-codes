@@ -30,11 +30,5 @@
       }
     }
   
-  },
-  "env_run_list" : {
-    "prod-candidates":[
-      "role[_base]",
-      "role[_elk-agent]"
-    ]
   }
 }
