@@ -1,0 +1,65 @@
+---
+driver:
+  name: vagrant
+  network:
+    - ["forwarded_port", { guest: 80, host: 8080, auto_correct: true }]
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: awslinux
+    driver_config:
+      box: awslinux_2016.09
+  - name: centos-7.3
+    driver_config:
+      box: centos_7.3.1611
+  - name: centos-7.2
+    driver_config:
+      box: centos_7.2.1511
+  - name: ubuntu-16.04
+    driver_config:
+      box: ubuntu_16.04
+  - name: ubuntu-14.04
+    drive_config:
+      box: ubuntu_14.04
+suites:
+  - name: default
+    run_list:
+      - recipe[basic-essentials::elastic_repo]
+      - recipe[basic-essentials::oracle_java_default]
+      - recipe[elasticsearch::install_from_repo]
+#      - recipe[elasticsearch::cluster_configure]
+#      - recipe[nginx::install]
+#      - recipe[nginx::service]
+#      - recipe[elasticsearch::curator]
+#      - recipe[elasticsearch::service]
+      # - recipe[elasticsearch::uninstall]
+      # - recipe[basic-essentials::oracle_java_default_uninstall]
+      # - recipe[basic-essentials::elastic_repo_uninstall]
+    attributes:
+      phenom:
+        banner: 'This file managed by Admin'
+      es_cluster_name: "QA_CP_ES_NEW"
+      elasticsearch:
+        package:
+          version: 5.3.0-1
+
+  - name: candidates
+    run_list:
+      - recipe[basic-essentials::oracle_java_default]
+      - recipe[elasticsearch::install_from_archive]
+      - recipe[elasticsearch::cluster_configure]
+      - recipe[nginx::install]
+      - recipe[nginx::service]
+      - recipe[elasticsearch::service]
+
+    attributes:
+      phenom:
+        banner: 'This file managed by Admin'
+      es_cluster_name: "QA_CP_ES_NEW"
+      elasticsearch:
+        package:
+          version: 2.3.5
+
+

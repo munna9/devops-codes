@@ -2,7 +2,7 @@ directory node['elasticsearch']['conf']['home_directory'] do
   recursive true
   action :create
 end
-directory node['elasticsearch']['app']['home_directory'] do
+directory node['elasticsearch']['app']['data_directory'] do
   owner node['elasticsearch']['service']['owner']
   group node['elasticsearch']['service']['group']
   recursive true
@@ -16,10 +16,13 @@ else
     unicast_hosts << node_name['ipaddress']
    end
 end
+node.normal['elasticsearch']['cluster']['options'][node['elasticsearch']['package']['version']]['discovery.zen.minimum_master_nodes']=(unicast_hosts.length/2)+1
 unicast_hosts.delete(node['ipaddress'])
-node.default['elasticsearch']['cluster']['options']['discovery.zen.minimum_master_nodes']=unicast_hosts.length
-node.default['elasticsearch']['cluster']['options']['discovery.zen.ping.unicast.hosts']=unicast_hosts
+node.normal['elasticsearch']['cluster']['options'][node['elasticsearch']['package']['version']]['discovery.zen.ping.unicast.hosts']=unicast_hosts
 template node['elasticsearch']['conf']['file'] do
   source 'elasticsearch-cluster.yml.erb'
+  variables(
+    :cluster_name => node['es_cluster_name']
+  )
   notifies :restart, "service[#{node['elasticsearch']['service']['name']}]"
 end
