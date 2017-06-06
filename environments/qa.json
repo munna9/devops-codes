@@ -8,26 +8,21 @@
   },
 
   "default_attributes": {
-    "logstash": {
-      "server_name": "dev-logstash01.aws.phenom.local",
-      "server_port": "5004",
-      "certificate_name": "preprod"
-    },
-    "elasticsearch": {
-      "cluster_name": "mycluster",
-      "server_name": "dev-elasticsearch01.aws.phenom.local",
-      "server_port": "9200"
-    },
-    "kibana": {
-      "server_name" : "dev-kibana01.aws.phenom.local"
-    }
+    "elk_cluster_name"  : "elkcluster"
   },
 
   "override_attributes": {
-    "jenkins": {
-      "server":{
-        "name": "jenkins2.phenom.people.com"
+    "elasticsearch":{
+      "server_name": "qa-elasticsearch.aws.phenom.local",
+      "server_port": "9200",
+      "package":{
+        "version": "5.4.1-1"
       }
+    },
+    "logstash": {
+      "server_name": "qa-logstash01.aws.phenom.local",
+      "server_port": "5004",
+      "certificate_name": "qacert"
     }
   }
 }

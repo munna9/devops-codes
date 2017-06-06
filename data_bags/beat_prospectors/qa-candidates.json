@@ -37,6 +37,15 @@
         "network"
       ],
       "hosts": "unix:///var/run/docker.sock"
+    },
+    "mysql":{
+      "module": "mysql",
+      "metricsets": [
+        "status"
+      ],
+      "hosts": "tcp(127.0.0.1:3306)/",
+      "username":"monitor",
+      "password":"jAS#@$876smbh"
     }
   },
   "grok_patterns": {

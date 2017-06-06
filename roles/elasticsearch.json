@@ -1,0 +1,34 @@
+{
+  "name": "elasticsearch",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "description": "Recipes which configures host to be elasticsearch server",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "run_list": [
+    "role[_base]",
+    "role[_elk-agent]",
+    "recipe[basic-essentials::elastic_repo]",
+    "recipe[basic-essentials::oracle_java_default]",
+    "recipe[elasticsearch::install]",
+    "recipe[elasticsearch::configure]",
+    "recipe[nginx::install]",
+    "recipe[nginx::service]",
+    "recipe[elasticsearch::service]"
+  ],
+  "env_run_lists": {
+    "qa-candidates":[
+      "role[_base]",
+      "role[_elk-agent]",
+      "recipe[basic-essentials::oracle_java_default]",
+      "recipe[elasticsearch::install_from_archive]",
+      "recipe[elasticsearch::app_cluster_configure]",
+      "recipe[elasticsearch::plugins]",
+      "recipe[elasticsearch::service]"
+    ]
+  }
+}

@@ -22,8 +22,7 @@
       "recipe[filebeat::service]",
       "recipe[metricbeat::install]",
       "recipe[metricbeat::configure]",
-      "recipe[metricbeat::import_dash_board]",
-       "recipe[metricbeat::service]"
+      "recipe[metricbeat::service]"
     ]
 
   }

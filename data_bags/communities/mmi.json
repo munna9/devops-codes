@@ -1,0 +1,20 @@
+{
+  "id": "mmi",
+  "qa-cms": {
+    "ecr": {
+      "mmi": {
+        "image_name": "ap_mmi",
+        "tag_name": "QA-CMS",
+        "ports": {
+          "5107": "8080"
+        },
+        "environment_variables": [
+        ],
+        "volumes": {
+          "/var/log/containers/mmi": "/opt/deployment/apply-tomcat/logs",
+          "/opt/deployment/buildproperties/applybuildservices/MMI/QA":"/opt/deployment/WEB-INF/classes"
+        }
+      }
+    }
+  }
+}

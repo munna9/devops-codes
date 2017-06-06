@@ -22,7 +22,7 @@
     "recipe[logstash::service]"
   ],
   "env_run_lists": {
-    "qa-candidates": [
+    "qa": [
       "role[_base]",
       "recipe[basic-essentials::elastic_repo]",
       "recipe[basic-essentials::oracle_java_default]",

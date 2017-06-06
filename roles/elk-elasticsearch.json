@@ -4,9 +4,14 @@
   "chef_type": "role",
   "description": "Recipes which configures host to be elasticsearch server",
   "default_attributes": {
-
+    "elk_cluster_name": "elk"
   },
   "override_attributes": {
+    "elasticsearch":{
+      "package":{
+        "version": "5.4.1-1"
+      }
+    }
 
   },
   "run_list": [
@@ -28,18 +33,18 @@
       "role[_base]",
       "recipe[basic-essentials::elastic_repo]",
       "recipe[basic-essentials::oracle_java_default]",
-      "recipe[elasticsearch::install]",
+      "recipe[elasticsearch::install_from_repo]",
       "recipe[elasticsearch::configure]",
       "recipe[nginx::install]",
       "recipe[nginx::service]",
       "recipe[elasticsearch::service]"
     ],
-    "qa-candidates":[
+    "qa":[
       "role[_base]",
       "recipe[basic-essentials::elastic_repo]",
       "recipe[basic-essentials::oracle_java_default]",
-      "recipe[elasticsearch::install]",
-      "recipe[elasticsearch::configure]",
+      "recipe[elasticsearch::install_from_repo]",
+      "recipe[elasticsearch::elk_cluster_configure]",
       "recipe[nginx::install]",
       "recipe[nginx::service]",
       "recipe[elasticsearch::service]"

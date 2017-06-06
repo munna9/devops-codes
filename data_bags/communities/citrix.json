@@ -1,0 +1,20 @@
+{
+  "id": "citrix",
+  "qa-cms": {
+    "ecr": {
+      "citrix": {
+        "image_name": "ap_citrix",
+        "tag_name": "QA-CMS",
+        "ports": {
+          "5110": "8080"
+        },
+        "environment_variables": [
+        ],
+        "volumes": {
+          "/var/log/containers/citrix": "/opt/deployment/apply-tomcat/logs",
+          "/opt/deployment/buildproperties/applybuildservices/CITRIX/QA":"/opt/deployment/WEB-INF/classes"
+        }
+      }
+    }
+  }
+}

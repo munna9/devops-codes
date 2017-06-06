@@ -1,0 +1,20 @@
+{
+  "id": "brooksource",
+  "dev-cms": {
+    "ecr": {
+      "safeway": {
+        "image_name": "ap_brooksource",
+        "tag_name": "DEV-CMS",
+        "ports": {
+          "5111": "8080"
+        },
+        "environment_variables": [
+        ],
+        "volumes": {
+          "/var/log/containers/brooksource": "/opt/deployment/apply-tomcat/logs",
+          "/opt/deployment/buildproperties/applybuildservices/BROOKSOURCE/DEV":"/opt/deployment/WEB-INF/classes"
+        }
+      }
+    }
+  }
+}

@@ -15,8 +15,8 @@
       "platform": "aws"
     },
   	"mongodb":{
-  		"replication_name":"rsQA",
-        "key_authentication":true
+      "replication_name":"rsQA",
+      "key_authentication":true
   	},
     "logstash": {
       "server_name": "qa-logstash01.aws.phenom.local",
@@ -24,14 +24,18 @@
       "certificate_name": "qacert"
     },
     "elasticsearch": {
-      "cluster_name": "elkcluster",
       "server_name": "qa-elasticsearch.aws.phenom.local",
       "server_port": "9200"
-    }
+    },
+    "es_cluster_name"   : "QA_CP_ES_NEW"
   },
 
   "override_attributes": {
-    
+    "elasticsearch":{
+      "package":{
+        "version": "2.3.5"
+      }
+    }
   
   }
 }

@@ -24,7 +24,7 @@
     "docker":{
       "kibana":{
         "image_name":"phenompeople/kibana",
-        "tag_name":"latest",
+        "tag_name":"5.3.0",
         "ports":{
           "5601":"5601"
         },
