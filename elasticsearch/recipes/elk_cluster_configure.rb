@@ -32,6 +32,10 @@ directory node['nginx']['app']['conf_directory'] do
 end
 template "#{node['nginx']['app']['conf_directory']}/elasticsearch.conf" do
   source 'elasticsearch.conf.erb'
+  variables(
+    :elastic_host => node['elasticsearch']['server_name'],
+    :elastic_port => node['elasticsearch']['server_port']
+  )
   sensitive true
   notifies :restart, "service[#{node['nginx']['service']['name']}]"
 end

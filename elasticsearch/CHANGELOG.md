@@ -1,3 +1,5 @@
+# 0.1.6 
+[rajeshj] - Elasticsearch load balancer with Nginx
 # 0.1.5
 [rajeshj] - Updating with multi tenant cluster configurations 
 # 0.1.4

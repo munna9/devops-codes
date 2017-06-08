@@ -14,6 +14,10 @@ if data_record.key?(node.chef_environment)
   _containers=data_json.keys
   node.default['pod_container_name']=_containers.first
 end
+docker_container node['pod_container_name'] do
+  action :nothing
+end
+
 pod_entries=data_bag('services')
 
 pod_entries.each do |service_name|

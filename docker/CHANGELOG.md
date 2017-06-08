@@ -1,3 +1,5 @@
+# 0.1.11
+[rajeshj] - Fixing depricated features for AWS ELB
 # 0.1.10 
 [rajeshj] - Removing ELB built-in methods
 # 0.1.9

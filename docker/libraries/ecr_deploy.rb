@@ -52,11 +52,11 @@ module DockerCookbook
           repo "#{container_metadata['registry_name']}/#{container_metadata['image_name']}"
           tag container_metadata['tag_name']
           action   :pull
-          notifies :deregister,     "aws_elastic_lb[ELB-Detach-#{container}]",  :immediately
+          notifies :deregister,     "aws_elastic_lb[ELB-Detach-#{container}]",  :immediately if container_metadata['elb_name']
           notifies :run,            "ruby_block[Draining-#{container}]",        :immediately if container_metadata['drain_time']
           notifies :stop,           "docker_container[#{container}]",           :immediately
           notifies :delete,         "docker_container[#{container}]",           :immediately
-          notifies :register,       "aws_elastic_lb[ELB-Attach-#{container}]",  :immediately
+          notifies :register,       "aws_elastic_lb[ELB-Attach-#{container}]",  :immediately if container_metadata['elb_name']
         end
         docker_container container do
           repo "#{container_metadata['registry_name']}/#{container_metadata['image_name']}"

@@ -23,7 +23,6 @@ describe 'elasticsearch' do
     it { should be_enabled }
   end
   describe command('sudo /usr/share/elasticsearch/bin/elasticsearch --version') do
-    its(:stdout) { should match /5.2/ }
     its(:exit_status) { should eq 0 }
   end
 end

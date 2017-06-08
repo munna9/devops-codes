@@ -24,9 +24,6 @@ module NginxCookbook
           sensitive true
           notifies :reload, "docker_container[#{node['pod_container_name']}]"
         end
-        docker_container node['pod_container_name'] do
-          action :nothing
-        end
       end
     end
   end

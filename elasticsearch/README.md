@@ -12,6 +12,7 @@ Requirements
 * elastic_repo recipe of basic-essentials cookbook
 * oracle_java_default recipe of basic-essentials cookbook
 * install_pip recipe of basic-essentials cookbook for curator recipe
+* pod recipe of nginx-cookbook for elastic_elb
 
 Recipes and supported platforms
 -------------------------------
@@ -27,7 +28,15 @@ able to get it working on other platform, with appropriate configuration updates
 |-------------------------------|-----------|----------|----------|----------|----------|----------|
 | curator                       |    √      |    √     |    √     |    √     |    √     |    √     |    
 |-------------------------------|-----------|----------|----------|----------|----------|----------|
-| install                       |    √      |    √     |    √     |    √     |    √     |    √     |    
+| elastic_elb                   |    √      |    √     |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|----------|----------|----------|----------|----------|
+| elk_cluster_configure         |    √      |    √     |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|----------|----------|----------|----------|----------|
+| install_from_archive          |    √      |    √     |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|----------|----------|----------|----------|----------|
+| install_from_repo             |    √      |    √     |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|----------|----------|----------|----------|----------|
+| plugins                       |    √      |    √     |    √     |    √     |    √     |    √     |    
 |-------------------------------|-----------|----------|----------|----------|----------|----------|
 | service                       |    √      |    √     |    √     |    √     |    √     |    √     |    
 |-------------------------------|-----------|----------|----------|----------|----------|----------|
@@ -59,6 +68,7 @@ Configures application elasticsearch configuration file and master-slave setup o
 1. Notify minimum master nodes of identified unicast hosts by adding (number of unicast hosts)/2 +1
 1. Remove current node from above identified hosts and finalize unicast hosts
 1. Create/update configurations file `[elasticsearch']['conf']['file']` and notify service `['elasticsearch']['service]['name']` for delayed restart
+1. Creates elasticsearch nginx configuration file for protecting against any accidental or incidental removal of indexes
 
 ### elasticsearch::curator
 
@@ -71,6 +81,14 @@ Curator performs sanitation activities of elasticsearch metricbeat and logstash 
 1. Create and manage main configuration file at `node['curator']['conf']['home_directory']/curator.yml`
 1. Create curator action configuration file by referring attributes `['curator']['logstash']['close']` and `['curator]['logstash]['delete']` values.
 1. Cron Job will be scheduled based on length of characters of each action to avoid concurrent activities and uniqueness.
+
+### elasticsearch::elastic_elb
+
+Create light weight ngix load balancer to distribute request load keeping record persistancy. This recipe depends on nginx-pod recipe of nginx cookbook. 
+
+1. Identify elasticsearch hosts from environment who share same role and `es_cluster_name` and filter ipadress of each host
+1. Create/update elastic_elb.conf under `['nginx']['app']['directory']` with nodes identified from above array
+1. Notify nginx-pod container to reload to reflect changes
 
 ### elasticsearch::elk_cluster_configure
 
@@ -115,7 +133,7 @@ Enables elasticsearch service across multiple distributions listed from above ta
 1. Controls how the chef-client is to attempt to manage a service `:enable`, `:start`,`:restart`, `:status`, `:reload` 
 1. Performs action of `:enable` to keep the service up and running on successive restarts whereas `:start` to make service available for immediate accessibility.
 
-## elasticsearch::uninstall
+### elasticsearch::uninstall
 
 Removes elasticsearch binaries and other configuration file(s). 
 
@@ -169,7 +187,10 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 | ['elasticsearch']['server_name']     | String        | FQDN referred by Elasticsearch nginx wrapper configuration                    |
 | ['elasticsearch']['server_port']     | String        | Elasticsearch node exposed port for HTTP REST API calls                       |
 | ['es_cluster_name']                  | String        | Elasticsearch application cluster name, used by app_cluster_configure.rb      |
-| ['elk_cluster_name']                 | String        | Elasticsearch ELK cluster name, used by elk_cluster_configure.rb              |  
+| ['elk_cluster_name']                 | String        | Elasticsearch ELK cluster name, used by elk_cluster_configure.rb              |
+| ['elasticsearch']['elb_hostname']    | String        | Elasticsearch ELB host name, referred by Nginx service                        |
+| ['elasticsearch']['elb_port']        | Number        | Elasticsearch ELB service port, referred by Nginx service                     |
+
 ## Maintainers
 
 * Rajesh Jonnalagadda (<rajesh.jonnalagadda@phenompeople.com>)

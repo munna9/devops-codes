@@ -16,13 +16,26 @@ else
     unicast_hosts << node_name['ipaddress']
    end
 end
-node.normal['elasticsearch']['cluster']['options'][node['elasticsearch']['package']['version']]['discovery.zen.minimum_master_nodes']=(unicast_hosts.length/2)+1
+node.default['elasticsearch']['cluster']['options'][node['elasticsearch']['package']['version']]['discovery.zen.minimum_master_nodes']=(unicast_hosts.length/2)+1
 unicast_hosts.delete(node['ipaddress'])
-node.normal['elasticsearch']['cluster']['options'][node['elasticsearch']['package']['version']]['discovery.zen.ping.unicast.hosts']=unicast_hosts
+node.default['elasticsearch']['cluster']['options'][node['elasticsearch']['package']['version']]['discovery.zen.ping.unicast.hosts']=unicast_hosts
 template node['elasticsearch']['conf']['file'] do
   source 'elasticsearch-cluster.yml.erb'
   variables(
     :cluster_name => node['es_cluster_name']
   )
   notifies :restart, "service[#{node['elasticsearch']['service']['name']}]"
+end
+directory node['nginx']['app']['conf_directory'] do
+  recursive true
+  action :create
+end
+template "#{node['nginx']['app']['conf_directory']}/elasticsearch.conf" do
+  source 'elasticsearch.conf.erb'
+  variables(
+    :elastic_host => node['ipaddress'],
+    :elastic_port => node['elasticsearch']['server_port']
+  )
+  sensitive true
+  notifies :restart, "service[#{node['nginx']['service']['name']}]"
 end

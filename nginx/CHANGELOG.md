@@ -1,3 +1,5 @@
+#0.1.6
+[rajeshj] - Updating nginx-pod resource with actual container name
 #0.1.5
 [rajeshj] - Adding POD functionality to Nginx
 #0.1.4
