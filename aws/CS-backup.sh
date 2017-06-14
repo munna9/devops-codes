@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-CURRENT_TIME=$(date +%Y-%m-%d-%H-%M-%S)
-chef-server-ctl backup
-aws s3 cp chef-backup-$CURRENT_TIME.gz s3://<bucket_name>/<path>/
+chef-server-ctl backup --yes
+aws s3 cp /var/opt/chef-backup/*.tgz s3://<bucket_name>/<path>/
+rm -rf /var/opt/chef-backup/*.tgz
