@@ -1,3 +1,5 @@
+# 0.1.7  
+[akshithat] - Elasticsearch access and error log files
 # 0.1.6 
 [rajeshj] - Elasticsearch load balancer with Nginx
 # 0.1.5
@@ -11,5 +13,4 @@
 # 0.1.1
 [rajeshj] - Integrating with Nginx, and upgraded elasticsearch with 5.3.0
 # 0.1.0
-
-Initial release of elasticsearch
+[rajeshj] - Initial release of elasticsearch

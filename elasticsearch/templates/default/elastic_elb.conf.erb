@@ -8,6 +8,8 @@ upstream elastic_elb {
 server {
   listen <%=node['elasticsearch']['elb_port']%>;
   server_name <%=node['elasticsearch']['elb_hostname']%>;
+access_log <%=@node['nginx']['app']['log_directory']%>/elastic_elb-access.log;
+error_log <%=@node['nginx']['app']['log_directory']%>/elastic_elb-error.log;
   location / {
     proxy_pass http://elastic_elb;
     proxy_http_version 1.1;
