@@ -1,3 +1,5 @@
+# 0.1.2
+[rajeshj] - Updated vaultname from communities to services
 # 0.1.1
 [hadassahn] - Updated README.md
 # 0.1.0
