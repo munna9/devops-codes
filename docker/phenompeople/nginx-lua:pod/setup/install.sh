@@ -101,5 +101,7 @@ cd $NGINX_SETUP_DIR/nginx-$NGINX_VERSION
 
 make  && make install
 chown -R root:root $NGINX_SETUP_DIR
-rm -rf $NGINX_SETUP_DIR/sources /tmp/log_file
-rm -rf /etc/nginx/nginx.conf.default
+rm -rf  $NGINX_SETUP_DIR/sources \
+        /tmp/log_file \
+        /etc/nginx/nginx.conf.default \
+        /usr/local/nginx/html
