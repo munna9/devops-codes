@@ -1,0 +1,33 @@
+#<%=@node['phenom']['banner']%>
+
+upstream <%=@service_name%> {
+<% @hosts.each do |host_name| %>
+    server <%= host_name %>:<%=@application_port%>;
+<% end %>
+    keepalive 10;
+}
+server {
+  listen 80;
+  server_name <%=@uri%>;
+  return 301 https://$server_name$request_uri;
+}
+server {
+  listen       <%=@service_port%>;
+  server_name  <%=@uri%>;
+  ssl                  on;
+  ssl_certificate      <%=@node['nginx']['ssl']['base_directory']%>/<%=@ssl_certificate%>.crt;
+  ssl_certificate_key  <%=@node['nginx']['ssl']['base_directory']%>/<%=@ssl_certificate%>.key;
+  ssl_session_timeout  5m;
+  ssl_protocols  TLSv1.2 TLSv1.1 TLSv1;
+  ssl_ciphers  "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
+  ssl_prefer_server_ciphers   on;
+  access_log <%=@node['nginx']['app']['log_directory']%>/<%=@service_name%>-access.log;
+  error_log <%=@node['nginx']['app']['log_directory']%>/<%=@service_name%>-error.log;
+  location <%=@context_name%> {
+    proxy_pass http://<%=@service_name%>;
+    proxy_connect_timeout      <%=@node['nginx']['conf']['proxy_connect_timeout']%>;
+    proxy_send_timeout         <%=@node['nginx']['conf']['proxy_send_timeout']%>;
+    proxy_read_timeout         <%=@node['nginx']['conf']['proxy_read_timeout']%>;
+    send_timeout               <%=@node['nginx']['conf']['send_timeout']%>;
+  }
+}

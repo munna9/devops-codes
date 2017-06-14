@@ -15,6 +15,7 @@ module NginxCookbook
           source "sources/#{service_dict['nginx_template']}.erb"
           variables(
             :service_name     => service_dict['service_name'],
+            :context_name     => service_dict['context_name'],
             :hosts            => service_dict['hosts'],
             :application_port => service_dict['application_port'],
             :uri              => service_dict['uri'],

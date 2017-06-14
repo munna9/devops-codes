@@ -28,6 +28,7 @@ def get_metadata vault_name, app_name
         metadata_dict['service_port']=(nginx_object['service_port'].nil?)? 443 :  nginx_object['service_port']
         metadata_dict['application_port']=nginx_object['application_port']
         metadata_dict['keep_alive']=(nginx_object['keep_alive'].nil?)? 10 : nginx_object['keep_alive']
+        metadata_dict['context_name']=(nginx_object['context_name'].nil?)? '/' : "/#{nginx_object['context_name']}"
 
         if node['cloud']['platform'] == 'aws'
           recipe_name="#{app_name}\\:\\:ecr_deploy"
