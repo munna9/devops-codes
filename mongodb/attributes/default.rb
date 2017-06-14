@@ -19,11 +19,11 @@ default['mongodb']['binary']['packages'] = {
       'mongodb-org-mongos'    => '3.4.4-1.el7',
     },
     'amazon' => {
-      'mongodb-org'           => '3.4.3-1.amzn1',
-      'mongodb-org-tools'     => '3.4.3-1.amzn1',
-      'mongodb-org-shell'     => '3.4.3-1.amzn1',
-      'mongodb-org-server'    => '3.4.3-1.amzn1',
-      'mongodb-org-mongos'    => '3.4.3-1.amzn1',
+      'mongodb-org'           => '3.4.4-1.amzn1',
+      'mongodb-org-tools'     => '3.4.4-1.amzn1',
+      'mongodb-org-shell'     => '3.4.4-1.amzn1',
+      'mongodb-org-server'    => '3.4.4-1.amzn1',
+      'mongodb-org-mongos'    => '3.4.4-1.amzn1',
     }
   },
   '3.2' => {
