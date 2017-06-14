@@ -52,15 +52,18 @@ file "#{node['jenkins']['app']['home_directory']}/.ssh/authorized_keys" do
   action :create
 end
 
-template "#{node['jenkins']['app']['home_directory']}/admin_policy.json" do
-  source 'admin_policy.json.erb'
-  sensitive true
-  owner node['jenkins']['service']['owner']
-  group node['jenkins']['service']['group']
-end
 
 if node['aws_account_id']
   data_json=data_bag_item('credentials','aws')
+  template "#{node['jenkins']['app']['home_directory']}/admin_policy.json" do
+    source 'admin_policy.json.erb'
+    variables(
+      :account_id => node['aws_account_id']
+    )
+    sensitive true
+    owner node['jenkins']['service']['owner']
+    group node['jenkins']['service']['group']
+  end
   aws_hash=data_json[node['aws_account_id']]
   phemom_data=data_bag_item('credentials','phemom')
   directory "#{node['jenkins']['app']['home_directory']}/.aws" do
@@ -84,10 +87,17 @@ if node['aws_account_id']
     source 'aws/credentials.erb'
     sensitive true
     variables(
-      :default_aws_access_key_id        =>  aws_hash['access_key_id'],
-      :default_aws_secret_access_key    =>  aws_hash['secret_access_key'],
-      :phemom_aws_access_key_id       =>  phemom_data['access_key_id'],
-      :phemom_aws_secret_access_key   =>  phemom_data['secret_access_key']
+      :phemom_aws_access_key_id         =>  phemom_data['access_key_id'],
+      :phemom_aws_secret_access_key     =>  phemom_data['secret_access_key']
     )
+  end
+  template "#{node['jenkins']['app']['home_directory']}/phemom_admin_policy.json" do
+    source 'admin_policy.json.erb'
+    variables(
+      :account_id => phemom_data['aws_account_id']
+    )
+    sensitive true
+    owner node['jenkins']['service']['owner']
+    group node['jenkins']['service']['group']
   end
 end

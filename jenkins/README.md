@@ -137,7 +137,7 @@ When a cookbook is loaded during a chef-client run, these attributes are compare
 For each cookbook, attributes in the `default.rb` file are loaded first, and then additional attribute files(if present are loaded) in lexical sorted order.
 
 
-#### attributes/default.rb
+### attributes/default.rb
 
 |Attribute Name                                 | Type          | Description                                                          |
 |---------------------------------------------- |---------------|----------------------------------------------------------------------|
@@ -157,6 +157,12 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 | ['jenkins']['plugin']['fetch_latest']         | Boolean       | If set true, latest packages will be fetched on every converge       |
 | ['jenkins']['plugin']['packages']             | Hash          | Dictionary of packages with version for installation                 |
 | ['jenkins']['restore']['uri']                 | String        | Git repository for restoring jenkins configurations                  |
+
+## Environmental Variable
+
+|Attribute Name                                | Type          | Description                                                          |
+|----------------------------------------------|---------------|----------------------------------------------------------------------|
+| ['aws_account_id']                           | String        | Aws account id defined for the converging node                       |
 
 ## Maintainers
 

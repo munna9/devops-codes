@@ -6,9 +6,11 @@
       "Effect": "Allow",
       "Principal": {
         "AWS": [
-          "arn:aws:iam::<%=node['aws']['account_id']%>:role/Chefnode",
-          "arn:aws:iam::<%=node['aws']['account_id']%>:role/JenkinsMaster",
-          "arn:aws:iam::<%=node['aws']['account_id']%>:user/rajesh.jonnalagadda@phenompeople.com"
+          "arn:aws:iam::<%=@account_id%>:role/Chefnode",
+<% if @account_id == node['aws_account_id'] %>
+          "arn:aws:iam::<%=@account_id%>:role/JenkinsMaster",
+<% end %>
+          "arn:aws:iam::<%=@account_id%>:user/rajesh.jonnalagadda@phenompeople.com"
         ]
       },
       "Action": [

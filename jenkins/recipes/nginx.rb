@@ -10,7 +10,7 @@ template 'Jenkins-Nginx-proxy' do
   source 'jenkins.conf.erb'
   path "#{node['nginx']['app']['conf_directory']}/jenkins.conf"
   variables(
-    :jenkins_server_host => jenkins_master['fqdn'],
+    :jenkins_server_host => jenkins_master['ipaddress'],
     :jenkins_server_port => node['jenkins']['service']['port']
   )
   sensitive true

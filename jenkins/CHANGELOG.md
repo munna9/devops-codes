@@ -1,3 +1,5 @@
+# 0.1.5
+[rajeshj] - Updated admin_policy.json for multiple accounts and update jenkins_master host resolution
 # 0.1.4
 [rajeshj] - Configuring multiple accounts for cross account support
 # 0.1.3
