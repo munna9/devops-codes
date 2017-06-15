@@ -54,7 +54,7 @@ make > /tmp/log_file 2>&1 && make install > /tmp/log_file 2>&1
 
 cd $NGINX_SETUP_DIR
 download_and_extract $NGINX_SRC_URI
-sed -i 's/Server: nginx/Server: Nginx-Lua/' $NGINX_SETUP_DIR/nginx-$NGINX_VERSION/src/http/ngx_http_header_filter_module.c
+sed -i 's/Server: nginx/Server: Phenompeople/' $NGINX_SETUP_DIR/nginx-$NGINX_VERSION/src/http/ngx_http_header_filter_module.c
 
 export LUAJIT_LIB=/usr/local/lib
 export LUAJIT_INC=/usr/local/include/luajit-2.0
