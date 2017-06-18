@@ -50,7 +50,7 @@ end
 #####################
 ruby_block 'BlockDev-Read Ahead' do
   block do
-    drive_line=File.read('/proc/mounts').lines.grep(/#{node['mongodb']['storage']['path']}/)[0].split(' ')
+    drive_line=File.read('/proc/mounts').lines.grep(/#{node['mongodb']['storage']['base_directory']}/)[0].split(' ')
     if drive_line.any?
       drive_to_check=drive_line[0]
       lsblk_command="lsblk #{drive_to_check} -no PKNAME,KNAME"

@@ -21,7 +21,7 @@ Ubuntu is not considered as a database hosting operating systems due to business
 |-------------------------------|-----------|----------|----------|----------|----------|----------|
 | configure                     |    √      |    √     |    √     |    √     |    X     |    X     |    
 |-------------------------------|-----------|----------|----------|----------|----------|----------|
-| fine_tunning                  |    X      |    √     |    √     |    √     |    X     |    X     |    
+| fine_tunning                  |    √      |    √     |    √     |    √     |    X     |    X     |    
 |-------------------------------|-----------|----------|----------|----------|----------|----------|
 | install                       |    √      |    √     |    √     |    √     |    X     |    X     |    
 |-------------------------------|-----------|----------|----------|----------|----------|----------|
@@ -64,7 +64,7 @@ Mutate host for better performance and best practices depicted for mongodb
 1. Disable NUMA(Non Uniform Memory allocation) for machine
 1. Disable SELinux if enabled on every converge
 1. Create/update `['mongodb']['sysctl']['conf']` for updating sysctl updation options
-1. Set Read ahead for block drives mounted for `['mongodb']['storage']['path']`
+1. Set Read ahead for block drives mounted for `['mongodb']['storage']['base_directory']`
 
 ### mongodb::install
 
@@ -138,7 +138,8 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 | ['mongodb']['service']['group']               | String        | Mongodb service group updated based on distribution                  |
 | ['mongodb']['service']['port']                | String        | Mongodb service port updated based on distribution                   |
 | ['mongodb']['log']['file']                    | String        | Absolute log path for mongodb service                                |
-| ['mongodb']['storage']['path']                | String        | Storage base directory for Mongo data volume                         |
+| ['mongodb']['storage']['base_directory']      | String        | Storage base directory for Mongo data volume                         |
+| ['mongodb']['storage']['path']                | String        | Mongo application's data directory                                   |
 | ['mongodb']['conf']['file']                   | String        | Main configuration file for mongodb service                          |
 | ['mongodb']['app']['base_direcotry']          | String        | Base directory for mongodb application authentication                |
 | ['mongodb']['app']['key_file']                | String        | Absolute path of application authentication key                      |
