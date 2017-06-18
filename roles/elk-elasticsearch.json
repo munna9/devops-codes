@@ -45,6 +45,7 @@
       "recipe[basic-essentials::oracle_java_default]",
       "recipe[elasticsearch::install_from_repo]",
       "recipe[elasticsearch::elk_cluster_configure]",
+      "recipe[elasticsearch::curator]",
       "recipe[nginx::install]",
       "recipe[nginx::service]",
       "recipe[elasticsearch::service]"

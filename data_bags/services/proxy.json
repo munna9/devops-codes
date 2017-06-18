@@ -1,0 +1,21 @@
+{
+  "id": "proxy",
+  "dev-cms": {
+    "ecr": {
+      "proxy": {
+        "image_name": "ap_proxy",
+        "tag_name": "DEV-CMS",
+        "ports": {
+          "5106": "9000"
+        },
+        "environment_variables": [
+          "CONF_FILE_NAME=configuration.conf"
+        ],
+        "volumes": {
+          "/var/log/containers/proxy": "/opt/deployment/proxy/logs",
+          "/opt/phenom/buildproperties/apply/apply-prooxy/DEV": "/opt/deployment/buildproperties"
+        }
+      }
+    }
+  }
+}

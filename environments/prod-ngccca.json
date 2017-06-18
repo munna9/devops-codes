@@ -1,0 +1,26 @@
+{
+  "name": "prod-ngccca",
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "description": "PRD environment specfication file for ngcc",
+
+  "cookbook_versions": {
+    "nginx":"0.1.6",
+    "mongodb": "0.1.6"
+
+  },
+
+  "default_attributes": {
+    "mongodb":{
+      "replication_name": "rsCA",
+      "key_authentication": true
+    },
+    "es_cluster_name"   : "PROD_CAND_CA"
+
+  },
+
+  "override_attributes": {
+
+
+  }
+}

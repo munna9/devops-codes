@@ -12,7 +12,7 @@
           "CONF_FILE_NAME=application.conf"
         ],
         "volumes": {
-          "/var/log/containers/emailservice": "/opt/deployment/logs/cp-email-microservice",
+          "/var/log/containers/emailservice": "/opt/deployment/cp-email-microservice/logs",
           "/opt/phenom/buildproperties/cp-email-microservices/DEV": "/opt/deployment/buildproperties"
         }
       }
@@ -30,10 +30,16 @@
           "CONF_FILE_NAME=application.conf"
         ],
         "volumes": {
-          "/var/log/containers/emailservice": "/opt/deployment/logs/cp-email-microservice",
-          "/opt/phenom/buildproperties/cp-email-microservices/QA": "/opt/deployment/buildproperties"
+          "/var/log/containers/emailservice": "/opt/deployment/cp-email-microservice/logs",
+          "/opt/phenom/buildproperties/cp-email-microservices/QA1": "/opt/deployment/buildproperties"
         }
       }
+    },
+    "nginx-pod":{
+      "uri": "qa-emailservice2.phenompeople.com",
+      "nginx_template":"https_template",
+      "service_port":443,
+      "application_port":9056
     }
   }
 

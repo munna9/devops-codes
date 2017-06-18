@@ -12,7 +12,7 @@
           "CONF_FILE_NAME=application.conf"
         ],
         "volumes": {
-          "/var/log/containers/facets": "/opt/deployment/logs/cp-facets",
+          "/var/log/containers/facets": "/opt/deployment/logs/facets",
           "/opt/phenom/buildproperties/cp-facets/DEV": "/opt/deployment/buildproperties"
         }
       }
@@ -30,10 +30,16 @@
           "CONF_FILE_NAME=application.conf"
         ],
         "volumes": {
-          "/var/log/containers/facets": "/opt/deployment/logs/cp-facets",
-          "/opt/phenom/buildproperties/cp-facets/QA": "/opt/deployment/buildproperties"
+          "/var/log/containers/facets": "/opt/deployment/logs/facets",
+          "/opt/phenom/buildproperties/cp-facets/QA1": "/opt/deployment/buildproperties"
         }
       }
+    },
+    "nginx-pod":{
+      "uri": "qa-facets2.phenompeople.com",
+      "nginx_template":"https_template",
+      "service_port":443,
+      "application_port":9053
     }
   }
 }

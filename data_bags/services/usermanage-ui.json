@@ -21,7 +21,6 @@
     "ecr": {
       "usermanage-ui": {
         "image_name": "cu_usermanagement-appui",
-        "elb_name": "test-chef-elb",
         "tag_name": "QA-CP",
         "ports": {
           "9051": "80"
@@ -36,7 +35,8 @@
     },
     "nginx-pod":{
       "uri": "qa-usermanagement2.phenompeople.com",
-      "nginx_template":"http_template",
+      "nginx_template":"https_template",
+      "service_port":443,
       "application_port":9051
     }
   }

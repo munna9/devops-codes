@@ -12,7 +12,8 @@
           "CONF_FILE_NAME=application.conf"
         ],
         "volumes": {
-          "/opt/phenom/buildproperties/candidates-sendgrid-events/DEV": "/opt/deployment/buildproperties"
+          "/opt/phenom/buildproperties/candidates-sendgrid-events/DEV": "/opt/deployment/buildproperties",
+          "/var/log/containers/sendgridwebhook/sendgridtrack.log": "/opt/deployment/sendgridtrack.log"
         }
       }
     }
@@ -26,12 +27,18 @@
           "9055": "9000"
         },
         "environment_variables": [
-          "CONF_FILE_NAME=application.conf"
         ],
         "volumes": {
-          "/opt/phenom/buildproperties/candidates-sendgrid-events/QA": "/opt/deployment/buildproperties"
+          "/opt/phenom/buildproperties/candidates-sendgrid-events/QA1": "/opt/deployment/buildproperties",
+          "/var/log/containers/sendgridwebhook/sendgridtrack.log": "/opt/deployment/sendgridtrack.log"
         }
       }
+    },
+    "nginx-pod":{
+      "uri": "qa-sendgridwebhook2.phenompeople.com",
+      "nginx_template":"https_template",
+      "service_port":443,
+      "application_port":9055
     }
   }
 }

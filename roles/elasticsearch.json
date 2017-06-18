@@ -25,10 +25,24 @@
       "role[_base]",
       "role[_elk-agent]",
       "recipe[basic-essentials::oracle_java_default]",
+      "recipe[nginx::install]",
       "recipe[elasticsearch::install_from_archive]",
       "recipe[elasticsearch::app_cluster_configure]",
       "recipe[elasticsearch::plugins]",
+      "recipe[nginx::service]",
       "recipe[elasticsearch::service]"
+    ],
+    "prod-candidatesca":[
+      "role[_base]",
+      "recipe[basic-essentials::oracle_java_default]",
+      "recipe[nginx::install]",
+      "recipe[elasticsearch::install_from_archive]",
+      "recipe[elasticsearch::app_cluster_configure]",
+      "recipe[elasticsearch::plugins]",
+      "recipe[nginx::service]",
+      "recipe[elasticsearch::service]"
+
     ]
+
   }
 }

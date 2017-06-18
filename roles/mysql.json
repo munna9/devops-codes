@@ -13,7 +13,7 @@
     "role[_base]"
   ],
   "env_run_lists": {
-    "qa-candidates": [
+    "qa": [
       "role[_base]",
       "role[_elk-agent]",
       "recipe[mysql::install]",

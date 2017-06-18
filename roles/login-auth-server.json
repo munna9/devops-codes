@@ -1,5 +1,5 @@
 {
-  "name": "cp-ui",
+  "name": "login-auth-server",
   "json_class": "Chef::Role",
   "chef_type": "role",
   "description": "Recipes which configures host to be Candidates UI service",
@@ -17,14 +17,7 @@
       "role[_base]",
       "role[_elk-agent]",
       "role[_deploy-agent]",
-      "recipe[cp-ui::ecr_deploy]"
-
-    ],
-    "stg-candidates": [
-      "role[_base]",
-      "role[_elk-agent]",
-      "role[_deploy-agent]",
-      "recipe[cp-ui::ecr_deploy]"
+      "recipe[login-auth-server::ecr_deploy]"
 
     ]
   }

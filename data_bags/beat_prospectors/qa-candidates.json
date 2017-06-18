@@ -13,6 +13,187 @@
       "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
       "multiline.negate": true,
       "multiline.match": "after"
+    },
+    "nginx-access":{
+      "document_type": "qa-nginx-access",
+      "paths":[
+        "/var/log/nginx/*access.log"
+      ],
+      "input_type": "log",
+      "close_inactive": "5m",
+      "symlink": "enabled",
+      "tail-files": true
+    },
+    "nginx-error":{
+      "document_type": "qa-nginx-error",
+      "paths":[
+        "/var/log/nginx/*error.log"
+      ],
+      "input_type": "log",
+      "close_inactive": "5m",
+      "symlink": "enabled",
+      "tail-files": true
+
+    },
+    "cp-ui-access":{
+      "document_type": "cp-ui-access",
+      "paths":[
+        "/var/log/containers/cp-ui*/*access.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true
+    },
+    "cp-ui-errors":{
+      "document_type": "cp-ui-error",
+      "paths":[
+        "/var/log/containers/cp-ui*/*error.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true
+    },
+    "emailcampaign":{
+      "document_type": "emailcampaign",
+      "paths":[
+        "/var/log/containers/emailcampaign*/*.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true
+    },
+    "emailservice":{
+      "document_type": "facets",
+      "paths":[
+        "/var/log/containers/emailservice*/*.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true
+    },
+    "facets":{
+      "document_type": "facets",
+      "paths":[
+        "/var/log/containers/facets*/application.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true,
+      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.match": "after",
+      "multiline.negate": true
+    },
+    "login-auth-server":{
+      "document_type":"login-auth-server",
+      "paths":[
+        "/var/log/containers/login-auth-server*/catalina.out"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true,
+      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.match": "after",
+      "multiline.negate": true
+
+    },
+    "login-resource-server":{
+      "document_type":"login-resource-server",
+      "paths":[
+        "/var/log/containers/login-resource-server*/catalina.out"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true,
+      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.match": "after",
+      "multiline.negate": true
+
+    },
+    "login-self-administration":{
+      "document_type":"login-self-administration",
+      "paths":[
+        "/var/log/containers/login-self-administration*/catalina.out"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true
+    },
+    "microservice":{
+      "document_type": "microservice",
+      "paths":[
+        "/var/log/containers/microservice/*.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true,
+      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.match": "after",
+      "multiline.negate": true
+
+    },
+    "sendgridwebhook":{
+      "document_type": "sendgridwebhook",
+      "paths":[
+        "/var/log/containers/sendgridwebhook/*.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true
+    },
+    "unsubscribe-access":{
+      "document_type": "unsubscribe-access",
+      "paths":[
+        "/var/log/containers/unsubscribe*/*access.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true
+    },
+    "unsubscribe-errors":{
+      "document_type": "unsubscribe-error",
+      "paths":[
+        "/var/log/containers/unsubscribe*/*error.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true
+    },
+
+    "usermanagement":{
+      "document_type": "usermanagement",
+      "paths":[
+        "/var/log/containers/usermanagement/*.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true,
+      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.negate": true,
+      "multiline.match": "after"
+
+    },
+    "usermanagement-ui": {
+      "document_type": "usermanagement-ui",
+      "paths": [
+        "/var/log/containers/usermanagement-ui*/*.log"
+      ],
+      "input_type": "log",
+      "close_inactive": "5m",
+      "symlink": "enabled",
+      "tail-files": true
     }
   },
   "app_procs_to_watch": {
@@ -45,7 +226,7 @@
       ],
       "hosts": "tcp(127.0.0.1:3306)/",
       "username":"monitor",
-      "password":"jAS#@$876smbh"
+      "password":"khjao*^fo789"
     }
   },
   "grok_patterns": {

@@ -23,6 +23,13 @@
       "server_name": "qa-logstash01.aws.phenom.local",
       "server_port": "5004",
       "certificate_name": "qacert"
+    },
+    "mongodb":{
+      "replication_name":"rsQA",
+      "key_authentication":true,
+      "major":{
+        "version": "3.4"
+      }
     }
   }
 }

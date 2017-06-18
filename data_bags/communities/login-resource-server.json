@@ -1,0 +1,28 @@
+{
+  "id": "login-resource-server",
+  "qa-candidates": {
+    "ecr": {
+      "login-resource-server": {
+        "image_name": "cp_login-resource-server",
+        "tag_name": "QA-CP",
+        "ports": {
+          "9060": "80"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/opt/phenom/buildproperties/login/QA1":  "/opt/deployment/buildproperties",
+          "/var/log/containers/login-resource-server": "/opt/deployment/apache-tomcat/logs"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "qa-login2.phenompeople.com",
+      "nginx_template":"http_tomcat_template",
+      "service_port":80,
+      "context_name":"osiam-resource-server",
+      "application_port":9060
+    }
+  }
+}

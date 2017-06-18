@@ -1,6 +1,19 @@
 {
   "id": "ml_jd_cleaning",
   "dev-ngcc": {
+    "aws":{
+      "ami_image":"ia-ddfa13232",
+      "machine_type":"t2.micro",
+      "hosts":{
+        "us-east-1a":[
+          "qa-test1.aws.phenom.local"
+        ],
+        "us-east-1c":[
+          "qa-test2.aws.phenom.local",
+          "qa-test3.aws.phenom.local"
+        ]
+      }
+    },
     "ecr": {
       "jd_cleaning": {
         "image_name": "ml_jd_cleaning",

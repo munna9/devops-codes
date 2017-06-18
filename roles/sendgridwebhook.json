@@ -18,7 +18,6 @@
       "role[_elk-agent]",
       "role[_deploy-agent]",
       "recipe[sendgridwebhook::ecr_deploy]"
-
     ]
   }
 }

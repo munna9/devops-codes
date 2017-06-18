@@ -19,9 +19,17 @@
       "recipe[docker::install]",
       "recipe[docker::service]",
       "recipe[docker::wrappers]",
-      "recipe[nginx::pod]"
+      "recipe[nginx::install]",
+      "recipe[nginx::pod]",
+      "recipe[elasticsearch::elastic_elb]"
+    ],
+    "prod-ngccca": [
+      "role[_base]"
+      "recipe[docker::install]",
+      "recipe[docker::service]",
+      "recipe[docker::wrappers]",
+      "recipe[nginx::install]"
+
     ]
-
-
   }
 }

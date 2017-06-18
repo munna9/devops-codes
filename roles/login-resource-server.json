@@ -1,8 +1,8 @@
 {
-  "name": "cp-ui",
+  "name": "login-resource-server",
   "json_class": "Chef::Role",
   "chef_type": "role",
-  "description": "Recipes which configures host to be Candidates UI service",
+  "description": "Recipes which configures host to be Candidates self administration service",
   "default_attributes": {
 
   },
@@ -17,14 +17,7 @@
       "role[_base]",
       "role[_elk-agent]",
       "role[_deploy-agent]",
-      "recipe[cp-ui::ecr_deploy]"
-
-    ],
-    "stg-candidates": [
-      "role[_base]",
-      "role[_elk-agent]",
-      "role[_deploy-agent]",
-      "recipe[cp-ui::ecr_deploy]"
+      "recipe[login-resource-server::ecr_deploy]"
 
     ]
   }

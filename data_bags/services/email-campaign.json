@@ -12,7 +12,7 @@
           "CONF_FILE_NAME=application.conf"
         ],
         "volumes": {
-          "/var/log/containers/emailcampaign": "/opt/deployment/logs/cp-emailcampaign",
+          "/var/log/containers/emailcampaign": "/opt/deployment/cp-emailcampaign/logs",
           "/opt/phenom/buildproperties/cp-email-campaign/DEV": "/opt/deployment/buildproperties"
         }
       }
@@ -30,11 +30,18 @@
           "CONF_FILE_NAME=application.conf"
         ],
         "volumes": {
-          "/var/log/containers/emailcampaign": "/opt/deployment/logs/cp-emailcampaign",
-          "/opt/phenom/buildproperties/cp-email-campaign/QA": "/opt/deployment/buildproperties"
+          "/var/log/containers/emailcampaign": "/opt/deployment/cp-emailcampaign/logs",
+          "/opt/phenom/buildproperties/cp-email-campaign/QA1": "/opt/deployment/buildproperties"
         }
       }
+    },
+    "nginx-pod":{
+      "uri": "ecompaign-qa2.phenompeople.com",
+      "nginx_template":"https_template",
+      "service_port":443,
+      "application_port":9058
     }
+
   }
 
 }

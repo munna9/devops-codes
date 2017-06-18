@@ -1,0 +1,16 @@
+{
+  "name": "qa-mongo03.aws.phenom.local",
+  "chef_environment": "qa",
+  "run_list": [
+
+    "role[mongodb]",
+    "role[_base]",
+    "role[_elk-agent]",
+    "role[mysql]"
+  ],
+  "normal": {
+    "tags": [
+        "qa-mysql-node"
+    ]
+  }
+}

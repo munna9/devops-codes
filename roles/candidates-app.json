@@ -19,7 +19,16 @@
         "role[_deploy-agent]",
         "role[usermanage-ui]",
         "role[cp-ui]",
-        "role[unsubscribe]"
+        "role[unsubscribe]",
+        "role[facets]",
+        "role[usermanagement]",
+        "role[sendgridwebhook]",
+        "role[emailservice]",
+        "role[microservice]",
+        "role[email-campaign]",
+        "role[login-auth-server]",
+        "role[login-resource-server]",
+        "role[login-self-administration]"
      ]
   }
 }

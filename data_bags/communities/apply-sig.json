@@ -1,0 +1,20 @@
+{
+  "id": "apply-sig",
+  "qa-cms": {
+    "ecr": {
+      "sig": {
+        "image_name": "ap_sig",
+        "tag_name": "QA-CMS",
+        "ports": {
+          "5101": "8091"
+        },
+        "environment_variables": [
+        ],
+        "volumes": {
+          "/var/log/containers/sig": "/opt/deployment/apply",
+          "/opt/deployment/buildproperties/jobpull/QA/safeway":"/opt/deployment/WEB-INF/classes"
+        }
+      }
+    }
+  }
+}

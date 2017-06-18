@@ -9,7 +9,10 @@
   },
 
   "default_attributes": {
-      
+    "aws_account_id":"413928405733",
+    "cloud":{
+      "platform": "aws"
+    }
   },
 
   "override_attributes": {
