@@ -22,10 +22,10 @@ def get_metadata vault_name, app_name
       if nginx_object
         metadata_dict['service_name']=app_name
         metadata_dict['uri']=nginx_object['uri']
-        metadata_dict['ssl_certificate']=(nginx_object['ssl_certificate'].nil?) ? '_default' : nginx_object['ssl_certificate']
+        metadata_dict['ssl_certificate']=(nginx_object['ssl_certificate'].nil?) ? 'phenompeople' : nginx_object['ssl_certificate']
         metadata_dict['nginx_conf_file']="#{app_name}.conf"
         metadata_dict['nginx_template']=nginx_object['nginx_template']
-        metadata_dict['service_port']=(nginx_object['service_port'].nil?)? 443 :  nginx_object['service_port']
+        metadata_dict['service_port']=(nginx_object['service_port'].nil?)? 80 :  nginx_object['service_port']
         metadata_dict['application_port']=nginx_object['application_port']
         metadata_dict['keep_alive']=(nginx_object['keep_alive'].nil?)? 10 : nginx_object['keep_alive']
         metadata_dict['context_name']=(nginx_object['context_name'].nil?)? '/' : "/#{nginx_object['context_name']}"

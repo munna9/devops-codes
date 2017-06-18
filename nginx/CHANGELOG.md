@@ -1,3 +1,5 @@
+# 0.1.8
+[rajeshj] - Included community databag entries
 # 0.1.7
 [rajeshj] - Included context_name as part of data bag
 # 0.1.6

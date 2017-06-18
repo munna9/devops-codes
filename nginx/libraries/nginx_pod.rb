@@ -9,21 +9,23 @@ module NginxCookbook
     action :create do
       service_dict = get_metadata vault_name,app_name
       if service_dict
-        create_ssl_certificate service_dict['ssl_certificate'] if service_dict['ssl_certificate']
-
-        template "#{node['nginx']['app']['conf_directory']}/#{service_dict['nginx_conf_file']}" do
-          source "sources/#{service_dict['nginx_template']}.erb"
-          variables(
-            :service_name     => service_dict['service_name'],
-            :context_name     => service_dict['context_name'],
-            :hosts            => service_dict['hosts'],
-            :application_port => service_dict['application_port'],
-            :uri              => service_dict['uri'],
-            :service_port     => service_dict['service_port'],
-            :ssl_certificate  => service_dict['ssl_certificate']
-          )
-          sensitive true
-          notifies :reload, "docker_container[#{node['pod_container_name']}]"
+        if service_dict['hosts'].any?
+          create_ssl_certificate service_dict['ssl_certificate'] if service_dict['ssl_certificate']
+          template "#{node['nginx']['app']['conf_directory']}/#{service_dict['nginx_conf_file']}" do
+            source "sources/#{service_dict['nginx_template']}.erb"
+            variables(
+              :service_name     => service_dict['service_name'],
+              :context_name     => service_dict['context_name'],
+              :hosts            => service_dict['hosts'],
+              :application_port => service_dict['application_port'],
+              :uri              => service_dict['uri'],
+              :service_port     => service_dict['service_port'],
+              :ssl_certificate  => service_dict['ssl_certificate'],
+              :keep_alive       => service_dict['keep_alive']
+            )
+            sensitive true
+            notifies :reload, "docker_container[#{node['pod_container_name']}]"
+          end
         end
       end
     end

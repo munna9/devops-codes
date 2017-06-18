@@ -4,7 +4,7 @@ upstream <%=@service_name%> {
 <% @hosts.each do |host_name| %>
     server <%= host_name %>:<%=@application_port%>;
 <% end %>
-    keepalive 10;
+    keepalive <%=@keep_alive%>;
 }
 server {
   listen 80;
