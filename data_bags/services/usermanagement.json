@@ -34,6 +34,12 @@
           "/opt/phenom/buildproperties/accounts/QA1": "/opt/deployment/buildproperties"
         }
       }
+    },
+    "nginx-pod":{
+      "uri": "qa-usermanagement2.phenompeople.com",
+      "nginx_template":"https_template",
+      "service_port":443,
+      "application_port":9054
     }
   }
 }

@@ -34,13 +34,13 @@
           "/opt/phenom/buildproperties/cp-microservice/QA1": "/opt/deployment/buildproperties"
         }
       }
+    },
+    "nginx-pod":{
+      "uri": "qa-microservice2.phenompeople.com",
+      "nginx_template":"https_template",
+      "service_port":443,
+      "application_port":9057
     }
-  },
-  "nginx-pod":{
-    "uri": "qa2-microservice2.phenompeople.com",
-    "nginx_template":"https_template",
-    "service_port":443,
-    "application_port":9057
-  }
 
+  }
 }
