@@ -24,7 +24,7 @@
       "recipe[elasticsearch::elastic_elb]"
     ],
     "prod-ngccca": [
-      "role[_base]"
+      "role[_base]",
       "recipe[docker::install]",
       "recipe[docker::service]",
       "recipe[docker::wrappers]",
