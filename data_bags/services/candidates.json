@@ -1,0 +1,27 @@
+{
+  "id": "candidates",
+  "qa-candidates": {
+    "ecr": {
+      "candidates": {
+        "image_name": "cp_candidates",
+        "tag_name": "QA-CP",
+        "ports": {
+          "9062": "9000"
+        },
+        "environment_variables": [
+          "CONF_FILE_NAME=application.conf"
+        ],
+        "volumes": {
+          "/var/log/containers/candidates": "/opt/deployment/candidates/logs",
+          "/opt/phenom/buildproperties/candidates/QA1": "/opt/deployment/buildproperties"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "candidatesapi2.phenompeople.com",
+      "nginx_template":"https_template",
+      "service_port":443,
+      "application_port":9062
+    }
+  }
+}

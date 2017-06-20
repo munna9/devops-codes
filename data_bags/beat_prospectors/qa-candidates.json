@@ -35,6 +35,19 @@
       "tail-files": true
 
     },
+    "candidates":{
+      "document_type": "candidates",
+      "paths":[
+        "/var/log/containers/candidates*/application.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true,
+      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.match": "after",
+      "multiline.negate": true
+    },
     "cp-ui-access":{
       "document_type": "cp-ui-access",
       "paths":[

@@ -28,7 +28,8 @@
         "role[email-campaign]",
         "role[login-auth-server]",
         "role[login-resource-server]",
-        "role[login-self-administration]"
+        "role[login-self-administration]",
+        "role[candidates]"
      ]
   }
 }
