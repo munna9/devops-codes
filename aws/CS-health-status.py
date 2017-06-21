@@ -4,8 +4,8 @@ import smtplib
 from time import gmtime, strftime
 
 def sendMail(msg):
-    ToAddress = '<Recipient_Address>'
-    FromAddress = '<Sender_Address>'
+    ToAddress = '<recipient_address>'
+    FromAddress = '<sender_address>'
     with open('/etc/postfix/sasl/sasl_passwd', 'r') as text:
         passwd = text.read().replace('\n', '')
     passwd = passwd.decode('base64')
@@ -17,7 +17,8 @@ def sendMail(msg):
     server.sendmail(FromAddress,ToAddress,msg)
 
 #r = requests.get('https://chef-server01.phenompeople.com/_status', verify=False)
-r = requests.get('https://manage.chef.io/_status', verify=False)
+#r = requests.get('https://manage.chef.io/_status', verify=False)
+
 x = r.json()
 #print x
 if x['status'] == 'fail':
