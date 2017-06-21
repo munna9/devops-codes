@@ -1,3 +1,5 @@
+# 0.1.8
+[akshithat] - Upadated service port variable for elastic_elb
 # 0.1.7  
 [akshithat] - Elasticsearch access and error log files
 # 0.1.6 

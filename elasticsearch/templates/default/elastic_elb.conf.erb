@@ -1,7 +1,7 @@
 #<%=@node['phenom']['banner']%>
 upstream elastic_elb {
 <% @hosts_array.each do |host_name| %>
-  server <%= host_name %>:<%=node['elasticsearch']['service_port']%>;
+  server <%= host_name %>:<%=node['elasticsearch']['server_port']%>;
 <% end %>
   keepalive 15;
 }
