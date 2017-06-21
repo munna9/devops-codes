@@ -19,7 +19,6 @@
       "recipe[docker::install]",
       "recipe[docker::service]",
       "recipe[docker::wrappers]",
-      "recipe[nginx::install]",
       "recipe[nginx::pod]",
       "recipe[elasticsearch::elastic_elb]"
     ],
