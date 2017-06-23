@@ -6,13 +6,17 @@ systemLog:
 storage:
   dbPath: <%=node['mongodb']['storage']['path']%>
   journal:
-    enabled: false
+    enabled: true
   directoryPerDB: true
 processManagement:
   fork: true
   pidFilePath: /var/run/mongodb/mongod.pid
 net:
   port: 27017
+<% if node['mongodb']['major']['version']=='3.4' %>
+  compression:
+        compressors: snappy
+<% end %>      
 <% if node['mongodb']['replication_name'] %>
 replication:
     replSetName: <%=node['mongodb']['replication_name']%>
