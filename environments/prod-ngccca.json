@@ -6,7 +6,7 @@
 
   "cookbook_versions": {
     "nginx":"0.1.6",
-    "mongodb": "0.1.6"
+    "mongodb": "0.1.7"
 
   },
 

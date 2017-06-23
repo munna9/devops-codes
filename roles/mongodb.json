@@ -20,6 +20,22 @@
       "recipe[mongodb::service]",
       "recipe[mongodb::fine_tunning]",
       "recipe[mongodb::configure]"
+    ],
+    "prod-ngccca": [
+      "role[_base]",
+      "role[_elk-agent]",
+      "recipe[mongodb::install]",
+      "recipe[mongodb::service]",
+      "recipe[mongodb::fine_tunning]",
+      "recipe[mongodb::configure]"
+    ],
+    "prod-candidatesca": [
+      "role[_base]",
+      "role[_elk-agent]",
+      "recipe[mongodb::install]",
+      "recipe[mongodb::service]",
+      "recipe[mongodb::fine_tunning]",
+      "recipe[mongodb::configure]"
     ]
   }
 }

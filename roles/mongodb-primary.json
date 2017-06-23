@@ -21,6 +21,14 @@
       "recipe[mongodb::fine_tunning]",
       "recipe[mongodb::configure]",
       "recipe[mongodb::master]"
+    ],
+    "prod-ngccca": [
+      "role[mongodb]",
+      "recipe[mongodb::master]"
+    ],
+    "prod-candidatesca": [
+      "role[mongodb]",
+      "recipe[mongodb::master]"
     ]
   }
 }

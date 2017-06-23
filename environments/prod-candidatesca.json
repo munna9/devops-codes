@@ -6,7 +6,7 @@
 
   "cookbook_versions": {
     "nginx":"0.1.8",
-    "mongodb": "0.1.6"
+    "mongodb": "0.1.7"
 
   },
 
@@ -25,6 +25,11 @@
     "elasticsearch":{
       "package":{
         "version": "2.3.5"
+      }
+    },
+    "mongodb":{
+      "major":{
+        "version": '3.2'
       }
     }
   }
