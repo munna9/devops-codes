@@ -1,3 +1,5 @@
+# 0.1.8
+[murali] - Merging down mongod.conf for dual configurations
 # 0.1.7 
 [murali] - update the  config file  to enable the journal and Compression of wire protocol for 3.4 
 # 0.1.6

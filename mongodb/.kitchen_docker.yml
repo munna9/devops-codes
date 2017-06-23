@@ -60,8 +60,8 @@ suites:
       - recipe[mongodb::install]
 #      - recipe[mongodb::fine_tunning]
 #      - recipe[mongodb::master]
-#      - recipe[mongodb::configure]
-#      - recipe[mongodb::service]
+      - recipe[mongodb::configure]
+      - recipe[mongodb::service]
     attributes:
       phenom:
         banner: 'Dont edit by Hand !!! This file is modified by Chef. Please contact admin.squad@phenompeople.com for further assitance'

@@ -23,7 +23,7 @@ if node['mongodb']['key_authentication']
 else
   template "Mongodb configuration file - Plain authentication" do
     path node['mongodb']['conf']['file']
-    source 'master/mongod.conf.erb'
+    source 'mongod.conf.erb'
     sensitive true
     notifies :restart, "service[#{node['mongodb']['service']['name']}]"
   end
