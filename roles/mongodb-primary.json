@@ -14,12 +14,7 @@
   ],
   "env_run_lists": {
     "qa": [
-      "role[_base]",
-      "role[_elk-agent]",
-      "recipe[mongodb::install]",
-      "recipe[mongodb::service]",
-      "recipe[mongodb::fine_tunning]",
-      "recipe[mongodb::configure]",
+      "role[mongodb]",
       "recipe[mongodb::master]"
     ],
     "prod-ngccca": [
