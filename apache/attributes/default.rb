@@ -10,10 +10,10 @@ default['apache']['binary']['packages'] ={
   },
   'centos' => {
     '7.3.1611' => {
-      'httpd'         => '2.4.6-45.el7.centos'
+      'httpd'         => '2.4.6-45.el7.centos.4'
     },
     '7.2.1511' => {
-      'httpd'         => '2.4.6-45.el7.centos'
+      'httpd'         => '2.4.6-45.el7.centos.4'
     }
   },
   'ubuntu' => {
