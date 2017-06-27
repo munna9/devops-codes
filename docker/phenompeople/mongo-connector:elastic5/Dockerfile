@@ -20,9 +20,5 @@ ENV PIP_FORMAT=legacy \
     SETUP_DIRECTORY=/opt/python/cache
 
 ADD setup/install.sh /opt/deployment/scripts/install.sh
-RUN /opt/deployment/scripts/install.sh && \
-    rm -rf $SETUP_DIRECTORY/sources && \
-    rm -rf /opt/deployment/scripts && \
-    rm -rf /opt/python/cache
-#ADD mongo-startup.sh /opt/deployment
-ENTRYPOINT ["/usr/local/bin/mongo-connector", "-c", "/opt/deployment/mongoconnector/config.json"]
+RUN /opt/deployment/scripts/install.sh
+ENTRYPOINT ["python3"]

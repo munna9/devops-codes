@@ -43,7 +43,7 @@ rm -rf tmp/get-pip.py /tmp/install.log
 
 download_and_extract $MONGO_CONNECTIOR_URI
 cd $SETUP_DIRECTORY
-pip install ./mongo-connector-${MONGO_CONNECTOR_VERSION}[elastic2]
+pip install ./mongo-connector-${MONGO_CONNECTOR_VERSION}[elastic5]
 download_and_extract $ELASTIC_DOC_URI
 cd $SETUP_DIRECTORY
-pip install ./elastic2-doc-manager-${ELASTIC_DOC_VERSION}[elastic2]
+pip install ./elastic2-doc-manager-${ELASTIC_DOC_VERSION}[elastic5]

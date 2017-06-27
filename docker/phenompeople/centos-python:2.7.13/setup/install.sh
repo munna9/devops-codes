@@ -24,7 +24,7 @@ compile_from_source(){
     cd $SETUP_DIRECTORY/$1
     ./configure > /tmp/install.log 2>&1
     make > /tmp/install.log 2>&1
-    make > /tmp/install.log install 2>&1
+    make install 2>&1
     cd $SETUP_DIRECTORY
 }
 download_and_extract $PYTHON_SRC_URI
