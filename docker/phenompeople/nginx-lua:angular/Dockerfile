@@ -36,6 +36,5 @@ ADD setup ${APP_HOME}/scripts
 RUN ${APP_HOME}/scripts/install.sh
 COPY config/nginx.conf /etc/nginx/nginx.conf
 ADD conf.d/default.conf /etc/nginx/conf.d/default.conf
-ADD error /opt/deployment/error
 RUN yum remove -q -e 0 -y wget make perl gcc-c++ pcre-devel zlib-devel file && \
     yum clean all
