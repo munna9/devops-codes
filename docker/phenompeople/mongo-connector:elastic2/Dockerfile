@@ -6,7 +6,7 @@ RUN useradd -d  /opt/deployment -u 1000 phenom && \
     yum install -q -e 0 -y wget make gcc-c++ openssl-devel zlib-devel && \
     mkdir -p /opt/deployment/scripts
 
-ARG PYTHON_VERSION=3.5.1
+ARG PYTHON_VERSION=2.7.13
 ARG PYTHON_PIP_VERSION=9.0.1
 ARG ELASTIC_DOC_VERSION=0.3.0
 ARG MONGO_CONNECTOR_VERSION=2.5.0
