@@ -1,0 +1,7 @@
+#<%=node['phenom']['banner']%>
+<%@node['zookeeper']['conf']['options'].each do |_key,_value| %>
+<%=_key%>=<%=_value%>
+<% end %>
+<%@host_hash.each do |host_name,host_hash| %>
+server.<%=host_hash['myId']%>=<%=host_hash['hostname']%>:<%=node['zookeeper']['leader']['connector_port']%>:<%=node['zookeeper']['leader']['elector_port']%>
+<% end %>

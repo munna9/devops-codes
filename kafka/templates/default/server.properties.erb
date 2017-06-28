@@ -1,0 +1,11 @@
+#<%=node['phenom']['banner']%>
+broker.id=<%=@host_hash[node['hostname']]['brokerId']%>
+default.replication.factor=<%=@host_hash.keys.length%>
+num.partitions=<%=@host_hash.keys.length * 2 %>
+listners=PLAINTEXT://<%=@host_hash[node['hostname']]['hostname']%>:<%=node['kafka']['service']['port']%>
+<% if node['zookeeper']['cluster'] %>
+zookeeper.connect=<%=@zookeeper_hosts.join(',')%>
+<% end %>
+<%@node['kafka']['conf']['options'].each do |_key,_value| %>
+<%=_key%>=<%=_value%>
+<% end %>
