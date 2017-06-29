@@ -21,10 +21,10 @@ output {
         hosts => ["<%=node['elasticsearch']['server_name']%>:<%=node['elasticsearch']['server_port']%>"]
         index => "cp-qa-%{+YYYY.MM.dd}"
       }
-    } else if [properties][trait203] == "DEV" or "candidates-dev.phenompeople.com" in [properties][pt_page] {
+    } else{
       elasticsearch {
         hosts => ["<%=node['elasticsearch']['server_name']%>:<%=node['elasticsearch']['server_port']%>"]
-        index => "cp-dev-%{+YYYY.MM.dd}"
+        index => "phenom_track_-%{+YYYY.MM.dd}"
       }
     }
 }
