@@ -1,3 +1,3 @@
 #<%=node['phenom']['banner']%>
 export ZOO_LOG_DIR=<%=node['zookeeper']['conf']['dataLogDir']%>
-export JVMFLAGS="-Xmx<%=node['zookeeper']['heap_memory']%>G -Xms<%=node['zookeeper']['heap_memory']%>G"
+export JVMFLAGS="-Xmx<%=node['zookeeper']['heap_memory']%> -Xms<%=node['zookeeper']['heap_memory']%>"

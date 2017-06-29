@@ -63,8 +63,8 @@ platforms:
 suites:
   - name: default
     run_list:
-#      - recipe[basic-essentials::oracle_java_default]
-#      - recipe[zookeeper::install]
+      - recipe[basic-essentials::oracle_java_default]
+      - recipe[zookeeper::install]
 #      - recipe[zookeeper::configure]
       - recipe[zookeeper::default]
 

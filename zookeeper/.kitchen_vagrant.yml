@@ -33,7 +33,6 @@ suites:
       - recipe[zookeeper::service]
 
     attributes:
-      aws_account_id: "413928405733"
       phenom:
         banner: 'Dont edit by Hand !!! This file is modified by Chef. Please contact admin.squad@phenompeople.com for further assitance'
 
