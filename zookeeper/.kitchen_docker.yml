@@ -65,14 +65,15 @@ suites:
     run_list:
       - recipe[basic-essentials::oracle_java_default]
       - recipe[zookeeper::install]
-#      - recipe[zookeeper::configure]
+      - recipe[zookeeper::configure]
       - recipe[zookeeper::default]
+      - recipe[zookeeper::service]
 
     attributes:
       phenom:
         banner: 'This is managed by Admin'
 
       zookeeper:
-        cluster: ['default-centos-73.vagrantup.com']
+        cluster: ['1548d889140e']
         heap_memory: 2
 
