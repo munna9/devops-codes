@@ -37,5 +37,26 @@
         }
       }
     }
+  },
+  "prod-ngccca":{
+    "docker":{
+      "nginx-lua":{
+        "image_name":"phenompeople/nginx-lua",
+        "tag_name":"1.11.10",
+        "ports":{
+          "80":"80",
+          "443":"443"
+        },
+        "environment_variables":[
+
+        ],
+        "volumes":{
+          "/etc/localtime":"/etc/localtime",
+          "/etc/nginx/conf.d":"/etc/nginx/conf.d",
+          "/etc/ssl/certs":"/etc/ssl/certs",
+          "/var/log/nginx":"/var/log/nginx"
+        }
+      }
+    }
   }
 }
