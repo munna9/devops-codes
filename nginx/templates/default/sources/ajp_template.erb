@@ -19,7 +19,7 @@ server {
   ssl_certificate      <%=@node['nginx']['ssl']['base_directory']%>/<%=@ssl_certificate%>.crt;
   ssl_certificate_key  <%=@node['nginx']['ssl']['base_directory']%>/<%=@ssl_certificate%>.key;
   ssl_session_timeout  5m;
-  ssl_protocols  TLSv1.2 TLSv1.1 TLSv1;
+  ssl_protocols  TLSv1.2 TLSv1.1;
   ssl_ciphers  "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
   ssl_prefer_server_ciphers   on;
   access_log <%=@node['nginx']['app']['log_directory']%>/<%=@service_name%>-access.log;

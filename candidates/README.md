@@ -53,6 +53,18 @@ Remove Deployed candidates container by referring data bag item candidates of se
 1. Container is stopped and removed after deregistering from ELB if defined.
 1. It removes image(s) from the host.
 
+Attributes
+====
+Ohai collects attribute data about each node at the start of the chef-client run.
+When a cookbook is loaded during a chef-client run, these attributes are compared to the attributes that are already present on the node.
+For each cookbook, attributes in the `default.rb` file are loaded first, and then additional attribute files(if present are loaded) in lexical sorted order.
+
+### attributes/default.rb
+
+|Attribute Name                                         | Type          | Description                                                   |
+|-------------------------------------------------------|---------------|---------------------------------------------------------------|
+| ['candidates']['app']['directory_list']               | Array         | Default Chef client binary version                            |
+
 ## Maintainers
 
 * Rajesh Jonnalagadda (<rajesh.jonnalagadda@phenompeople.com>)

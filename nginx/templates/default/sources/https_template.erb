@@ -2,7 +2,7 @@
 
 upstream <%=@service_name%> {
 <% @hosts.each do |host_name| %>
-    server <%= host_name %>:<%=@application_port%>;
+    server <%= host_name %>:<%=@application_port%> max_fails=1  fail_timeout=5s;
 <% end %>
     keepalive <%=@keep_alive%>;
 }
@@ -25,6 +25,9 @@ server {
   error_log <%=@node['nginx']['app']['log_directory']%>/<%=@service_name%>-error.log;
   location <%=@context_name%> {
     proxy_pass http://<%=@service_name%>;
+    proxy_next_upstream     error timeout invalid_header http_500 http_502 http_404;
+    proxy_http_version      1.1;
+    proxy_redirect          off;
     proxy_connect_timeout      <%=@node['nginx']['conf']['proxy_connect_timeout']%>;
     proxy_send_timeout         <%=@node['nginx']['conf']['proxy_send_timeout']%>;
     proxy_read_timeout         <%=@node['nginx']['conf']['proxy_read_timeout']%>;

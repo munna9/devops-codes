@@ -45,11 +45,11 @@ default['nginx']['site']['default_directory']="#{node['nginx']['site']['base_dir
 
 default['nginx']['ssl']['base_directory']="#{node['nginx']['app']['base_directory']}/ssl"
 
-default['nginx']['conf']['ajp_connect_timeout']=3600
+default['nginx']['conf']['ajp_connect_timeout']=2
 default['nginx']['conf']['ajp_read_timeout']=3600
 default['nginx']['conf']['ajp_send_timeout']=3600
 
-default['nginx']['conf']['proxy_connect_timeout']=3600
+default['nginx']['conf']['proxy_connect_timeout']=2
 default['nginx']['conf']['proxy_read_timeout']=3600
 default['nginx']['conf']['proxy_send_timeout']=3600
 

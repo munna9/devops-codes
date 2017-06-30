@@ -39,3 +39,7 @@ template "#{node['nginx']['app']['conf_directory']}/elasticsearch.conf" do
   sensitive true
   notifies :restart, "service[#{node['nginx']['service']['name']}]"
 end
+template '/etc/sysconfig/elasticsearch' do
+  source 'elasticsearch_sysconfig.erb'
+  notifies :restart, "service[#{node['elasticsearch']['service']['name']}]"
+end

@@ -1,3 +1,5 @@
+# 0.1.9
+[rajeshj] - Adding Elasticsearch variables for sysconfig
 # 0.1.8
 [akshithat] - Upadated service port variable for elastic_elb
 # 0.1.7  

@@ -23,7 +23,7 @@ default['elasticsearch']['conf']['file']="#{node['elasticsearch']['conf']['home_
 
 default['elasticsearch']['app']['data_directory']='/var/lib/elasticsearch'
 default['elasticsearch']['app']['home_directory']= '/usr/share/elasticsearch'
-
+default['elasticsearch']['log']['home_directory']='/var/log/elasticsearch'
 default['elasticsearch']['plugins'] ={
   '2.3.5' => {
     'solutions.siren/siren-join'  =>  '2.3.5'
@@ -55,7 +55,7 @@ default['elasticsearch']['cluster']['options'] = {
     'http.port'                             => node['elasticsearch']['service']['port'],
     'http.compression'                      => true,
     'action.destructive_requires_name'      => true,
-    'action.auto_create_index'              => true,
+    'action.auto_create_index'              => false,
     'node.master'                           => true,
     'node.data'                             => true,
     'bootstrap.mlockall'                    => true,
