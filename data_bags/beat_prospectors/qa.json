@@ -13,6 +13,40 @@
       "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
       "multiline.negate": true,
       "multiline.match": "after"
+    },
+    "kafka-server":{
+      "document_type": "kafka-server",
+      "paths": [
+        "/var/log/kafka/server.log"
+      ],
+      "input_type": "log",
+      "close_inactive": "5m",
+      "symlink": "enabled",
+      "tail-files": true,
+      "multiline.pattern": "^[[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.negate": true,
+      "multiline.match": "after"
+
+    },
+    "kafka-gc":{
+      "document_type": "kafka-gc",
+      "paths": [
+        "/var/log/kafka/kafkaServer-gc.log"
+      ],
+      "input_type": "log",
+      "close_inactive": "5m",
+      "symlink": "enabled",
+      "tail-files": true
+    },
+    "zookeeper":{
+      "document_type":"zookeeper",
+      "paths": [
+        "/var/log/zookeeper/zookeeper.out"
+      ],
+      "input_type": "log",
+      "close_inactive": "5m",
+      "symlink": "enabled",
+      "tail-files": true
     }
   },
   "app_procs_to_watch": {
@@ -46,6 +80,21 @@
       "hosts": "tcp(127.0.0.1:3306)/",
       "username":"monitor",
       "password":"khjao*^fo789"
+    },
+    "kafka":{
+      "module": "kafka",
+      "metricsets":[
+        "partition",
+        "consumergroup"
+      ],
+      "ports":["9092"]
+    },
+    "zookeeper":{
+      "module":"zookeeper",
+      "metricsets":[
+        "mntr"
+      ],
+      "ports":["2181"]
     }
   },
   "grok_patterns": {
@@ -53,6 +102,11 @@
       "grok_pattern": ["MONGO3_CONNECTION_COUNT", "MONGO_SLOWQUERY"],
       "custom_patterns": true,
       "overwrite" : false
+    },
+    "kafka-server":{
+      "grok_pattern":["KAFKA_LOG_MESSAGE"],
+      "custom_patterns":true,
+      "overwrite" :true
     }
   }
 }

@@ -4,7 +4,9 @@
   "chef_type": "role",
   "description": "Recipes which configures host to be elasticsearch server",
   "default_attributes": {
-
+    "elasticsearch":{
+      "heap_memory": "1g"
+    }
   },
   "override_attributes": {
 
@@ -29,7 +31,11 @@
       "recipe[elasticsearch::install_from_archive]",
       "recipe[elasticsearch::app_cluster_configure]",
       "recipe[elasticsearch::plugins]",
+      "recipe[nginx::install]",
       "recipe[nginx::service]",
+      "recipe[docker::install]",
+      "recipe[docker::service]",
+      "recipe[docker::wrappers]",
       "recipe[elasticsearch::service]"
     ],
     "prod-candidatesca":[

@@ -24,13 +24,12 @@
         "image_name": "cp_sendgrid-webhook",
         "tag_name": "QA-CP",
         "ports": {
-          "9055": "9000"
+          "9055": "8091"
         },
         "environment_variables": [
         ],
         "volumes": {
-          "/opt/phenom/buildproperties/candidates-sendgrid-events/QA1": "/opt/deployment/buildproperties",
-          "/var/log/containers/sendgridwebhook/sendgridtrack.log": "/opt/deployment/sendgridtrack.log"
+          "/opt/phenom/buildproperties/candidates-sendgrid-events/QA1": "/opt/deployment/buildproperties"
         }
       }
     },

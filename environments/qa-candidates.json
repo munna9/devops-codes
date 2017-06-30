@@ -30,7 +30,7 @@
     "mysql":{
       "elb_hostname": "qa-mysql.aws.phenom.local"
     },
-    "es_cluster_name"   : "QA_CP_ES_NEW"
+    "es_cluster_name"   : "QA_CP_CONTAINER"
   },
 
   "override_attributes": {

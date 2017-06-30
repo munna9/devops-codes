@@ -1,0 +1,30 @@
+{
+  "name": "kafka",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "description": "Recipes which configures host to be kafka hosts",
+  "default_attributes": {
+    "kafka":{
+      "heap_memory": "2g"
+    }
+
+  },
+  "override_attributes": {
+
+  },
+  "run_list": [
+    "role[_base]"
+  ],
+  "env_run_lists": {
+    "qa":[
+      "role[_base]",
+      "role[_elk-agent]",
+      "recipe[basic-essentials::oracle_java_default]",
+      "role[zookeeper]",
+      "recipe[kafka::install]",
+      "recipe[kafka::configure]",
+      "recipe[kafka::service]"
+    ]
+
+  }
+}

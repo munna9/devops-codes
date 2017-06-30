@@ -4,7 +4,9 @@
   "chef_type": "role",
   "description": "Recipes which configures host to be elasticsearch server",
   "default_attributes": {
-    "elk_cluster_name": "elk"
+    "elasticsearch":{
+      "heap_memory": "1g"
+    }
   },
   "override_attributes": {
     "elasticsearch":{

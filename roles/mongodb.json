@@ -17,28 +17,28 @@
       "role[_base]",
       "role[_elk-agent]",
       "recipe[mongodb::install]",
-      "recipe[mongodb::service]",
       "recipe[mongodb::fine_tunning]",
       "recipe[mongodb::configure]",
-      "recipe[mongodb::logrotate_install]"
+      "recipe[mongodb::logrotate_install]",
+      "recipe[mongodb::service]"
     ],
     "prod-ngccca": [
       "role[_base]",
       "role[_elk-agent]",
       "recipe[mongodb::install]",
-      "recipe[mongodb::service]",
       "recipe[mongodb::fine_tunning]",
       "recipe[mongodb::configure]",
-      "recipe[mongodb::logrotate_install]"
+      "recipe[mongodb::logrotate_install]",
+      "recipe[mongodb::service]"
     ],
     "prod-candidatesca": [
       "role[_base]",
       "role[_elk-agent]",
       "recipe[mongodb::install]",
-      "recipe[mongodb::service]",
       "recipe[mongodb::fine_tunning]",
       "recipe[mongodb::configure]",
-      "recipe[mongodb::logrotate_install]"
+      "recipe[mongodb::logrotate_install]",
+      "recipe[mongodb::service]"
     ]
   }
 }

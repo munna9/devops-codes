@@ -36,9 +36,9 @@
       }
     },
     "nginx-pod":{
-      "uri": "qa-emailservice2.phenompeople.com",
-      "nginx_template":"https_template",
-      "service_port":443,
+      "uri": "qa-emailservice2.aws.phenom.local",
+      "nginx_template":"http_template",
+      "service_port":80,
       "application_port":9056
     }
   }
