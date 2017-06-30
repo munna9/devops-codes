@@ -1,6 +1,6 @@
-candidates-cookbook
+obsidian-cookbook
 =========================
-Deploy and configure  operations on candidates cookbook.
+Deploy and configure  operations on obsidian cookbook.
 
 Requirements
 ------------
@@ -37,40 +37,26 @@ Chef resources (DSL) and Ruby designed to read and behave in a predictable manne
 
 Please read attributes section for configuration parameters for any recipe(s)
 
-### candidates::ecr_deploy
+### obsidian::ecr_deploy
 
-Deploys candidates container by referring data bag item candidates of services data bag.
+Deploys obsidian container by referring data bag item obsidian of services data bag.
 
-1. Load data bag item phenom from credentials data bag 
-1. Identify phenom user's home_directory and create each directory provided under `['candidates']['app']['directory_list']` 
 1. Loads data bag referred by vault_name and app_name.
 1. Pulls docker image from Elastic container registry to the running node.
-1. It runs container with specifications mentioned under data bag item candidates of services data bag.
+1. It runs container with specifications mentioned under data bag item obsidian of communities data bag.
 
-### candidates::ecr_undeploy
+### obsidian::ecr_undeploy
 
-Remove Deployed candidates container by referring data bag item candidates of services data bag.
+Remove Deployed obsidian container by referring data bag item obsidian of communities data bag.
 
 1. Loads data bag referred by vault_name and app_name.
 1. Container is stopped and removed after deregistering from ELB if defined.
 1. It removes image(s) from the host.
 
-Attributes
-====
-Ohai collects attribute data about each node at the start of the chef-client run.
-When a cookbook is loaded during a chef-client run, these attributes are compared to the attributes that are already present on the node.
-For each cookbook, attributes in the `default.rb` file are loaded first, and then additional attribute files(if present are loaded) in lexical sorted order.
-
-### attributes/default.rb
-
-|Attribute Name                                         | Type          | Description                                                   |
-|-------------------------------------------------------|---------------|---------------------------------------------------------------|
-| ['candidates']['app']['directory_list']               | Array         | directories which need to be present for candidates           |
-
 ## Maintainers
 
 * Rajesh Jonnalagadda (<rajesh.jonnalagadda@phenompeople.com>)
-* Akshitha Tekulapalli (<akshitha.tekulapalli@phenompeople.com>)
+* Hadassah Pearlyn (<hadassah.nagathota@phenompeople.com>)
 
 ## License and Authors
 
