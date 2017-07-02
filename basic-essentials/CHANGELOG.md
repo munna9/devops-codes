@@ -1,3 +1,5 @@
+# 0.1.12
+[rajeshj] - Fixing build issues
 # 0.1.11
 [rajeshj] - Included vulenrabilities as on June 30, 2017
 #0.1.10
