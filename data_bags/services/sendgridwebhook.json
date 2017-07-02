@@ -1,23 +1,5 @@
 {
   "id": "sendgridwebhook",
-  "dev-candidates": {
-    "ecr": {
-      "sendgridwebhook": {
-        "image_name": "cp_sendgrid-webhook",
-        "tag_name": "DEV-CP",
-        "ports": {
-          "9055": "9000"
-        },
-        "environment_variables": [
-          "CONF_FILE_NAME=application.conf"
-        ],
-        "volumes": {
-          "/opt/phenom/buildproperties/candidates-sendgrid-events/DEV": "/opt/deployment/buildproperties",
-          "/var/log/containers/sendgridwebhook/sendgridtrack.log": "/opt/deployment/sendgridtrack.log"
-        }
-      }
-    }
-  },
   "qa-candidates": {
     "ecr": {
       "sendgridwebhook": {
@@ -29,7 +11,8 @@
         "environment_variables": [
         ],
         "volumes": {
-          "/opt/phenom/buildproperties/candidates-sendgrid-events/QA1": "/opt/deployment/buildproperties"
+          "/opt/phenom/buildproperties/candidates-sendgrid-events/QA1": "/opt/deployment/buildproperties",
+          "/var/log/containers/sendgridwebhook": "/opt/deployment/sendgridwebhook/logs"
         }
       }
     },

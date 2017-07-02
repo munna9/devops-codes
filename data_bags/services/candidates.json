@@ -9,7 +9,6 @@
           "9062": "9000"
         },
         "environment_variables": [
-          "CONF_FILE_NAME=application.conf",
           "JAVA_OPTS=-Xmx1g"
         ],
         "volumes": {

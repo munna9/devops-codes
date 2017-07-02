@@ -1,23 +1,5 @@
 {
   "id": "email-campaign",
-  "dev-candidates": {
-    "ecr": {
-      "emailcampaign": {
-        "image_name": "cp_email-campaign",
-        "tag_name": "DEV-CP",
-        "ports": {
-          "9058": "9000"
-        },
-        "environment_variables": [
-          "CONF_FILE_NAME=application.conf"
-        ],
-        "volumes": {
-          "/var/log/containers/emailcampaign": "/opt/deployment/cp-emailcampaign/logs",
-          "/opt/phenom/buildproperties/cp-email-campaign/DEV": "/opt/deployment/buildproperties"
-        }
-      }
-    }
-  },
   "qa-candidates": {
     "ecr": {
       "emailcampaign": {
@@ -27,7 +9,7 @@
           "9058": "9000"
         },
         "environment_variables": [
-          "CONF_FILE_NAME=application.conf"
+
         ],
         "volumes": {
           "/var/log/containers/emailcampaign": "/opt/deployment/cp-emailcampaign/logs",

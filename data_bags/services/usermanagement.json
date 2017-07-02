@@ -1,23 +1,5 @@
 {
   "id": "usermanagement",
-  "dev-candidates": {
-    "ecr": {
-      "usermanagement": {
-        "image_name": "cp_usermanagement",
-        "tag_name": "DEV-CP",
-        "ports": {
-          "9054": "9000"
-        },
-        "environment_variables": [
-          "CONF_FILE_NAME=application.conf"
-        ],
-        "volumes": {
-          "/var/log/containers/usermanagement": "/opt/deployment/cp_usermanagement/logs",
-          "/opt/phenom/buildproperties/accounts/DEV": "/opt/deployment/buildproperties"
-        }
-      }
-    }
-  },
   "qa-candidates": {
     "ecr": {
       "usermanagement": {
@@ -27,7 +9,7 @@
           "9054": "9000"
         },
         "environment_variables": [
-          "CONF_FILE_NAME=application.conf"
+
         ],
         "volumes": {
           "/var/log/containers/usermanagement": "/opt/deployment/cp-usermanagement/logs",

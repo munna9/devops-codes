@@ -1,23 +1,5 @@
 {
   "id": "facets",
-  "dev-candidates": {
-    "ecr": {
-      "facets": {
-        "image_name": "cp_facets",
-        "tag_name": "DEV-CP",
-        "ports": {
-          "9053": "9000"
-        },
-        "environment_variables": [
-          "CONF_FILE_NAME=application.conf"
-        ],
-        "volumes": {
-          "/var/log/containers/facets": "/opt/deployment/logs/facets",
-          "/opt/phenom/buildproperties/cp-facets/DEV": "/opt/deployment/buildproperties"
-        }
-      }
-    }
-  },
   "qa-candidates": {
     "ecr": {
       "facets": {
@@ -27,10 +9,10 @@
           "9053": "9000"
         },
         "environment_variables": [
-          "CONF_FILE_NAME=application.conf"
+
         ],
         "volumes": {
-          "/var/log/containers/facets": "/opt/deployment/logs/facets",
+          "/var/log/containers/facets": "/opt/deployment/facets/logs",
           "/opt/phenom/buildproperties/cp-facets/QA1": "/opt/deployment/buildproperties"
         }
       }
