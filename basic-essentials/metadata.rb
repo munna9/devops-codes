@@ -9,4 +9,4 @@ issues_url		   'https://bitbucket.org/maheimom/chef-cookbooks/issues'
 chef_version     '>= 12.5' if respond_to?(:chef_version)
 supports         'redhat'
 supports         'debain'
-version          '0.1.10'
+version          '0.1.11'

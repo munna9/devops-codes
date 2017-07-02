@@ -1,3 +1,5 @@
+# 0.1.11
+[rajeshj] - Included vulenrabilities as on June 30, 2017
 #0.1.10
 [hadassah] - Updated supports in metadata.rb
 #0.1.9

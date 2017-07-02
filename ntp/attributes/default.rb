@@ -3,16 +3,16 @@ default['ntp']['pin_version']=true
 default['ntp']['client']['packages'] = {
   'amazon' => {
     '2017.03' => {
-      'ntp' => '4.2.6p5-43.33.amzn1'
+      'ntp' => '4.2.6p5-44.34.amzn1'
     },
     '2016.09' => {
-      'ntp' => '4.2.6p5-43.33.amzn1'
+      'ntp' => '4.2.6p5-44.34.amzn11'
     },
     '2016.03' => {
-      'ntp' => '4.2.6p5-43.33.amzn1'
+      'ntp' => '4.2.6p5-44.34.amzn1'
     },
     '2015.09' => {
-      'ntp' => '4.2.6p5-43.33.amzn1'
+      'ntp' => '4.2.6p5-44.34.amzn1'
     }
   },
   'centos' => {

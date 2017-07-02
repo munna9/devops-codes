@@ -108,6 +108,15 @@ Remove epel_repo binaries by referring distribution specific String variable `['
 1. Removes epel.repo, epel-testing.repo files under `/etc/yum.repos.d/`
 1. Removes rpm downloaded under `file_cache_path`
 
+### basic-essentials::fix_vulenarabilities
+
+Manages nodes with vulenabilities mitigation activities, which includes installation, purging and other essential operations as and when required
+
+1. Identifies running node's platform and its version
+1. Compiles `['vulnerabilities']['install']['packages']` with above values
+1. Installs each of those hash key value pair(s) with specific binary version if `['vulnerabilities']['pin_version']` is true, 
+   otherwise installs latest available version of package at the time converge
+
 ### basic-essentials::gitclient
 
 Installs git client binaries by referring distribution specific ruby hash `['gitclient']['binary']['packages']`
@@ -225,6 +234,13 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 | ['oracle_java']['services']['app_version']    | String        | Default Java application version                          |
 | ['oracle_java']['services']['home_directory'] | String        | Extracted Java home directory                             |
 | ['oracle_java']['services']['binary_path']    | String        | Oracle Java default binary path                           |
+
+#### attributes/vulnerabilities.rb
+
+|Attribute Name                                 | Type          | Description                                               |
+|---------------------------------------------- |---------------|------------------------------------------------------------
+| ['vulnerabilities']['pin_version']            | Boolean       | If true, it installs only given version of package        |
+| ['vulnerabilities']['install']['packages']    | Hash          | Packages which enable https based apt repositories        |
 
 ## Maintainers
 
