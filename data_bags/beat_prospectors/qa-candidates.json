@@ -83,6 +83,19 @@
       "multiline.match": "after",
       "multiline.negate": true
     },
+    "okta-auth":{
+      "document_type": "okta-auth",
+      "paths":[
+        "/var/log/containers/okta-auth*/application.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true,
+      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.match": "after",
+      "multiline.negate": true
+    },
     "login-auth-server":{
       "document_type":"login-auth-server",
       "paths":[

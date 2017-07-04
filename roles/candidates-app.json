@@ -30,7 +30,8 @@
         "role[login-resource-server]",
         "role[login-self-administration]",
         "role[candidates]",
-        "role[obsidian]"
+        "role[obsidian]",
+        "role[okta-auth]"
      ]
   }
 }

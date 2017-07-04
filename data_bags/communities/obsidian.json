@@ -12,7 +12,8 @@
 
         ],
         "volumes": {
-          "/var/log/containers/obsidian": "/opt/deployment/apache-tomcat/logs"
+          "/var/log/containers/obsidian": "/opt/deployment/apache-tomcat/logs",
+          "/opt/phenom/buildproperties/candidates-jobs/QA1": "/opt/deployment/tracker"
         }
       }
     },
