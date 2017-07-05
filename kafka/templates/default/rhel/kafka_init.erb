@@ -48,6 +48,7 @@ stop() {
   echo
   [ $retval -eq 0 ] && rm -f $lockfile
   [ $retval -eq 0 ] && rm -rf $pidfile
+  [ $retval -eq 0 ] && rm -rf <%=node['kafka']['data']['directory']%>/.lock
   return $retval
 }
 

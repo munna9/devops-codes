@@ -10,4 +10,4 @@ chef_version     '>= 12.5' if respond_to?(:chef_version)
 supports         'redhat'
 depends          'basic-essentials'
 depends          'zookeeper'
-version          '0.0.9'
+version          '0.1.0'

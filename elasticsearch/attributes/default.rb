@@ -26,7 +26,16 @@ default['elasticsearch']['app']['home_directory']= '/usr/share/elasticsearch'
 default['elasticsearch']['log']['home_directory']='/var/log/elasticsearch'
 default['elasticsearch']['plugins'] ={
   '2.3.5' => {
-    'solutions.siren/siren-join'  =>  '2.3.5'
+    'siren-join' => {
+      'plugin_name'     => 'solutions.siren/siren-join',
+      'plugin_version'  => '2.3.5',
+      'creates'         => 'siren-join'
+    },
+    'head' => {
+      'plugin_name'     => 'mobz/elasticsearch-head',
+      'plugin_version'  => '*',
+      'creates'         => 'head'
+    }
   }
 }
 default['elasticsearch']['cluster']['options'] = {

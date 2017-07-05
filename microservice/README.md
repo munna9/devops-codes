@@ -13,14 +13,14 @@ Recipes and supported platforms
 The following platforms have been tested with Test Kitchen. You may be 
 able to get it working on other platform, with appropriate configuration updates
 ```
-|-------------------------------|-----------|----------|----------|----------|----------|
-| Recipe Name                   | AWSLinux  |  CentOS  |  CentOS  |  Ubuntu  |  Ubuntu  |
-|                               |  2016.09  | 7.3.1611 | 7.2.1511 |  16.04   |  14.04   | 
-|-------------------------------|-----------|----------|----------|----------|----------|
-| ecr_deploy                    |    √      |    √     |    √     |    √     |    √     |    
-|-------------------------------|---------- |----------|----------|----------|----------|
-| ecr_undeploy                  |    √      |    √     |    √     |    √     |    √     |    
-|-------------------------------|-----------|----------|----------|----------|----------|
+|-------------------------------|-----------|-----------|----------|----------|----------|----------|
+| Recipe Name                   | AWSLinux  | AWSLinux  |  CentOS  |  CentOS  |  Ubuntu  |  Ubuntu  |
+|                               |  2017.03  |  2016.09  | 7.3.1611 | 7.2.1511 |  16.04   |  14.04   | 
+|-------------------------------|-----------|-----------|----------|----------|----------|----------|
+| ecr_deploy                    |    √      |    √      |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|-----------|----------|----------|----------|----------|
+| ecr_undeploy                  |    √      |    √      |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|-----------|----------|----------|----------|----------|
 
 ```
 Recipe details
@@ -41,6 +41,8 @@ Please read attributes section for configuration parameters for any recipe(s)
 
 Deploys microservice container by referring data bag item microservice of services data bag.
 
+1. Load data bag item phenom from credentials data bag 
+1. Identify phenom user's home_directory and create each directory provided under `['microservice']['app']['directory_list']` 
 1. Loads data bag referred by vault_name and app_name.
 1. Pulls docker image from Elastic container registry to the running node.
 1. It runs container with specifications mentioned under data bag item microservice of services data bag.
@@ -51,12 +53,17 @@ Remove Deployed microservice container by referring data bag item microservice o
 
 1. Loads data bag referred by vault_name and app_name.
 1. Container is stopped and removed after deregistering from ELB if defined.
-1. It removes image(s) from the host.
+1. It removes image(s) from the host
+### attributes/default.rb
+
+|Attribute Name                                         | Type          | Description                                                   |
+|-------------------------------------------------------|---------------|---------------------------------------------------------------|
+| ['microservice']['app']['directory_list']             | Array         | directories which need to be present for microservice         |
+
 
 ## Maintainers
 
 * Rajesh Jonnalagadda (<rajesh.jonnalagadda@phenompeople.com>)
-* Hadassah Pearlyn (<hadassah.nagathota@phenompeople.com>)
 
 ## License and Authors
 

@@ -1,0 +1,1 @@
+default['microservice']['app']['directory_list']=['CsvFiles', 'ExcelFiles', 'EmailAutoUpload']

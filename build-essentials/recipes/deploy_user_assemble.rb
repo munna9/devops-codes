@@ -23,7 +23,7 @@ file "#{phenom_user['home_directory']}/.ssh/id_rsa" do
   group phenom_user['primary_group']
 end
 file "#{phenom_user['home_directory']}/.ssh/id_rsa.pub" do
-  content phenom_user['id_rsa_pub']
+  content phenom_user['id_rsa.pub']
   sensitive true
   mode '0600'
   owner phenom_user['username']

@@ -6,11 +6,10 @@ end
 
 zk_host_hash=get_zk_hosts
 
-
 file "#{node['zookeeper']['conf']['dataDir']}/myid" do
-  content zk_host_hash[node['hostname']]['myId']
+  content "#{zk_host_hash[node['hostname']]['myId']}"
 end
-template "#{node['zookeeper']['conf']['home_directory']}/zoo.cfg" do
+template node['zookeeper']['conf']['file'] do
   source 'zoo.cfg.erb'
   sensitive true
   variables(

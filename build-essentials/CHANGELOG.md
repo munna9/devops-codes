@@ -1,3 +1,5 @@
+# 0.1.8
+[rajeshj] - Updating Id_rsa.pub data bag item fields 
 # 0.1.7
 [rajeshj] - Adding AWS credentials for phenom user
 # 0.1.6

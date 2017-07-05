@@ -1,7 +1,0 @@
-PIDS=$(ps ax | grep -i 'kafka\.Kafka' | grep java | grep -v grep | awk '{print $1}')
-        if [ -n "$PIDS" ]
-          then
-          echo "Kafka is Running as PID: $PIDS"
-        else
-          echo "Kafka is not Running"
-fi
