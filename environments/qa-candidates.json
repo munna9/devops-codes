@@ -11,11 +11,10 @@
   "default_attributes": {
     "aws_account_id":"716533421362",
     "aws_region":"us-east-1",
-    "mysql_tag_name":"qa-mysql-node",
     "cloud":{
       "platform": "aws"
     },
-
+    "mysql_tag_name":"qa-mysql-node",
     "logstash": {
       "server_name": "qa-logstash01.aws.phenom.local",
       "server_port": "5004",

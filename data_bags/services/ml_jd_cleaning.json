@@ -1,19 +1,7 @@
 {
   "id": "ml_jd_cleaning",
   "dev-ngcc": {
-    "aws":{
-      "ami_image":"ia-ddfa13232",
-      "machine_type":"t2.micro",
-      "hosts":{
-        "us-east-1a":[
-          "qa-test1.aws.phenom.local"
-        ],
-        "us-east-1c":[
-          "qa-test2.aws.phenom.local",
-          "qa-test3.aws.phenom.local"
-        ]
-      }
-    },
+
     "ecr": {
       "jd_cleaning": {
         "image_name": "ml_jd_cleaning",
@@ -25,19 +13,6 @@
         ],
         "volumes": {
           "/var/log/containers/jd_cleaning": "/opt/deployment/jd_cleaning/logs",
-          "/opt/phenom/buildproperties/jd_cleaning/DEV_NG": "/opt/deployment/jd_cleaning/resources"
-        }
-      },
-      "jd_cleaning1": {
-        "image_name": "ml_jd_cleaning",
-        "tag_name": "DEV-NGCC",
-        "ports": {
-          "5002": "5000"
-        },
-        "environment_variables": [
-        ],
-        "volumes": {
-          "/var/log/containers/jd_cleaning1": "/opt/deployment/jd_cleaning/logs",
           "/opt/phenom/buildproperties/jd_cleaning/DEV_NG": "/opt/deployment/jd_cleaning/resources"
         }
       }
