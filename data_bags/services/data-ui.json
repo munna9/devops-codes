@@ -1,0 +1,26 @@
+{
+  "id": "data-ui",
+  "qa-candidates": {
+    "ecr": {
+      "data-ui": {
+        "image_name": "cu_data_ui",
+        "tag_name": "QA-CP",
+        "ports": {
+          "9066": "80"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/data-ui": "/var/log/nginx"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "qa-data.aws.phenom.local",
+      "nginx_template":"http_template",
+      "service_port":80,
+      "application_port":9066
+    }
+  }
+}

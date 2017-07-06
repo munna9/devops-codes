@@ -19,6 +19,7 @@
         "role[_deploy-agent]",
         "role[usermanage-ui]",
         "role[cp-ui]",
+        "role[data-ui]",
         "role[unsubscribe]",
         "role[facets]",
         "role[usermanagement]",

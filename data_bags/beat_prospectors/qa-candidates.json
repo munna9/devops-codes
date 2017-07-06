@@ -254,6 +254,26 @@
       "close_inactive": "5m",
       "symlink": "enabled",
       "tail-files": true
+    },
+    "data-ui-access": {
+      "document_type": "data-ui-access",
+      "paths": [
+        "/var/log/containers/data-ui*/*access.log"
+      ],
+      "input_type": "log",
+      "close_inactive": "5m",
+      "symlink": "enabled",
+      "tail-files": true
+    },
+    "data-ui-error": {
+      "document_type": "data-ui-error",
+      "paths": [
+        "/var/log/containers/data-ui*/*error.log"
+      ],
+      "input_type": "log",
+      "close_inactive": "5m",
+      "symlink": "enabled",
+      "tail-files": true
     }
   },
   "app_procs_to_watch": {

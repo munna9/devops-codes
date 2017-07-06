@@ -1,0 +1,23 @@
+{
+  "name": "data-ui",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "description": "Recipes which configures host to be Candidates data UI service",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "run_list": [
+    "role[_base]"
+  ],
+  "env_run_lists": {
+    "qa-candidates": [
+      "role[_base]",
+      "role[_elk-agent]",
+      "role[_deploy-agent]",
+      "recipe[data-ui::ecr_deploy]"
+    ]
+  }
+}
