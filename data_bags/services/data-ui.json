@@ -3,7 +3,7 @@
   "qa-candidates": {
     "ecr": {
       "data-ui": {
-        "image_name": "cu_data_ui",
+        "image_name": "cu_data-ui",
         "tag_name": "QA-CP",
         "ports": {
           "9066": "80"
