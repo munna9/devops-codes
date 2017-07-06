@@ -1,0 +1,27 @@
+{
+  "id": "data-api",
+  "qa-candidates": {
+    "ecr": {
+      "data-api": {
+        "image_name": "cp_data_api",
+        "tag_name": "QA-CP",
+        "ports": {
+          "9065": "9000"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/data-api": "/opt/deployment/data_api/logs",
+          "/opt/phenom/buildproperties/cp-data-api/QA1": "/opt/deployment/buildproperties"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "qa-dataapi.aws.phenom.local",
+      "nginx_template":"http_template",
+      "service_port":80,
+      "application_port":9065
+    }
+  }
+}

@@ -31,7 +31,8 @@
         "role[login-self-administration]",
         "role[candidates]",
         "role[obsidian]",
-        "role[okta-auth]"
+        "role[okta-auth]",
+        "role[data-api]"
      ]
   }
 }

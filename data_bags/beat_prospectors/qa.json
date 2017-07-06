@@ -14,16 +14,19 @@
       "multiline.negate": true,
       "multiline.match": "after"
     },
-    "kafka-server":{
-      "document_type": "kafka-server",
+    "kafka-logs":{
+      "document_type": "kafka-logs",
       "paths": [
-        "/var/log/kafka/server.log"
+        "/var/log/kafka/server.log",
+        "/var/log/kafka/state-change.log",
+        "/var/log/kafka/controller.log",
+        "/var/log/kafka/kafka-*.log"
       ],
       "input_type": "log",
       "close_inactive": "5m",
       "symlink": "enabled",
       "tail-files": true,
-      "multiline.pattern": "^[[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
       "multiline.negate": true,
       "multiline.match": "after"
 
@@ -36,7 +39,11 @@
       "input_type": "log",
       "close_inactive": "5m",
       "symlink": "enabled",
-      "tail-files": true
+      "tail-files": true,
+      "multiline.pattern": "^[[::space]]",
+      "multiline.negate": false,
+      "multiline.match": "after"
+
     },
     "zookeeper":{
       "document_type":"zookeeper",
@@ -105,6 +112,11 @@
     },
     "kafka-server":{
       "grok_pattern":["KAFKA_LOG_MESSAGE"],
+      "custom_patterns":true,
+      "overwrite" :true
+    },
+    "kafka-gc":{
+      "grok_pattern":["KAFKA_GC_PUASE","KAFKA_GC_MEM"],
       "custom_patterns":true,
       "overwrite" :true
     }

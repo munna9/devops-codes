@@ -14,9 +14,9 @@
         "volumes": {
           "/var/log/containers/microservice": "/opt/deployment/cp-microservice/logs",
           "/opt/phenom/buildproperties/cp-microservice/QA1": "/opt/deployment/buildproperties",
-          "/opt/phenom/CsvFiles": "/opt/deployment/CsvFiles",
-          "/opt/phenom/ExcelFiles": "/opt/deployment/ExcelFiles",
-          "/opt/phenom/EmailAutoUpload":"/opt/deployment/EmailAutoUpload"
+          "/opt/phenom/microservice/CsvFiles": "/opt/deployment/CsvFiles",
+          "/opt/phenom/microservice/ExcelFiles": "/opt/deployment/ExcelFiles",
+          "/opt/phenom/microservice/EmailAutoUpload":"/opt/deployment/EmailAutoUpload"
         }
       }
     },

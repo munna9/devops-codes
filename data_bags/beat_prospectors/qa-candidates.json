@@ -96,6 +96,19 @@
       "multiline.match": "after",
       "multiline.negate": true
     },
+    "data-api":{
+      "document_type": "data-api",
+      "paths":[
+        "/var/log/containers/data-api*/application.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true,
+      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.match": "after",
+      "multiline.negate": true
+    },
     "login-auth-server":{
       "document_type":"login-auth-server",
       "paths":[
