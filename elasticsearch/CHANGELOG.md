@@ -1,3 +1,5 @@
+# 0.1.11
+[rajeshj]   - Protected elasticsearch for admin operations
 # 0.1.10 
 [rajeshj]   - Updated plugin hash to idempotancy
 # 0.1.9

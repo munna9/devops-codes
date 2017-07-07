@@ -68,6 +68,7 @@ Configures application elasticsearch configuration file and master-slave setup o
 1. Notify minimum master nodes of identified unicast hosts by adding (number of unicast hosts)/2 +1
 1. Remove current node from above identified hosts and finalize unicast hosts
 1. Create/update configurations file `[elasticsearch']['conf']['file']` and notify service `['elasticsearch']['service]['name']` for delayed restart
+1. Create/update elasticsearch htpassword protected file for administrative operations
 1. Creates elasticsearch nginx configuration file for protecting against any accidental or incidental removal of indexes
 
 ### elasticsearch::curator
@@ -100,6 +101,7 @@ Configures application elasticsearch configuration file and master-slave setup o
 1. Notify minimum master nodes of identified unicast hosts by adding (number of unicast hosts)/2 +1
 1. Remove current node from above identified hosts and finalize unicast hosts
 1. Create/update configurations file `[elasticsearch']['conf']['file']` and notify service `['elasticsearch']['service]['name']` for delayed restart
+1. Create/update elasticsearch htpassword protected file for administrative operations
 1. Creates elasticsearch nginx configuration file for protecting for any accidental or incidental removal of indexes
 
 ### elasticsearch::install_from_archive
@@ -171,6 +173,7 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 | ['elasticsearch']['service']['group']         | String        | Name of elasticsearch service group name                             |
 | ['elasticsearch']['service']['host']          | String        | Application host IPV4 address where elasticsearch is hosted          |
 | ['elasticsearch']['service']['port']          | Number        | Application TCP port where native ES application is listening        |
+| ['elasticsearch']['service']['admin_port']    | Number        | Application TCP port where administraive operations can be performed |
 | ['elasticsearch']['conf']['home_directory']   | String        | Base directory of elasticearch configurations                        |
 | ['elasticsearch']['conf']['file']             | String        | Main configuration file of  elasticsearch                            |
 | ['elasticsearch']['app']['home_directory']    | String        | Home directory of elasticearch binaries and other configurations     |

@@ -17,6 +17,7 @@ default['elasticsearch']['service']['group']='elasticsearch'
 
 default['elasticsearch']['service']['host']='127.0.0.1'
 default['elasticsearch']['service']['port']=8200
+default['elasticsearch']['service']['admin_port']=8082
 
 default['elasticsearch']['conf']['home_directory']='/etc/elasticsearch'
 default['elasticsearch']['conf']['file']="#{node['elasticsearch']['conf']['home_directory']}/elasticsearch.yml"

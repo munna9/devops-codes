@@ -11,11 +11,11 @@ default['curator']['conf']['home_directory']='/etc/elastic-curator'
 
 default['curator']['indices']={
   'logstash'=> {
-    'close'           => 3,
-    'delete_indices'  => 5
+    'close'           => 5,
+    'delete_indices'  => 15
   },
   'metricbeat' => {
-    'close'           => 15,
-    'delete_indices'  => 30
+    'close'           => 5,
+    'delete_indices'  => 15
   }
 }

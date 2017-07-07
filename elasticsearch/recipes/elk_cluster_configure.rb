@@ -30,6 +30,10 @@ directory node['nginx']['app']['conf_directory'] do
 	recursive true
 	action :create
 end
+cookbook_file "#{node['nginx']['app']['conf_directory']}/passwords" do
+  source 'passwords'
+  mode '0444'
+end
 template "#{node['nginx']['app']['conf_directory']}/elasticsearch.conf" do
   source 'elasticsearch.conf.erb'
   variables(
