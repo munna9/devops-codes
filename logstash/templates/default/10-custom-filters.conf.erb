@@ -11,6 +11,47 @@ filter{
         overwrite => [ "message" ]
 <% end %>
     }
+<% if pattern_name == 'kafka-gc' %>
+    ruby{
+      code => "
+        size_of = {'B' => 0.000001, 'K' => 0.001, 'M' => 1, 'G' => 1000 }
+        unless event.get('eden_before_used').nil?
+          event.set('eden_before_used',event.get('eden_before_used')*size_of[event.get('eden_before_used_memunit')])
+        end
+        unless event.get('eden_before_total').nil?
+          event.set('eden_before_total',event.get('eden_before_total')*size_of[event.get('eden_before_total_memunit')])
+        end
+        unless event.get('eden_after_used').nil?
+          event.set('eden_after_used',event.get('eden_after_used')*size_of[event.get('eden_after_used_memunit')])
+        end
+        unless event.get('eden_after_total').nil?
+          event.set('eden_after_total',event.get('eden_after_total')*size_of[event.get('eden_after_total_memunit')])
+        end
+        unless event.get('survivor_before_used').nil?
+          event.set('survivor_before_used',event.get('survivor_before_used')*size_of[event.get('survivor_before_used_memunit')])
+        end
+        unless event.get('survivor_after_used').nil?
+          event.set('survivor_after_used',event.get('survivor_after_used')*size_of[event.get('survivor_after_used_memunit')])
+        end
+        unless event.get('heap_before_used').nil?
+          event.set('heap_before_used',event.get('heap_before_used')*size_of[event.get('heap_before_used_memunit')])
+        end
+        unless event.get('heap_before_total').nil?
+          event.set('heap_before_total',event.get('heap_before_total')*size_of[event.get('heap_before_total_memunit')])
+        end
+        unless event.get('heap_after_used').nil?
+          event.set('heap_after_used',event.get('heap_after_used')*size_of[event.get('heap_after_used_memunit')])
+        end
+        unless event.get('heap_after_total').nil?
+          event.set('heap_after_total',event.get('heap_after_total')*size_of[event.get('heap_after_total_memunit')])
+        end
+      "
+    }
+    mutate {
+      remove_field => ['eden_before_used_memunit','eden_before_total_memunit','eden_after_used_memunit','eden_after_total_memunit','survivor_before_used_memunit','survivor_after_used_memunit','heap_before_used_memunit','heap_before_total_memunit','heap_after_used_memunit','heap_after_total_memunit','message']
+    }
+
+<% end %>
   }
 <% end %>
 
