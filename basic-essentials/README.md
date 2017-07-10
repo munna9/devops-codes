@@ -17,24 +17,26 @@ able to get it working on other platform, with appropriate configuration updates
 ```
 |---------------------------------|-----------|-----------|----------|----------|----------|----------|
 | Recipe Name                     | AWSLinux  | AWSLinux  |  CentOS  |  CentOS  |  Ubuntu  |  Ubuntu  |
-|                                 |  2016.09  |  2016.09  | 7.3.1611 | 7.2.1511 |  16.04   |  14.04   | 
+|                                 |  2017.03  |  2016.09  | 7.3.1611 | 7.2.1511 |  16.04   |  14.04   | 
 |---------------------------------|-----------|-----------|----------|----------|----------|----------|
 | chefdk                          |     √     |    √      |    √     |    √     |    √     |    √     |    
-|---------------------------------|---------- |---------- |----------|----------|----------|----------|
+|---------------------------------|---------- |-----------|----------|----------|----------|----------|
 | chefdk_uninstall                |     √     |    √      |    √     |    √     |    √     |    √     |    
-|---------------------------------|-----------|---------- |----------|----------|----------|----------|
+|---------------------------------|-----------|-----------|----------|----------|----------|----------|
 | elastic_repo                    |     X     |    √      |    √     |    √     |    √     |    √     |    
-|---------------------------------|-----------|---------- |----------|----------|----------|----------|
+|---------------------------------|-----------|-----------|----------|----------|----------|----------|
 | elastic_repo_uninstall          |     X     |    √      |    √     |    √     |    √     |    √     |    
-|---------------------------------|-----------|---------- |----------|----------|----------|----------|
+|---------------------------------|-----------|-----------|----------|----------|----------|----------|
 | epel_repo                       |     -     |    √      |    √     |    √     |    X     |    X     |    
-|---------------------------------|-----------|---------- |----------|----------|----------|----------|
+|---------------------------------|-----------|-----------|----------|----------|----------|----------|
 | epel_repo_uninstall             |     -     |    √      |    √     |    √     |    X     |    X     |    
-|---------------------------------|-----------|---------- |----------|----------|----------|----------|
+|---------------------------------|-----------|-----------|----------|----------|----------|----------|
+| fix_vulenarabilities            |     √     |    X      |    √     |    √     |    X     |    X     |    
+|---------------------------------|-----------|-----------|----------|----------|----------|----------|
 | gitclient                       |     √     |    √      |    √     |    √     |    √     |    √     |    
-|---------------------------------|-----------|---------- |----------|----------|----------|----------|
+|---------------------------------|-----------|-----------|----------|----------|----------|----------|
 | gitclient_uninstall             |     √     |    √      |    √     |    √     |    √     |    √     |    
-|---------------------------------|-----------|---------- |----------|----------|----------|----------|
+|---------------------------------|-----------|-----------|----------|----------|----------|----------|
 | oracle_java_default             |     √     |    √      |    √     |    √     |    √     |    √     |    
 |---------------------------------|-----------|---------- |----------|----------|----------|----------|
 | oracle_java_default_uninstall   |     √     |    √      |    √     |    √     |    √     |    √     |    
@@ -112,10 +114,11 @@ Remove epel_repo binaries by referring distribution specific String variable `['
 
 Manages nodes with vulenabilities mitigation activities, which includes installation, purging and other essential operations as and when required
 
-1. Identifies running node's platform and its version
-1. Compiles `['vulnerabilities']['install']['packages']` with above values
+1. Compiles `['vulnerabilities']['packages']['install']` with running node's platform and its version
 1. Installs each of those hash key value pair(s) with specific binary version if `['vulnerabilities']['pin_version']` is true, 
    otherwise installs latest available version of package at the time converge
+1. Compiles `['vulnerabilities']['packages']['remove']` with running node's platform and its version
+1. Removes each of those hash key value pair(s) with specific binary version if `['vulnerabilties']['pin_version']` is true 
 
 ### basic-essentials::gitclient
 
@@ -192,7 +195,7 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 #### attributes/chefdk.rb
 
 |Attribute Name                                 | Type          | Description                                               |
-|---------------------------------------------- |---------------|------------------------------------------------------------
+|-----------------------------------------------|---------------|------------------------------------------------------------
 | ['chefdk']['binary']['version']               | String        | Default Chef DK artifaction version                       |
 | ['chefdk']['binary']['package']               | Hash          | Binary package and version for listed platform family     |
 | ['chefdk']['package']['name']                 | Hash          | Binary artifact name                                      |
@@ -201,7 +204,7 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 #### attributes/default.rb
 
 |Attribute Name                                 | Type          | Description                                               |
-|---------------------------------------------- |---------------|------------------------------------------------------------
+|-----------------------------------------------|---------------|------------------------------------------------------------
 | ['gitclient']['pin_version']                  | Boolean       | If true, it installs only given version of package        |
 | ['gitclient']['binary']['packages']           | Hash          | Binary package and version for listed distribution        |
 | ['epel']['repo']['uri']                       | String        | EPEL repo configuration rpm URL                           |
@@ -210,7 +213,7 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 #### attributes/elastic.rb
 
 |Attribute Name                                 | Type          | Description                                               |
-|---------------------------------------------- |---------------|------------------------------------------------------------
+|-----------------------------------------------|---------------|-----------------------------------------------------------|
 | ['elastic']['repo']['packages']               | Hash          | packages which enable https based apt repositories        |
 | ['elastic']['repo']['name']                   | String        | Name of the repository configuration files                |
 | ['elastic']['repo']['base_uri']               | String        | Base URL for package repo identified based on platform    |
@@ -219,7 +222,7 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 #### attributes/oracle_java.rb
 
 |Attribute Name                                 | Type          | Description                                               |
-|---------------------------------------------- |---------------|------------------------------------------------------------
+|-----------------------------------------------|---------------|-----------------------------------------------------------|
 | ['oracle_java']['app']['base_directory']      | String        | Base directory for various Java extracted artifacts       |
 | ['oracle_java']['app']['default_path']        | String        | Default Java binary location inside machine               |
 | ['oracle_java']['default']['binary_version']  | String        | Default Java artifaction version                          |
@@ -238,14 +241,13 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 #### attributes/vulnerabilities.rb
 
 |Attribute Name                                 | Type          | Description                                               |
-|---------------------------------------------- |---------------|------------------------------------------------------------
+|-----------------------------------------------|---------------|-----------------------------------------------------------|
 | ['vulnerabilities']['pin_version']            | Boolean       | If true, it installs only given version of package        |
-| ['vulnerabilities']['install']['packages']    | Hash          | Packages which enable https based apt repositories        |
+| ['vulnerabilities']['packages']               | Hash          | Packages which enable https based apt repositories        |
 
 ## Maintainers
 
 * Rajesh Jonnalagadda (<rajesh.jonnalagadda@phenompeople.com>)
-* Hadassah Pearlyn (<hadassah.nagathota@phenompeople.com>)
 
 ## License and Authors
 
