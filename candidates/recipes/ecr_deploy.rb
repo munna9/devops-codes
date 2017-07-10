@@ -1,7 +1,7 @@
 phenom_user=data_bag_item('credentials','phenom')
 
 node['candidates']['app']['directory_list'].each do |directory_name|
-  directory "#{phenom_user['home_directory']}/#{directory_name}" do
+  directory "#{phenom_user['home_directory']}/#{@cookbook_name}/#{directory_name}" do
     recursive true
   end
 end

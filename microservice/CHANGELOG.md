@@ -1,3 +1,5 @@
+# 0.1.2
+[rajeshj]   - Updated file permissions for microservice
 # 0.1.1
 [rajeshj]   - creating application directories for microservice
 # 0.1.0
