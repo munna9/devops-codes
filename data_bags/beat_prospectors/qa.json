@@ -90,6 +90,7 @@
     },
     "kafka":{
       "module": "kafka",
+      "retries": 1,
       "metricsets":[
         "partition",
         "consumergroup"
@@ -110,13 +111,8 @@
       "custom_patterns": true,
       "overwrite" : false
     },
-    "kafka-server":{
-      "grok_pattern":["KAFKA_LOG_MESSAGE"],
-      "custom_patterns":true,
-      "overwrite" :true
-    },
     "kafka-gc":{
-      "grok_pattern":["KAFKA_GC_PUASE","KAFKA_GC_MEM"],
+      "grok_pattern":["KAFKA_GC_PUASE","KAFKA_GC_MEM", "KAFKA_GC_TIMES"],
       "custom_patterns":true,
       "overwrite" :true
     }

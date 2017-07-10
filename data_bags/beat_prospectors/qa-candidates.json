@@ -198,7 +198,7 @@
     "cp-ui-access":{
       "document_type": "cp-ui-access",
       "paths":[
-        "/var/log/containers/cp-ui*/*access.log"
+        "/var/log/containers/cp-ui*/access.log"
       ],
       "input_type":"log",
       "close_inactive":"5m",
@@ -208,7 +208,7 @@
     "cp-ui-error":{
       "document_type": "cp-ui-error",
       "paths":[
-        "/var/log/containers/cp-ui*/*error.log"
+        "/var/log/containers/cp-ui*/error.log"
       ],
       "input_type":"log",
       "close_inactive":"5m",
@@ -218,7 +218,7 @@
     "unsubscribe-access":{
       "document_type": "unsubscribe-access",
       "paths":[
-        "/var/log/containers/unsubscribe*/*access.log"
+        "/var/log/containers/unsubscribe*/access.log"
       ],
       "input_type":"log",
       "close_inactive":"5m",
@@ -228,7 +228,7 @@
     "unsubscribe-error":{
       "document_type": "unsubscribe-error",
       "paths":[
-        "/var/log/containers/unsubscribe*/*error.log"
+        "/var/log/containers/unsubscribe*/error.log"
       ],
       "input_type":"log",
       "close_inactive":"5m",
@@ -238,7 +238,7 @@
     "usermanagement-ui-access": {
       "document_type": "usermanagement-ui-access",
       "paths": [
-        "/var/log/containers/usermanagement-ui*/*access.log"
+        "/var/log/containers/usermanagement-ui*/access.log"
       ],
       "input_type": "log",
       "close_inactive": "5m",
@@ -248,7 +248,7 @@
     "usermanagement-ui-error": {
       "document_type": "usermanagement-ui-error",
       "paths": [
-        "/var/log/containers/usermanagement-ui*/*error.log"
+        "/var/log/containers/usermanagement-ui*/error.log"
       ],
       "input_type": "log",
       "close_inactive": "5m",
@@ -310,10 +310,6 @@
     }
   },
   "grok_patterns": {
-    "preprod-mongo": {
-      "grok_pattern": ["MONGO3_CONNECTION_COUNT", "MONGO_SLOWQUERY"],
-      "custom_patterns": true,
-      "overwrite" : false
-    }
+
   }
 }
