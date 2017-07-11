@@ -34,7 +34,7 @@
       }
     },
     "nginx-pod":{
-      "uri": "qa-cpui2.phenompeople.com",
+      "uri": "qa-candidates.phenompeople.com",
       "nginx_template":"https_template",
       "service_port":443,
       "application_port":9050
