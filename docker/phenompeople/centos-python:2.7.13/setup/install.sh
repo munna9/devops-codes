@@ -22,9 +22,12 @@ download_and_extract(){
 compile_from_source(){
     echo "Compiling $1 from $SETUP_DIRECTORY/$1"
     cd $SETUP_DIRECTORY/$1
+    echo "Configuring..."
     ./configure > /tmp/install.log 2>&1
+    echo "Doing Make..."
     make > /tmp/install.log 2>&1
-    make install 2>&1
+    echo "Doing Make Install..."
+    make install > /tmp/install.log 2>&1
     cd $SETUP_DIRECTORY
 }
 download_and_extract $PYTHON_SRC_URI
