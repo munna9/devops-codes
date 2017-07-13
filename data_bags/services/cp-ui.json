@@ -30,7 +30,7 @@
         ],
         "volumes": {
           "/var/log/containers/cp-ui": "/var/log/nginx",
-          "/opt/phenom/buildproperties/cp_app_ui_2/QA1": "/opt/deployment/phenomtrack"
+          "/opt/phenom/buildproperties/cp_app_ui_2/QA1": "/opt/deployment/cpui/assets/js/beacon"
         }
       }
     },

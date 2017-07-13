@@ -17,10 +17,6 @@
     	"role[_base]",
         "role[_elk-agent]",
         "role[_deploy-agent]",
-        "role[usermanage-ui]",
-        "role[cp-ui]",
-        "role[data-ui]",
-        "role[unsubscribe]",
         "role[facets]",
         "role[usermanagement]",
         "role[sendgridwebhook]",
@@ -31,7 +27,6 @@
         "role[login-resource-server]",
         "role[login-self-administration]",
         "role[candidates]",
-        "role[obsidian]",
         "role[okta-auth]",
         "role[data-api]"
      ]

@@ -36,6 +36,9 @@
       "recipe[docker::install]",
       "recipe[docker::service]",
       "recipe[docker::wrappers]",
+      "recipe[basic-essentials::gitclient]",
+      "recipe[build-essentials::deploy_user_assemble]",
+      "recipe[mongo-connector::mc_repo]",
       "recipe[elasticsearch::service]"
     ],
     "prod-candidatesca":[
