@@ -21,11 +21,5 @@ default['chef-client']['log']['filename']="#{node['chef-client']['log']['directo
 default['chef-client']['lock']['directory']='/var/lock/subsys'
 default['chef-client']['lock']['filename']="#{node['chef-client']['lock']['directory']}/#{node['chef-client']['service']['name']}"
 
-case node.chef_environment
-  when 'tools'
-    default['chef-client']['pool']['interval']='300'
-    default['chef-client']['pool']['splay']='200'
-  else
-    default['chef-client']['pool']['interval']='900'
-    default['chef-client']['pool']['splay']='300'
-end
+default['chef-client']['pool']['interval']=900
+default['chef-client']['pool']['splay']=200
