@@ -3,7 +3,7 @@ FROM centos:7.3.1611
 MAINTAINER Rajesh Jonnalagadda "admin.squad@phenompeople.com"
 ENV container docker
 RUN useradd -d  /opt/deployment -u 1000 phenom && \
-    yum install -q -e 0 -y wget make gcc-c++ openssl-devel sqlite-devel zlib-devel && \
+    yum install -q -e 0 -y wget make gcc-c++ openssl-devel sqlite-devel zlib-devel bzip2-devel && \
     mkdir -p /opt/deployment/scripts 
 
 ARG PYTHON_VERSION=2.7.13
