@@ -41,9 +41,9 @@ wget -q -O /tmp/get-pip.py 'https://bootstrap.pypa.io/get-pip.py'
 python3 /tmp/get-pip.py "pip==$PYTHON_PIP_VERSION"
 rm -rf tmp/get-pip.py /tmp/install.log
 
-download_and_extract $MONGO_CONNECTIOR_URI
-cd $SETUP_DIRECTORY
-pip install ./mongo-connector-${MONGO_CONNECTOR_VERSION}[elastic2]
-download_and_extract $ELASTIC_DOC_URI
-cd $SETUP_DIRECTORY
-pip install ./elastic2-doc-manager-${ELASTIC_DOC_VERSION}[elastic2]
+##download_and_extract $MONGO_CONNECTIOR_URI
+#cd $SETUP_DIRECTORY
+#pip install mongo-connector-${MONGO_CONNECTOR_VERSION}[elastic2]
+#download_and_extract $ELASTIC_DOC_URI
+#cd $SETUP_DIRECTORY
+pip install elastic2-doc-manager[elastic2]
