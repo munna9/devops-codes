@@ -29,7 +29,8 @@
 
         ],
         "volumes": {
-          "/var/log/containers/cp-ui": "/var/log/nginx"
+          "/var/log/containers/cp-ui": "/var/log/nginx",
+          "/opt/phenom/buildproperties/cp_app_ui_2/QA1": "/opt/deployment/phenomtrack"
         }
       }
     },
