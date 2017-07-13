@@ -46,4 +46,5 @@ rm -rf tmp/get-pip.py /tmp/install.log
 #pip install mongo-connector-${MONGO_CONNECTOR_VERSION}[elastic2]
 #download_and_extract $ELASTIC_DOC_URI
 #cd $SETUP_DIRECTORY
-pip install elastic2-doc-manager[elastic2]
+pip install elasticsearch==2.3.5
+pip install elastic2-doc-manager-0.2.0[elastic2]
