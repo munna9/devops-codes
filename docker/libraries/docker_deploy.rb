@@ -25,10 +25,18 @@ module DockerCookbook
         data_record = data_bag_item(vault_name, app_name)
         docker_containers = data_record[node.chef_environment]['docker']
       end
+      directory node['docker']['container']['log_directory'] do
+        mode '1777'
+        recursive true
+      end
       docker_containers.each_pair do |container,container_metadata|
         container_metadata['registry_name']=docker_credentials['registry_name']
         container_metadata['container_name']=container
         container_metadata['tag_name']=(container_metadata['tag_name'].nil?) ? 'latest' : container_metadata['tag_name']
+        directory "#{node['docker']['container']['log_directory']}/#{container}" do
+          mode '1777'
+          recursive true
+        end
         ports_array = Array.new
         unless container_metadata['ports'].nil?
           container_metadata['ports'].each do |source,destination|
@@ -36,11 +44,13 @@ module DockerCookbook
           end
         end
         volumes_array = Array.new
+        volumes_array.push('/etc/localtime:/etc/localtime')
         unless container_metadata['volumes'].nil?
           container_metadata['volumes'].each do |source,destination|
             volumes_array.push("#{source}:#{destination}")
           end
         end
+
         docker_image "Docker Pull - #{container_metadata['image_name']}" do
           repo "#{container_metadata['registry_name']}/#{container_metadata['image_name']}"
           tag container_metadata['tag_name']
@@ -53,6 +63,7 @@ module DockerCookbook
           repo "#{container_metadata['registry_name']}/#{container_metadata['image_name']}"
           tag container_metadata['tag_name']
           env container_metadata['environment_variables'] if container_metadata['environment_variables']
+          hostname node['hostname'] if container_metadata['hostname']
           port ports_array if ports_array
           volumes volumes_array if volumes_array
           kill_after deploy_kill_after
