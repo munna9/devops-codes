@@ -33,9 +33,10 @@ node['logstash']['grok']['patterns'].each_pair do |key,value|
   end
   node.default['logstash']['grok']['patterns'][key]['grok_pattern']=_formatted_array
 end
-
-
-
+cookbook_file '/etc/logrotate.d/logstash' do
+  source 'logstash.conf'
+  sensitive true
+end
 remote_directory node['logstash']['conf']['patterns_directory'] do
   source "patterns"
   action :create

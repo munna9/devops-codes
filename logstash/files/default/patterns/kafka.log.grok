@@ -1,5 +1,9 @@
 KAFKA_GC_PUASE %{TIMESTAMP_ISO8601:log-timestamp}:.*GC pause.*, %{NUMBER:gc_puase:float} secs]
+
 MEM_UNIT  [bBkKmMgG]
+
 KAFKA_GC_MEM .*Eden: %{NUMBER:eden_before_used:float}%{MEM_UNIT:eden_before_used_memunit}\(%{NUMBER:eden_before_total:float}%{MEM_UNIT:eden_before_total_memunit}\)->%{NUMBER:eden_after_used:float}%{MEM_UNIT:eden_after_used_memunit}\(%{NUMBER:eden_after_total:float}%{MEM_UNIT:eden_after_total_memunit}\).*Survivors: %{NUMBER:survivor_before_used:float}%{MEM_UNIT:survivor_before_used_memunit}->%{NUMBER:survivor_after_used:float}%{MEM_UNIT:survivor_after_used_memunit}.*Heap: %{NUMBER:heap_before_used:float}%{MEM_UNIT:heap_before_used_memunit}\(%{NUMBER:heap_before_total:float}%{MEM_UNIT:heap_before_total_memunit}\)->%{NUMBER:heap_after_used:float}%{MEM_UNIT:heap_after_used_memunit}\(%{NUMBER:heap_after_total:float}%{MEM_UNIT:heap_after_total_memunit}\)\]
 
 KAFKA_GC_TIMES .*Times: user=%{NUMBER:kafka_gc_user:float}.*sys=%{NUMBER:kafka_gc_sys:float}.*real=%{NUMBER:kafka_gc_real:float}.*secs]
+
+KAFKA_EVENT_PATTERN .*clientToken":"%{DATA:kafka_clientToken}",".*event":"%{DATA:kafka_event}",".*initialReferral":%{GREEDYDATA:other_messasge}

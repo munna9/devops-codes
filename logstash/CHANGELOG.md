@@ -1,3 +1,5 @@
+# 0.1.7
+[rajeshj]   - Updated logstash with kafka events patterns
 # 0.1.6
 [rajeshj]   - Updated logstash with kafka gc patterns
 #0.1.5
