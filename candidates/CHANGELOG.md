@@ -1,3 +1,5 @@
+# 0.1.4
+[rajeshj]   - Updated cookbook with internal ELB
 # 0.1.3
 [rajeshj]   - Updated cookbook based directory structure 
 # 0.1.2
