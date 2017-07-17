@@ -1,11 +1,15 @@
+# 0.1.10
+[rajeshj]   - Mongodb setup for DEV Candidates environment 
+# 0.1.9
+[murali]    - Updated 3.2.2 for qa-candidates
 # 0.1.8
-[murali] - Merging down mongod.conf for dual configurations
+[murali]    - Merging down mongod.conf for dual configurations
 # 0.1.7 
-[murali] - update the  config file  to enable the journal and Compression of wire protocol for 3.4 
+[murali]    - update the  config file  to enable the journal and Compression of wire protocol for 3.4 
 # 0.1.6
-[rajeshj] - Updated mongodb from 3.2.10 to 3.2.12, included storage base directory attribute
+[rajeshj]   - Updated mongodb from 3.2.10 to 3.2.12, included storage base directory attribute
 # 0.1.5 
-[murali] - Updated mongodb aws linux version to 3.4.4
+[murali]    - Updated mongodb aws linux version to 3.4.4
 # 0.1.4
 [murali]  - Update the mongodb storage path
 # 0.1.3
