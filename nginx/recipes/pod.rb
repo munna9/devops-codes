@@ -38,3 +38,11 @@ communities_pod_entries.each do |community_name|
     app_name community_name
   end
 end
+
+tools_pod_entries=data_bag('tools')
+tools_pod_entries.each do |tool_name|
+  nginx_pod "Nginx-#{tool_name}" do
+    vault_name 'tools'
+    app_name tool_name
+  end
+end

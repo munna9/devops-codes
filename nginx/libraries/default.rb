@@ -29,15 +29,15 @@ def get_metadata vault_name, app_name
         metadata_dict['application_port']=nginx_object['application_port']
         metadata_dict['keep_alive']=(nginx_object['keep_alive'].nil?)? 10 : nginx_object['keep_alive']
         metadata_dict['context_name']=(nginx_object['context_name'].nil?)? '/' : "/#{nginx_object['context_name']}"
+        metadata_dict['deploy_recipe']=(nginx_object['deploy_recipe'].nil?)? 'ecr_deploy':nginx_object['deploy_recipe']
+        metadata_dict['app_name']=(nginx_object['app_name'].nil?)?app_name:nginx_object['app_name']
 
-        if node['cloud']['platform'] == 'aws'
-          recipe_name="#{app_name}\\:\\:ecr_deploy"
-        else
-          recipe_name="#{app_name}\\:\\:container_deploy"
-        end
+        recipe_name="#{metadata_dict['app_name']}\\:\\:#{metadata_dict['deploy_recipe']}"
+
         search(:node,"recipes:#{recipe_name} AND chef_environment:#{node.chef_environment}").each do |node_name|
           host_array << node_name['ipaddress']
         end
+
         metadata_dict['hosts']=host_array
         return metadata_dict
       end

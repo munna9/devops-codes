@@ -19,7 +19,6 @@ default['kafka']['service']['port'] = 9092
 
 default['kafka']['data']['directory'] = "#{node['kafka']['app']['base_directory']}/events_data"
 default['kafka']['conf']['log.retention.hours']=168
-default['kafka']['conf']['compression.type']='snappy'
 default['kafka']['conf']['options']={
   'delete.topic.enable'               => true,
   'num.io.threads'                    => 8,
@@ -29,7 +28,6 @@ default['kafka']['conf']['options']={
   'num.recovery.threads.per.data.dir' => 1,
   'log.retention.check.interval'      => 300000,
   'zookeeper.connection.timeout.ms'   => 1000000,
-  'compression.type'                  => node['kafka']['conf']['compression.type'],
   'log.retention.hours'               => node['kafka']['conf']['log.retention.hours'],
   'log.dir'                           => node['kafka']['data']['directory']
 }
