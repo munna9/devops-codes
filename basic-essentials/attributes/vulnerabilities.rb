@@ -53,6 +53,11 @@ default['vulnerabilities']['packages'] ={
         'kernel'          =>  '4.9.20-11.31.amzn1',
         'kernel-tools'    =>  '4.9.27-14.31.amzn1'
       }  
+    },
+    'centos'  => {
+      '7.2.1511'  =>{
+        'kernel'          => '3.10.0-327.10.1.el7.x86_64'
+      }
+    }
   }
-}
 }

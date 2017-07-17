@@ -1,3 +1,5 @@
+# 0.1.14
+[rajeshj]   - Updated vulenarabilities for 7.2 centos
 # 0.1.13
 [rajeshj]   - Updating vulenarabilities recipe       
 # 0.1.12
