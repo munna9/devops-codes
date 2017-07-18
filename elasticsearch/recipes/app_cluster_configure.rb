@@ -26,24 +26,27 @@ template node['elasticsearch']['conf']['file'] do
   )
   notifies :restart, "service[#{node['elasticsearch']['service']['name']}]"
 end
-directory node['nginx']['app']['conf_directory'] do
-  recursive true
-  action :create
-end
-cookbook_file "#{node['nginx']['app']['conf_directory']}/passwords" do
-  source 'passwords'
-  mode '0444'
-end
-template "#{node['nginx']['app']['conf_directory']}/elasticsearch.conf" do
-  source 'elasticsearch.conf.erb'
-  variables(
-    :elastic_host => node['ipaddress'],
-    :elastic_port => node['elasticsearch']['server_port']
-  )
-  sensitive true
-  notifies :restart, "service[#{node['nginx']['service']['name']}]"
-end
 template '/etc/sysconfig/elasticsearch' do
   source 'elasticsearch_sysconfig.erb'
   notifies :restart, "service[#{node['elasticsearch']['service']['name']}]"
+end
+
+if node['elasticsearch']['nginx']['shield']
+  directory node['nginx']['app']['conf_directory'] do
+    recursive true
+    action :create
+  end
+  cookbook_file "#{node['nginx']['app']['conf_directory']}/passwords" do
+    source "#{node.chef_environment}/passwords"
+    mode '0444'
+  end
+  template "#{node['nginx']['app']['conf_directory']}/elasticsearch.conf" do
+    source 'elasticsearch.conf.erb'
+    variables(
+      :elastic_host => node['ipaddress'],
+      :elastic_port => node['elasticsearch']['server_port']
+    )
+    sensitive true
+    notifies :restart, "service[#{node['nginx']['service']['name']}]"
+  end
 end

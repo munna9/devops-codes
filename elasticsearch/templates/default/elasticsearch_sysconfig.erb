@@ -1,3 +1,8 @@
 ES_STARTUP_SLEEP_TIME=5
+<% case node['elasticsearch']['package']['version']%>
+<% when '2.3.5' %>
 ES_HEAP_SIZE=<%=node['elasticsearch']['heap_memory']%>
 ES_GC_LOG_FILE="<%=node['elasticsearch']['log']['home_directory']%>/gc.log"
+<% else %>
+ES_JAVA_OPTS="-Xms<%=node['elasticsearch']['heap_memory']%> -Xmx<%=node['elasticsearch']['heap_memory']%>"
+<%end%>

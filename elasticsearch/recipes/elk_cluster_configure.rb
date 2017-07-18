@@ -25,6 +25,10 @@ template node['elasticsearch']['conf']['file'] do
   )
   notifies :restart, "service[#{node['elasticsearch']['service']['name']}]"
 end
+template '/etc/sysconfig/elasticsearch' do
+  source 'elasticsearch_sysconfig.erb'
+  notifies :restart, "service[#{node['elasticsearch']['service']['name']}]"
+end
 
 directory node['nginx']['app']['conf_directory'] do
 	recursive true

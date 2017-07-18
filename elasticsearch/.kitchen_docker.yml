@@ -91,6 +91,28 @@ suites:
         package:
           version: 5.3.0-1
 
+  - name: machinelearning
+    run_list:
+      - recipe[basic-essentials::oracle_java_default]
+      - recipe[elasticsearch::install_from_archive]
+      - recipe[elasticsearch::app_cluster_configure]
+      - recipe[nginx::install]
+      - recipe[nginx::service]
+#      - recipe[elasticsearch::curator]
+      - recipe[elasticsearch::service]
+      # - recipe[elasticsearch::uninstall]
+      # - recipe[basic-essentials::oracle_java_default_uninstall]
+      # - recipe[basic-essentials::elastic_repo_uninstall]
+    attributes:
+      phenom:
+        banner: 'This file managed by Admin'
+      es_cluster_name: "QA-ES5"
+      elasticsearch:
+        package:
+          base_uri: "https://artifacts.elastic.co/downloads/elasticsearch"
+          version: 5.1.2
+        heap_memory: 1g
+
   - name: candidates
     run_list:
       - recipe[basic-essentials::oracle_java_default]

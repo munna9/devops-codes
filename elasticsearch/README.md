@@ -67,6 +67,7 @@ Configures application elasticsearch configuration file and master-slave setup o
 1. Identify unicast hosts from environment who share same role and `es_cluster_name` and filter ipadress of each host
 1. Notify minimum master nodes of identified unicast hosts by adding (number of unicast hosts)/2 +1
 1. Remove current node from above identified hosts and finalize unicast hosts
+1. Create/update elasticsearch sysconfig file options such as Garbage collector and ES_JAVA_OPTS and ES_HEAP_SIZE 
 1. Create/update configurations file `[elasticsearch']['conf']['file']` and notify service `['elasticsearch']['service]['name']` for delayed restart
 1. Create/update elasticsearch htpassword protected file for administrative operations
 1. Creates elasticsearch nginx configuration file for protecting against any accidental or incidental removal of indexes
@@ -100,6 +101,7 @@ Configures application elasticsearch configuration file and master-slave setup o
 1. Identify unicast hosts from environment who share same role and `es_cluster_name` and filter ipadress of each host
 1. Notify minimum master nodes of identified unicast hosts by adding (number of unicast hosts)/2 +1
 1. Remove current node from above identified hosts and finalize unicast hosts
+1. Create/update elasticsearch sysconfig file options such as Garbage collector and ES_JAVA_OPTS and ES_HEAP_SIZE
 1. Create/update configurations file `[elasticsearch']['conf']['file']` and notify service `['elasticsearch']['service]['name']` for delayed restart
 1. Create/update elasticsearch htpassword protected file for administrative operations
 1. Creates elasticsearch nginx configuration file for protecting for any accidental or incidental removal of indexes
@@ -125,6 +127,7 @@ Installs platform and version specific elasticsearch binaries from elastic repos
 Installs platform and version specific elasticsearch plugins from elastic repositories
  
 1. Reads `['elasticsearch']['plugins']` hash based on `['elasticsearch']['package']['version']`
+1. Identify plugin installer binaries based on `['elasticsearch']['package']['version']`
 1. Installs plugins with specific version available at the time of converge based on platform
 
 ### elasticsearch::service
@@ -164,13 +167,14 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 |Attribute Name                                 | Type          | Description                                                          |
 |---------------------------------------------- |---------------|----------------------------------------------------------------------|
 | ['elasticsearch']['package']['name']          | String        | Binary package name of elasticsearch as defined by elastic-repo      |
+| ['elasticsearch']['package']['version']       | String        | Binary package version of elasticsearch based on distribution family | 
 | ['elasticsearch']['archive']['package']       | String        | Binary pacakge name of elasticsearch archives                        |
 | ['elasticsearch']['package']['installer']     | String        | Package installer based  on converging operating system family       |
 | ['elasticsearch']['package']['uri']           | String        | URI for downloading archived packages                                |
-| ['elasticsearch']['package']['version']       | String        | Binary package version of elasticsearch based on distribution family | 
 | ['elasticsearch']['service']['name']          | String        | Elasticsearch service name updated based on distribution             |
 | ['elasticsearch']['service']['owner']         | String        | Name of elasticserach service owner name                             |
 | ['elasticsearch']['service']['group']         | String        | Name of elasticsearch service group name                             |
+| ['elasticsearch']['nginx']['shield']          | Boolean       | Boolean flag to enable nginx security wrapper over elasticsearch     s|
 | ['elasticsearch']['service']['host']          | String        | Application host IPV4 address where elasticsearch is hosted          |
 | ['elasticsearch']['service']['port']          | Number        | Application TCP port where native ES application is listening        |
 | ['elasticsearch']['service']['admin_port']    | Number        | Application TCP port where administraive operations can be performed |
@@ -182,15 +186,21 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 | ['elasticsearch']['plugins']                  | Hash          | Plugin along with version specific to elasticsearch binary pacakge   |  
 | ['elasticsearch']['cluster']['options']       | Hash          | Configuration options for mutating elasticsearch application service |
 
+## Role Variables
+
+|Attribute Name                        | Type          | Description                                                                   |
+|------------------------------------- |---------------|-------------------------------------------------------------------------------|
+| ['elasticsearch']['heap_memory']     | String        | Elasticsearch application heap memory ceiling value                           |
+
 ## Environment Variables
 
 |Attribute Name                        | Type          | Description                                                                   |
 |------------------------------------- |---------------|-------------------------------------------------------------------------------|
+| ['es_cluster_name']                  | String        | Elasticsearch application cluster name, used by app_cluster_configure.rb      |
+| ['elk_cluster_name']                 | String        | Elasticsearch ELK cluster name, used by elk_cluster_configure.rb              |
 | ['elasticsearch']['cluster_name']    | String        | Cluster Name appears for Elasticsearch                                        |
 | ['elasticsearch']['server_name']     | String        | FQDN referred by Elasticsearch nginx wrapper configuration                    |
 | ['elasticsearch']['server_port']     | String        | Elasticsearch node exposed port for HTTP REST API calls                       |
-| ['es_cluster_name']                  | String        | Elasticsearch application cluster name, used by app_cluster_configure.rb      |
-| ['elk_cluster_name']                 | String        | Elasticsearch ELK cluster name, used by elk_cluster_configure.rb              |
 | ['elasticsearch']['elb_hostname']    | String        | Elasticsearch ELB host name, referred by Nginx service                        |
 | ['elasticsearch']['elb_port']        | Number        | Elasticsearch ELB service port, referred by Nginx service                     |
 
