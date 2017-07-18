@@ -13,15 +13,16 @@ Recipes and supported platforms
 The following platforms have been tested with Test Kitchen. You may be 
 able to get it working on other platform, with appropriate configuration updates
 ```
-|-------------------------------|-----------|----------|----------|----------|----------|
-| Recipe Name                   | AWSLinux  |  CentOS  |  CentOS  |  Ubuntu  |  Ubuntu  |
-|                               |  2016.09  | 7.3.1611 | 7.2.1511 |  16.04   |  14.04   | 
-|-------------------------------|-----------|----------|----------|----------|----------|
-| ecr_deploy                    |    √      |    √     |    √     |    √     |    √     |    
-|-------------------------------|---------- |----------|----------|----------|----------|
-| ecr_undeploy                  |    √      |    √     |    √     |    √     |    √     |    
-|-------------------------------|-----------|----------|----------|----------|----------|
-
+|-------------------------------|-----------|-----------|----------|----------|----------|----------|
+| Recipe Name                   | AWSLinux  | AWSLinux  |  CentOS  |  CentOS  |  Ubuntu  |  Ubuntu  |
+|                               |  2017.03  |  2016.09  | 7.3.1611 | 7.2.1511 |  16.04   |  14.04   | 
+|-------------------------------|-----------|-----------|----------|----------|----------|----------|
+| usermanagement_lb             |    √      |    √      |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|-----------|----------|----------|----------|----------|
+| ecr_deploy                    |    √      |    √      |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|-----------|----------|----------|----------|----------|
+| ecr_undeploy                  |    √      |    √      |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|-----------|----------|----------|----------|----------|
 ```
 Recipe details
 ----------------
@@ -53,10 +54,23 @@ Remove Deployed usermanagement container by referring data bag item usermanageme
 1. Container is stopped and removed after deregistering from ELB if defined.
 1. It removes image(s) from the host.
 
+### usermanagement::usermanagement_lb
+
+Configures usermanagment internal load balancer for the use of data-api and data-ui services
+  
+1. Create/update usermanagement_lb.conf under `['nginx']['app']['directory']` with nodes identified by respective specification nginx-pod configuration
+1. Notify nginx-pod container to reload to reflect changes
+
+
+### attributes/default.rb
+
+|Attribute Name                                         | Type          | Description                                                   |
+|-------------------------------------------------------|---------------|---------------------------------------------------------------|
+| ['usermanagement']['lb']['port']                      | Integer       | Listner port for candidates internal load balancer            |
+
 ## Maintainers
 
 * Rajesh Jonnalagadda (<rajesh.jonnalagadda@phenompeople.com>)
-* Hadassah Pearlyn (<hadassah.nagathota@phenompeople.com>)
 
 ## License and Authors
 
