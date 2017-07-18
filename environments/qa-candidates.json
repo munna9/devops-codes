@@ -5,7 +5,7 @@
   "description": "QA environment specfication file for candidates",
 
   "cookbook_versions": {
-
+    "mongodb":"0.1.9"
   },
 
   "default_attributes": {
@@ -18,6 +18,16 @@
     },
     "cloud":{
       "platform": "aws"
+    },
+    "candidates":{
+      "elb_hostname": "qa-candidatesapi2.aws.phenom.local"
+    },
+    "mongodb":{
+      "replication_name":"crs1",
+      "key_authentication":true,
+      "major":{
+        "version": "3.2"
+      }
     },
     "mysql_tag_name":"qa-mysql-node",
     "logstash": {

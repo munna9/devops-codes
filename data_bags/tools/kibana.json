@@ -1,23 +1,29 @@
 {
   "id":"kibana",
-  "tools":{
+  "qa-dec":{
     "docker":{
       "kibana":{
         "image_name":"phenompeople/kibana",
-        "tag_name":"latest",
+        "tag_name":"5.4.1",
         "ports":{
           "5601":"5601"
         },
         "environment_variables":[
-          "ELASTICSEARCH_URL=http://dev-elasticsearch01.aws.phenom.local",
+          "ELASTICSEARCH_URL=http://qa-elasticsearch.aws.phenom.local:9200",
           "KIBANA_INDEX=.kibana",
           "SERVER_HOST=0.0.0.0"
         ],
         "volumes":{
-          "/etc/localtime":"/etc/localtime",
-          "/opt/phenom/logs/kibana": "/opt/kibana/logs"
+          "/var/log/containers/kibana": "/opt/kibana/logs"
         }
       }
+    },
+    "nginx-pod":{
+      "uri": "qa-kibana.aws.phenom.local",
+      "nginx_template":"http_template",
+      "deploy_recipe" :"docker_deploy",
+      "service_port":80,
+      "application_port":5601
     }
   },
   "prod-cpapp":{
@@ -34,7 +40,6 @@
           "SERVER_HOST=0.0.0.0"
         ],
         "volumes":{
-          "/etc/localtime":"/etc/localtime",
           "/opt/phenom/logs/kibana": "/opt/kibana/logs"
         }
       }

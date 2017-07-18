@@ -5,6 +5,7 @@
   "description": "QA environment specfication file",
 
   "cookbook_versions": {
+    "mongodb" : "0.1.8"
   },
 
   "default_attributes": {

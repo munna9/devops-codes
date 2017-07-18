@@ -25,15 +25,9 @@
     "recipe[metricbeat::import_dash_board]"
   ],
   "env_run_lists": {
-    "qa-analytics":[
+    "qa-dec":[
       "role[_base]",
-      "recipe[docker::install]",
-      "recipe[docker::service]",
-      "recipe[docker::wrappers]",
-      "recipe[nginx::install]",
-      "recipe[nginx::service]",
-      "recipe[kibana::nginx]"
-
+      "recipe[kibana::docker_deploy]"
     ]
 
   }

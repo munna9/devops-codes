@@ -34,7 +34,7 @@
       }
     },
     "nginx-pod":{
-      "uri": "qa-unsubscribe2.phenompeople.com",
+      "uri": "qa-unsubscribe.phenompeople.com",
       "nginx_template":"https_template",
       "service_port":443,
       "application_port":9052

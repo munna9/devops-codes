@@ -1,6 +1,6 @@
 {
   "id":"nginx-pod",
-  "tools":{
+  "qa-dec":{
     "docker":{
       "nginx-lua":{
         "image_name":"phenompeople/nginx-lua",
@@ -13,7 +13,6 @@
 
         ],
         "volumes":{
-          "/etc/localtime":"/etc/localtime",
           "/etc/nginx/conf.d":"/etc/nginx/conf.d"
         }
       }
@@ -33,7 +32,6 @@
 
         ],
         "volumes":{
-          "/etc/localtime":"/etc/localtime",
           "/etc/nginx/conf.d":"/etc/nginx/conf.d",
           "/etc/nginx/ssl": "/etc/nginx/ssl",
           "/var/log/nginx":"/var/log/nginx"

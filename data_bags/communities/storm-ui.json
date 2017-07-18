@@ -1,0 +1,29 @@
+{
+  "id":"storm-ui",
+  "qa-dec":{
+    "docker":{
+      "storm-ui":{
+        "image_name":"phenompeople/storm-ui",
+        "tag_name":"1.1.0",
+        "ports":{
+          "8881":"8881"
+        },
+        "environment_variables":[
+
+        ],
+        "volumes":{
+          "/opt/storm/conf": "/opt/storm/conf",
+          "/var/log/containers/storm-ui": "/opt/storm/logs"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "qa-stormui.aws.phenom.local",
+      "nginx_template":"http_template",
+      "app_name":"apache-storm",
+      "deploy_recipe":"storm_ui_install",
+      "service_port":80,
+      "application_port":8881
+    }
+  }
+}

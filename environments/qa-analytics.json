@@ -1,5 +1,5 @@
 {
-  "name": "qa-candidates",
+  "name": "qa-analytics",
   "json_class": "Chef::Environment",
   "chef_type": "environment",
   "description": "QA environment specfication file for candidates",
@@ -14,7 +14,6 @@
     "cloud":{
       "platform": "aws"
     },
-    "mysql_tag_name":"qa-mysql-node",
     "logstash": {
       "server_name": "qa-logstash01.aws.phenom.local",
       "server_port": "5004",
@@ -27,13 +26,16 @@
     "mysql":{
       "elb_hostname": "qa-mysql.aws.phenom.local"
     },
-    "es_cluster_name"   : "QA_CP_CONTAINER"
+    "es_cluster_name"   : "QA_ANALYTICS"
   },
 
   "override_attributes": {
     "elasticsearch":{
       "package":{
-        "version": "2.3.5"
+        "version": "5.5.0"
+      },
+      "nginx":{
+        "shield": true
       }
     }
   

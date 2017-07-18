@@ -33,12 +33,18 @@
       "recipe[elasticsearch::plugins]",
       "recipe[nginx::install]",
       "recipe[nginx::service]",
-      "recipe[docker::install]",
-      "recipe[docker::service]",
-      "recipe[docker::wrappers]",
-      "recipe[basic-essentials::gitclient]",
-      "recipe[build-essentials::deploy_user_assemble]",
-      "recipe[mongo-connector::mc_repo]",
+      "recipe[elasticsearch::service]"
+    ],
+    "qa-analytics":[
+      "role[_base]",
+      "role[_elk-agent]",
+      "recipe[basic-essentials::oracle_java_default]",
+      "recipe[nginx::install]",
+      "recipe[elasticsearch::install_from_archive]",
+      "recipe[elasticsearch::app_cluster_configure]",
+      "recipe[elasticsearch::plugins]",
+      "recipe[nginx::install]",
+      "recipe[nginx::service]",
       "recipe[elasticsearch::service]"
     ],
     "prod-candidatesca":[

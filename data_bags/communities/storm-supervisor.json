@@ -1,0 +1,28 @@
+{
+  "id":"storm-supervisor",
+  "qa-dec":{
+    "docker":{
+      "storm-supervisor":{
+        "image_name":"phenompeople/storm-supervisor",
+        "tag_name":"1.1.0",
+        "ports":{
+          "6700":"6700",
+          "6701":"6701",
+          "6702":"6702",
+          "6703":"6703",
+          "6704":"6704",
+          "6705":"6705",
+          "6706":"6706",
+          "6707":"6707"
+        },
+        "environment_variables":[
+        ],
+        "hostname":true,
+        "volumes":{
+          "/opt/storm/conf": "/opt/storm/conf",
+          "/var/log/containers/storm-supervisor": "/opt/storm/logs"
+        }
+      }
+    }
+  }
+}

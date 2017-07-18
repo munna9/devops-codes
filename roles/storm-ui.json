@@ -1,0 +1,28 @@
+{
+  "name": "storm-ui",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "description": "Recipes which configures host to be apache storm-ui server",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "run_list": [
+    "role[_base]"
+  ],
+  "env_run_lists": {
+    "qa-dec":[
+      "role[_base]",
+      "role[_elk-agent]",
+      "recipe[docker::install]",
+      "recipe[docker::service]",
+      "recipe[docker::wrappers]",
+      "recipe[build-essentials::deploy_user_assemble]",
+      "recipe[basic-essentials::gitclient]",
+      "recipe[apache-storm::configure]",
+      "recipe[apache-storm::storm_ui_install]"
+    ]
+  }
+}

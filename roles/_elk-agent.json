@@ -34,6 +34,17 @@
       "recipe[metricbeat::install]",
       "recipe[metricbeat::configure]",
       "recipe[metricbeat::service]"
+    ],
+    "qa-analytics": [
+      "role[_base]",
+      "recipe[basic-essentials::elastic_repo]",
+      "recipe[filebeat::install]",
+      "recipe[filebeat::configure]",
+      "recipe[filebeat::prospectors]",
+      "recipe[filebeat::service]",
+      "recipe[metricbeat::install]",
+      "recipe[metricbeat::configure]",
+      "recipe[metricbeat::service]"
     ]
 
   }

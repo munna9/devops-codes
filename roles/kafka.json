@@ -16,7 +16,7 @@
     "role[_base]"
   ],
   "env_run_lists": {
-    "qa":[
+    "qa-dec":[
       "role[_base]",
       "role[_elk-agent]",
       "recipe[basic-essentials::oracle_java_default]",

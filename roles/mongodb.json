@@ -22,6 +22,14 @@
       "recipe[mongodb::logrotate_install]",
       "recipe[mongodb::service]"
     ],
+    "qa-candidates": [
+      "role[_base]",
+      "recipe[mongodb::install]",
+      "recipe[mongodb::fine_tunning]",
+      "recipe[mongodb::configure]",
+      "recipe[mongodb::logrotate_install]",
+      "recipe[mongodb::service]"
+    ],
     "prod-ngccca": [
       "role[_base]",
       "role[_elk-agent]",

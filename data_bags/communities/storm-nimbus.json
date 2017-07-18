@@ -1,0 +1,22 @@
+{
+  "id":"storm-nimbus",
+  "qa-dec":{
+    "docker":{
+      "storm-nimbus":{
+        "image_name":"phenompeople/storm-nimbus",
+        "tag_name":"1.1.0",
+        "ports": {
+          "6627": "6627"
+        },
+        "environment_variables":[
+
+        ],
+        "hostname":true,
+        "volumes":{
+          "/opt/storm/conf": "/opt/storm/conf",
+          "/var/log/containers/storm-nimbus": "/opt/storm/logs"
+        }
+      }
+    }
+  }
+}

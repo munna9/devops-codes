@@ -20,7 +20,17 @@
       "recipe[docker::service]",
       "recipe[docker::wrappers]",
       "recipe[nginx::pod]",
-      "recipe[elasticsearch::elastic_elb]"
+      "recipe[elasticsearch::elastic_elb]",
+      "recipe[candidates::candidates_elb]"
+    ],
+    "qa-dec":[
+      "role[_base]",
+      "role[_elk-agent]",
+      "role[elk-kibana]",
+      "recipe[docker::install]",
+      "recipe[docker::service]",
+      "recipe[docker::wrappers]",
+      "recipe[nginx::pod]"
     ],
     "prod-ngccca": [
       "role[_base]",

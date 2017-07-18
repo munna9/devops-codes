@@ -1,22 +1,5 @@
 {
   "id": "cp-ui",
-  "dev-candidates": {
-    "ecr": {
-      "cp-ui": {
-        "image_name": "cu_appui_2",
-        "tag_name": "DEV-CP",
-        "ports": {
-          "9050": "80"
-        },
-        "environment_variables": [
-
-        ],
-        "volumes": {
-          "/var/log/containers/cp-ui": "/var/log/nginx"
-        }
-      }
-    }
-  },
   "qa-candidates": {
     "ecr": {
       "cp-ui": {
