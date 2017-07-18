@@ -1,3 +1,5 @@
+# 0.1.12
+[rajeshj]   - Updated elasticsearch typo, updated metricbeat metrices
 # 0.1.11
 [rajeshj]   - Protected elasticsearch for admin operations
 # 0.1.10 

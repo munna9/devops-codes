@@ -11,7 +11,7 @@ case node['platform']
 end
 case node['elasticsearch']['package']['version']
   when '2.3.5', '2.4.1', '2.4.5'
-    _base_uri = "https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/#{node['elasticsearch']['package']['installer']}/#{node['elasticsearch']['package']['name']}/#{node['elasticsearch']['pacakge']['version']}"
+    _base_uri = "https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/#{node['elasticsearch']['package']['installer']}/#{node['elasticsearch']['package']['name']}/#{node['elasticsearch']['package']['version']}"
   when '5.1.2','5.5.0'
     _base_uri = "https://artifacts.elastic.co/downloads/#{node['elasticsearch']['package']['name']}"
 end

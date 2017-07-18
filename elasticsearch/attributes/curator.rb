@@ -15,7 +15,7 @@ default['curator']['indices']={
     'delete_indices'  => 15
   },
   'metricbeat' => {
-    'close'           => 5,
-    'delete_indices'  => 15
+    'close'           => 3,
+    'delete_indices'  => 7
   }
 }
