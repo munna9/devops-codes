@@ -1,5 +1,29 @@
 {
   "id": "okta-auth",
+  "dev-candidates": {
+    "ecr": {
+      "okta-auth": {
+        "image_name": "cp_okta-auth",
+        "tag_name": "DEV-CP",
+        "ports": {
+          "9064": "9000"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/okta-auth": "/opt/deployment/okta-auth/logs",
+          "/opt/phenom/buildproperties/okta-Auth/DEV1": "/opt/deployment/buildproperties"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "dev-oktaapi.phenompro.com",
+      "nginx_template":"http_template",
+      "service_port":80,
+      "application_port":9064
+    }
+  },
   "qa-candidates": {
     "ecr": {
       "okta-auth": {

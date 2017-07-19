@@ -13,15 +13,24 @@
     "role[_base]"
   ],
   "env_run_lists": {
+    "dev-candidates": [
+      "role[_base]",
+      "role[_deploy-agent]",
+      "role[usermanage-ui]",
+      "role[cp-ui]",
+      "role[data-ui]",
+      "role[unsubscribe]",
+      "role[obsidian]"
+    ],
     "qa-candidates": [
-    	"role[_base]",
-        "role[_elk-agent]",
-        "role[_deploy-agent]",
-        "role[usermanage-ui]",
-        "role[cp-ui]",
-        "role[data-ui]",
-        "role[unsubscribe]",
-        "role[obsidian]"
+      "role[_base]",
+      "role[_elk-agent]",
+      "role[_deploy-agent]",
+      "role[usermanage-ui]",
+      "role[cp-ui]",
+      "role[data-ui]",
+      "role[unsubscribe]",
+      "role[obsidian]"
     ]
   }
 }

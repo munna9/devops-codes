@@ -1,5 +1,33 @@
 {
   "id": "candidates",
+  "dev-candidates": {
+    "ecr": {
+      "candidates": {
+        "image_name": "cp_candidates",
+        "tag_name": "DEV-CP",
+        "ports": {
+          "9062": "9000"
+        },
+        "environment_variables": [
+          "JAVA_OPTS=-Xmx1g"
+        ],
+        "volumes": {
+          "/var/log/containers/candidates": "/opt/deployment/candidates/logs",
+          "/opt/phenom/buildproperties/candidates/DEV1": "/opt/deployment/buildproperties",
+          "/opt/phenom/candidates/CsvFiles": "/opt/deployment/CsvFiles",
+          "/opt/phenom/candidates/ExcelFiles": "/opt/deployment/ExcelFiles",
+          "/opt/phenom/candidates/EmailAutoUpload":"/opt/deployment/EmailAutoUpload",
+          "/opt/phenom/candidates/images":"/opt/deployment/images"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "dev-candidatesapi.phenompro.com",
+      "nginx_template":"http_template",
+      "service_port":80,
+      "application_port":9062
+    }
+  },
   "qa-candidates": {
     "ecr": {
       "candidates": {
@@ -14,10 +42,10 @@
         "volumes": {
           "/var/log/containers/candidates": "/opt/deployment/candidates/logs",
           "/opt/phenom/buildproperties/candidates/QA1": "/opt/deployment/buildproperties",
-          "/opt/phenom/CsvFiles": "/opt/deployment/CsvFiles",
-          "/opt/phenom/ExcelFiles": "/opt/deployment/ExcelFiles",
-          "/opt/phenom/EmailAutoUpload":"/opt/deployment/EmailAutoUpload",
-          "/opt/phenom/images":"/opt/deployment/images"
+          "/opt/phenom/candidates/CsvFiles": "/opt/deployment/CsvFiles",
+          "/opt/phenom/candidates/ExcelFiles": "/opt/deployment/ExcelFiles",
+          "/opt/phenom/candidates/EmailAutoUpload":"/opt/deployment/EmailAutoUpload",
+          "/opt/phenom/candidates/images":"/opt/deployment/images"
         }
       }
     },

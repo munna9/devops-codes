@@ -1,5 +1,29 @@
 {
   "id": "data-api",
+  "dev-candidates": {
+    "ecr": {
+      "data-api": {
+        "image_name": "cp_data_api",
+        "tag_name": "DEV-CP",
+        "ports": {
+          "9065": "9000"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/data-api": "/opt/deployment/data_api/logs",
+          "/opt/phenom/buildproperties/cp-data-api/DEV1": "/opt/deployment/buildproperties"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "dev-dataapi.aws.phenom.local",
+      "nginx_template":"http_template",
+      "service_port":80,
+      "application_port":9065
+    }
+  },
   "qa-candidates": {
     "ecr": {
       "data-api": {

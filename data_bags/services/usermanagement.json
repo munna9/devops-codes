@@ -1,5 +1,29 @@
 {
   "id": "usermanagement",
+  "dev-candidates": {
+    "ecr": {
+      "usermanagement": {
+        "image_name": "cp_usermanagement",
+        "tag_name": "DEV-CP",
+        "ports": {
+          "9054": "9000"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/usermanagement": "/opt/deployment/cp-usermanagement/logs",
+          "/opt/phenom/buildproperties/accounts/DEV1": "/opt/deployment/buildproperties"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "dev-usermanagement.phenompro.com",
+      "nginx_template":"http_template",
+      "service_port":80,
+      "application_port":9054
+    }
+  },
   "qa-candidates": {
     "ecr": {
       "usermanagement": {

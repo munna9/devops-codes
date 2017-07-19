@@ -1,5 +1,30 @@
 {
   "id": "login-auth-server",
+  "dev-candidates": {
+    "ecr": {
+      "login-auth-server": {
+        "image_name": "cp_login-auth-server",
+        "tag_name": "DEV-CP",
+        "ports": {
+          "9059": "8080"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/opt/phenom/buildproperties/login/DEV1":  "/opt/deployment/buildproperties",
+          "/var/log/containers/login-auth-server": "/opt/deployment/apache-tomcat/logs"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "dev-auth-server.aws.phenom.local",
+      "nginx_template":"http_tomcat_template",
+      "service_port":80,
+      "context_name":"osiam-auth-server",
+      "application_port":9059
+    }
+  },
   "qa-candidates": {
     "ecr": {
       "login-auth-server": {

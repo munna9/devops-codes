@@ -15,6 +15,12 @@
           "/var/log/containers/unsubscribe": "/var/log/nginx"
         }
       }
+    },
+    "nginx-pod":{
+      "uri": "dev-unsubscribe.phenompro.com",
+      "nginx_template":"http_template",
+      "service_port":80,
+      "application_port":9052
     }
   },
   "qa-candidates": {

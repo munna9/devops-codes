@@ -16,11 +16,11 @@
         "interval": 300
       }
     },
-    "cloud":{
-      "platform": "aws"
-    },
     "candidates":{
       "elb_hostname": "qa-candidatesapi2.aws.phenom.local"
+    },
+    "usermanagement":{
+      "lb_hostname": "qa-usermanagement2.aws.phenom.local"
     },
     "mongodb":{
       "replication_name":"crs1",

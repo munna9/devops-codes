@@ -1,5 +1,29 @@
 {
   "id": "emailservice",
+  "dev-candidates": {
+    "ecr": {
+      "emailservice": {
+        "image_name": "cp_email-microservice",
+        "tag_name": "DEV-CP",
+        "ports": {
+          "9056": "9000"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/emailservice": "/opt/deployment/cp-email-microservice/logs",
+          "/opt/phenom/buildproperties/cp-email-microservices/DEV1": "/opt/deployment/buildproperties"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "dev-emailservice.aws.phenom.local",
+      "nginx_template":"http_template",
+      "service_port":80,
+      "application_port":9056
+    }
+  },
   "qa-candidates": {
     "ecr": {
       "emailservice": {
@@ -24,6 +48,4 @@
       "application_port":9056
     }
   }
-
-
 }

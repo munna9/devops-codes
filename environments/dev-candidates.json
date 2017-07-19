@@ -9,23 +9,44 @@
   },
 
   "default_attributes": {
-    "logstash": {
-      "server_name": "dev-logstash01.aws.phenom.local",
-      "server_port": "5004",
-      "certificate_name": "preprod"
+    "aws_account_id":"716533421362",
+    "aws_region":"us-east-1",
+    "chef-client":{
+      "pool":{
+        "interval": 300
+      }
     },
+    "mongodb":{
+      "replication_name":"rs0",
+      "key_authentication":true,
+      "major":{
+        "version": "3.4"
+      }
+    },
+    "es_cluster_name"   : "DEV_CP_CONTAINER",
     "elasticsearch": {
-      "cluster_name": "mycluster",
-      "server_name": "dev-elasticsearch01.aws.phenom.local",
-      "server_port": "9200"
+      "server_port": 9200,
+      "elb_hostname": "dev-elasticsearch-cand.aws.phenom.local",
+      "elb_port"    : 9200
+
     },
-    "kibana": {
-      "server_name" : "dev-kibana01.aws.phenom.local"
-    }
+    "candidates":{
+      "elb_hostname": "dev-candidatesapi2.aws.phenom.local"
+    },
+    "usermanagement":{
+      "lb_hostname": "dev-usermanagement2.aws.phenom.local"
+    },
   },
 
   "override_attributes": {
-    
-  
+
+    "elasticsearch":{
+      "package":{
+        "version": "2.4.5"
+      },
+      "nginx":{
+        "shield": true
+      }
+    }
   }
 }

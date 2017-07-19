@@ -1,5 +1,32 @@
 {
   "id": "microservice",
+  "dev-candidates": {
+    "ecr": {
+      "microservice": {
+        "image_name": "cp_microservice",
+        "tag_name": "DEV-CP",
+        "ports": {
+          "9057": "9000"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/microservice": "/opt/deployment/cp-microservice/logs",
+          "/opt/phenom/buildproperties/cp-microservice/DEV1": "/opt/deployment/buildproperties",
+          "/opt/phenom/microservice/CsvFiles": "/opt/deployment/CsvFiles",
+          "/opt/phenom/microservice/ExcelFiles": "/opt/deployment/ExcelFiles",
+          "/opt/phenom/microservice/EmailAutoUpload":"/opt/deployment/EmailAutoUpload"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "dev-microservice.phenompro.com",
+      "nginx_template":"http_template",
+      "service_port":80,
+      "application_port":9057
+    }
+  },
   "qa-candidates": {
     "ecr": {
       "microservice": {
@@ -26,6 +53,5 @@
       "service_port":443,
       "application_port":9057
     }
-
   }
 }

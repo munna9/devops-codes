@@ -1,5 +1,28 @@
 {
   "id": "sendgridwebhook",
+  "dev-candidates": {
+    "ecr": {
+      "sendgridwebhook": {
+        "image_name": "cp_sendgrid-webhook",
+        "tag_name": "DEV-CP",
+        "ports": {
+          "9055": "8091"
+        },
+        "environment_variables": [
+        ],
+        "volumes": {
+          "/opt/phenom/buildproperties/candidates-sendgrid-events/DEV1": "/opt/deployment/buildproperties",
+          "/var/log/containers/sendgridwebhook": "/opt/deployment/sendgridwebhook/logs"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "dev-sendgridwebhook.phenompro.com",
+      "nginx_template":"http_template",
+      "service_port":80,
+      "application_port":9055
+    }
+  },
   "qa-candidates": {
     "ecr": {
       "sendgridwebhook": {

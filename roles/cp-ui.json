@@ -13,6 +13,12 @@
     "role[_base]"
   ],
   "env_run_lists": {
+    "dev-candidates": [
+      "role[_base]",
+      "role[_deploy-agent]",
+      "recipe[cp-ui::ecr_deploy]"
+
+    ],
     "qa-candidates": [
       "role[_base]",
       "role[_elk-agent]",

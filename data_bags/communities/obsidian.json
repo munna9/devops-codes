@@ -1,5 +1,30 @@
 {
   "id": "obsidian",
+  "dev-candidates": {
+    "ecr": {
+      "obsidian": {
+        "image_name": "cp_obsidian",
+        "tag_name": "DEV-CP",
+        "ports": {
+          "9063": "8080"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/obsidian": "/opt/deployment/apache-tomcat/logs",
+          "/opt/phenom/buildproperties/candidates-jobs/DEV1": "/opt/deployment/tracker"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "dev-obsidian.aws.phenom.local",
+      "nginx_template":"http_tomcat_template",
+      "service_port":80,
+      "context_name":"obsidian",
+      "application_port":9063
+    }
+  },
   "qa-candidates": {
     "ecr": {
       "obsidian": {

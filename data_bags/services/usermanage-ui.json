@@ -4,7 +4,7 @@
     "ecr": {
       "usermanage-ui": {
         "image_name": "cu_usermanagement-appui",
-        "tag_name": "DEV-CP",
+        "tag_name": "QA-CP",
         "ports": {
           "9051": "80"
         },
@@ -15,6 +15,12 @@
           "/var/log/containers/usermanage-ui": "/var/log/nginx"
         }
       }
+    },
+    "nginx-pod":{
+      "uri": "qa-accounts.phenompeople.com",
+      "nginx_template":"https_template",
+      "service_port":443,
+      "application_port":9051
     }
   },
   "qa-candidates": {

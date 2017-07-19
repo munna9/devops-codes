@@ -1,5 +1,29 @@
 {
   "id": "cp-ui",
+  "dev-candidates": {
+    "ecr": {
+      "cp-ui": {
+        "image_name": "cu_appui_2",
+        "tag_name": "DEV-CP",
+        "ports": {
+          "9050": "80"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/cp-ui": "/var/log/nginx",
+          "/opt/phenom/buildproperties/cp_app_ui_2/DEV1": "/opt/deployment/cpui/assets/js/beacon"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "dev-cpui.phenompro.com",
+      "nginx_template":"http_template",
+      "service_port":80,
+      "application_port":9050
+    }
+  },
   "qa-candidates": {
     "ecr": {
       "cp-ui": {

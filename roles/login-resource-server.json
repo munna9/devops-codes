@@ -2,7 +2,7 @@
   "name": "login-resource-server",
   "json_class": "Chef::Role",
   "chef_type": "role",
-  "description": "Recipes which configures host to be Candidates self administration service",
+  "description": "Recipes which configures host to be Candidates login resource service",
   "default_attributes": {
 
   },
@@ -13,12 +13,16 @@
     "role[_base]"
   ],
   "env_run_lists": {
+    "dev-candidates": [
+      "role[_base]",
+      "role[_deploy-agent]",
+      "recipe[login-resource-server::ecr_deploy]"
+    ],
     "qa-candidates": [
       "role[_base]",
       "role[_elk-agent]",
       "role[_deploy-agent]",
       "recipe[login-resource-server::ecr_deploy]"
-
     ]
   }
 }

@@ -13,6 +13,15 @@
     "role[_base]"
   ],
   "env_run_lists": {
+    "dev-candidates":[
+      "role[_base]",
+      "recipe[docker::install]",
+      "recipe[docker::service]",
+      "recipe[docker::wrappers]",
+      "recipe[nginx::pod]",
+      "recipe[elasticsearch::elastic_elb]"
+
+    ],
     "qa-candidates":[
       "role[_base]",
       "role[_elk-agent]",
@@ -20,8 +29,8 @@
       "recipe[docker::service]",
       "recipe[docker::wrappers]",
       "recipe[nginx::pod]",
-      "recipe[elasticsearch::elastic_elb]",
-      "recipe[candidates::candidates_elb]"
+      "recipe[candidates::candidates_lb]",
+      "recipe[usermanagement::usermanagement_lb]"
     ],
     "qa-dec":[
       "role[_base]",
