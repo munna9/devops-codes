@@ -35,7 +35,7 @@
     },
     "usermanagement":{
       "lb_hostname": "dev-usermanagement2.aws.phenom.local"
-    },
+    }
   },
 
   "override_attributes": {
