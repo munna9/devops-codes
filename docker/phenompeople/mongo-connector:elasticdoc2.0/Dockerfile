@@ -26,5 +26,4 @@ RUN /opt/deployment/scripts/install.sh && \
     rm -rf /opt/python/cache
 ADD setup/requirment.txt /opt/deployment/scripts/requirment.txt
 RUN pip install -r /opt/deployment/scripts/requirment.txt
-#ENTRYPOINT ["/usr/local/bin/mongo-connector", "-c", "/opt/deployment/mongoconnector/config.json"]
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/usr/local/bin/mongo-connector", "-c", "/opt/deployment/mongoconnector/config.json"]
