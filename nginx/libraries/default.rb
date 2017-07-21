@@ -45,3 +45,21 @@ def get_metadata vault_name, app_name
   end
 end
 
+def get_addondata vault_name, app_name
+  metadata_dict=Hash.new
+  data_json= data_bag_item(vault_name,app_name)
+  if data_json.key?(node.chef_environment)
+    addon_object=data_json[node.chef_environment]['addon-lb']
+    if addon_object
+      metadata_dict['service_name']=app_name
+      metadata_dict['uri']=addon_object['uri']
+      metadata_dict['ssl_certificate']=addon_object['ssl_certificate']
+      metadata_dict['nginx_conf_file']="#{app_name}_addon.conf"
+      metadata_dict['nginx_template']=addon_object['nginx_template']
+      metadata_dict['service_port']=(addon_object['service_port'].nil?)? 80 :  addon_object['service_port']
+      metadata_dict['context_name']=(addon_object['context_name'].nil?)? '/' : "/#{addon_object['context_name']}"
+    end
+    return metadata_dict
+  end
+end
+
