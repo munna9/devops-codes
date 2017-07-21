@@ -22,6 +22,11 @@
       "nginx_template":"http_template",
       "service_port":80,
       "application_port":9054
+    },
+    "addon-lb":{
+      "uri": "dev-usermanagment.aws.phenom.local",
+      "nginx_template":"http_template"
+
     }
   },
   "qa-candidates": {
@@ -46,6 +51,11 @@
       "nginx_template":"https_template",
       "service_port":443,
       "application_port":9054
+    },
+    "addon-lb":{
+      "uri": "qa-usermanagment.aws.phenom.local",
+      "nginx_template":"http_template"
+
     }
   }
 }

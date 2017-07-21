@@ -16,7 +16,7 @@
     "dev-candidates": [
       "role[_base]",
       "role[_deploy-agent]",
-      "role[candidates-app-ui]",
+      "role[cp-ui]",
       "role[facets]",
       "role[usermanagement]",
       "role[sendgridwebhook]",

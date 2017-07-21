@@ -19,6 +19,7 @@
       "recipe[docker::service]",
       "recipe[docker::wrappers]",
       "recipe[nginx::pod]",
+      "recipe[nginx::addon_lb]",
       "recipe[elasticsearch::elastic_elb]"
 
     ],
@@ -29,8 +30,8 @@
       "recipe[docker::service]",
       "recipe[docker::wrappers]",
       "recipe[nginx::pod]",
-      "recipe[candidates::candidates_lb]",
-      "recipe[usermanagement::usermanagement_lb]"
+      "recipe[nginx::addon_lb]",
+      "recipe[elasticsearch::elastic_elb]"
     ],
     "qa-dec":[
       "role[_base]",

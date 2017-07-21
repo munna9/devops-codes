@@ -20,7 +20,7 @@
       "replication_name":"rs0",
       "key_authentication":true,
       "major":{
-        "version": "3.4"
+        "version": "3.2"
       }
     },
     "es_cluster_name"   : "DEV_CP_CONTAINER",
@@ -29,12 +29,6 @@
       "elb_hostname": "dev-elasticsearch-cand.aws.phenom.local",
       "elb_port"    : 9200
 
-    },
-    "candidates":{
-      "elb_hostname": "dev-candidatesapi2.aws.phenom.local"
-    },
-    "usermanagement":{
-      "lb_hostname": "dev-usermanagement2.aws.phenom.local"
     }
   },
 

@@ -48,6 +48,11 @@
       "service_port":80,
       "context_name":"addon-administration",
       "application_port":9060
+    },
+    "addon-lb":{
+      "uri": "qa-self-administartion.phenompeople.com",
+      "nginx_template":"http_template"
+
     }
   }
 }

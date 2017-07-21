@@ -24,6 +24,7 @@
       "context_name":"osiam-auth-server",
       "application_port":9059
     }
+
   },
   "qa-candidates": {
     "ecr": {
@@ -48,6 +49,11 @@
       "service_port":80,
       "context_name":"osiam-auth-server",
       "application_port":9059
+    },
+    "addon-lb":{
+      "uri": "qa-auth-server.phenompeople.com",
+      "nginx_template":"http_template"
+
     }
   }
 }

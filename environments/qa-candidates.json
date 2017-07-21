@@ -36,15 +36,45 @@
       "certificate_name": "qacert"
     },
     "elasticsearch": {
-      "server_name" : "qa-elasticsearch.aws.phenom.local",
-      "server_port" : "9200",
       "elb_hostname": "qa-elasticsearch-elb.aws.phenom.local",
       "elb_port"    : 9200
     },
     "mysql":{
       "elb_hostname": "qa-mysql.aws.phenom.local"
     },
-    "es_cluster_name"   : "QA_CP_CONTAINER"
+    "es_cluster_name"   : "QA_CP_CONTAINER",
+    "nginx":{
+      "addon-lb":{
+        "candidates":{
+          "uri": "qa-candidatesapi2.aws.phenom.local",
+          "nginx_template":"http_template",
+          "service_port":80
+        },
+        "usermanagement" : {
+          "uri": "qa-usermanagement2.aws.phenom.local",
+          "nginx_template":"http_template",
+          "service_port":80
+        },
+        "login-auth-server" : {
+          "uri": "qa-auth-server.phenompeople.com",
+          "nginx_template":"http_tomcat_template",
+          "context_name":"osiam-auth-server",
+          "service_port":80
+        },
+        "login-resource-server" :{
+          "uri": "qa-resource-server.phenompeople.com",
+          "nginx_template":"http_tomcat_template",
+          "context_name":"osiam-resource-server",
+          "service_port":80
+        },
+        "login-self-administration" :{
+          "uri": "qa-self-administration.phenompeople.com",
+          "nginx_template":"http_tomcat_template",
+          "context_name":"addon-administration",
+          "service_port":80
+        }
+      }
+    }
   },
 
   "override_attributes": {

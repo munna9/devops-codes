@@ -26,6 +26,10 @@
       "nginx_template":"http_template",
       "service_port":80,
       "application_port":9062
+    },
+    "addon-lb":{
+      "uri": "dev-candidatesapi2.aws.phenom.local",
+      "nginx_template":"http_template"
     }
   },
   "qa-candidates": {
@@ -54,6 +58,10 @@
       "nginx_template":"https_template",
       "service_port":443,
       "application_port":9062
+    },
+    "addon-lb":{
+      "uri": "qa-candidatesapi2.aws.phenom.local",
+      "nginx_template":"http_template"
     }
   }
 }
