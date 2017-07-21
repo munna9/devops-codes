@@ -16,8 +16,7 @@
     "dev-candidates": [
       "role[_base]",
       "role[_deploy-agent]",
-      "role[cp-ui]",
-      "role[obsidian]",
+      "role[candidates-app-ui]",
       "role[facets]",
       "role[usermanagement]",
       "role[sendgridwebhook]",
