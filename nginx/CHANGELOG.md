@@ -1,3 +1,5 @@
+# 0.1.10
+[rajeshj]   - Adding add on load balancer configurations
 # 0.1.9
 [rajeshj] - Including tools pod points
 # 0.1.8

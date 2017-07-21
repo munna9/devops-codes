@@ -1,3 +1,7 @@
+# 0.1.6
+[rajeshj]   - Reverted internal ELB at cookbook level
+# 0.1.5
+[rajeshj]   - Updated cookbook directory path
 # 0.1.4
 [rajeshj]   - Updated cookbook with internal ELB
 # 0.1.3

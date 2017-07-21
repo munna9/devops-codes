@@ -19,6 +19,8 @@ able to get it working on other platform, with appropriate configuration updates
 | Recipe Name                   | AWSLinux  | AWSLinux |  CentOS  |  CentOS  |  Ubuntu  | Ubuntu   |
 |                               |  2017.03  |  2016.09 | 7.3.1611 | 7.2.1511 |  16.04   |  14.04   | 
 |-------------------------------|-----------|----------|----------|----------|----------|----------|
+| addon_lb                      |    √      |    √     |    √     |    √     |    √     |    √     |    
+|-------------------------------|-----------|----------|----------|----------|----------|----------|
 | default_site                  |    √      |    √     |    √     |    √     |    √     |    √     |    
 |-------------------------------|-----------|----------|----------|----------|----------|----------|
 | docker_deploy                 |    X      |    √     |    √     |    √     |    √     |    √     |    
@@ -46,6 +48,14 @@ Chef resources (DSL) and Ruby designed to read and behave in a predictable manne
 * Must be added to a run-list before it can be used by the chef-client
 
 Please read attributes section for configuration parameters for any recipe(s)
+
+### nginx::addon_lb
+
+Deploy and configure additional point of delivery for Nginx to emulate load balancer
+
+1. Loads data hash referred by `['nginx']['addon-lb']`, said hash can be defined at cookbook level, environment level
+1. Reads all hash items referred by `['nginx']['addon-lb']` if defined and create/update nginx configuration file(s) 
+1. Notifies delayed reload of nginx-pod container to reflect changes if found
 
 ### nginx::default_site
 

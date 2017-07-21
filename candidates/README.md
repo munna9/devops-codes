@@ -17,8 +17,6 @@ able to get it working on other platform, with appropriate configuration updates
 | Recipe Name                   | AWSLinux  | AWSLinux  |  CentOS  |  CentOS  |  Ubuntu  |  Ubuntu  |
 |                               |  2017.03  |  2016.09  | 7.3.1611 | 7.2.1511 |  16.04   |  14.04   | 
 |-------------------------------|-----------|-----------|----------|----------|----------|----------|
-| candidates_lb                 |    √      |    √      |    √     |    √     |    √     |    √     |    
-|-------------------------------|-----------|-----------|----------|----------|----------|----------|
 | ecr_deploy                    |    √      |    √      |    √     |    √     |    √     |    √     |    
 |-------------------------------|-----------|-----------|----------|----------|----------|----------|
 | ecr_undeploy                  |    √      |    √      |    √     |    √     |    √     |    √     |    
@@ -38,13 +36,6 @@ Chef resources (DSL) and Ruby designed to read and behave in a predictable manne
 * Must be added to a run-list before it can be used by the chef-client
 
 Please read attributes section for configuration parameters for any recipe(s)
-
-### candidates::candiates_lb
-
-Configures candidates internal load balancer for the use of data-api and data-ui services
-  
-1. Create/update candidates_elb.conf under `['nginx']['app']['directory']` with nodes identified by respective specification nginx-pod configuration
-1. Notify nginx-pod container to reload to reflect changes
 
 ### candidates::ecr_deploy
 
@@ -75,12 +66,10 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 |Attribute Name                                         | Type          | Description                                                   |
 |-------------------------------------------------------|---------------|---------------------------------------------------------------|
 | ['candidates']['app']['directory_list']               | Array         | Directories which need to be present for candidates           |
-| ['candidates']['lb']['port']                          | Integer       | Listner port for candidates internal load balancer            |
 
 ## Maintainers
 
 * Rajesh Jonnalagadda (<rajesh.jonnalagadda@phenompeople.com>)
-* Akshitha Tekulapalli (<akshitha.tekulapalli@phenompeople.com>)
 
 ## License and Authors
 

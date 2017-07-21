@@ -5,15 +5,15 @@ server {
   error_log <%=@node['nginx']['app']['log_directory']%>/usermanagement_elb-error.log;
   location / {
     proxy_pass http://<%=@cookbook_name%>;
-    proxy_set_header        X-Forwarded-Host $host;
-    proxy_set_header        X-Forwarded-Server $host;
-    proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_next_upstream     error timeout invalid_header http_500 http_502 http_404;
-    proxy_http_version      1.1;
     proxy_redirect          off;
-    proxy_connect_timeout   <%=@node['nginx']['conf']['proxy_connect_timeout']%>;
-    proxy_send_timeout      <%=@node['nginx']['conf']['proxy_send_timeout']%>;
-    proxy_read_timeout      <%=@node['nginx']['conf']['proxy_read_timeout']%>;
-    send_timeout            <%=@node['nginx']['conf']['send_timeout']%>;
+    proxy_next_upstream     error timeout invalid_header http_500 http_502 http_404;
+    proxy_connect_timeout   2;
+    proxy_http_version      1.1;
+    proxy_set_header        Connection "Keep-Alive";
+    proxy_set_header        Proxy-Connection "Keep-Alive";
+    proxy_set_header        Host            $host;
+    proxy_set_header        X-Real-IP       $remote_addr;
+    proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_next_upstream     error timeout invalid_header http_500;
   }
 }
