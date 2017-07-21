@@ -17,6 +17,7 @@
       "role[_base]",
       "role[_deploy-agent]",
       "role[cp-ui]",
+      "role[obsidian]",
       "role[facets]",
       "role[usermanagement]",
       "role[sendgridwebhook]",
