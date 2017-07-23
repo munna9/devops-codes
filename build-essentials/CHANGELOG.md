@@ -1,3 +1,5 @@
+# 0.1.9
+[rajeshj] - Included 7.5.0 NVM for analytics
 # 0.1.8
 [rajeshj] - Updating Id_rsa.pub data bag item fields 
 # 0.1.7
