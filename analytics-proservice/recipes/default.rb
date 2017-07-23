@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: analytics-pro
+# Cookbook Name:: analytics-proservice
 # Recipe:: default
 #
 # Copyright (C) 2017 Phenompeople Pvt Ltd
