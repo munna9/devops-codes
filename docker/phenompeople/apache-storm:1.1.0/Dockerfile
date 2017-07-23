@@ -9,7 +9,7 @@ ONBUILD RUN wget -q -O /tmp/apache-storm-${STORM_VERSION}.tar.gz "http://www-us.
             rm -rf /tmp/apache-storm-${STORM_VERSION}.tar.gz && \
             mkdir -p ${STORM_HOME}/local && \
             ln -sf ${STORM_HOME} /opt/storm
-ONBUILD ENV PATH=${STORM_HOME}:$PATH
+ONBUILD ENV PATH=${STORM_HOME}/bin:$PATH
 
 
 
