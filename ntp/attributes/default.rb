@@ -6,7 +6,7 @@ default['ntp']['client']['packages'] = {
       'ntp' => '4.2.6p5-44.34.amzn1'
     },
     '2016.09' => {
-      'ntp' => '4.2.6p5-44.34.amzn11'
+      'ntp' => '4.2.6p5-44.34.amzn1'
     },
     '2016.03' => {
       'ntp' => '4.2.6p5-44.34.amzn1'
@@ -45,5 +45,3 @@ case node['platform']
   when 'debian', 'ubuntu'
     default['ntp']['service']['name']='ntp'
 end
-
-

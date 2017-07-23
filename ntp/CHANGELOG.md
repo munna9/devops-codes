@@ -1,4 +1,6 @@
-# 0.1.6 
+# 0.1.7
+[rajeshj] - Fixing package version for 2016.09 AWS AMI
+# 0.1.6
 [rajeshj] - Update NTP version for Amazon Linux AMI
 # 0.1.5
 [praveen] - Updated ntp version
