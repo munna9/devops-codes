@@ -4,7 +4,7 @@
     "ecr": {
       "usermanage-ui": {
         "image_name": "cu_usermanagement-appui",
-        "tag_name": "QA-CP",
+        "tag_name": "DEV-CP",
         "ports": {
           "9051": "80"
         },
