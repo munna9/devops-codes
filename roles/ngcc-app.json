@@ -23,7 +23,9 @@
       "recipe[jd_cleaning::ecr_deploy]"
     ],
     "prod-ngcc":[
-      "role[_base]"
+      "role[_base]",
+      "role[_deploy-agent]",
+      "recipe[jd_cleaning::ecr_deploy]"
     ]
 
   }

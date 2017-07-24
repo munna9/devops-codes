@@ -5,10 +5,13 @@
   "description": "PRD environment specfication file for ngcc",
 
   "cookbook_versions": {
+    "docker" : "0.1.12"
 
   },
 
   "default_attributes": {
+    "aws_account_id":"413928405733",
+    "aws_region":"us-east-1"
       
   },
 

@@ -30,8 +30,7 @@
         "environment_variables": [
         ],
         "volumes": {
-          "/etc/localtime": "/etc/localtime",
-          "/opt/phenom/logs/jd_cleaning": "/opt/deployment/jd_cleaning/logs",
+          "/var/log/containers/jd_cleaning": "/opt/deployment/jd_cleaning/logs",
           "/opt/phenom/buildproperties/jd_cleaning/QA_NG": "/opt/deployment/jd_cleaning/resources"
         }
       }
@@ -48,9 +47,25 @@
         "environment_variables": [
         ],
         "volumes": {
-          "/etc/localtime": "/etc/localtime",
-          "/opt/phenom/logs/jd_cleaning": "/opt/deployment/jd_cleaning/logs",
+          "/var/log/containers/jd_cleaning": "/opt/deployment/jd_cleaning/logs",
           "/opt/phenom/buildproperties/jd_cleaning/Global_QA": "/opt/deployment/jd_cleaning/resources"
+        }
+      }
+    }
+  },
+  "prod-ngcc": {
+    "ecr": {
+      "jd_cleaning": {
+        "image_name": "ml_jd_cleaning",
+        "tag_name": "PROD-NGCC",
+        "ports": {
+          "5000": "5000"
+        },
+        "environment_variables": [
+        ],
+        "volumes": {
+          "/var/log/containers/jd_cleaning": "/opt/deployment/jd_cleaning/logs",
+          "/opt/phenom/buildproperties/jd_cleaning/PROD_NG": "/opt/deployment/jd_cleaning/resources"
         }
       }
     }

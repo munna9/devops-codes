@@ -24,7 +24,6 @@
     "recipe[chef-client::configure]",
     "recipe[chef-client::service]",
     "recipe[ntp::install_client]",
-    "recipe[basic-essentials::fix_vulenarabilities]",
     "recipe[ntp::service]"
   ],
   "env_run_lists": {
