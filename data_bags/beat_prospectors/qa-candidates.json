@@ -174,8 +174,8 @@
       "symlink":"enabled",
       "tail-files": true
     },
-    "nginx-access":{
-      "document_type": "qa-nginx-access",
+    "pod-access":{
+      "document_type": "qa-pod-access",
       "paths":[
         "/var/log/nginx/*access.log"
       ],
@@ -184,8 +184,8 @@
       "symlink": "enabled",
       "tail-files": true
     },
-    "nginx-error":{
-      "document_type": "qa-nginx-error",
+    "pod-error":{
+      "document_type": "qa-pod-error",
       "paths":[
         "/var/log/nginx/*error.log"
       ],
