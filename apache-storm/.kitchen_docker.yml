@@ -1,0 +1,82 @@
+---
+driver:
+  name: docker
+  use_sudo: false
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: amazon-2017.03
+    driver_config:
+      image: phenompeople/amazonlinux-ccb:2017.03
+      platform: centos
+      privileged: true
+      volume: /sys/fs/cgroup
+      remove_images: false
+
+  - name: amazon-2016.09
+    driver_config:
+      image: phenompeople/amazonlinux-ccb:2016.09
+      platform: centos
+      privileged: true
+      volume: /sys/fs/cgroup
+      remove_images: false
+
+  - name: centos-7.3
+    driver_config:
+      image: phenompeople/centos-ccb:7.3.1611
+      platform: centos
+      run_command: /usr/sbin/init
+      privileged: true
+      forward:
+        - 5004:5004
+      memory: 2048MB
+      volume: /sys/fs/cgroup
+      remove_images: true
+  - name: centos-7.2
+    driver_config:
+      image: phenompeople/centos-ccb:7.2.1511
+      platform: centos
+      run_command: /usr/sbin/init
+      privileged: true
+      forward: 5004
+      volume:
+      - /sys/fs/cgroup
+      remove_images: true
+
+  - name: ubuntu14.04
+    driver_config:
+      image: phenompeople/ubuntu-ccb:14.04
+      platform: ubuntu
+      forward: 5004
+      remove_images: true
+
+  - name: ubuntu16.04
+    driver_config:
+      image: phenompeople/ubuntu-ccb:16.04
+      run_options: '--security-opt seccomp=unconfined --stop-signal=SIGRTMIN+3 --tmpfs /run --tmpfs /run/lock -v /sys/fs/cgroup:/sys/fs/cgroup:ro'
+      run_command: '/sbin/init'
+      forward: 5004
+      platform: ubuntu
+      remove_images: true
+suites:
+  - name: storm-ui
+    run_list:
+      - recipe[basic-essentials::oracle_java_default]
+      - recipe[zookeeper::install]
+      - recipe[zookeeper::configure]
+      - recipe[zookeeper::default]
+      - recipe[zookeeper::service]
+      - recipe[apache-storm::configure]
+
+    attributes:
+      phenom:
+        banner: 'This is managed by Admin'
+
+      zookeeper:
+        cluster: ['75d7b38bc561']
+        heap_memory: 128m
+      nimbus:
+        cluster: ['75d7b38bc561']
+

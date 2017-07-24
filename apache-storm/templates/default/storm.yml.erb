@@ -1,0 +1,13 @@
+#<%=node['phenom']['banner']%>
+storm.zookeeper.servers:
+<%@node['zookeeper']['cluster'].each do |zk_host|%>
+  - "<%=zk_host%>"
+<% end %>
+nimbus.seeds: <%=@nimbus_seeds%>
+<%@node['storm']['conf']['options'].each do |_key,_value| %>
+<%="#{_key}: #{_value}"%>
+<% end %>
+supervisor.slots.ports:
+<% @workers.times do |_each|%>
+  - 670<%=_each%>
+<% end %>
