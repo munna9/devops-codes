@@ -23,6 +23,16 @@
       "recipe[elasticsearch::elastic_elb]"
 
     ],
+    "qa-analytics":[
+      "role[_base]",
+      "role[_elk-agent]",
+      "recipe[docker::install]",
+      "recipe[docker::service]",
+      "recipe[docker::wrappers]",
+      "recipe[nginx::pod]",
+      "recipe[nginx::addon_lb]",
+      "recipe[elasticsearch::elastic_elb]"
+    ],
     "qa-candidates":[
       "role[_base]",
       "role[_elk-agent]",

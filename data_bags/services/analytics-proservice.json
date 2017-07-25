@@ -1,0 +1,28 @@
+{
+  "id": "analytics-proservice",
+  "qa-analytics": {
+    "ecr": {
+      "analytics-proservice": {
+        "image_name": "ay_analytics_pro_service",
+        "tag_name": "QA-ANL",
+        "ports": {
+          "6500": "9000"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/analytics-proservice": "/opt/deployment/analytics_pro_service/logs",
+          "/opt/phenom/buildproperties/analytics-pro/analytics-service/QA1": "/opt/deployment/buildproperties"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "qa-anlyticspro.phenompro.com",
+      "nginx_template":"http_template",
+      "service_port":80,
+      "application_port":6500
+    }
+  }
+
+}

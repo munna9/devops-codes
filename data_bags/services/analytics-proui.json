@@ -1,0 +1,28 @@
+{
+  "id": "analytics-proui",
+  "qa-analytics": {
+    "ecr": {
+      "analytics-proui": {
+        "image_name": "ay_analytics_pro_ui",
+        "tag_name": "QA-ANL",
+        "ports": {
+          "6501": "80"
+        },
+        "environment_variables": [
+          "DIRECTORY_ROOT=pro_ui/qa-docker"
+
+        ],
+        "volumes": {
+          "/var/log/containers/analytics-proui": "/var/log/nginx"
+          
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "qa-analyticsui.phenompro.com",
+      "nginx_template":"http_template",
+      "service_port":80,
+      "application_port":6501
+    }
+  }
+}

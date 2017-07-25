@@ -1,44 +1,46 @@
 {
   "name": "qa-analytics",
-  "json_class": "Chef::Environment",
-  "chef_type": "environment",
-  "description": "QA environment specfication file for candidates",
-
+  "description": "QA environment specfication file for qa-analytics",
   "cookbook_versions": {
 
   },
-
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
   "default_attributes": {
-    "aws_account_id":"716533421362",
-    "aws_region":"us-east-1",
-    "cloud":{
-      "platform": "aws"
+
+    "aws_account_id": "716533421362",
+    "aws_region": "us-east-1",
+    "chef-client": {
+      "pool": {
+        "interval": 300
+      }
     },
+
     "logstash": {
-      "server_name": "qa-logstash01.aws.phenom.local",
-      "server_port": "5004",
-      "certificate_name": "qacert"
+    "server_name": "qa-logstash01.aws.phenom.local",
+    "server_port": "5004",
+    "certificate_name": "qacert"
     },
     "elasticsearch": {
-      "server_name" : "qa-elasticsearch.aws.phenom.local",
-      "server_port" : "9200"
+      "server_name": "qa-elasticsearch.aws.phenom.local",
+      "server_port": "9200",
+      "elb_hostname": "qa-elasticsearch55-lb.aws.phenom.local",
+      "elb_port": "9200"
     },
-    "mysql":{
-      "elb_hostname": "qa-mysql.aws.phenom.local"
-    },
-    "es_cluster_name"   : "QA_ANALYTICS"
+    "es_cluster_name": "QA_ANALYTICS"
+
+
   },
-
   "override_attributes": {
-    "elasticsearch":{
-      "package":{
-        "version": "5.5.0"
+  "elasticsearch": {
+    "package": {
+      "version": "5.5.0"
       },
-      "nginx":{
+      "nginx": {
         "shield": true
-      }
-    }
-  
-  }
-}
+        }
+        }
 
+  }
+
+}

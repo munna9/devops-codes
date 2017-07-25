@@ -1,0 +1,66 @@
+{
+  "id": "qa-analytics",
+  "app_files_to_watch": {
+
+    "analyticsproservice":{
+      "document_type": "analytics-proservice",
+      "paths":[
+        "/var/log/containers/analytics-proservice*/analytics.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true,
+      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.match": "after",
+      "multiline.negate": true
+    },
+    "pod-access":{
+      "document_type": "qa-pod-access",
+      "paths":[
+        "/var/log/nginx/*access.log"
+      ],
+      "input_type": "log",
+      "close_inactive": "5m",
+      "symlink": "enabled",
+      "tail-files": true
+    },
+    "pod-error":{
+      "document_type": "qa-pod-error",
+      "paths":[
+        "/var/log/nginx/*error.log"
+      ],
+      "input_type": "log",
+      "close_inactive": "5m",
+      "symlink": "enabled",
+      "tail-files": true
+
+    },
+    "analytics-proui-access":{
+      "document_type": "analytics-proui-access",
+      "paths":[
+        "/var/log/containers/analytics-proui*/access.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true
+    },
+    "analytics-proui-error":{
+      "document_type": "analytics-proui-error",
+      "paths":[
+        "/var/log/containers/analytics-proui*/error.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true
+    }
+  },
+  "app_procs_to_watch": {
+
+  },
+  "grok_patterns": {
+
+  }
+}

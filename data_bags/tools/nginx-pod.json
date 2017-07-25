@@ -39,6 +39,27 @@
       }
     }
   },
+    "qa-analytics":{
+    "docker":{
+      "nginx-lua":{
+        "image_name":"phenompeople/nginx-lua",
+        "tag_name":"pod",
+        "ports":{
+          "80":"80",
+          "443":"443",
+          "9200":"9200"
+        },
+        "environment_variables":[
+
+        ],
+        "volumes":{
+          "/etc/nginx/conf.d":"/etc/nginx/conf.d",
+          "/etc/nginx/ssl": "/etc/nginx/ssl",
+          "/var/log/nginx":"/var/log/nginx"
+        }
+      }
+    }
+  },
   "qa-candidates":{
     "docker":{
       "nginx-lua":{
