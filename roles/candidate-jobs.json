@@ -1,8 +1,8 @@
 {
-  "name": "obsidian",
+  "name": "candidate-jobs",
   "json_class": "Chef::Role",
   "chef_type": "role",
-  "description": "Recipes which configures host to be Obsidian service",
+  "description": "Recipes which configures host to be Candidate-Jobs service",
   "default_attributes": {
 
   },
@@ -17,14 +17,14 @@
     "dev-candidates": [
       "role[_base]",
       "role[_deploy-agent]",
-      "recipe[obsidian::ecr_deploy]"
+      "recipe[candidate-jobs::ecr_deploy]"
     ],
 
     "qa-candidates": [
       "role[_base]",
       "role[_elk-agent]",
       "role[_deploy-agent]",
-      "recipe[obsidian::ecr_deploy]"
+      "recipe[candidate-jobs::ecr_deploy]"
     ]
   }
 }

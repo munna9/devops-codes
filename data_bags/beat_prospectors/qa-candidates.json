@@ -150,10 +150,10 @@
       "multiline.match": "after",
       "multiline.negate": true
     },
-    "obsidian":{
-      "document_type": "obsidian",
+    "candidate-jobs":{
+      "document_type": "candidate-jobs",
       "paths": [
-        "/var/log/containers/obsidian*/obsidian.log"
+        "/var/log/containers/candidate-jobs*/obsidian.log"
       ],
       "input_type": "log",
       "close_inactive": "5m",

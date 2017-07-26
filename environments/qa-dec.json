@@ -10,8 +10,16 @@
 
   "default_attributes": {
     "aws_account_id":"716533421362",
-    "aws_region":"us-east-1"
-
+    "aws_region":"us-east-1",
+    "logstash": {
+      "server_name": "qa-logstash01.aws.phenom.local",
+      "server_port": "5004",
+      "certificate_name": "qacert"
+    },
+    "elasticsearch": {
+      "elb_hostname": "qa-elasticsearch-elb.aws.phenom.local",
+      "elb_port"    : 9200
+    }
   },
 
   "override_attributes": {

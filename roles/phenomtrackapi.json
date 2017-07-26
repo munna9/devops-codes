@@ -1,0 +1,30 @@
+{
+  "name": "phenomtrackapi",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "description": "Recipes which configures host to be phenomtrackapi service host",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "run_list": [
+    "role[_base]"
+  ],
+  "env_run_lists": {
+    "dev-dec":[
+      "role[_base]",
+      "role[_deploy-agent]",
+      "recipe[phenomtrackapi::configure]",
+      "recipe[phenomtrackapi::ecr_deploy]"
+    ],
+    "qa-dec":[
+      "role[_base]",
+      "role[_elk-agent]",
+      "role[_deploy-agent]",
+      "recipe[phenomtrackapi::configure]",
+      "recipe[phenomtrackapi::ecr_deploy]"
+    ]
+  }
+}

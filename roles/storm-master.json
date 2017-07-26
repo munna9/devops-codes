@@ -1,5 +1,5 @@
 {
-  "name": "nimbus",
+  "name": "storm-master",
   "json_class": "Chef::Role",
   "chef_type": "role",
   "description": "Recipes which configures host to be apache nimbus (storm-ui) server",
@@ -22,8 +22,7 @@
       "recipe[build-essentials::deploy_user_assemble]",
       "recipe[basic-essentials::gitclient]",
       "recipe[apache-storm::configure]",
-      "recipe[apache-storm::storm_nimbus_install]",
-      "role[storm-ui]"
+      "recipe[apache-storm::storm_master]"
     ]
   }
 }

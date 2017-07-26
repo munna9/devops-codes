@@ -13,57 +13,6 @@
       "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
       "multiline.negate": true,
       "multiline.match": "after"
-    },
-    "kafka-logs":{
-      "document_type": "kafka-logs",
-      "paths": [
-        "/var/log/kafka/server.log",
-        "/var/log/kafka/state-change.log",
-        "/var/log/kafka/controller.log",
-        "/var/log/kafka/kafka-*.log"
-      ],
-      "input_type": "log",
-      "close_inactive": "5m",
-      "symlink": "enabled",
-      "tail-files": true,
-      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
-      "multiline.negate": true,
-      "multiline.match": "after"
-
-    },
-    "kafka-gc":{
-      "document_type": "kafka-gc",
-      "paths": [
-        "/var/log/kafka/kafkaServer-gc.log"
-      ],
-      "input_type": "log",
-      "close_inactive": "5m",
-      "symlink": "enabled",
-      "tail-files": true,
-      "multiline.pattern": "^[[::space]]",
-      "multiline.negate": false,
-      "multiline.match": "after"
-
-    },
-    "kafka-events":{
-      "document_type": "kafka-events",
-      "paths": [
-        "/opt/events_data/*/*.log"
-      ],
-      "input_type": "log",
-      "close_inactive": "5m",
-      "symlink": "enabled",
-      "tail-files": true
-    },
-    "zookeeper":{
-      "document_type":"zookeeper",
-      "paths": [
-        "/var/log/zookeeper/zookeeper.out"
-      ],
-      "input_type": "log",
-      "close_inactive": "5m",
-      "symlink": "enabled",
-      "tail-files": true
     }
   },
   "app_procs_to_watch": {

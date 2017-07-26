@@ -9,6 +9,7 @@
           "9050": "80"
         },
         "environment_variables": [
+          "DIRECTORY_ROOT=dist/dev-docker"
 
         ],
         "volumes": {

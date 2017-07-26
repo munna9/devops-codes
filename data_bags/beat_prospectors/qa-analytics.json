@@ -58,7 +58,19 @@
     }
   },
   "app_procs_to_watch": {
-
+    "docker": {
+      "module": "docker",
+      "metricsets": [
+        "container",
+        "cpu",
+        "diskio",
+        "healthcheck",
+        "info",
+        "memory",
+        "network"
+      ],
+      "hosts": "unix:///var/run/docker.sock"
+    }
   },
   "grok_patterns": {
 

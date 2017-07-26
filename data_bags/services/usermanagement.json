@@ -53,7 +53,7 @@
       "application_port":9054
     },
     "addon-lb":{
-      "uri": "qa-usermanagment.aws.phenom.local",
+      "uri": "qa-usermanagement2.aws.phenom.local",
       "nginx_template":"http_template"
 
     }
