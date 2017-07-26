@@ -64,7 +64,7 @@ Synchronizes maxmind_dbs repository. This recipe is dependent on basic-essential
 1. Download git repo by referring `['phenomtrackapi']['maxmind_repo']['uri']` value for repo name and `['phenomtrackapi']['maxmind_repo']['branch']` and revision 
 1. synchronizes code to `['phenomtrackapi']['maxmind_repo']['checkout_directory']`
 
-### build-essentials::buildproperties_repo_remove
+### phenomtrack-api::maxmind_repo_remove
 
 Removes buildproperties repo directory recursively from node.
 
@@ -76,7 +76,6 @@ Removes buildproperties repo directory recursively from node.
 ## Maintainers
 
 * Rajesh Jonnalagadda (<rajesh.jonnalagadda@phenompeople.com>)
-* Hadassah Pearlyn (<hadassah.nagathota@phenompeople.com>)
 
 ## License and Authors
 

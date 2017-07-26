@@ -1,0 +1,22 @@
+{
+  "serverConfig": {
+    "host": "localhost",
+    "port": <%=node['phenomtrackapi']['service']['port']%>,
+    "maxmind.city.db":"<%=@maxmind_directory%>/GeoIP2-City.mmdb",
+    "maxmind.isp.db":"<%=@maxmind_directory%>/GeoIP2-ISP.mmdb"
+  },
+  "kafkaConfig": {
+    "metadata.broker.list": "<%=@kafka_hosts.join(',')%>",
+    "zookeeperConnect":"<%=@zk_hosts.join(',')%>",
+    "serializer.class": "org.apache.kafka.common.serialization.StringSerializer",
+    "acks": "all",
+    "retries": 0,
+    "batch.size": 10000,
+    "linger.ms": 100,
+    "buffer.memory": 33554432,
+    "monitor.graphite.host": "52.91.16.12",
+    "monitor.graphite.port": "2003",
+    "monitor.graphite.ping.interval": "60",
+    "monitor.graphite.service.name": "PHENOMTRACK_API_DEV"
+  }
+}

@@ -1,3 +1,5 @@
+# 0.1.13
+[rajeshj]   - Fixed Typo error on nginx shield
 # 0.1.12
 [rajeshj]   - Updated elasticsearch typo, updated metricbeat metrices
 # 0.1.11

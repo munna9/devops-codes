@@ -1,3 +1,7 @@
+cookbook 'basic-essentials', :path => '../basic-essentials'
+cookbook 'build-essentials', :path => '../build-essentials'
+cookbook 'zookeeper', :path => '../zookeeper'
+cookbook 'kafka', :path => '../kafka'
 source "https://supermarket.chef.io"
 
 metadata

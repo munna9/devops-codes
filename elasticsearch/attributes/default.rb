@@ -24,7 +24,7 @@ default['elasticsearch']['service']['group'] = 'elasticsearch'
 
 default['elasticsearch']['nginx']['shield'] = false
 
-default['elasticsearch']['service']['host'] = node['elasticsearch']['nginx']['sheild']==true ? '127.0.0.1' : node['ipaddress']
+default['elasticsearch']['service']['host'] = node['elasticsearch']['nginx']['shield']==true ? '127.0.0.1' : node['ipaddress']
 default['elasticsearch']['service']['port'] = node['elasticsearch']['nginx']['shield']==true ? 8200 : node['elasticsearch']['server_port']
 default['elasticsearch']['service']['admin_port'] = 8082
 
