@@ -1,3 +1,5 @@
+# 0.1.10
+[rajeshj] - Including 6.11.1 NVM for angular JS
 # 0.1.9
 [rajeshj] - Included 7.5.0 NVM for analytics
 # 0.1.8
