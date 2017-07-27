@@ -1,4 +1,4 @@
-name             'obsidian'
+name             'candidate-jobs'
 maintainer       'Phenompeople Pvt Ltd'
 maintainer_email 'admin.squad@phenompeople.com'
 license          'Apache 2.0'
