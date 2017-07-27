@@ -2,7 +2,7 @@
   "id": "qa",
   "app_files_to_watch": {
     "mongodb": {
-      "document_type": "preprod-mongo",
+      "document_type": "mongodb",
       "paths": [
         "/var/log/mongodb/mongod.log"
       ],
@@ -71,12 +71,7 @@
       "overwrite" : false
     },
     "kafka-gc":{
-      "grok_pattern":["KAFKA_GC_PUASE","KAFKA_GC_MEM", "KAFKA_GC_TIMES", "KAFKA_EVENT_PATTERN"],
-      "custom_patterns":true,
-      "overwrite" :true
-    },
-    "kafka-events":{
-      "grok_pattern":["KAFKA_EVENT_PATTERN"],
+      "grok_pattern":["KAFKA_GC_PUASE","KAFKA_GC_MEM", "KAFKA_GC_TIMES"],
       "custom_patterns":true,
       "overwrite" :true
     }

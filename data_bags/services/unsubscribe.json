@@ -9,7 +9,7 @@
           "9052": "80"
         },
         "environment_variables": [
-          "DIRECTORY_ROOT=unsubscribe-cp/dev-docker",
+          "DIRECTORY_ROOT=unsubscribe/dev-docker",
           "SUBSCRIPTION_ROOT=manage-subscriptions/dev-docker"
         ],
         "volumes": {

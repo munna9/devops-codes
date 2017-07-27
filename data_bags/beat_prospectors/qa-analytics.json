@@ -55,6 +55,26 @@
       "close_inactive":"5m",
       "symlink":"enabled",
       "tail-files": true
+    },
+    "pod-access":{
+      "document_type": "pod-access",
+      "paths":[
+        "/var/log/nginx/*access.log"
+      ],
+      "input_type": "log",
+      "close_inactive": "5m",
+      "symlink": "enabled",
+      "tail-files": true
+    },
+    "pod-error":{
+      "document_type": "pod-error",
+      "paths":[
+        "/var/log/nginx/*error.log"
+      ],
+      "input_type": "log",
+      "close_inactive": "5m",
+      "symlink": "enabled",
+      "tail-files": true
     }
   },
   "app_procs_to_watch": {

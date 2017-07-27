@@ -9,7 +9,7 @@
           "9050": "80"
         },
         "environment_variables": [
-          "DIRECTORY_ROOT=dist/dev-docker"
+          "DIRECTORY_ROOT=cpui/dev-docker"
 
         ],
         "volumes": {
@@ -34,6 +34,7 @@
           "9050": "80"
         },
         "environment_variables": [
+          "DIRECTORY_ROOT=cpui/qa-docker"
 
         ],
         "volumes": {

@@ -20,7 +20,8 @@
       "role[cp-ui]",
       "role[data-ui]",
       "role[unsubscribe]",
-      "role[obsidian]"
+      "role[candidate-jobs]"
+
     ],
     "qa-candidates": [
       "role[_base]",
