@@ -12,5 +12,5 @@ directory node['kafka-logs-backup']['logs']['directory'] do
   action :delete
 end
 file "/etc/logrotate.d/#{@cookbook_name}" do
-  action :remove
+  action :delete
 end
