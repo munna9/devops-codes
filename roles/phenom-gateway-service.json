@@ -1,8 +1,8 @@
 {
-  "name": "dec-app",
+  "name": "phenom-gateway-service",
   "json_class": "Chef::Role",
   "chef_type": "role",
-  "description": "Recipes which configures host to be DEC server",
+  "description": "Recipes which configures host to be phenom gateway service host",
   "default_attributes": {
 
   },
@@ -10,25 +10,20 @@
 
   },
   "run_list": [
-      "role[_base]"
+    "role[_base]"
   ],
   "env_run_lists": {
-
     "dev-dec":[
       "role[_base]",
       "role[_deploy-agent]",
-      "role[phenom-gateway-service]"
+      "recipe[phenom-gateway-service::ecr_deploy]"
     ],
-
     "qa-dec":[
       "role[_base]",
-      "role[_elk-agent]",
       "role[_deploy-agent]",
-      "role[kafka-logs-backup]",
-      "role[phenom-gateway-service]"
-    ],
-    "prod-dec":[
-      "role[_base]"
+      "role[_elk-agent]",
+      "recipe[phenom-gateway-service::ecr_deploy]"
     ]
+ 
   }
 }

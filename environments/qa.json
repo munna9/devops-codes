@@ -15,7 +15,7 @@
   "override_attributes": {
     "elasticsearch":{
       "server_name": "qa-elasticsearch.aws.phenom.local",
-      "server_port": "9200",
+      "server_port": 9200,
       "package":{
         "version": "5.4.1-1"
       },
@@ -27,6 +27,12 @@
       "server_name": "qa-logstash01.aws.phenom.local",
       "server_port": "5004",
       "certificate_name": "qacert"
+    },
+    "kafka_events": {
+      "elasticsearch": {
+        "server_name": "qa-elasticsearch.aws.phenom.local",
+        "server_port": 9200        
+      }
     },
     "mongodb":{
       "replication_name":"rsQA",

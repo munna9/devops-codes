@@ -1,0 +1,51 @@
+{
+  "id": "phenom-gateway-service",
+  "dev-dec": {
+    "ecr": {
+      "phenom-gateway-service": {
+        "image_name": "tr_phenom-gateway-service",
+        "tag_name": "DEV-DEC",
+        "ports": {
+          "6505":"9000"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/opt/phenom/buildproperties/phenom-gateway-service/DEV": "/opt/deployment/buildproperties",
+          "/var/log/containers/phenom-gateway-service":"/opt/deployment/phenom-gateway-service/logs"
+        }
+      }
+    },
+    "nginx-pod":{
+    "uri": "gateway-dev.phenompeople.com",
+    "nginx_template":"https_template",
+    "service_port":443,
+    "application_port":6505
+    }
+  },
+  "qa-dec": {
+    "ecr": {
+      "phenom-gateway-service": {
+        "image_name": "tr_phenom-gateway-service",
+        "tag_name": "QA-DEC",
+        "ports": {
+          "6505":"9000"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/opt/phenom/buildproperties/phenom-gateway-service/QA": "/opt/deployment/buildproperties",
+          "/var/log/containers/phenom-gateway-service":"/opt/deployment/phenom-gateway-service/logs"
+        }
+      }
+    },
+    "nginx-pod":{
+    "uri": "gateway-qa.phenompeople.com",
+    "nginx_template":"https_template",
+    "service_port":443,
+    "application_port":6505
+    }
+  }
+}

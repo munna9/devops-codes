@@ -4,7 +4,11 @@
   "chef_type": "role",
   "description": "Recipes which configures host to be valid ELK stack agent",
   "default_attributes": {
-
+    "container": {
+      "read_timeout":30,
+      "write_timeout":30,
+      "kill_after":30
+    }
   },
   "override_attributes": {
 

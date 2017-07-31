@@ -19,15 +19,19 @@
     "elasticsearch": {
       "elb_hostname": "qa-elasticsearch-elb.aws.phenom.local",
       "elb_port"    : 9200
-    }
-  },
-
-  "override_attributes": {
+    },
     "kafka":{
       "cluster": ["qa-kafka01", "qa-kafka02", "qa-kafka03"]
     },
     "zookeeper":{
       "cluster": ["qa-kafka01", "qa-kafka02", "qa-kafka03"]
+    }
+  },
+  "override_attributes": {
+    "kafka-logs-backup": {
+      "config_repo": {
+        "branch": "QA"
+      }
     }
   }
 }

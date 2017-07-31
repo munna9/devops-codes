@@ -13,6 +13,14 @@
     "role[_base]"
   ],
   "env_run_lists": {
+    "dev":[
+      "role[_base]",
+      "recipe[mongodb::install]",
+      "recipe[mongodb::fine_tunning]",
+      "recipe[mongodb::configure]",
+      "recipe[mongodb::logrotate_install]",
+      "recipe[mongodb::service]"
+    ],
     "dev-candidates": [
       "role[_base]",
       "recipe[mongodb::install]",

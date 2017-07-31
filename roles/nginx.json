@@ -21,7 +21,13 @@
       "recipe[nginx::pod]",
       "recipe[nginx::addon_lb]",
       "recipe[elasticsearch::elastic_elb]"
-
+    ],
+    "dev-dec":[
+      "role[_base]",
+      "recipe[docker::install]",
+      "recipe[docker::service]",
+      "recipe[docker::wrappers]",
+      "recipe[nginx::pod]"
     ],
     "qa-analytics":[
       "role[_base]",

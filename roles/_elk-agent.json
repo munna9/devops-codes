@@ -24,7 +24,7 @@
       "recipe[metricbeat::configure]",
       "recipe[metricbeat::service]"
     ],
-    "qa-dec":[
+    "qa-analytics": [
       "role[_base]",
       "recipe[basic-essentials::elastic_repo]",
       "recipe[filebeat::install]",
@@ -46,7 +46,7 @@
       "recipe[metricbeat::configure]",
       "recipe[metricbeat::service]"
     ],
-    "qa-analytics": [
+    "qa-dec":[
       "role[_base]",
       "recipe[basic-essentials::elastic_repo]",
       "recipe[filebeat::install]",
@@ -57,6 +57,5 @@
       "recipe[metricbeat::configure]",
       "recipe[metricbeat::service]"
     ]
-
   }
 }

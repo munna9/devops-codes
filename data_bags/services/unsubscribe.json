@@ -10,7 +10,7 @@
         },
         "environment_variables": [
           "DIRECTORY_ROOT=unsubscribe/dev-docker",
-          "SUBSCRIPTION_ROOT=manage-subscriptions/dev-docker"
+          "SUBSCRIPTION_ROOT=subscriptions/dev-docker"
         ],
         "volumes": {
           "/var/log/containers/unsubscribe": "/var/log/nginx"
@@ -33,7 +33,8 @@
           "9052": "80"
         },
         "environment_variables": [
-
+          "DIRECTORY_ROOT=unsubscribe/qa-docker",
+          "SUBSCRIPTION_ROOT=subscriptions/qa-docker"
         ],
         "volumes": {
           "/var/log/containers/unsubscribe": "/var/log/nginx"

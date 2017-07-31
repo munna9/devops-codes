@@ -1,0 +1,21 @@
+{
+  "id": "kafka-logs-backup",
+  "qa-dec": {
+    "ecr": {
+      "kafka-logs-backup": {
+        "image_name": "tr_kafka-logs-backup",
+        "tag_name": "QA-DEC",
+        "ports": {
+
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/opt/phenom/kafka-logs-config/properties": "/opt/deployment/kafka-logs-backup/conf",
+          "/var/log/kafka_logs_backup": "/var/log/kafka_logs_backup"
+        }
+      }
+    }
+  }
+}

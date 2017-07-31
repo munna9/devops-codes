@@ -13,6 +13,10 @@
     "role[_base]"
   ],
   "env_run_lists": {
+    "dev":[
+      "role[mongodb]",
+      "recipe[mongodb::master]"
+    ],
     "qa": [
       "role[mongodb]",
       "recipe[mongodb::master]"

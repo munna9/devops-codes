@@ -21,6 +21,26 @@
       }
     }
   },
+  "dev-dec":{
+    "docker":{
+      "nginx-lua":{
+        "image_name":"phenompeople/nginx-lua",
+        "tag_name":"pod",
+        "ports":{
+          "80":"80",
+          "443":"443"
+        },
+        "environment_variables":[
+
+        ],
+        "volumes":{
+          "/etc/nginx/conf.d":"/etc/nginx/conf.d",
+          "/etc/nginx/ssl": "/etc/nginx/ssl",
+          "/var/log/nginx":"/var/log/nginx"
+        }
+      }
+    }
+  },
   "qa-dec":{
     "docker":{
       "nginx-lua":{
@@ -34,7 +54,9 @@
 
         ],
         "volumes":{
-          "/etc/nginx/conf.d":"/etc/nginx/conf.d"
+          "/etc/nginx/conf.d":"/etc/nginx/conf.d",
+          "/etc/nginx/ssl": "/etc/nginx/ssl",
+          "/var/log/nginx":"/var/log/nginx"
         }
       }
     }

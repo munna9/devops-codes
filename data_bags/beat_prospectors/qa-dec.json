@@ -2,6 +2,19 @@
   "id": "qa-dec",
   "app_files_to_watch": {
 
+  "gateway-service": {
+    "document_type": "gateway-service",
+      "paths": [
+        "/var/log/containers/phenom-gateway-service*/application.log"
+      ],
+    "input_type": "log",
+    "close_inactive": "5m",
+    "symlink": "enabled",
+    "tail-files": true,
+    "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+    "multiline.negate": true,
+    "multiline.match": "after"
+    },
     "kafka-logs":{
       "document_type": "kafka-logs",
       "paths": [
@@ -17,7 +30,6 @@
       "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
       "multiline.negate": true,
       "multiline.match": "after"
-
     },
     "kafka-gc":{
       "document_type": "kafka-gc",
@@ -36,24 +48,14 @@
     "kafka-events":{
       "document_type": "kafka-events",
       "paths": [
-        "/opt/events_data/*/*.log"
+        "/var/log/kafka_logs_backup/*.txt"
       ],
       "input_type": "log",
       "close_inactive": "5m",
       "symlink": "enabled",
       "tail-files": true
     },
-    "zookeeper":{
-      "document_type":"zookeeper",
-      "paths": [
-        "/var/log/zookeeper/zookeeper.out"
-      ],
-      "input_type": "log",
-      "close_inactive": "5m",
-      "symlink": "enabled",
-      "tail-files": true
-    },
-    "phenomtrackapi": {
+     "phenomtrackapi": {
       "document_type": "phenomtrackapi",
       "paths": [
         "/var/log/containers/phenomtrackapi*/phenomtrackapi.log"
@@ -65,7 +67,17 @@
       "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
       "multiline.negate": true,
       "multiline.match": "after"
-    }
+    },
+    "zookeeper":{
+      "document_type":"zookeeper",
+      "paths": [
+        "/var/log/zookeeper/zookeeper.out"
+      ],
+      "input_type": "log",
+      "close_inactive": "5m",
+      "symlink": "enabled",
+      "tail-files": true
+    } 
   },
   "app_procs_to_watch": {
 

@@ -9,7 +9,14 @@
   },
 
   "default_attributes": {
-      
+    "aws_account_id":"716533421362",
+    "aws_region":"us-east-1",
+    "kafka":{
+      "cluster": ["dev-kafka01", "dev-kafka02", "dev-kafka03"]
+    },
+    "zookeeper":{
+      "cluster": ["dev-kafka01", "dev-kafka02", "dev-kafka03"]
+    }
   },
 
   "override_attributes": {

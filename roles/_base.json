@@ -27,14 +27,33 @@
     "recipe[ntp::service]"
   ],
   "env_run_lists": {
+    "dev":[
+      "recipe[chef-client::configure]",
+      "recipe[chef-client::service]",
+      "recipe[ntp::install_client]",
+      "recipe[ntp::service]"
+    ],
     "dev-candidates": [
+      "recipe[chef-client::configure]",
+      "recipe[chef-client::service]",
+      "recipe[ntp::install_client]",
+      "recipe[ntp::service]"
+    ],
+    "dev-dec":[
+      "recipe[chef-client::configure]",
+      "recipe[chef-client::service]",
+      "recipe[ntp::install_client]",
+      "recipe[ntp::service]"
+    ],
+    "qa": [
       "recipe[chef-client::configure]",
       "recipe[chef-client::service]",
       "recipe[ntp::install_client]",
       "recipe[basic-essentials::fix_vulenarabilities]",
       "recipe[ntp::service]"
     ],
-    "qa": [
+
+    "qa-analytics": [
       "recipe[chef-client::configure]",
       "recipe[chef-client::service]",
       "recipe[ntp::install_client]",
@@ -48,13 +67,12 @@
       "recipe[basic-essentials::fix_vulenarabilities]",
       "recipe[ntp::service]"
     ],
-    "qa-analytics": [
+    "qa-dec": [
       "recipe[chef-client::configure]",
       "recipe[chef-client::service]",
       "recipe[ntp::install_client]",
       "recipe[basic-essentials::fix_vulenarabilities]",
       "recipe[ntp::service]"
     ]
-
   }
 }
