@@ -6,4 +6,4 @@ KAFKA_GC_MEM .*Eden: %{NUMBER:eden_before_used:float}%{MEM_UNIT:eden_before_used
 
 KAFKA_GC_TIMES .*Times: user=%{NUMBER:kafka_gc_user:float}.*sys=%{NUMBER:kafka_gc_sys:float}.*real=%{NUMBER:kafka_gc_real:float}.*secs]
 
-KAFKA_EVENT_PATTERN .*clientToken":"%{DATA:kafka_clientToken}",".*event":"%{DATA:kafka_event}",".*initialReferral":%{GREEDYDATA:other_messasge}
+KAFKA_EVENT_JSON .{"%{GREEDYDATA:kafka_event_json}"}

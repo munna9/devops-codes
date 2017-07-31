@@ -1,23 +1,23 @@
 docker cookbook
 ===============
 
-Installs and configures docker binaries and other application programs. 
+Installs and configures docker binaries and other application programs.
 The Docker Cookbook is a library cookbook that provides custom resources for use in recipes.
 
 Requirements
 ============
 * Chef 12.5.x or higher
 * Ruby 2.1 or higher (preferably, the Chef full-stack installer)
-* Internet accessible node/client 
+* Internet accessible node/client
 
 Recipes and supported platforms
 -------------------------------
-The following platforms have been tested with Test Kitchen. You may be 
+The following platforms have been tested with Test Kitchen. You may be
 able to get it working on other platform, with appropriate configuration updates
 ```
 |-------------------------------|-----------|----------|----------|----------|----------|
 | Recipe Name                   | AWSLinux  |  CentOS  |  CentOS  |  Ubuntu  |  Ubuntu  |
-|                               |  2016.09  | 7.3.1611 | 7.2.1511 |  16.04   |  14.04   | 
+|                               |  2016.09  | 7.3.1611 | 7.2.1511 |  16.04   |  14.04   |
 |-------------------------------|-----------|----------|----------|----------|----------|
 | install                       |    √      |    √     |    √     |    √     |    √     |    
 |-------------------------------|-----------|----------|----------|----------|----------|
@@ -32,12 +32,12 @@ able to get it working on other platform, with appropriate configuration updates
 Recipe details
 ==============
 
-A recipe is the most fundamental configuration element within the organization. Receipe is authored using 
+A recipe is the most fundamental configuration element within the organization. Receipe is authored using
 Chef resources (DSL) and Ruby designed to read and behave in a predictable manner.
 
 * Recipe is a collection of resource(a statement of configuration),
   and additional ruby code supported from libraries as and when required.
-* Is always executed in the same order as listed in a run-list. 
+* Is always executed in the same order as listed in a run-list.
 * Must be stored in a cookbook under recipes directories.
 * Must be added to a run-list before it can be used by the chef-client
 
@@ -49,7 +49,7 @@ Installs and configures docker-engine binaries based on `['docker']['binary']['p
 
 1. Identifies running node's platform and its version.
 1. Create repository configuration file based on platform distribution.
-1. Install docker binaries and its version based on platform and platform_version key-value pair. 
+1. Install docker binaries and its version based on platform and platform_version key-value pair.
 1. Installs each of those hash key value pair(s) with specific binary version if `node['docker]['pin_version']` is true,
    otherwise installs latest available version of package at the time converge.
 
@@ -59,12 +59,12 @@ Installs and configures docker-engine binaries based on `['docker']['binary']['p
 Enables docker service across multiple distributions listed from above table.
 
 1. Identifies service name of docker-enginer from `node['docker']['service']['name']`
-1. Controls how the chef-client is to attempt to manage a service `:enable`, `:start`,`:restart`, `:status` 
+1. Controls how the chef-client is to attempt to manage a service `:enable`, `:start`,`:restart`, `:status`
 1. Performs action of `:enable` to keep the service up and running on successive restart whereas `:start` to make service up for current system
 
 ## docker::uninstall
 
-Removes docker binaries, images, containers and services from host. 
+Removes docker binaries, images, containers and services from host.
 
 1. Removes all containers and images by running `node['docker']['wrapper']['base_directory]/docker-clean_all`
 1. Stops and disables `node['docker']['service']['name']`.
@@ -75,7 +75,7 @@ Removes docker binaries, images, containers and services from host.
 
 ### docker::wrappers
 
-Adds handy scripts and sanitation scripts for docker deamon. These scripts are should prefix with `docker-` and should not have spaces. 
+Adds handy scripts and sanitation scripts for docker deamon. These scripts are should prefix with `docker-` and should not have spaces.
 
 1. Creates docker profile script `docker.sh` under `/etc/profile.d`.
 
@@ -112,7 +112,11 @@ For each cookbook, attributes in the `default.rb` file are loaded first, and the
 | ['docker']['service']['name']                 | String        | docker-engine service name                                           |
 | ['docker']['service']['owner']                | String        | docker-engine service owner                                          |
 | ['docker']['service']['group']                | String        | docker-engine service group                                          |
-| ['docker']['wrapper']['base_directory']       | String        | base location of wrapper scripts resides                             |
+| ['docker']['container']['log_directory']      | String        | Based directory to hook logs from all application containers         |
+| ['docker']['container']['read_timeout']       | Number        | Time to wait for Docker container read I/O                           |
+| ['docker']['container']['write_timeout']      | Number        | Time to wait for Docker container write I/O                          |
+| ['docker']['container']['kill_after']         | Number        | Time to wait for Docker container to force kill                      |
+| ['docker']['wrapper']['base_directory']       | String        | Base location of wrapper scripts resides                             |
 | ['docker']['wrapper']['scripts']              | Array         | List of script names which should be maintained                      |
 
 ## Maintainers

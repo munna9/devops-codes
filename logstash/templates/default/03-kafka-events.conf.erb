@@ -1,0 +1,45 @@
+#<%=node['phenom']['banner']%>
+filter {
+  if [type] == "kafka-events" {
+    ruby {
+      code => "
+        require 'json'
+        kafka_event_json=event.get('message')
+        kafka_event_hash=JSON.parse(kafka_event_json).to_hash
+        kafka_new_hash=Hash.new
+        kafka_event_hash.each_pair do |main_event,main_data|
+          if main_event == 'properties'
+            kafka_event_hash['properties'].each_pair do |properties_key,properties_value|
+              kafka_new_hash[properties_key]=properties_value
+            end
+          elsif main_event == 'location'
+            kafka_event_hash['location'].each_pair do |location_key,location_value|
+              kafka_new_hash[location_key]=location_value
+            end
+          elsif main_event == 'isp'
+            kafka_event_hash['isp'].each_pair do |isp_key,isp_value|
+              kafka_new_hash[isp_key]=isp_value
+            end
+          else
+            kafka_new_hash[main_event]=main_data
+          end
+        end
+        kafka_new_hash.each_pair do |key,value|
+          event.set(key,kafka_new_hash[key])
+        end
+      "
+    }
+  }
+}
+output {
+  if [type] == "kafka-events" {
+    elasticsearch {
+        hosts => ["<%=node['kafka_events']['elasticsearch']['server_name']%>:<%=node['kafka_events']['elasticsearch']['server_name']%>"]
+        flush_size => 1000
+        idle_flush_time => 100
+        template_name => "<%=node['logstash']['template']['name']%>"
+        template => "<%=node['logstash']['template']['file']%>"
+        index => "phenomtrack-%{+YYYY.MM.dd}"
+    }
+  }
+}

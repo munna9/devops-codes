@@ -44,6 +44,9 @@ default['docker']['service']['owner']='root'
 default['docker']['service']['group']='docker'
 
 default['docker']['container']['log_directory']='/var/log/containers'
+default['docker']['container']['read_timeout']=30
+default['docker']['container']['write_timeout']=30
+default['docker']['container']['kill_after']=30
 
 default['docker']['wrapper']['base_directory']='/usr/local/sbin'
 default['docker']['wrapper']['scripts']=%w(docker-access docker-clean docker-clean_none docker-clean_all docker-destroy docker-flush docker-flush_all)

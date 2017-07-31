@@ -1,0 +1,11 @@
+#<%=node['phenom']['banner']%>
+<%=node['kafka-logs-backup']['logs']['directory']%>/*.txt {
+  daily
+  missingok
+  rotate <%=node['kafka-logs-backup']['retension']['period']%>
+  compress
+  sharedscripts
+  notifempty
+  copytruncate
+  dateext
+}

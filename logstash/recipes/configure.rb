@@ -50,7 +50,7 @@ cookbook_file node['logstash']['template']['file'] do
   notifies :restart, "service[#{node['logstash']['service']['name']}]"
 end
 
-%w(01-beat-input.conf 10-custom-filters.conf 30-elasticsearch-output.conf).each do |conf_file|
+%w(01-beat-input.conf 03-kafka-events.conf 10-custom-filters.conf 30-elasticsearch-output.conf).each do |conf_file|
   template "#{node['logstash']['conf']['home_directory']}/#{conf_file}" do
     source "#{conf_file}.erb"
     sensitive true
