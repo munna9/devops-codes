@@ -34,7 +34,7 @@ filter {
 output {
   if [type] == "kafka-events" {
     elasticsearch {
-        hosts => ["<%=node['kafka_events']['elasticsearch']['server_name']%>:<%=node['kafka_events']['elasticsearch']['server_name']%>"]
+        hosts => ["<%=node['kafka_events']['elasticsearch']['server_name']%>:<%=node['kafka_events']['elasticsearch']['server_port']%>"]
         flush_size => 1000
         idle_flush_time => 100
         template_name => "<%=node['logstash']['template']['name']%>"
