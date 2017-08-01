@@ -24,7 +24,7 @@
     "microservice":"0.1.2",
     "mongodb":"0.1.9",
     "ntp":"0.1.7",
-    "nginx":"0.1.10",
+    "nginx":"0.1.11",
     "login-self-administration":"0.1.0",
     "login-resource-server":"0.1.0",
     "okta-auth":"0.1.0",

@@ -46,6 +46,12 @@
       "nginx_template":"http_template",
       "service_port":80,
       "application_port":9056
+    },
+    "addon-lb":{
+      "uri": "qa-emailservice2.phenompeople.com",
+      "nginx_template":"https_template",
+      "ssl_certificate":"phenompeople",
+      "service_port":443
     }
   }
 }
