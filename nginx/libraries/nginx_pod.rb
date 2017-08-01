@@ -38,7 +38,8 @@ module NginxCookbook
               :service_name   => addon_dict['service_name'],
               :uri            => addon_dict['uri'],
               :service_port   => addon_dict['service_port'],
-              :context_name   => addon_dict['context_name']
+              :context_name   => addon_dict['context_name'],
+              :ssl_certificate  => addon_dict['ssl_certificate']
             )
             sensitive true
             notifies :reload, "docker_container[#{node['pod_container_name']}]"

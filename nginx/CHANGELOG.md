@@ -1,3 +1,5 @@
+#0.1.11
+[kiran]		- Adding addon https template
 # 0.1.10
 [rajeshj]   - Adding add on load balancer configurations
 # 0.1.9
