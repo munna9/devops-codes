@@ -24,7 +24,7 @@
       "application_port":9054
     },
     "addon-lb":{
-      "uri": "dev-usermanagment.aws.phenom.local",
+      "uri": "dev-usermanagement.aws.phenom.local",
       "nginx_template":"http_template"
 
     }
