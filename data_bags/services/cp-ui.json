@@ -49,5 +49,30 @@
       "service_port":443,
       "application_port":9050
     }
+  },
+  "stg-candidates": {
+    "ecr": {
+      "cp-ui": {
+        "image_name": "cu_appui_2",
+        "tag_name": "STG-CP",
+        "ports": {
+          "9050": "80"
+        },
+        "environment_variables": [
+          "DIRECTORY_ROOT=cpui/qa-docker"
+
+        ],
+        "volumes": {
+          "/var/log/containers/cp-ui": "/var/log/nginx",
+          "/opt/phenom/buildproperties/cp_app_ui_2/STG1": "/opt/deployment/cpui/assets/js/beacon"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "stg-candidates.phenompeople.com",
+      "nginx_template":"https_template",
+      "service_port":443,
+      "application_port":9050
+    }
   }
 }

@@ -49,6 +49,31 @@
       "application_port":9058
     }
 
+  },
+  "stg-candidates": {
+    "ecr": {
+      "emailcampaign": {
+        "image_name": "cp_email-campaign",
+        "tag_name": "STG-CP",
+        "ports": {
+          "9058": "9000"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/emailcampaign": "/opt/deployment/cp-emailcampaign/logs",
+          "/opt/phenom/buildproperties/cp-email-campaign/STG1": "/opt/deployment/buildproperties"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "ecompaign-stg2.phenompeople.com",
+      "nginx_template":"https_template",
+      "service_port":443,
+      "application_port":9058
+    }
+
   }
 
 }

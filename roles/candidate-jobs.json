@@ -25,6 +25,12 @@
       "role[_elk-agent]",
       "role[_deploy-agent]",
       "recipe[candidate-jobs::ecr_deploy]"
+    ],
+    "stg-candidates": [
+      "role[_base]",
+      "role[_elk-agent]",
+      "role[_deploy-agent]",
+      "recipe[candidate-jobs::ecr_deploy]"
     ]
   }
 }

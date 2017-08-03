@@ -57,5 +57,34 @@
       "nginx_template":"http_template"
 
     }
+  },
+  "stg-candidates": {
+    "ecr": {
+      "usermanagement": {
+        "image_name": "cp_usermanagement",
+        "tag_name": "STG-CP",
+        "ports": {
+          "9054": "9000"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/usermanagement": "/opt/deployment/cp-usermanagement/logs",
+          "/opt/phenom/buildproperties/accounts/STG1": "/opt/deployment/buildproperties"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "stg-usermanagement2.phenompeople.com",
+      "nginx_template":"https_template",
+      "service_port":443,
+      "application_port":9054
+    },
+    "addon-lb":{
+      "uri": "stg-usermanagement2.aws.phenom.local",
+      "nginx_template":"http_template"
+
+    }
   }
 }

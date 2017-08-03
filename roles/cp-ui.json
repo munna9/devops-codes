@@ -31,7 +31,6 @@
       "role[_elk-agent]",
       "role[_deploy-agent]",
       "recipe[cp-ui::ecr_deploy]"
-
     ]
   }
 }

@@ -41,6 +41,16 @@
       "recipe[nginx::service]",
       "recipe[elasticsearch::service]"
     ],
+    "stg-cpapp":[
+      "role[_base]",
+      "recipe[basic-essentials::elastic_repo]",
+      "recipe[basic-essentials::oracle_java_default]",
+      "recipe[elasticsearch::install_from_repo]",
+      "recipe[elasticsearch::configure]",
+      "recipe[nginx::install]",
+      "recipe[nginx::service]",
+      "recipe[elasticsearch::service]"
+    ],
     "qa":[
       "role[_base]",
       "recipe[basic-essentials::elastic_repo]",

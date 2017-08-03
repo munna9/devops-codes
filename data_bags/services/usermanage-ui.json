@@ -45,5 +45,28 @@
       "service_port":443,
       "application_port":9051
     }
+  },
+  "stg-candidates": {
+    "ecr": {
+      "usermanage-ui": {
+        "image_name": "cu_usermanagement-appui",
+        "tag_name": "STG-CP",
+        "ports": {
+          "9051": "80"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/usermanage-ui": "/var/log/nginx"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "stg-accounts.phenompeople.com",
+      "nginx_template":"https_template",
+      "service_port":443,
+      "application_port":9051
+    }
   }
 }

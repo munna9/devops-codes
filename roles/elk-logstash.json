@@ -42,6 +42,19 @@
       "recipe[logstash::service]",
       "recipe[kibana::docker_deploy]"
       
+    ],
+    "stg-cpapp":[
+      "role[_base]",
+      "recipe[docker::install]",
+      "recipe[docker::service]",
+      "recipe[docker::wrappers]",
+      "recipe[basic-essentials::elastic_repo]",
+      "recipe[basic-essentials::oracle_java_default]",
+      "recipe[logstash::install]",
+      "recipe[logstash::http_configure]",
+      "recipe[logstash::service]",
+      "recipe[kibana::docker_deploy]"
+      
     ]
   }
 }

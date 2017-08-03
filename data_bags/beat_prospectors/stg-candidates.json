@@ -1,0 +1,310 @@
+{
+  "id": "stg-candidates",
+  "app_files_to_watch": {
+
+    "candidates":{
+      "document_type": "candidates",
+      "paths":[
+        "/var/log/containers/candidates*/application.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true,
+      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.match": "after",
+      "multiline.negate": true
+    },
+    "emailcampaign":{
+      "document_type": "emailcampaign",
+      "paths":[
+        "/var/log/containers/emailcampaign*/application.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true,
+      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.match": "after",
+      "multiline.negate": true
+    },
+    "emailservice":{
+      "document_type": "emailservice",
+      "paths":[
+        "/var/log/containers/emailservice*/application.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true,
+      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.match": "after",
+      "multiline.negate": true
+    },
+    "mongodb": {
+      "document_type": "mongodb",
+      "paths": [
+        "/var/log/mongodb/mongod.log"
+      ],
+      "input_type": "log",
+      "close_inactive": "5m",
+      "symlink": "enabled",
+      "tail-files": true,
+      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.negate": true,
+      "multiline.match": "after"
+    },
+    "microservice":{
+      "document_type": "microservice",
+      "paths":[
+        "/var/log/containers/microservice*/application.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true,
+      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.match": "after",
+      "multiline.negate": true
+
+    },
+    "usermanagement":{
+      "document_type": "usermanagement",
+      "paths":[
+        "/var/log/containers/usermanagement*/application.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true,
+      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.negate": true,
+      "multiline.match": "after"
+
+    },
+    "facets":{
+      "document_type": "facets",
+      "paths":[
+        "/var/log/containers/facets*/application.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true,
+      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.match": "after",
+      "multiline.negate": true
+    },
+    "okta-auth":{
+      "document_type": "okta-auth",
+      "paths":[
+        "/var/log/containers/okta-auth*/application.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true,
+      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.match": "after",
+      "multiline.negate": true
+    },
+    "data-api":{
+      "document_type": "data-api",
+      "paths":[
+        "/var/log/containers/data-api*/application.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true,
+      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.match": "after",
+      "multiline.negate": true
+    },
+    "login-auth-server":{
+      "document_type":"login-auth-server",
+      "paths":[
+        "/var/log/containers/login-auth-server*/catalina.out"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true,
+      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.match": "after",
+      "multiline.negate": true
+
+    },
+    "login-resource-server":{
+      "document_type":"login-resource-server",
+      "paths":[
+        "/var/log/containers/login-resource-server*/catalina.out"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true,
+      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.match": "after",
+      "multiline.negate": true
+
+    },
+    "login-self-administration":{
+      "document_type":"login-self-administration",
+      "paths":[
+        "/var/log/containers/login-self-administration*/catalina.out"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true,
+      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.match": "after",
+      "multiline.negate": true
+    },
+    "candidate-jobs":{
+      "document_type": "candidate-jobs",
+      "paths": [
+        "/var/log/containers/candidate-jobs*/obsidian.log"
+      ],
+      "input_type": "log",
+      "close_inactive": "5m",
+      "symlink": "enabled",
+      "tail-files": true,
+      "multiline.pattern": "^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
+      "multiline.match": "after",
+      "multiline.negate": true
+    },
+
+    "sendgridwebhook":{
+      "document_type": "sendgridwebhook",
+      "paths":[
+        "/var/log/containers/sendgridwebhook/sendgridtrack.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true
+    },
+    "pod-access":{
+      "document_type": "pod-access",
+      "paths":[
+        "/var/log/nginx/*access.log"
+      ],
+      "input_type": "log",
+      "close_inactive": "5m",
+      "symlink": "enabled",
+      "tail-files": true
+    },
+    "pod-error":{
+      "document_type": "pod-error",
+      "paths":[
+        "/var/log/nginx/*error.log"
+      ],
+      "input_type": "log",
+      "close_inactive": "5m",
+      "symlink": "enabled",
+      "tail-files": true
+
+    },
+    "cp-ui-access":{
+      "document_type": "cp-ui-access",
+      "paths":[
+        "/var/log/containers/cp-ui*/access.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true
+    },
+    "cp-ui-error":{
+      "document_type": "cp-ui-error",
+      "paths":[
+        "/var/log/containers/cp-ui*/error.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true
+    },
+    "unsubscribe-access":{
+      "document_type": "unsubscribe-access",
+      "paths":[
+        "/var/log/containers/unsubscribe*/access.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true
+    },
+    "unsubscribe-error":{
+      "document_type": "unsubscribe-error",
+      "paths":[
+        "/var/log/containers/unsubscribe*/error.log"
+      ],
+      "input_type":"log",
+      "close_inactive":"5m",
+      "symlink":"enabled",
+      "tail-files": true
+    },
+    "usermanagement-ui-access": {
+      "document_type": "usermanagement-ui-access",
+      "paths": [
+        "/var/log/containers/usermanagement-ui*/access.log"
+      ],
+      "input_type": "log",
+      "close_inactive": "5m",
+      "symlink": "enabled",
+      "tail-files": true
+    },
+    "usermanagement-ui-error": {
+      "document_type": "usermanagement-ui-error",
+      "paths": [
+        "/var/log/containers/usermanagement-ui*/error.log"
+      ],
+      "input_type": "log",
+      "close_inactive": "5m",
+      "symlink": "enabled",
+      "tail-files": true
+    },
+    "data-ui-access": {
+      "document_type": "data-ui-access",
+      "paths": [
+        "/var/log/containers/data-ui*/*access.log"
+      ],
+      "input_type": "log",
+      "close_inactive": "5m",
+      "symlink": "enabled",
+      "tail-files": true
+    },
+    "data-ui-error": {
+      "document_type": "data-ui-error",
+      "paths": [
+        "/var/log/containers/data-ui*/*error.log"
+      ],
+      "input_type": "log",
+      "close_inactive": "5m",
+      "symlink": "enabled",
+      "tail-files": true
+    }
+  },
+  "app_procs_to_watch": {
+    "docker": {
+      "module": "docker",
+      "metricsets":[
+        "container",
+        "cpu",
+        "diskio",
+        "healthcheck",
+        "info",
+        "memory",
+        "network"
+      ],
+      "hosts": "unix:///var/run/docker.sock"
+    },
+  "grok_patterns": {
+
+  }
+  }
+}
+

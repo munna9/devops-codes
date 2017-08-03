@@ -54,5 +54,35 @@
       "nginx_template":"http_template"
 
     }
+  },
+  "stg-candidates": {
+    "ecr": {
+      "login-resource-server": {
+        "image_name": "cp_login-resource-server",
+        "tag_name": "STG-CP",
+        "ports": {
+          "9060": "8080"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/opt/phenom/buildproperties/login/STG1":  "/opt/deployment/buildproperties",
+          "/var/log/containers/login-resource-server": "/opt/deployment/apache-tomcat/logs"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "stg-resource-server.aws.phenom.local",
+      "nginx_template":"http_tomcat_template",
+      "service_port":80,
+      "context_name":"osiam-resource-server",
+      "application_port":9060
+    },
+    "addon-lb":{
+      "uri": "stg-resource-server.phenompeople.com",
+      "nginx_template":"https_template"
+
+    }
   }
 }

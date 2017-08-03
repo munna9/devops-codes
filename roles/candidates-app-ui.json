@@ -32,6 +32,15 @@
       "role[data-ui]",
       "role[unsubscribe]",
       "role[candidate-jobs]"
+    ],
+    "stg-candidates": [
+      "role[_base]",
+      "role[_elk-agent]",
+      "role[_deploy-agent]",
+      "role[usermanage-ui]",
+      "role[cp-ui]",
+      "role[unsubscribe]",
+      "role[candidate-jobs]"
     ]   
   }
 }

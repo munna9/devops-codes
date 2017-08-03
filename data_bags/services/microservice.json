@@ -13,10 +13,10 @@
         ],
         "volumes": {
           "/var/log/containers/microservice": "/opt/deployment/cp-microservice/logs",
-          "/opt/phenom/buildproperties/cp-microservice/DEV1": "/opt/deployment/buildproperties",
           "/opt/phenom/microservice/CsvFiles": "/opt/deployment/CsvFiles",
           "/opt/phenom/microservice/ExcelFiles": "/opt/deployment/ExcelFiles",
-          "/opt/phenom/microservice/EmailAutoUpload":"/opt/deployment/EmailAutoUpload"
+          "/opt/phenom/microservice/EmailAutoUpload":"/opt/deployment/EmailAutoUpload",
+          "/opt/phenom/buildproperties/cp-microservice/DEV1": "/opt/deployment/buildproperties"
         }
       }
     },
@@ -40,15 +40,42 @@
         ],
         "volumes": {
           "/var/log/containers/microservice": "/opt/deployment/cp-microservice/logs",
-          "/opt/phenom/buildproperties/cp-microservice/QA1": "/opt/deployment/buildproperties",
           "/opt/phenom/microservice/CsvFiles": "/opt/deployment/CsvFiles",
           "/opt/phenom/microservice/ExcelFiles": "/opt/deployment/ExcelFiles",
-          "/opt/phenom/microservice/EmailAutoUpload":"/opt/deployment/EmailAutoUpload"
+          "/opt/phenom/microservice/EmailAutoUpload":"/opt/deployment/EmailAutoUpload",
+          "/opt/phenom/buildproperties/cp-microservice/QA1": "/opt/deployment/buildproperties"
         }
       }
     },
     "nginx-pod":{
       "uri": "qa-microservice2.phenompeople.com",
+      "nginx_template":"https_template",
+      "service_port":443,
+      "application_port":9057
+    }
+  },
+  "stg-candidates": {
+    "ecr": {
+      "microservice": {
+        "image_name": "cp_microservice",
+        "tag_name": "STG-CP",
+        "ports": {
+          "9057": "9000"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/microservice": "/opt/deployment/cp-microservice/logs",
+          "/opt/phenom/microservice/CsvFiles": "/opt/deployment/CsvFiles",
+          "/opt/phenom/microservice/ExcelFiles": "/opt/deployment/ExcelFiles",
+          "/opt/phenom/microservice/EmailAutoUpload":"/opt/deployment/EmailAutoUpload",
+          "/opt/phenom/buildproperties/cp-microservice/STG1": "/opt/deployment/buildproperties"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "stg-microservice2.phenompeople.com",
       "nginx_template":"https_template",
       "service_port":443,
       "application_port":9057

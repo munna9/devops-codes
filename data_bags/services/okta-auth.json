@@ -47,5 +47,29 @@
       "service_port":443,
       "application_port":9064
     }
+  },
+  "stg-candidates": {
+    "ecr": {
+      "okta-auth": {
+        "image_name": "cp_okta-auth",
+        "tag_name": "STG-CP",
+        "ports": {
+          "9064": "9000"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/okta-auth": "/opt/deployment/okta-auth/logs",
+          "/opt/phenom/buildproperties/okta-Auth/STG1": "/opt/deployment/buildproperties"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "stg-oktaapi2.phenompeople.com",
+      "nginx_template":"https_template",
+      "service_port":443,
+      "application_port":9064
+    }
   }
 }

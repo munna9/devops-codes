@@ -23,6 +23,12 @@
       "role[_elk-agent]",
       "role[_deploy-agent]",
       "recipe[microservice::ecr_deploy]"
+    ],
+    "stg-candidates": [
+      "role[_base]",
+      "role[_elk-agent]",
+      "role[_deploy-agent]",
+      "recipe[microservice::ecr_deploy]"
     ]
   }
 }

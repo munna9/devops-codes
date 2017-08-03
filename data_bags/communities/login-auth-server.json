@@ -54,6 +54,35 @@
       "uri": "qa-auth-server.phenompeople.com",
       "nginx_template":"http_template"
 
+    },
+    "stg-candidates": {
+    "ecr": {
+      "login-auth-server": {
+        "image_name": "cp_login-auth-server",
+        "tag_name": "STG-CP",
+        "ports": {
+          "9059": "8080"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/opt/phenom/buildproperties/login/STG1":  "/opt/deployment/buildproperties",
+          "/var/log/containers/login-auth-server": "/opt/deployment/apache-tomcat/logs"
+        }
+      }
+    }, 
+    "nginx-pod":{
+      "uri": "stg-auth-server.aws.phenom.local",
+      "nginx_template":"http_tomcat_template",
+      "service_port":80,
+      "context_name":"osiam-auth-server",
+      "application_port":9059
+    },
+    "addon-lb":{
+      "uri": "stg-auth-server.phenompeople.com",
+      "nginx_template":"https_template"
     }
+   }
   }
 }

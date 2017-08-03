@@ -53,5 +53,35 @@
       "ssl_certificate":"phenompeople",
       "service_port":443
     }
+  },
+  "stg-candidates": {
+    "ecr": {
+      "emailservice": {
+        "image_name": "cp_email-microservice",
+        "tag_name": "STG-CP",
+        "ports": {
+          "9056": "9000"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/emailservice": "/opt/deployment/cp-email-microservice/logs",
+          "/opt/phenom/buildproperties/cp-email-microservices/STG1": "/opt/deployment/buildproperties"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "stg-emailservice2.aws.phenom.local",
+      "nginx_template":"http_template",
+      "service_port":80,
+      "application_port":9056
+    },
+    "addon-lb":{
+      "uri": "stg-emailservice2.phenompeople.com",
+      "nginx_template":"https_template",
+      "ssl_certificate":"phenompeople",
+      "service_port":443
+    }
   }
 }

@@ -45,5 +45,28 @@
       "service_port":443,
       "application_port":9055
     }
+  },
+  "stg-candidates": {
+    "ecr": {
+      "sendgridwebhook": {
+        "image_name": "cp_sendgrid-webhook",
+        "tag_name": "STG-CP",
+        "ports": {
+          "9055": "8091"
+        },
+        "environment_variables": [
+        ],
+        "volumes": {
+          "/opt/phenom/buildproperties/candidates-sendgrid-events/STG1": "/opt/deployment/buildproperties",
+          "/var/log/containers/sendgridwebhook": "/opt/deployment/sendgridwebhook/logs"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "stg-sendgridwebhook2.phenompeople.com",
+      "nginx_template":"https_template",
+      "service_port":443,
+      "application_port":9055
+    }
   }
 }
