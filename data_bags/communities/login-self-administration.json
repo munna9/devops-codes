@@ -6,7 +6,7 @@
         "image_name": "cp_login-self-administration",
         "tag_name": "DEV-CP",
         "ports": {
-          "9061": "80"
+          "9061": "8080"
         },
         "environment_variables": [
 
@@ -22,7 +22,7 @@
       "nginx_template":"http_tomcat_template",
       "service_port":80,
       "context_name":"addon-self-administration",
-      "application_port":9060
+      "application_port":9061
     }
   },
   "qa-candidates": {
@@ -31,7 +31,7 @@
         "image_name": "cp_login-self-administration",
         "tag_name": "QA-CP",
         "ports": {
-          "9061": "80"
+          "9061": "8080"
         },
         "environment_variables": [
 
@@ -43,11 +43,11 @@
       }
     },
     "nginx-pod":{
-      "uri": "qa-self-administration.phenompeople.com",
+      "uri": "qa-myaccount.phenompeople.com",
       "nginx_template":"http_tomcat_template",
       "service_port":80,
       "context_name":"addon-self-administration",
-      "application_port":9060
+      "application_port":9061
     }
   },
   "stg-candidates": {
@@ -56,7 +56,7 @@
         "image_name": "cp_login-self-administration",
         "tag_name": "STG-CP",
         "ports": {
-          "9061": "80"
+          "9061": "8080"
         },
         "environment_variables": [
 
@@ -68,11 +68,11 @@
       }
     },
     "nginx-pod":{
-      "uri": "stg-self-administration.phenompeople.com",
+      "uri": "stg-myaccount.phenompeople.com",
       "nginx_template":"http_tomcat_template",
       "service_port":80,
       "context_name":"addon-self-administration",
-      "application_port":9060
+      "application_port":9061
     }
   }
 }
