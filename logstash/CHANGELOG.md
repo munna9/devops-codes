@@ -1,3 +1,5 @@
+# 0.1.10
+[rajeshj]   - Adding Kafka event default trait check
 # 0.1.9
 [rajeshj]   - Fixing Server port in ELK connector
 # 0.1.8

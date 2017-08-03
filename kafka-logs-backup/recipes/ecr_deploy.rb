@@ -1,11 +1,17 @@
 directory node['kafka-logs-backup']['logs']['directory'] do
   mode '1777'
 end
-template "/etc/logrotate.d/#{@cookbook_name}" do
-  source 'kafka-log-backup.conf.erb'
+template node['kafka-logs-backup']['cleanup']['script'] do
+  source 'kafka-logs-backup_cron.sh.erb'
+  mode '0755'
   sensitive true
 end
-docker_container "#{@cookbook_name}" do
+cron @cookbook_name do
+  hour '5'
+  minute '5'
+  command node['kafka-logs-backup']['cleanup']['script']
+end
+docker_container @cookbook_name do
   action :nothing
   kill_after node['docker']['container']['kill_after']
   read_timeout node['docker']['container']['read_timeout']

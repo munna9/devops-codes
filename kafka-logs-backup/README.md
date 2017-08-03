@@ -41,9 +41,9 @@ Please read attributes section for configuration parameters for any recipe(s)
 Deploys kafka-logs-backup container by referring data bag item kafka-logs-backup of communities data bag.
 
 1. Create/update directory `['kafka-logs-backup]['logs']['directory']` with stickybit enabled
-1. Create/update log rotation configuration file for kafka events
+1. Create/update log purging script for kafka events. This script stops kafka-logs-backup container and remove files residing under `['kafka-logs-backup']['logs']['directory']` and starts again
 1. Load phenom data bag item from data bag credentials
-1. Download git repo by referring `['kafka-logs-backup']['config_repo']['uri']` value for repo name and `['kafka-logs-backup']['config_repo']['branch']` and revision 
+1. Download git repo by referring `['kafka-logs-backup']['config_repo']['uri']` value for repo name and `['kafka-logs-backup']['config_repo']['branch']` and revision
 1. Synchronizes code to `['kafka-logs-backup']['config_repo']['checkout_directory']` notify **kafka-logs-backup** delayed restart for any new changes identified
 1. Loads data bag referred by vault_name and app_name
 1. Pulls docker image from Elastic container registry to the running node.

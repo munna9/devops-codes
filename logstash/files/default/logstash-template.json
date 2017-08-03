@@ -1,10 +1,6 @@
 {
   "template" : "logstash-*",
   "settings" : {
-    "index.codec" : "best_compression",
-  },
-  "template" : "phenomtrack-*",
-  "settings" : {
-    "index.codec" : "best_compression",
+    "index.codec" : "best_compression"
   }
 }

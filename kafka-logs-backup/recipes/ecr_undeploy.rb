@@ -11,6 +11,9 @@ directory node['kafka-logs-backup']['logs']['directory'] do
   recursive true
   action :delete
 end
-file "/etc/logrotate.d/#{@cookbook_name}" do
+file node['kafka-logs-backup']['cleanup']['script'] do
+  action :delete
+end
+cron @cookbook_name do
   action :delete
 end

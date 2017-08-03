@@ -1,0 +1,5 @@
+#<%=node['phenom']['banner']%>
+#!/usr/bin/env bash
+docker stop <%=@cookbook_name%>
+rm -rf <%=node['kafka-logs-backup']['logs']['directory']%>/*.txt
+docker start <%=@cookbook_name%>
