@@ -77,7 +77,6 @@
     "prod-candidatesca": [
       "recipe[chef-client::configure]",
       "recipe[ntp::install_client]",
-      "recipe[basic-essentials::fix_vulenarabilities]",
       "recipe[ntp::service]"
     ],
     "qa-dec": [

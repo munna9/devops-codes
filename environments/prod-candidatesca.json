@@ -6,7 +6,7 @@
   "description": "PRODUCTION environment specfication file for candidates",
 
   "cookbook_versions": {
-    "aws":"0.1.3",
+    "aws":"0.1.4",
     "basic-essentials":"0.1.14",
     "build-essentials" :"0.1.10",
     "candidate-jobs":"0.1.0",
