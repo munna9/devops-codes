@@ -80,7 +80,7 @@
         "environment_variables": [
         ],
         "volumes": {
-          "/opt/phenom/buildproperties/candidates-sendgrid-events/PRODCA": "/opt/deployment/buildproperties",
+          "/opt/phenom/buildproperties/candidates-sendgrid-events/PROD": "/opt/deployment/buildproperties",
           "/var/log/containers/sendgridwebhook": "/opt/deployment/sendgridwebhook/logs"
         }
       }
