@@ -71,22 +71,5 @@
       "service_port":443,
       "application_port":9052
     }
-  },
-  "prod-candidatesca": {
-    "ecr": {
-      "unsubscribe": {
-        "image_name": "cu_unsubscribe",
-        "tag_name": "PROD-CP",
-        "ports": {
-          "9052": "80"
-        },
-        "environment_variables": [
-          "DIRECTORY_ROOT=unsubscribe/prod-ca-docker",
-          "SUBSCRIPTION_ROOT=subscriptions/prod-ca-docker"
-        ],
-        "volumes": {
-          "/var/log/containers/unsubscribe": "/var/log/nginx"
-        }
-      }
-    }
+  }
 }

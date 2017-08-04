@@ -68,21 +68,5 @@
       "service_port":443,
       "application_port":9051
     }
-  },
-  "prod-candidatesca": {
-    "ecr": {
-      "usermanage-ui": {
-        "image_name": "cu_usermanagement-appui",
-        "tag_name": "PROD-CP",
-        "ports": {
-          "9051": "80"
-        },
-        "environment_variables": [
-
-        ],
-        "volumes": {
-          "/var/log/containers/usermanage-ui": "/var/log/nginx"
-        }
-      }
-    }
+  }
 }
