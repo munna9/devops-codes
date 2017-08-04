@@ -40,6 +40,7 @@
     ],
     "qa-candidates": [
       "role[_base]",
+      "role[_elk-agent]",
       "recipe[mongodb::install]",
       "recipe[mongodb::fine_tunning]",
       "recipe[mongodb::configure]",
