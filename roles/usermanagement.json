@@ -30,6 +30,11 @@
       "role[_elk-agent]",
       "role[_deploy-agent]",
       "recipe[usermanagement::ecr_deploy]"
+    ],
+    "prod-candidatesca": [
+      "role[_base]",
+      "role[_deploy-agent]",
+      "recipe[usermanagement::ecr_deploy]"
     ]
   }
 }

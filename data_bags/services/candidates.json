@@ -95,5 +95,27 @@
       "uri": "stg-candidatesapi2.aws.phenom.local",
       "nginx_template":"http_template"
     }
+  },
+  "prod-candidatesca": {
+    "ecr": {
+      "candidates": {
+        "image_name": "cp_candidates",
+        "tag_name": "PROD-CP",
+        "ports": {
+          "9062": "9000"
+        },
+        "environment_variables": [
+          "JAVA_OPTS=-Xmx1g"
+        ],
+        "volumes": {
+          "/var/log/containers/candidates": "/opt/deployment/candidates/logs",
+          "/opt/phenom/buildproperties/candidates-ca/candidates/PROD": "/opt/deployment/buildproperties",
+          "/opt/phenom/candidates/CsvFiles": "/opt/deployment/CsvFiles",
+          "/opt/phenom/candidates/ExcelFiles": "/opt/deployment/ExcelFiles",
+          "/opt/phenom/candidates/EmailAutoUpload":"/opt/deployment/EmailAutoUpload",
+          "/opt/phenom/candidates/images":"/opt/deployment/images"
+        }
+      }
+    }
   }
 }

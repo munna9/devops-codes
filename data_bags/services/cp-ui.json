@@ -74,5 +74,24 @@
       "service_port":443,
       "application_port":9050
     }
+  },
+  "prod-candidatesca": {
+    "ecr": {
+      "cp-ui": {
+        "image_name": "cu_appui_2",
+        "tag_name": "PROD-CP",
+        "ports": {
+          "9050": "80"
+        },
+        "environment_variables": [
+          "DIRECTORY_ROOT=cpui/prod-ca-docker"
+
+        ],
+        "volumes": {
+          "/var/log/containers/cp-ui": "/var/log/nginx"
+          
+        }
+      }
+    }
+  } 
   }
-}

@@ -24,10 +24,6 @@
     "prod-ngccca": [
       "role[mongodb]",
       "recipe[mongodb::master]"
-    ],
-    "prod-candidatesca": [
-      "role[mongodb]",
-      "recipe[mongodb::master]"
     ]
   }
 }

@@ -62,6 +62,16 @@
       "role[login-self-administration]",
       "role[candidates]",
       "role[okta-auth]"
+    ],
+    "prod-candidatesca": [
+      "role[_base]",
+      "role[_deploy-agent]",
+      "role[facets]",
+      "role[sendgridwebhook]",
+      "role[emailservice]",
+      "role[microservice]",
+      "role[email-campaign]",
+      "role[candidates]"
     ]
   }
 }

@@ -83,5 +83,23 @@
       "ssl_certificate":"phenompeople",
       "service_port":443
     }
+  },
+  "prod-candidatesca": {
+    "ecr": {
+      "emailservice": {
+        "image_name": "cp_email-microservice",
+        "tag_name": "PROD-CP",
+        "ports": {
+          "9056": "9000"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/emailservice": "/opt/deployment/cp-email-microservice/logs",
+          "/opt/phenom/buildproperties/candidates-ca/cp-email-microservices/PROD": "/opt/deployment/buildproperties"
+        }
+      }
+    }
   }
 }

@@ -68,5 +68,22 @@
       "service_port":443,
       "application_port":9055
     }
-  }
+  },
+  "prod-candidatesca": {
+    "ecr": {
+      "sendgridwebhook": {
+        "image_name": "cp_sendgrid-webhook",
+        "tag_name": "PROD-CP",
+        "ports": {
+          "9055": "8091"
+        },
+        "environment_variables": [
+        ],
+        "volumes": {
+          "/opt/phenom/buildproperties/candidates-sendgrid-events/PRODCA": "/opt/deployment/buildproperties",
+          "/var/log/containers/sendgridwebhook": "/opt/deployment/sendgridwebhook/logs"
+        }
+      }
+    }
+  } 
 }

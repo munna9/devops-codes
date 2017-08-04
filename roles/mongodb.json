@@ -54,15 +54,6 @@
       "recipe[mongodb::configure]",
       "recipe[mongodb::logrotate_install]",
       "recipe[mongodb::service]"
-    ],
-    "prod-candidatesca": [
-      "role[_base]",
-      "role[_elk-agent]",
-      "recipe[mongodb::install]",
-      "recipe[mongodb::fine_tunning]",
-      "recipe[mongodb::configure]",
-      "recipe[mongodb::logrotate_install]",
-      "recipe[mongodb::service]"
     ]
   }
 }

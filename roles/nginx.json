@@ -49,6 +49,16 @@
       "recipe[nginx::addon_lb]",
       "recipe[elasticsearch::elastic_elb]"
     ],
+    "stg-candidates":[
+      "role[_base]",
+      "role[_elk-agent]",
+      "recipe[docker::install]",
+      "recipe[docker::service]",
+      "recipe[docker::wrappers]",
+      "recipe[nginx::pod]",
+      "recipe[nginx::addon_lb]",
+      "recipe[elasticsearch::elastic_elb]"
+    ],
     "qa-dec":[
       "role[_base]",
       "role[_elk-agent]",
