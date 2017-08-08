@@ -8,6 +8,11 @@ directory node['elasticsearch']['app']['data_directory'] do
   recursive true
   action :create
 end
+mount node['elasticsearch']['app']['data_directory'] do
+  device node['elasticsearch']['device']['drive']
+  fstype node['elasticsearch']['device']['filesystem']
+  action [:mount, :enable]
+end
 unicast_hosts=Array.new
 if Chef::Config['solo']
   Chef::Log.warn('This recipe uses search. Chef Solo does not support search. ')
