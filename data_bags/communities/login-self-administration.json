@@ -87,7 +87,7 @@
 
         ],
         "volumes": {
-          "/opt/phenom/buildproperties/login/PROD1":  "/opt/deployment/buildproperties",
+          "/opt/phenom/buildproperties/login/PROD":  "/opt/deployment/buildproperties",
           "/var/log/containers/login-self-administration": "/opt/deployment/apache-tomcat/logs"
         }
       }
