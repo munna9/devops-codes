@@ -92,5 +92,23 @@
         }
       }
     }
+  },
+  "prod-candidates": {
+    "ecr": {
+      "emailcampaign": {
+        "image_name": "cp_email-campaign",
+        "tag_name": "PROD-CP",
+        "ports": {
+          "9058": "9000"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/emailcampaign": "/opt/deployment/cp-emailcampaign/logs",
+          "/opt/phenom/buildproperties/cp-email-campaign/PROD": "/opt/deployment/buildproperties"
+        }
+      }
+    }
   }
 }

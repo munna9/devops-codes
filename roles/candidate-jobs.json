@@ -36,6 +36,11 @@
       "role[_base]",
       "role[_deploy-agent]",
       "recipe[candidate-jobs::ecr_deploy]"
+    ],
+    "prod-candidates": [
+      "role[_base]",
+      "role[_deploy-agent]",
+      "recipe[candidate-jobs::ecr_deploy]"
     ]
   }
 }

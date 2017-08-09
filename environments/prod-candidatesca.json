@@ -33,6 +33,14 @@
     "aws_region":"ca-central-1"
     },
   "override_attributes": {
+    "elasticsearch":{
+      "package":{
+        "version": "2.3.5"
+      },
+       "nginx": {
+        "shield": true
+      }
+    } 
 
     }
   }

@@ -79,6 +79,11 @@
       "recipe[ntp::install_client]",
       "recipe[ntp::service]"
     ],
+    "prod-candidates": [
+      "recipe[chef-client::configure]",
+      "recipe[ntp::install_client]",
+      "recipe[ntp::service]"
+    ],
     "qa-dec": [
       "recipe[chef-client::configure]",
       "recipe[chef-client::service]",

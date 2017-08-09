@@ -74,5 +74,23 @@
       "context_name":"addon-self-administration",
       "application_port":9061
     }
-  }
+  },
+  "prod-candidates": {
+    "ecr": {
+      "login-self-administration": {
+        "image_name": "cp_login-self-administration",
+        "tag_name": "PROD-CP",
+        "ports": {
+          "9061": "8080"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/opt/phenom/buildproperties/login/PROD":  "/opt/deployment/buildproperties",
+          "/var/log/containers/login-self-administration": "/opt/deployment/apache-tomcat/logs"
+        }
+      }
+    }
+  } 
 }

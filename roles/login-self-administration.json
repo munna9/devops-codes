@@ -29,6 +29,11 @@
       "role[_elk-agent]",
       "role[_deploy-agent]",
       "recipe[login-self-administration::ecr_deploy]"
+    ],
+    "prod-candidates": [
+      "role[_base]",
+      "role[_deploy-agent]",
+      "recipe[login-self-administration::ecr_deploy]"
     ]
   }
 }

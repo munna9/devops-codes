@@ -84,5 +84,23 @@
       "nginx_template":"https_template"
     }
    }
-  }
+  },
+  "prod-candidates": {
+    "ecr": {
+      "login-auth-server": {
+        "image_name": "cp_login-auth-server",
+        "tag_name": "PROD-CP",
+        "ports": {
+          "9059": "8080"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/opt/phenom/buildproperties/login/PROD":  "/opt/deployment/buildproperties",
+          "/var/log/containers/login-auth-server": "/opt/deployment/apache-tomcat/logs"
+        }
+      }
+    } 
+  } 
 }

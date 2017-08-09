@@ -46,6 +46,13 @@
       "role[_base]",
       "role[_deploy-agent]",
       "role[cp-ui]",
+      "role[unsubscribe]",
+      "role[candidate-jobs]"
+    ],
+    "prod-candidates": [
+      "role[_base]",
+      "role[_deploy-agent]",
+      "role[cp-ui]",
       "role[unsubscribe]"
     ]  
   }

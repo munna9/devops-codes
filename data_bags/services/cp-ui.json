@@ -93,5 +93,24 @@
         }
       }
     }
-  } 
+  },
+  "prod-candidates": {
+    "ecr": {
+      "cp-ui": {
+        "image_name": "cu_appui_2",
+        "tag_name": "PROD-CP",
+        "ports": {
+          "9050": "80"
+        },
+        "environment_variables": [
+          "DIRECTORY_ROOT=cpui/prod-docker"
+
+        ],
+        "volumes": {
+          "/var/log/containers/cp-ui": "/var/log/nginx"
+          
+        }
+      }
+    }
+  }  
   }

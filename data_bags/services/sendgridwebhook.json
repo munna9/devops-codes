@@ -80,10 +80,27 @@
         "environment_variables": [
         ],
         "volumes": {
+          "/opt/phenom/buildproperties/candidates-ca/candidates-sendgrid-events/PROD": "/opt/deployment/buildproperties",
+          "/var/log/containers/sendgridwebhook": "/opt/deployment/sendgridwebhook/logs"
+        }
+      }
+    }
+  },
+  "prod-candidates": {
+    "ecr": {
+      "sendgridwebhook": {
+        "image_name": "cp_sendgrid-webhook",
+        "tag_name": "PROD-CP",
+        "ports": {
+          "9055": "8091"
+        },
+        "environment_variables": [
+        ],
+        "volumes": {
           "/opt/phenom/buildproperties/candidates-sendgrid-events/PROD": "/opt/deployment/buildproperties",
           "/var/log/containers/sendgridwebhook": "/opt/deployment/sendgridwebhook/logs"
         }
       }
     }
-  } 
+  }
 }

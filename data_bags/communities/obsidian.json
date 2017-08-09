@@ -92,5 +92,23 @@
         }
       }
     }
-  } 
+  },
+  "prod-candidates": {
+    "ecr": {
+      "obsidian": {
+        "image_name": "cp_obsidian",
+        "tag_name": "PROD-CP",
+        "ports": {
+          "9063": "8080"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/obsidian": "/opt/deployment/apache-tomcat/logs",
+          "/opt/phenom/buildproperties/candidates-jobs/PROD": "/opt/deployment/tracker"
+        }
+      }
+    }
+  }
 }

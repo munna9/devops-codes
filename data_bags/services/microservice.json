@@ -101,5 +101,26 @@
         }
       }
     }
+  },
+  "prod-candidates": {
+    "ecr": {
+      "microservice": {
+        "image_name": "cp_microservice",
+        "tag_name": "PROD-CP",
+        "ports": {
+          "9057": "9000"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/microservice": "/opt/deployment/cp-microservice/logs",
+          "/opt/phenom/microservice/CsvFiles": "/opt/deployment/CsvFiles",
+          "/opt/phenom/microservice/ExcelFiles": "/opt/deployment/ExcelFiles",
+          "/opt/phenom/microservice/EmailAutoUpload":"/opt/deployment/EmailAutoUpload",
+          "/opt/phenom/buildproperties/cp-microservice/PROD": "/opt/deployment/buildproperties"
+        }
+      }
+    }
   }
 }

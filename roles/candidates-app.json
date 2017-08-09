@@ -72,6 +72,16 @@
       "role[microservice]",
       "role[email-campaign]",
       "role[candidates]"
+    ],
+    "prod-candidates": [
+      "role[_base]",
+      "role[_deploy-agent]",
+      "role[facets]",
+      "role[sendgridwebhook]",
+      "role[emailservice]",
+      "role[microservice]",
+      "role[email-campaign]",
+      "role[candidates]"
     ]
   }
 }
