@@ -106,7 +106,7 @@
         ],
         "volumes": {
           "/var/log/containers/obsidian": "/opt/deployment/apache-tomcat/logs",
-          "/opt/phenom/buildproperties/candidates-jobs/PROD": "/opt/deployment/tracker"
+          "/opt/phenom/buildproperties/candidates-jobs/PROD1": "/opt/deployment/tracker"
         }
       }
     }

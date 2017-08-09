@@ -106,7 +106,7 @@
         ],
         "volumes": {
           "/var/log/containers/emailcampaign": "/opt/deployment/cp-emailcampaign/logs",
-          "/opt/phenom/buildproperties/cp-email-campaign/PROD": "/opt/deployment/buildproperties"
+          "/opt/phenom/buildproperties/cp-email-campaign/PROD1": "/opt/deployment/buildproperties"
         }
       }
     }

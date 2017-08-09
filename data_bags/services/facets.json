@@ -103,7 +103,7 @@
         ],
         "volumes": {
           "/var/log/containers/facets": "/opt/deployment/facets/logs",
-          "/opt/phenom/buildproperties/cp-facets/PROD": "/opt/deployment/buildproperties"
+          "/opt/phenom/buildproperties/cp-facets/PROD1": "/opt/deployment/buildproperties"
         }
       }
     }

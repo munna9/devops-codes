@@ -118,7 +118,7 @@
           "/opt/phenom/microservice/CsvFiles": "/opt/deployment/CsvFiles",
           "/opt/phenom/microservice/ExcelFiles": "/opt/deployment/ExcelFiles",
           "/opt/phenom/microservice/EmailAutoUpload":"/opt/deployment/EmailAutoUpload",
-          "/opt/phenom/buildproperties/cp-microservice/PROD": "/opt/deployment/buildproperties"
+          "/opt/phenom/buildproperties/cp-microservice/PROD1": "/opt/deployment/buildproperties"
         }
       }
     }

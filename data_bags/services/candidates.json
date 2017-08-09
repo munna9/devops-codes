@@ -131,7 +131,7 @@
         ],
         "volumes": {
           "/var/log/containers/candidates": "/opt/deployment/candidates/logs",
-          "/opt/phenom/buildproperties/candidates/PROD": "/opt/deployment/buildproperties",
+          "/opt/phenom/buildproperties/candidates/PROD1": "/opt/deployment/buildproperties",
           "/opt/phenom/candidates/CsvFiles": "/opt/deployment/CsvFiles",
           "/opt/phenom/candidates/ExcelFiles": "/opt/deployment/ExcelFiles",
           "/opt/phenom/candidates/EmailAutoUpload":"/opt/deployment/EmailAutoUpload",
