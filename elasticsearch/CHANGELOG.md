@@ -1,3 +1,5 @@
+# 0.1.15
+[rajeshj]   - Adding passwords from encrypted data bag
 # 0.1.14
 [rajeshj]   - Adding auto mount points
 # 0.1.13

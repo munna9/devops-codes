@@ -41,9 +41,15 @@ if node['elasticsearch']['nginx']['shield']
     recursive true
     action :create
   end
-  cookbook_file "#{node['nginx']['app']['conf_directory']}/passwords" do
-    source "#{node.chef_environment}/passwords"
+  elasticsearch_passwords=data_bag_item('credentials','elasticsearch')
+  template "#{node['nginx']['app']['conf_directory']}/passwords" do
+    source 'passwords.erb'
+    sensitive true
     mode '0444'
+    variables(
+      :username => elasticsearch_passwords[node.chef_environment]['username'],
+      :password => elasticsearch_passwords[node.chef_environment]['password']
+    )
   end
   template "#{node['nginx']['app']['conf_directory']}/elasticsearch.conf" do
     source 'elasticsearch.conf.erb'
