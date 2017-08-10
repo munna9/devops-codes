@@ -15,7 +15,7 @@ ONBUILD RUN wget -q -O /tmp/apache-tomcat.tar.gz https://archive.apache.org/dist
             tar xfz /tmp/apache-tomcat.tar.gz -C ${APP_HOME} && \
             mv ${APP_HOME}/apache-tomcat-${TOMCAT_VERSION} ${TOMCAT_HOME} && \
             rm -rf /tmp/apache-tomcat.tar.gz && \
-#            rm -rf ${TOMCAT_HOME}/webapps/* && \
+            rm -rf ${TOMCAT_HOME}/webapps/* && \
             rm -rf ${TOMCAT_HOME}/bin/*.bat && \
             rm -rf ${TOMCAT_HOME}/{LICENSE,NOTICE,RELEASE-NOTES,RUNNING.txt}
 
