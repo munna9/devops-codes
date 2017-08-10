@@ -60,6 +60,7 @@
           "DIRECTORY_ROOT=unsubscribe/stage-docker",
           "SUBSCRIPTION_ROOT=subscriptions/stage-docker"
         ],
+        "hostname":true,
         "volumes": {
           "/var/log/containers/unsubscribe": "/var/log/nginx"
         }
@@ -84,6 +85,7 @@
           "DIRECTORY_ROOT=unsubscribe/prod-ca-docker",
           "SUBSCRIPTION_ROOT=subscriptions/prod-ca-docker"
         ],
+        "hostname":true,
         "volumes": {
           "/var/log/containers/unsubscribe": "/var/log/nginx"
         }
@@ -102,6 +104,7 @@
           "DIRECTORY_ROOT=unsubscribe/prod-docker",
           "SUBSCRIPTION_ROOT=subscriptions/prod-docker"
         ],
+        "hostname":true,
         "volumes": {
           "/var/log/containers/unsubscribe": "/var/log/nginx"
         }

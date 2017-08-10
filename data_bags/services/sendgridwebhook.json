@@ -79,6 +79,7 @@
         },
         "environment_variables": [
         ],
+        "hostname":true,
         "volumes": {
           "/opt/phenom/buildproperties/candidates-ca/candidates-sendgrid-events/PROD": "/opt/deployment/buildproperties",
           "/var/log/containers/sendgridwebhook": "/opt/deployment/sendgridwebhook/logs"
@@ -96,6 +97,7 @@
         },
         "environment_variables": [
         ],
+        "hostname":true,
         "volumes": {
           "/opt/phenom/buildproperties/candidates-sendgrid-events/PROD1": "/opt/deployment/buildproperties",
           "/var/log/containers/sendgridwebhook": "/opt/deployment/sendgridwebhook/logs"

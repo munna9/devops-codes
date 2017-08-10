@@ -86,6 +86,7 @@
         "environment_variables": [
 
         ],
+        "hostname":true,
         "volumes": {
           "/var/log/containers/emailcampaign": "/opt/deployment/cp-emailcampaign/logs",
           "/opt/phenom/buildproperties/candidates-ca/cp-email-campaign/PROD": "/opt/deployment/buildproperties"
@@ -104,6 +105,7 @@
         "environment_variables": [
 
         ],
+        "hostname":true,
         "volumes": {
           "/var/log/containers/emailcampaign": "/opt/deployment/cp-emailcampaign/logs",
           "/opt/phenom/buildproperties/cp-email-campaign/PROD1": "/opt/deployment/buildproperties"

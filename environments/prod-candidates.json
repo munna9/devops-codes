@@ -13,7 +13,7 @@
     "candidates":"0.1.5",
     "chef-client":"0.1.4",
     "cp-ui":"0.1.0",
-    "docker": "0.1.12",
+    "docker": "0.1.14",
     "email-campaign": "0.1.0",
     "emailservice": "0.1.0",
     "facets":"0.1.0",

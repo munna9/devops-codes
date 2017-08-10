@@ -1,0 +1,15 @@
+{
+  "name": "prod-candidates241",
+  "chef_environment": "prod-candidates",
+  "run_list": [
+  "role[login-self-administration]",
+  "role[login-auth-server]",
+  "role[login-resource-server]"
+]
+,
+  "normal": {
+    "tags": [
+
+    ]
+  }
+}

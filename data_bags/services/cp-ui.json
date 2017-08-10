@@ -87,6 +87,7 @@
           "DIRECTORY_ROOT=cpui/prod-ca-docker"
 
         ],
+        "hostname":true,
         "volumes": {
           "/var/log/containers/cp-ui": "/var/log/nginx"
           
@@ -106,6 +107,7 @@
           "DIRECTORY_ROOT=cpui/prod-docker"
 
         ],
+        "hostname":true,
         "volumes": {
           "/var/log/containers/cp-ui": "/var/log/nginx"
           

@@ -1,0 +1,13 @@
+{
+  "name": "prod-candidates220",
+  "chef_environment": "prod-candidates",
+  "run_list": [
+  "role[facets]"
+]
+,
+  "normal": {
+    "tags": [
+
+    ]
+  }
+}

@@ -92,6 +92,7 @@
         "environment_variables": [
 
         ],
+        "hostname":true,
         "volumes": {
           "/var/log/containers/microservice": "/opt/deployment/cp-microservice/logs",
           "/opt/phenom/microservice/CsvFiles": "/opt/deployment/CsvFiles",
@@ -113,6 +114,7 @@
         "environment_variables": [
 
         ],
+        "hostname":true,
         "volumes": {
           "/var/log/containers/microservice": "/opt/deployment/cp-microservice/logs",
           "/opt/phenom/microservice/CsvFiles": "/opt/deployment/CsvFiles",

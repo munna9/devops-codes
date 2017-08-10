@@ -80,6 +80,7 @@
         "environment_variables": [
 
         ],
+        "hostname":true,
         "volumes": {
           "/var/log/containers/usermanage-ui": "/var/log/nginx"
         }
