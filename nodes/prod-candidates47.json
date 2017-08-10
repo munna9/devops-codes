@@ -1,0 +1,16 @@
+{
+  "name": "prod-candidates47",
+  "chef_environment": "prod-candidates",
+  "run_list": [
+  "role[unsubscribe]",
+  "role[emailservice]",
+  "role[email-campaign]",
+  "role[microservice]"
+]
+,
+  "normal": {
+    "tags": [
+
+    ]
+  }
+}
