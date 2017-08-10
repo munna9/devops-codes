@@ -1,0 +1,15 @@
+{
+  "name": "prod-candidates35",
+  "chef_environment": "prod-candidates",
+  "run_list": [
+  "role[candidate-jobs]",
+  "role[candidates]",
+  "role[cp-ui]"
+]
+,
+  "normal": {
+    "tags": [
+
+    ]
+  }
+}

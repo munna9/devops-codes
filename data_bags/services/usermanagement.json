@@ -86,5 +86,23 @@
       "nginx_template":"http_template"
 
     }
-  }
+  },
+  "prod-candidates": {
+    "ecr": {
+      "usermanagement": {
+        "image_name": "cp_usermanagement",
+        "tag_name": "PROD-CP",
+        "ports": {
+          "9054": "9000"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/usermanagement": "/opt/deployment/cp-usermanagement/logs",
+          "/opt/phenom/buildproperties/accounts/PROD1": "/opt/deployment/buildproperties"
+        }
+      }
+    }
+  } 
 }
