@@ -19,7 +19,7 @@
     "facets":"0.1.0",
     "filebeat":"0.1.2",
     "metricbeat" :"0.1.4",
-    "microservice":"0.1.2",
+    "microservice":"0.1.3",
     "ntp":"0.1.7",
     "okta-auth":"0.1.0",
     "sendgridwebhook":"0.1.0",
