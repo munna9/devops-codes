@@ -5,6 +5,10 @@
   "description": "Recipes which configures host to be elasticsearch server",
   "default_attributes": {
     "elasticsearch":{
+      "device":{
+        "drive":"/dev/mapper/VG001-LV001",
+        "filesystem":"xfs"
+      },
       "heap_memory": "1g"
     }
   },
