@@ -64,6 +64,7 @@ module DockerCookbook
           env container_metadata['environment_variables'] if container_metadata['environment_variables']
           port ports_array            unless ports_array.nil?
           volumes volumes_array       unless volumes_array.nil?
+          hostname node['hostname'] if container_metadata['hostname']
           kill_after deploy_kill_after
           read_timeout deploy_read_timeout
           write_timeout deploy_write_timeout

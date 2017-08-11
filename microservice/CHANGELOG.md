@@ -1,3 +1,5 @@
+# 0.1.3
+[rajeshj]   - Adding Images directory microservice project
 # 0.1.2
 [rajeshj]   - Updated file permissions for microservice
 # 0.1.1

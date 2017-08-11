@@ -1,3 +1,5 @@
+# 0.1.11
+[rajeshj] - Updating Mirror URL
 # 0.1.10
 [rajeshj] - Including 6.11.1 NVM for angular JS
 # 0.1.9

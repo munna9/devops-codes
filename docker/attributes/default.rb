@@ -48,5 +48,5 @@ default['docker']['container']['read_timeout']=30
 default['docker']['container']['write_timeout']=30
 default['docker']['container']['kill_after']=30
 
-default['docker']['wrapper']['base_directory']='/usr/local/sbin'
-default['docker']['wrapper']['scripts']=%w(docker-access docker-clean docker-clean_none docker-clean_all docker-destroy docker-flush docker-flush_all)
+default['docker']['wrapper']['base_directory']='/sbin'
+default['docker']['wrapper']['scripts']=%w(docker-access docker-clean docker-clean_none docker-clean_all docker-destroy docker-flush docker-flush_all docker-untag)
