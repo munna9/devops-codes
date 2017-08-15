@@ -1,2 +1,5 @@
 #!/usr/bin/env bash
-docker rmi $(docker images -f "dangling=true" -q)
+IMAGES_TO_REMOVE=$(docker images -f "dangling=true" -q)
+if [ -z "IMAGES_TO_REMOVE"]; then
+  docker rmi $IMAGES_TO_REMOVE
+fi
