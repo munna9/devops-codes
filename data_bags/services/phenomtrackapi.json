@@ -1,19 +1,45 @@
 {
   "id": "phenomtrackapi",
-  "qa-dec": {
+  "dev-dec": {
     "ecr": {
       "phenomtrackapi": {
         "image_name": "tr_phenomtrackapi",
-        "tag_name": "QA-DEC",
+        "tag_name": "DEV-DEC",
         "ports": {
-          "8080": "8080"
+          "6503": "8080"
         },
         "environment_variables": [
 
         ],
         "volumes": {
           "/var/log/containers/phenomtrackapi": "/opt/deployment/phenomtrackapi/logs",
-          "/opt/phenom/phenomtrack/conf": "/opt/deployment/phenomtrackapi/conf"
+          "/opt/phenom/phenomtrack/conf": "/opt/deployment/phenomtrackapi/conf",
+          "/opt/phenom/maxmind":"/opt/deployment/maxmind"
+        }
+      }
+    },
+    "nginx-pod":{
+      "uri": "dev-phenomtrackapi.phenompro.com",
+      "nginx_template":"http_template",
+      "service_port":80,
+      "application_port":6503
+    }
+  },
+  "qa-dec": {
+    "ecr": {
+      "phenomtrackapi": {
+        "image_name": "tr_phenomtrackapi",
+        "tag_name": "QA-DEC",
+        "ports": {
+          "6503": "8080"
+        },
+        "environment_variables": [
+
+        ],
+        "volumes": {
+          "/var/log/containers/phenomtrackapi": "/opt/deployment/phenomtrackapi/logs",
+          "/opt/phenom/phenomtrack/conf": "/opt/deployment/phenomtrackapi/conf",
+          "/opt/phenom/maxmind":"/opt/deployment/maxmind"
         }
       }
     }

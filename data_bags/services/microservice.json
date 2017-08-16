@@ -11,13 +11,14 @@
         "environment_variables": [
 
         ],
+        "hostname":true,
         "volumes": {
           "/var/log/containers/microservice": "/opt/deployment/cp-microservice/logs",
           "/opt/phenom/microservice/CsvFiles": "/opt/deployment/CsvFiles",
           "/opt/phenom/microservice/ExcelFiles": "/opt/deployment/ExcelFiles",
           "/opt/phenom/microservice/EmailAutoUpload":"/opt/deployment/EmailAutoUpload",
           "/opt/phenom/microservice/images":"/opt/deployment/images",
-          "/opt/phenom/buildproperties/cp-microservice/DEV1": "/opt/deployment/buildproperties"
+          "/opt/phenom/candidates-buildproperties/microservice": "/opt/deployment/buildproperties"
         }
       }
     },

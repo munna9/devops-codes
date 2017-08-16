@@ -11,9 +11,10 @@
         "environment_variables": [
 
         ],
+        "hostname":true,
         "volumes": {
           "/var/log/containers/emailcampaign": "/opt/deployment/cp-emailcampaign/logs",
-          "/opt/phenom/buildproperties/cp-email-campaign/DEV1": "/opt/deployment/buildproperties"
+          "/opt/phenom/candidates-buildproperties/emailcampaign": "/opt/deployment/buildproperties"
         }
       }
     },

@@ -10,8 +10,9 @@
         },
         "environment_variables": [
         ],
+        "hostname":true,
         "volumes": {
-          "/opt/phenom/buildproperties/candidates-sendgrid-events/DEV1": "/opt/deployment/buildproperties",
+          "/opt/phenom/candidates-buildproperties/sendgridwebhook": "/opt/deployment/buildproperties",
           "/var/log/containers/sendgridwebhook": "/opt/deployment/sendgridwebhook/logs"
         }
       }

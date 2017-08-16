@@ -33,7 +33,13 @@
   },
 
   "override_attributes": {
-
+    "build-essentials":{
+      "buildproperties_repo":{
+        "uri":"git@bitbucket.org:maheimom/candidates-buildproperties.git",
+        "checkout_directory":"candidates-buildproperties",
+        "branch":"DEV"
+      }
+    },
     "elasticsearch":{
       "package":{
         "version": "2.4.5"
@@ -42,5 +48,6 @@
         "shield": true
       }
     }
+
   }
 }

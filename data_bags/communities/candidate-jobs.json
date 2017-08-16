@@ -13,7 +13,7 @@
         ],
         "volumes": {
           "/var/log/containers/candidate-jobs": "/opt/deployment/apache-tomcat/logs",
-          "/opt/phenom/buildproperties/candidates-jobs/DEV1": "/opt/deployment/tracker"
+          "/opt/phenom/candidates-buildproperties/candidate-jobs": "/opt/deployment/tracker"
         }
       }
     },

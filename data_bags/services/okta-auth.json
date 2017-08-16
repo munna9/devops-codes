@@ -11,9 +11,10 @@
         "environment_variables": [
 
         ],
+        "hostname":true,
         "volumes": {
           "/var/log/containers/okta-auth": "/opt/deployment/okta-auth/logs",
-          "/opt/phenom/buildproperties/okta-Auth/DEV1": "/opt/deployment/buildproperties"
+          "/opt/phenom/candidates-buildproperties/okta-auth": "/opt/deployment/buildproperties"
         }
       }
     },

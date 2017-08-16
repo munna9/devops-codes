@@ -12,7 +12,7 @@
 
         ],
         "volumes": {
-          "/opt/phenom/buildproperties/login/DEV1":  "/opt/deployment/buildproperties",
+          "/opt/phenom/candidates-buildproperties/login":  "/opt/deployment/buildproperties",
           "/var/log/containers/login-resource-server": "/opt/deployment/apache-tomcat/logs"
         }
       }
@@ -21,7 +21,7 @@
       "uri": "dev-resource-server.aws.phenom.local",
       "nginx_template":"http_tomcat_template",
       "service_port":80,
-      "context_name":"osiam-resource-server",
+      "context_name":"osiam-resource-server",      
       "application_port":9060
     }
   },
@@ -45,7 +45,7 @@
     "nginx-pod":{
       "uri": "qa-resource-server.aws.phenom.local",
       "nginx_template":"http_tomcat_template",
-      "service_port":80,
+      "service_port":80,      
       "context_name":"osiam-resource-server",
       "application_port":9060
     },

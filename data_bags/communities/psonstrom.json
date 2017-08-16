@@ -1,0 +1,21 @@
+{
+  "id":"psonstorm",
+  "qa-dec":{
+    "ecr":{
+      "psonstorm":{
+        "image_name":"tr_psonstorm",
+        "tag_name":"QA-DEC",
+        "ports":{
+
+        },
+        "environment_variables":[
+
+        ],
+        "volumes":{
+          "/opt/storm/conf":"/opt/storm/conf",
+          "/opt/phenom/storm-kafka":"/opt/deployment/storm-kafka"
+        }
+      }
+    }
+  }
+}

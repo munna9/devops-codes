@@ -11,9 +11,10 @@
         "environment_variables": [
 
         ],
+        "hostname":true,
         "volumes": {
           "/var/log/containers/emailservice": "/opt/deployment/cp-email-microservice/logs",
-          "/opt/phenom/buildproperties/cp-email-microservices/DEV1": "/opt/deployment/buildproperties"
+          "/opt/phenom/candidates-buildproperties/emailservice": "/opt/deployment/buildproperties"
         }
       }
     },

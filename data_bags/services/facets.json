@@ -11,9 +11,10 @@
         "environment_variables": [
 
         ],
+        "hostname":true,
         "volumes": {
           "/var/log/containers/facets": "/opt/deployment/facets/logs",
-          "/opt/phenom/buildproperties/cp-facets/DEV1": "/opt/deployment/buildproperties"
+          "/opt/phenom/candidates-buildproperties/facets": "/opt/deployment/buildproperties"
         }
       }
     },

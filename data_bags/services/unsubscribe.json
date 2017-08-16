@@ -12,6 +12,7 @@
           "DIRECTORY_ROOT=unsubscribe/dev-docker",
           "SUBSCRIPTION_ROOT=subscriptions/dev-docker"
         ],
+        "hostname":true,
         "volumes": {
           "/var/log/containers/unsubscribe": "/var/log/nginx"
         }
@@ -36,6 +37,7 @@
           "DIRECTORY_ROOT=unsubscribe/qa-docker",
           "SUBSCRIPTION_ROOT=subscriptions/qa-docker"
         ],
+        
         "volumes": {
           "/var/log/containers/unsubscribe": "/var/log/nginx"
         }

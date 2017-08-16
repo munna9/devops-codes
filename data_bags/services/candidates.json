@@ -11,9 +11,10 @@
         "environment_variables": [
           "JAVA_OPTS=-Xmx1g"
         ],
+        "hostname":true,
         "volumes": {
           "/var/log/containers/candidates": "/opt/deployment/candidates/logs",
-          "/opt/phenom/buildproperties/candidates/DEV1": "/opt/deployment/buildproperties",
+          "/opt/phenom/candidates-buildproperties/candidates": "/opt/deployment/buildproperties",
           "/opt/phenom/candidates/CsvFiles": "/opt/deployment/CsvFiles",
           "/opt/phenom/candidates/ExcelFiles": "/opt/deployment/ExcelFiles",
           "/opt/phenom/candidates/EmailAutoUpload":"/opt/deployment/EmailAutoUpload",

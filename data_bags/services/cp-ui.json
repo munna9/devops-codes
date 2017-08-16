@@ -12,9 +12,9 @@
           "DIRECTORY_ROOT=cpui/dev-docker"
 
         ],
+        "hostname":true,        
         "volumes": {
-          "/var/log/containers/cp-ui": "/var/log/nginx",
-          "/opt/phenom/buildproperties/cp_app_ui_2/DEV1": "/opt/deployment/cpui/assets/js/beacon"
+          "/var/log/containers/cp-ui": "/var/log/nginx"
         }
       }
     },
@@ -38,8 +38,7 @@
 
         ],
         "volumes": {
-          "/var/log/containers/cp-ui": "/var/log/nginx",
-          "/opt/phenom/buildproperties/cp_app_ui_2/QA1": "/opt/deployment/cpui/assets/js/beacon"
+          "/var/log/containers/cp-ui": "/var/log/nginx"
         }
       }
     },
@@ -62,9 +61,9 @@
           "DIRECTORY_ROOT=cpui/qa-docker"
 
         ],
+        "hostname":true,        
         "volumes": {
-          "/var/log/containers/cp-ui": "/var/log/nginx",
-          "/opt/phenom/buildproperties/cp_app_ui_2/STG1": "/opt/deployment/cpui/assets/js/beacon"
+          "/var/log/containers/cp-ui": "/var/log/nginx"
         }
       }
     },
@@ -89,8 +88,7 @@
         ],
         "hostname":true,
         "volumes": {
-          "/var/log/containers/cp-ui": "/var/log/nginx"
-          
+          "/var/log/containers/cp-ui": "/var/log/nginx"       
         }
       }
     }

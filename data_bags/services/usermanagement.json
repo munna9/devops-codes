@@ -11,9 +11,10 @@
         "environment_variables": [
 
         ],
+        "hostname":true,
         "volumes": {
           "/var/log/containers/usermanagement": "/opt/deployment/cp-usermanagement/logs",
-          "/opt/phenom/buildproperties/accounts/DEV1": "/opt/deployment/buildproperties"
+          "/opt/phenom/candidates-buildproperties/usermanagement": "/opt/deployment/buildproperties"
         }
       }
     },

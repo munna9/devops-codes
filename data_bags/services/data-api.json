@@ -11,9 +11,10 @@
         "environment_variables": [
 
         ],
+        "hostname":true,
         "volumes": {
           "/var/log/containers/data-api": "/opt/deployment/data_api/logs",
-          "/opt/phenom/buildproperties/cp-data-api/DEV1": "/opt/deployment/buildproperties"
+          "/opt/phenom/candidates-buildproperties/data-api": "/opt/deployment/buildproperties"
         }
       }
     },
