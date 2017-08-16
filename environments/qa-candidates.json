@@ -14,7 +14,7 @@
     "cp-ui":"0.1.0",
     "data-ui":"0.1.0",
     "data-api":"0.1.0",
-    "docker": "0.1.12",
+    "docker": "0.1.15",
     "email-campaign": "0.1.0",
     "emailservice": "0.1.0",
     "elasticsearch":"0.1.13",

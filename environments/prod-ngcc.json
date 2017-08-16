@@ -5,7 +5,7 @@
   "description": "PRD environment specfication file for ngcc",
 
   "cookbook_versions": {
-    "docker" : "0.1.12"
+    "docker" : "0.1.15"
 
   },
 
