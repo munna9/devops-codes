@@ -1,0 +1,2 @@
+From phenompeople/mongo-connector:elastic251
+RUN python3 setup.py install
