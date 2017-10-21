@@ -1,0 +1,10 @@
+{
+  "checks": {
+    "url_prod_cc_cslplasma": {
+      "command": "/etc/sensu/plugins/check-urls.sh https://cslplasma.imomentous.com",
+      "interval": 300,
+	"handlers": ["default", "email"],
+      "subscribers": [ "URL" ]
+    }
+  }
+}

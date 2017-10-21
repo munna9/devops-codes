@@ -1,0 +1,10 @@
+{
+  "checks": {
+    "url_prod_cc_ddsextoninc": {
+      "command": "/etc/sensu/plugins/check-urls.sh https://ddsextoninc.imomentous.com",
+      "interval": 300,
+	"handlers": ["default", "email"],
+      "subscribers": [ "URL" ]
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "checks": {
+    "url_prod_cc_einstein": {
+      "command": "/etc/sensu/plugins/check-urls.sh https://einstein.imomentous.com",
+      "interval": 300,
+	"handlers": ["default", "email"],
+      "subscribers": [ "URL" ]
+    }
+  }
+}

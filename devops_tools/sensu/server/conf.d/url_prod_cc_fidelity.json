@@ -1,0 +1,10 @@
+{
+  "checks": {
+    "url_prod_cc_fidelity": {
+      "command": "/etc/sensu/plugins/check-urls.sh https://fidelity.imomentous.com",
+      "interval": 300,
+	"handlers": ["default", "email"],
+      "subscribers": [ "URL" ]
+    }
+  }
+}

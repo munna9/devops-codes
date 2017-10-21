@@ -1,0 +1,10 @@
+{
+  "checks": {
+    "url_prod_cc_piedmont": {
+      "command": "/etc/sensu/plugins/check-urls.sh http://piedmont.imomentous.com",
+      "interval": 300,
+	"handlers": ["default", "email"],
+      "subscribers": [ "URL" ]
+    }
+  }
+}

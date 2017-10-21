@@ -1,0 +1,10 @@
+{
+  "checks": {
+    "url_prod_cc_daviscartage": {
+      "command": "/etc/sensu/plugins/check-urls.sh http://daviscartage.imomentous.com",
+      "interval": 300,
+	"handlers": ["default", "email"],
+      "subscribers": [ "URL" ]
+    }
+  }
+}

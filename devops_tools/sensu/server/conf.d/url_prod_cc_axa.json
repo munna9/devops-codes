@@ -1,0 +1,10 @@
+{
+  "checks": {
+    "url_prod_cc_axa": {
+      "command": "/etc/sensu/plugins/check-urls.sh https://careers-us.axa.com",
+      "interval": 300,
+	"handlers": ["default", "email"],
+      "subscribers": [ "URL" ]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "handlers": {
+    "email": {
+      "type": "pipe",
+      "command": "/etc/sensu/handlers/file.rb | echo 'Below are the services details which is not in function and giving critical/warning status. '  | cat /tmp/sensu_testserver2_cc_tomcat_check | grep -e address -e output -e status -e occurrences -e action -e name |  mail -s 'Sensu Notification' -r sensu@phenompeople.com saurabh.goyal@phenompeople.com"
+    }
+  }
+}

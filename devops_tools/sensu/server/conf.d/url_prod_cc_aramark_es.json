@@ -1,0 +1,10 @@
+{
+  "checks": {
+    "url_prod_cc_aramark_es": {
+      "command": "/etc/sensu/plugins/check-urls.sh https://aramark-es.imomentous.com",
+      "interval": 300,
+	"handlers": ["default", "email"],
+      "subscribers": [ "URL" ]
+    }
+  }
+}

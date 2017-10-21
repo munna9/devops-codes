@@ -1,0 +1,10 @@
+{
+  "checks": {
+    "url_prod_cc_lb": {
+      "command": "/etc/sensu/plugins/check-urls.sh http://mcareers.lb.com",
+      "interval": 300,
+	"handlers": ["default", "email"],
+      "subscribers": [ "URL" ]
+    }
+  }
+}

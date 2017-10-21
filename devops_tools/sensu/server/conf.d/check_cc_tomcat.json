@@ -1,0 +1,11 @@
+{
+  "checks": {
+    "cc_tomcat_check": {
+      "command": "/etc/sensu/plugins/check-process.sh -p cc-tomcat",
+      "interval": 300,
+      "handlers": ["default", "email"],
+      "subscribers": [ "cc_web" ]
+    }
+  }
+}
+

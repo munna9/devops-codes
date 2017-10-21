@@ -1,0 +1,10 @@
+{
+  "checks": {
+    "url_prod_cc_armstrong": {
+      "command": "/etc/sensu/plugins/check-urls.sh http://m.careers.armstrong.com",
+      "interval": 300,
+	"handlers": ["default", "email"],
+      "subscribers": [ "URL" ]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "checks": {
+    "online_search_tomcat_check": {
+      "command": "/etc/sensu/plugins/check-process.sh -p online-search-tomcat",
+      "interval": 300,
+      "handlers": ["default", "email"],
+      "subscribers": [ "online_search_web" ]
+    }
+  }
+}
+

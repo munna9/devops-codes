@@ -1,0 +1,10 @@
+{
+  "checks": {
+    "httpd_check": {
+      "command": "/etc/sensu/plugins/check-process.sh -p httpd",
+      "interval": 300,
+      "handlers": ["default", "email"],
+      "subscribers": [ "cc_web","online_search_web" ]
+    }
+  }
+}

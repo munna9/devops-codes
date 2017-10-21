@@ -1,0 +1,7 @@
+{
+  "client": {
+    "name": "sensu-server",
+    "address": "54.190.181.24",
+    "subscriptions": [ "base","devops","ALL","URL" ]
+  }
+}

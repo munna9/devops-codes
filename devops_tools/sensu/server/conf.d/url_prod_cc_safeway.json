@@ -1,0 +1,10 @@
+{
+  "checks": {
+    "url_prod_cc_safeway": {
+      "command": "/etc/sensu/plugins/check-urls.sh https://safeway.imomentous.com",
+      "interval": 300,
+	"handlers": ["default", "email"],
+      "subscribers": [ "URL" ]
+    }
+  }
+}

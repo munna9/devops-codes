@@ -1,0 +1,10 @@
+{
+  "checks": {
+    "disk_check": {
+      "command": "/etc/sensu/plugins/check-disk.rb -w 70% -W 70% -c 85%",
+      "interval": 300,
+      "handlers": ["default", "email"],
+      "subscribers": [ "base" ]
+    }
+  }
+}

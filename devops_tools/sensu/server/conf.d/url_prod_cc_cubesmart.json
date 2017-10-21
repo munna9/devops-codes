@@ -1,0 +1,10 @@
+{
+  "checks": {
+    "url_prod_cc_cubesmart": {
+      "command": "/etc/sensu/plugins/check-urls.sh https://cubesmart.imomentous.com",
+      "interval": 300,
+	"handlers": ["default", "email"],
+      "subscribers": [ "URL" ]
+    }
+  }
+}

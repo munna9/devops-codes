@@ -1,0 +1,8 @@
+{
+  "handlers": {
+    "file": {
+      "type": "pipe",
+      "command": "/etc/sensu/handlers/file.rb"
+    }
+  }
+}

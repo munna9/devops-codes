@@ -1,0 +1,42 @@
+
+## collectd installation 
+
+if [[ ${collectd} == true ]]
+then
+
+echo "installing collectd"
+
+cp /home/jenkins/collectd.conf  /home/jenkins/collectd.conf.copy
+
+sed -i '12 i Hostname    "'$hostname'"  ' /home/jenkins/collectd.conf.copy
+
+
+scp -o "StrictHostKeyChecking no"  -i /home/jenkins/.jenkins/repo_data/devops_tools/server_access/xymon.pem  /home/jenkins/collectd.conf.copy  $loginuser@$serverip:/home/$loginuser;
+
+ssh -o "StrictHostKeyChecking no"  -i /home/jenkins/.jenkins/repo_data/devops_tools/server_access/xymon.pem  $loginuser@$serverip 'sudo yum install collectd -y;
+
+sudo cp /etc/collectd.conf   /etc/collectd.conf_bkp;
+
+sudo chmod 666 /etc/collectd.conf;
+
+sudo cat /home/$loginuser/collectd.conf.copy  > /etc/collectd.conf; 
+
+sudo service collectd start;
+
+sudo chkconfig collectd on;'
+
+rm /home/jenkins/collectd.conf.copy -rf;
+
+
+
+cp /home/jenkins/graphitemetrics.properties  /home/jenkins/graphitemetrics.properties.copy
+
+sed -i '5 i Hostname    '$hostname'  ' /home/jenkins/graphitemetrics.properties.copy
+
+scp -o "StrictHostKeyChecking no" -i keylocation /home/jenkins/graphitemetrics.properties.copy  $loginuser@$serverip:/home/$loginuser
+
+ssh -i key $loginuser@$serverip 'sudo cp ~/graphitemetrics.properties.copy   /opt/deployment/cc-tomcat/conf/graphitemetrics.properties 
+sudo chmod 600 /opt/deployment/cc-tomcat/conf/graphitemetrics.properties 
+sudo chown  phenom:phenom /opt/deployment/cc-tomcat/conf/graphitemetrics.properties'
+
+rm -rf /home/jenkins/graphitemetrics.properties.copy

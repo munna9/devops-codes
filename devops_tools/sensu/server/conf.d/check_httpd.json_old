@@ -1,0 +1,10 @@
+{
+  "checks": {
+    "httpd_check": {
+      "command": "/etc/sensu/plugins/check-httpd.rb",
+      "interval": 60,
+      "handlers": ["default", "email"],
+      "subscribers": [ "ALL" ]
+    }
+  }
+}

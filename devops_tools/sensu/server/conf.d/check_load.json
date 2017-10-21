@@ -1,0 +1,10 @@
+{
+  "checks": {
+    "load_check": {
+      "command": "/etc/sensu/plugins/check-load.rb",
+      "interval": 300,
+      "handlers": ["default", "email"],
+      "subscribers": [ "base" ]
+    }
+  }
+}

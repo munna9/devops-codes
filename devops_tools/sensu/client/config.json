@@ -1,0 +1,43 @@
+{
+  "rabbitmq": {
+    "host": "sensu.imomentous.co",
+    "port": 5672,
+    "user": "sensu",
+    "password": "pass",
+    "vhost": "/sensu"
+  },
+  "redis": {
+    "host": "sensu.imomentous.co",
+    "port": 6379
+  },
+  "api": {
+    "host": "sensu.imomentous.co",
+    "port": 4567
+  },
+  "handlers": {
+    "default": {
+      "type": "set",
+      "handlers": [
+        "stdout"
+      ]
+    },
+    "stdout": {
+      "type": "pipe",
+      "command": "cat"
+    }
+  },
+  "checks": {
+    "test": {
+      "command": "echo -n OK",
+      "subscribers": [
+        "test"
+      ],
+      "interval": 60
+    }
+  },
+  "client": {
+    "name": "clientname",
+    "address": "clientip",
+    "subscriptions": [ sublist ]
+  }
+}
